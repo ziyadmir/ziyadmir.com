@@ -16,22 +16,15 @@ async def home(request: Request):
 
 @app.get("/about")
 async def about(request: Request):
-    timeline = [
-        {"year": "2023", "description": "Personal website with FastAPI"},
-        {"year": "2022", "description": "Data visualization project"},
-        {"year": "2021", "description": "Machine learning research"},
-        {"year": "2020", "description": "Mobile app development"}
-    ]
-    return templates.TemplateResponse("about.html", {"request": request, "timeline": timeline})
+    return templates.TemplateResponse("about.html", {"request": request})
 
 @app.get("/projects")
 async def projects(request: Request):
-    projects = [
-        {"name": "Project 1", "description": "This is project 1"},
-        {"name": "Project 2", "description": "This is project 2"},
-        {"name": "Project 3", "description": "This is project 3"},
-    ]
-    return templates.TemplateResponse("projects.html", {"request": request, "projects": projects})
+    return templates.TemplateResponse("projects.html", {"request": request})
+
+@app.get("/blog")
+async def blog(request: Request):
+    return templates.TemplateResponse("blog.html", {"request": request})
 
 if __name__ == "__main__":
     import uvicorn

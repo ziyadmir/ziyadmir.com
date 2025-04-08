@@ -7,38 +7,101 @@
     <h1 class="text-4xl font-bold text-primary mb-6">About Me</h1>
     
     <div class="bg-white p-8 rounded-lg shadow-md mb-12">
-        <p class="text-xl text-gray-700 mb-6">Hi, I'm Ziyad Mir, a passionate technologist and developer dedicated to building elegant solutions to complex problems.</p>
+        <p class="text-xl text-gray-700 mb-6">I'm Ziyad Mir, a Software Engineering Leader with over 12 years of experience across industry-leading companies including Google/YouTube, Uber, Opendoor, and Quora.</p>
         
-        <p class="text-lg text-gray-600 mb-4">With expertise in multiple programming languages and frameworks, I specialize in creating efficient, scalable applications that solve real-world challenges.</p>
+        <p class="text-lg text-gray-600 mb-4">As an industry expert in Brand Advertising with a specialization in targeting for large-scale systems like Google Ads, I've driven multiple projects generating $XXXM+ in incremental ARR for YouTube.</p>
         
-        <p class="text-lg text-gray-600">When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, and sharing knowledge with the developer community.</p>
+        <p class="text-lg text-gray-600 mb-4">My technical expertise spans integrating Machine Learning into products at Quora, Uber, and YouTube/Google Deepmind, with a proven track record in developing strategic new products and driving growth.</p>
+
+        <p class="text-lg text-gray-600">I graduated from the University of Waterloo with a degree in Systems Design Engineering, where I studied Product Design, Machine Learning, Data Structures and Algorithms, Optimization, Systems Design, and Economics.</p>
     </div>
     
-    <h2 class="text-2xl font-bold text-primary mb-6">My Journey</h2>
+    <h2 class="text-2xl font-bold text-primary mb-6">Professional Journey</h2>
     
     <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-300 before:to-transparent">
-        {% for project in timeline %}
         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
             <div class="flex items-center justify-center w-10 h-10 rounded-full border border-primary bg-white text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-                {{ project.year[:2] }}
+                17
             </div>
             
             <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <div class="font-bold text-xl text-primary mb-2">{{ project.year }}</div>
-                <div class="text-gray-700">{{ project.description }}</div>
+                <div class="font-bold text-xl text-primary mb-2">2017 - Present</div>
+                <div class="text-gray-700">
+                    <p class="font-semibold">Google/YouTube, Software Engineer</p>
+                    <p class="mb-2">Zurich, Switzerland & San Francisco, CA</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>UberTL for Youtube Select ($XB ARR)</li>
+                        <li>Led Youtube Flash: Moment-Level Youtube Ads ($XXXM incremental ARR)</li>
+                        <li>Launched Youtube Select for Shorts, competing with TikTok Pulse</li>
+                        <li>Developed BrandShift metrics for Brand Identity</li>
+                    </ul>
+                </div>
             </div>
         </div>
-        {% endfor %}
+
+        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-primary bg-white text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                16
+            </div>
+            
+            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div class="font-bold text-xl text-primary mb-2">2016 - 2017</div>
+                <div class="text-gray-700">
+                    <p class="font-semibold">Uber, Software Engineer</p>
+                    <p class="mb-2">San Francisco, CA</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Onboarded ML onto Communications Platform with AutoML team</li>
+                        <li>TL for Rosetta, the translations service (highest read throughput across Uber)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-primary bg-white text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                15
+            </div>
+            
+            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div class="font-bold text-xl text-primary mb-2">2015 - 2016</div>
+                <div class="text-gray-700">
+                    <p class="font-semibold">Opendoor, Software Engineer</p>
+                    <p class="mb-2">San Francisco, CA</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Engineer #5 at Opendoor (NASDAQ: $OPEN)</li>
+                        <li>Built first A/B testing platform and automated offer pipeline</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-primary bg-white text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                14
+            </div>
+            
+            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div class="font-bold text-xl text-primary mb-2">2014 - 2015</div>
+                <div class="text-gray-700">
+                    <p class="font-semibold">Quora, Software Engineer & Product Manager</p>
+                    <p class="mb-2">Mountain View, CA</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Led growth team to launch signup wall revamp</li>
+                        <li>Drove 100x search traffic increase</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="mt-16 bg-gray-50 p-8 rounded-lg border border-gray-200 shadow-sm">
-        <h2 class="text-2xl font-bold text-primary mb-4">Skills</h2>
+        <h2 class="text-2xl font-bold text-primary mb-4">Technical Skills</h2>
         
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div class="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300">
                 <div class="flex items-center">
                     <div class="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
-                    <span>Python</span>
+                    <span>Java</span>
                 </div>
             </div>
             <div class="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300">
@@ -50,27 +113,60 @@
             <div class="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300">
                 <div class="flex items-center">
                     <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                    <span>FastAPI</span>
+                    <span>Python</span>
                 </div>
             </div>
             <div class="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300">
                 <div class="flex items-center">
                     <div class="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
-                    <span>React</span>
+                    <span>Go</span>
                 </div>
             </div>
             <div class="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300">
                 <div class="flex items-center">
                     <div class="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
-                    <span>UI/UX Design</span>
+                    <span>Machine Learning</span>
                 </div>
             </div>
             <div class="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300">
                 <div class="flex items-center">
                     <div class="w-3 h-3 bg-indigo-500 rounded-full mr-3"></div>
-                    <span>Cloud Services</span>
+                    <span>Ruby</span>
                 </div>
             </div>
+            <div class="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300">
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-teal-500 rounded-full mr-3"></div>
+                    <span>Spanner</span>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300">
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-pink-500 rounded-full mr-3"></div>
+                    <span>MySQL</span>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300">
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-orange-500 rounded-full mr-3"></div>
+                    <span>GCP</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-8 bg-primary text-white p-8 rounded-lg shadow-md">
+        <div class="flex items-center space-x-4 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <a href="mailto:ziyadmir@gmail.com" class="hover:text-blue-300 transition duration-300">ziyadmir@gmail.com</a>
+        </div>
+        <div class="flex items-center space-x-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <a href="https://www.linkedin.com/in/ziyadmir/" target="_blank" class="hover:text-blue-300 transition duration-300">linkedin.com/in/ziyadmir</a>
         </div>
     </div>
 </div>

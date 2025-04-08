@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}About | My Personal Website{% endblock %}
+
+{% block content %}
+<h1>About Me</h1>
+<p>Hi, I'm a web developer passionate about creating amazing websites using FastAPI and Python.</p>
+
+<h2>Project Timeline</h2>
+<ul class="timeline">
+    {% for project in timeline %}
+    <li><strong>{{ project.year }}:</strong> {{ project.description }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

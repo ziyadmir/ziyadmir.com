@@ -8,21 +8,31 @@ function includeHTML() {
             .then(data => {
                 headerElement.innerHTML = data;
                 
-                // Highlight the current page in the navigation
+                // Highlight the current page in the navigation menu
                 const currentPage = window.location.pathname;
-                const navLinks = headerElement.querySelectorAll('nav a');
+                let activePage = '';
                 
-                navLinks.forEach(link => {
-                    if (link.getAttribute('href') === currentPage || 
-                        (currentPage === '/' && link.getAttribute('href') === '/') ||
-                        (currentPage === '/index.html' && link.getAttribute('href') === '/')) {
-                        link.classList.add('text-blue-300');
+                if (currentPage === '/' || currentPage === '/index.html') {
+                    activePage = 'home';
+                } else if (currentPage.includes('about')) {
+                    activePage = 'about';
+                } else if (currentPage.includes('projects')) {
+                    activePage = 'projects';
+                } else if (currentPage.includes('blog')) {
+                    activePage = 'blog';
+                }
+                
+                // Add active class to the current page link
+                if (activePage) {
+                    const activeLink = headerElement.querySelector(`.site-nav-link[data-page="${activePage}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
                     }
-                });
+                }
             })
             .catch(error => {
                 console.error('Error loading header:', error);
-                headerElement.innerHTML = '<div class="container mx-auto px-4 py-3"><a href="/">Ziyad Mir</a></div>';
+                headerElement.innerHTML = '<div class="site-header-container"><a href="/" class="site-brand">Ziyad Mir</a></div>';
             });
     }
     
@@ -36,7 +46,7 @@ function includeHTML() {
             })
             .catch(error => {
                 console.error('Error loading footer:', error);
-                footerElement.innerHTML = '<div class="container mx-auto px-4 text-center"><p>&copy; 2025 Ziyad Mir</p></div>';
+                footerElement.innerHTML = '<div class="site-footer-container"><p class="site-footer-text">&copy; 2025 Ziyad Mir</p></div>';
             });
     }
 }

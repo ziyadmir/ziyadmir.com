@@ -10,6 +10,8 @@
             --color-primary: #0f172a;
             --color-secondary: #334155;
         }
+        html { font-size: 15px; } /* Slightly smaller base font */
+        body { font-size: 0.95rem; }
         .bg-primary { background-color: var(--color-primary); }
         .text-primary { color: var(--color-primary); }
         .bg-secondary { background-color: var(--color-secondary); }
@@ -18,98 +20,174 @@
         .hover\:bg-secondary:hover { background-color: var(--color-secondary); }
         .hover\:text-blue-300:hover { color: #93c5fd; }
         .focus\:ring-primary:focus { --tw-ring-color: var(--color-primary); }
+        
+        /* Project cards */
+        .project-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .project-header {
+            height: auto;
+            min-height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            color: white;
+        }
+        
+        .project-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            .container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            .text-3xl, .text-4xl {
+                font-size: 1.5rem !important;
+            }
+            
+            .text-2xl {
+                font-size: 1.25rem !important;
+            }
+            
+            .text-xl {
+                font-size: 1.1rem !important;
+            }
+            
+            .p-6 {
+                padding: 1rem !important;
+            }
+            
+            .py-8 {
+                padding-top: 1.5rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+            
+            .gap-8 {
+                gap: 1.5rem !important;
+            }
+            
+            .project-header {
+                min-height: 120px;
+                padding: 1rem;
+            }
+            
+            .project-header h2 {
+                font-size: 1.25rem !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
     <header class="bg-primary text-white shadow-md">
-        <div class="container mx-auto px-4 py-6">
+        <div class="container mx-auto px-4 py-3">
             <nav class="flex justify-between items-center">
-                <a href="/" class="text-xl font-bold">Ziyad Mir</a>
-                <ul class="flex space-x-6">
-                    <li><a href="/" class="hover:text-blue-300 transition duration-300">Home</a></li>
-                    <li><a href="/about.html" class="hover:text-blue-300 transition duration-300">About</a></li>
-                    <li><a href="/projects.html" class="hover:text-blue-300 transition duration-300">Projects</a></li>
-                    <li><a href="/blog.html" class="hover:text-blue-300 transition duration-300">Blog</a></li>
+                <a href="/" class="text-lg font-bold">Ziyad Mir</a>
+                <ul class="flex space-x-4">
+                    <li><a href="/" class="text-sm md:text-base hover:text-blue-300 transition duration-300">Home</a></li>
+                    <li><a href="/about.html" class="text-sm md:text-base hover:text-blue-300 transition duration-300">About</a></li>
+                    <li><a href="/projects.html" class="text-sm md:text-base hover:text-blue-300 transition duration-300">Projects</a></li>
+                    <li><a href="/blog.html" class="text-sm md:text-base hover:text-blue-300 transition duration-300">Blog</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-8 flex-grow">
+    <main class="container mx-auto px-4 py-6 flex-grow">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl font-bold text-primary mb-8">Key Projects</h1>
+            <h1 class="text-3xl font-bold text-primary mb-6">Key Projects</h1>
             
-            <div class="grid grid-cols-1 gap-8">
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <div class="h-48 bg-blue-600 flex items-center justify-center">
-                        <h2 class="text-2xl font-bold text-white">YouTube Flash: Moment-Level YouTube Ads</h2>
+            <div class="grid grid-cols-1 gap-6">
+                <div class="project-card bg-white shadow-md">
+                    <div class="project-header bg-blue-600">
+                        <h2 class="text-xl font-bold text-white text-center">YouTube Flash: Moment-Level YouTube Ads</h2>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-700 mb-4">Developed next-generation Brand Advertising solution using multimodal, video content understanding models (Gemini, PaLI, ytbert-ASR) for emotion analysis to build and reinforce Brand Identity. Generated $XXXM in incremental ARR for YouTube.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Java</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Python</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Gemini</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Machine Learning</span>
+                    <div class="p-5">
+                        <p class="text-gray-700 text-sm mb-4">Developed next-generation Brand Advertising solution using multimodal, video content understanding models (Gemini, PaLI, ytbert-ASR) for emotion analysis to build and reinforce Brand Identity. Generated $XXXM in incremental ARR for YouTube.</p>
+                        <div class="flex flex-wrap">
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Gemini</span>
+                            <span class="project-tag">Machine Learning</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <div class="h-48 bg-red-500 flex items-center justify-center">
-                        <h2 class="text-2xl font-bold text-white">YouTube Select for Shorts</h2>
+                <div class="project-card bg-white shadow-md">
+                    <div class="project-header bg-red-500">
+                        <h2 class="text-xl font-bold text-white text-center">YouTube Select for Shorts</h2>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-700 mb-4">Launched and grew new Brand Advertising business for YouTube Shorts, competing directly with TikTok Pulse and Instagram Contextual Ads. Initiated and coordinated cross-YouTube efforts with partner senior ICs and leads, generating $XXXM in incremental ARR.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">JavaScript</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Java</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Spanner</span>
+                    <div class="p-5">
+                        <p class="text-gray-700 text-sm mb-4">Launched and grew new Brand Advertising business for YouTube Shorts, competing directly with TikTok Pulse and Instagram Contextual Ads. Initiated and coordinated cross-YouTube efforts with partner senior ICs and leads, generating $XXXM in incremental ARR.</p>
+                        <div class="flex flex-wrap">
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">Spanner</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <div class="h-48 bg-green-500 flex items-center justify-center">
-                        <h2 class="text-2xl font-bold text-white">BrandShift: Metrics for Branded YouTube Ads</h2>
+                <div class="project-card bg-white shadow-md">
+                    <div class="project-header bg-green-500">
+                        <h2 class="text-xl font-bold text-white text-center">BrandShift: Metrics for Branded YouTube Ads</h2>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-700 mb-4">Developed next-generation metrics for Brand Identity ($XB ARR in targeting products). Evolved BrandLift into BrandShift: a holistic brand perception measurement solution (partnering with Google Ads Measurement, Reporting, Target Frequency and Sequencing and Video Understanding teams).</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Python</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Java</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Data Analysis</span>
+                    <div class="p-5">
+                        <p class="text-gray-700 text-sm mb-4">Developed next-generation metrics for Brand Identity ($XB ARR in targeting products). Evolved BrandLift into BrandShift: a holistic brand perception measurement solution (partnering with Google Ads Measurement, Reporting, Target Frequency and Sequencing and Video Understanding teams).</p>
+                        <div class="flex flex-wrap">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">Data Analysis</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <div class="h-48 bg-purple-500 flex items-center justify-center">
-                        <h2 class="text-2xl font-bold text-white">Uber Rosetta: Translations Service</h2>
+                <div class="project-card bg-white shadow-md">
+                    <div class="project-header bg-purple-500">
+                        <h2 class="text-xl font-bold text-white text-center">Uber Rosetta: Translations Service</h2>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-700 mb-4">Technical Lead for Rosetta, the translations (i18n) service which had the highest read throughput of all 2000+ microservices at Uber. Also led the integration of ML onto Communications Platform with the AutoML (Michelangelo) team, resulting in 50% increase in communication engagement and significant cost savings.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Go</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Python</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">MySQL</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Redis</span>
+                    <div class="p-5">
+                        <p class="text-gray-700 text-sm mb-4">Technical Lead for Rosetta, the translations (i18n) service which had the highest read throughput of all 2000+ microservices at Uber. Also led the integration of ML onto Communications Platform with the AutoML (Michelangelo) team, resulting in 50% increase in communication engagement and significant cost savings.</p>
+                        <div class="flex flex-wrap">
+                            <span class="project-tag">Go</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">Redis</span>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="mt-16 bg-gray-50 p-8 rounded-lg text-center border border-gray-200 shadow-sm">
-                <h2 class="text-2xl font-bold text-primary mb-4">Interested in discussing these projects?</h2>
-                <p class="text-lg text-gray-600 mb-6">I'm always open to connecting with fellow engineers and discussing technical challenges.</p>
-                <a href="mailto:ziyadmir@gmail.com" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-secondary transition duration-300 shadow-md inline-block">Get in Touch</a>
+            <div class="bg-gray-50 p-6 rounded-lg text-center border border-gray-200 shadow-sm mt-8">
+                <h2 class="text-xl font-bold text-primary mb-3">Interested in discussing these projects?</h2>
+                <p class="text-base text-gray-600 mb-4">I'm always open to connecting with fellow engineers and discussing technical challenges.</p>
+                <a href="mailto:ziyadmir@gmail.com" class="px-4 py-2 bg-primary text-white text-sm rounded-lg hover:bg-secondary transition duration-300 shadow-md inline-block">Get in Touch</a>
             </div>
         </div>
     </main>
 
-    <footer class="bg-primary text-white py-6 mt-auto">
+    <footer class="bg-primary text-white py-4 mt-auto">
         <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Ziyad Mir | <a href="https://www.linkedin.com/in/ziyadmir/" class="hover:text-blue-300 transition duration-300">LinkedIn</a></p>
+            <p class="text-sm">&copy; 2025 Ziyad Mir | <a href="https://www.linkedin.com/in/ziyadmir/" class="hover:text-blue-300 transition duration-300">LinkedIn</a></p>
         </div>
     </footer>
 </body>

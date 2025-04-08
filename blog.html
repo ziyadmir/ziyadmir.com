@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style type="text/css">
+        :root {
+            --color-primary: #0f172a;
+            --color-secondary: #334155;
+        }
+        .bg-primary { background-color: var(--color-primary); }
+        .text-primary { color: var(--color-primary); }
+        .bg-secondary { background-color: var(--color-secondary); }
+        .text-secondary { color: var(--color-secondary); }
+        .border-primary { border-color: var(--color-primary); }
+        .hover\:bg-secondary:hover { background-color: var(--color-secondary); }
+        .hover\:text-blue-300:hover { color: #93c5fd; }
+        .focus\:ring-primary:focus { --tw-ring-color: var(--color-primary); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-6">
+            <nav class="flex justify-between items-center">
+                <a href="/" class="text-xl font-bold">Ziyad Mir</a>
+                <ul class="flex space-x-6">
+                    <li><a href="/" class="hover:text-blue-300 transition duration-300">Home</a></li>
+                    <li><a href="/about.html" class="hover:text-blue-300 transition duration-300">About</a></li>
+                    <li><a href="/projects.html" class="hover:text-blue-300 transition duration-300">Projects</a></li>
+                    <li><a href="/blog.html" class="hover:text-blue-300 transition duration-300">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold text-primary mb-8">Blog</h1>
+            
+            <div class="grid grid-cols-1 gap-10">
+                <article class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-primary mb-2">Integrating Machine Learning in Large-Scale Products</h2>
+                        <p class="text-gray-500 mb-4">April 7, 2025 · 8 min read</p>
+                        <p class="text-gray-700 mb-4">Machine learning integration at scale presents unique challenges that require careful consideration of infrastructure, data pipelines, and monitoring systems. Based on my experience at Google, Uber, and other tech companies, I've compiled some best practices for successfully integrating ML models into production systems.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Machine Learning</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Engineering</span>
+                        </div>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Read more →</a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-primary mb-2">Building Brand Identity Through Digital Advertising</h2>
+                        <p class="text-gray-500 mb-4">March 15, 2025 · 6 min read</p>
+                        <p class="text-gray-700 mb-4">Brand advertising has evolved significantly with the rise of digital platforms. At YouTube, I've worked on systems that help brands establish and reinforce their identity through targeted digital campaigns. This post explores the technical challenges of building advertising systems that align with brand values and resonate with audiences.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Brand Advertising</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Digital Marketing</span>
+                        </div>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Read more →</a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-primary mb-2">Scaling Engineering Teams: Lessons from Tech Giants</h2>
+                        <p class="text-gray-500 mb-4">February 22, 2025 · 10 min read</p>
+                        <p class="text-gray-700 mb-4">Growing an engineering organization presents unique challenges around communication, knowledge sharing, and maintaining velocity. Drawing from my experience at companies like Google, Uber, and early-stage startups, I share insights on building processes that scale with your engineering team without sacrificing innovation or speed.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Engineering Management</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Leadership</span>
+                        </div>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Read more →</a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="mt-16 bg-gray-50 p-8 rounded-lg border border-gray-200 shadow-sm text-center">
+                <h2 class="text-2xl font-bold text-primary mb-4">Subscribe to my newsletter</h2>
+                <p class="text-lg text-gray-600 mb-6">Get notified when I publish new articles about technology, engineering, and product development.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <input type="email" placeholder="Your email address" class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <button class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-secondary transition duration-300 shadow-md">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-primary text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Ziyad Mir | <a href="https://www.linkedin.com/in/ziyadmir/" class="hover:text-blue-300 transition duration-300">LinkedIn</a></p>
+        </div>
+    </footer>
+</body>
+</html>

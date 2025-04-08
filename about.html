@@ -10,6 +10,8 @@
             --color-primary: #0f172a;
             --color-secondary: #334155;
         }
+        html { font-size: 15px; } /* Slightly smaller base font */
+        body { font-size: 0.95rem; }
         .bg-primary { background-color: var(--color-primary); }
         .text-primary { color: var(--color-primary); }
         .bg-secondary { background-color: var(--color-secondary); }
@@ -22,7 +24,8 @@
         /* Timeline styling */
         .timeline-container {
             position: relative;
-            padding: 20px 0;
+            padding: 15px 0;
+            margin-bottom: 2rem;
         }
         
         .timeline-container::after {
@@ -37,10 +40,11 @@
         }
         
         .timeline-item {
-            padding: 10px 40px;
+            padding: 10px 30px;
             position: relative;
             width: 50%;
             box-sizing: border-box;
+            margin-bottom: 15px;
         }
         
         .timeline-item:nth-child(odd) {
@@ -52,7 +56,7 @@
         }
         
         .timeline-item-content {
-            padding: 20px;
+            padding: 15px;
             background: white;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -60,60 +64,39 @@
         }
         
         .timeline-item-content:hover {
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
         }
         
         .year-marker {
             position: absolute;
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             background: white;
             border: 2px solid var(--color-primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            top: 20px;
+            top: 15px;
             z-index: 10;
             font-weight: bold;
             color: var(--color-primary);
+            font-size: 0.9rem;
         }
         
         .timeline-item:nth-child(odd) .year-marker {
-            right: -20px;
+            right: -17px;
         }
         
         .timeline-item:nth-child(even) .year-marker {
-            left: -20px;
-        }
-        
-        @media screen and (max-width: 768px) {
-            .timeline-container::after {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-            
-            .timeline-item:nth-child(odd) .year-marker,
-            .timeline-item:nth-child(even) .year-marker {
-                left: 11px;
-            }
+            left: -17px;
         }
         
         /* Skills styling */
         .skill-item {
             display: flex;
             align-items: center;
-            padding: 12px;
+            padding: 10px;
             background: white;
             border-radius: 6px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -125,16 +108,16 @@
         }
         
         .skill-marker {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            margin-right: 12px;
+            margin-right: 10px;
         }
         
         .contact-section {
             background-color: var(--color-primary);
             color: white;
-            padding: 32px;
+            padding: 25px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -142,7 +125,7 @@
         .contact-item {
             display: flex;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
         
         .contact-item:last-child {
@@ -150,7 +133,7 @@
         }
         
         .contact-item svg {
-            margin-right: 16px;
+            margin-right: 12px;
         }
         
         .contact-item a {
@@ -162,48 +145,131 @@
         .contact-item a:hover {
             color: #93c5fd;
         }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            body { font-size: 0.85rem; } /* Reduce base font size on mobile */
+            
+            .timeline-container::after {
+                left: 25px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 15px;
+                margin-bottom: 10px;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd) .year-marker,
+            .timeline-item:nth-child(even) .year-marker {
+                left: 8px;
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
+            }
+            
+            .text-3xl, .text-4xl {
+                font-size: 1.25rem !important;
+            }
+            
+            .text-2xl {
+                font-size: 1.1rem !important;
+            }
+            
+            .text-xl {
+                font-size: 1rem !important;
+            }
+            
+            .text-lg {
+                font-size: 0.9rem !important;
+            }
+            
+            .text-base {
+                font-size: 0.85rem !important;
+            }
+            
+            .text-sm {
+                font-size: 0.8rem !important;
+            }
+            
+            .timeline-item-content {
+                padding: 10px;
+            }
+            
+            .p-8, .p-6 {
+                padding: 1rem !important;
+            }
+            
+            .container {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+            
+            .py-8, .py-6 {
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+            
+            .skill-item {
+                padding: 6px;
+            }
+            
+            .mb-8, .mb-6 {
+                margin-bottom: 1rem !important;
+            }
+            
+            .gap-3 {
+                gap: 0.5rem !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
     <header class="bg-primary text-white shadow-md">
-        <div class="container mx-auto px-4 py-6">
+        <div class="container mx-auto px-4 py-3">
             <nav class="flex justify-between items-center">
-                <a href="/" class="text-xl font-bold">Ziyad Mir</a>
-                <ul class="flex space-x-6">
-                    <li><a href="/" class="hover:text-blue-300 transition duration-300">Home</a></li>
-                    <li><a href="/about.html" class="hover:text-blue-300 transition duration-300">About</a></li>
-                    <li><a href="/projects.html" class="hover:text-blue-300 transition duration-300">Projects</a></li>
-                    <li><a href="/blog.html" class="hover:text-blue-300 transition duration-300">Blog</a></li>
+                <a href="/" class="text-lg font-bold">Ziyad Mir</a>
+                <ul class="flex space-x-4">
+                    <li><a href="/" class="text-sm md:text-base hover:text-blue-300 transition duration-300">Home</a></li>
+                    <li><a href="/about.html" class="text-sm md:text-base hover:text-blue-300 transition duration-300">About</a></li>
+                    <li><a href="/projects.html" class="text-sm md:text-base hover:text-blue-300 transition duration-300">Projects</a></li>
+                    <li><a href="/blog.html" class="text-sm md:text-base hover:text-blue-300 transition duration-300">Blog</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-8">
+    <main class="flex-grow container mx-auto px-4 py-6">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl font-bold text-primary mb-6">About Me</h1>
+            <h1 class="text-3xl font-bold text-primary mb-5">About Me</h1>
             
-            <div class="bg-white p-8 rounded-lg shadow-md mb-12">
-                <p class="text-xl text-gray-700 mb-6">I'm Ziyad Mir, a Software Engineering Leader with over 12 years of experience across industry-leading companies including Google/YouTube, Uber, Opendoor, and Quora.</p>
+            <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                <p class="text-lg text-gray-700 mb-4">I'm Ziyad Mir, a Software Engineering Leader with over 12 years of experience across industry-leading companies including Google/YouTube, Uber, Opendoor, and Quora.</p>
                 
-                <p class="text-lg text-gray-600 mb-4">As an industry expert in Brand Advertising with a specialization in targeting for large-scale systems like Google Ads, I've driven multiple projects generating $XXXM+ in incremental ARR for YouTube.</p>
+                <p class="text-base text-gray-600 mb-3">As an industry expert in Brand Advertising with a specialization in targeting for large-scale systems like Google Ads, I've driven multiple projects generating $XXXM+ in incremental ARR for YouTube.</p>
                 
-                <p class="text-lg text-gray-600 mb-4">My technical expertise spans integrating Machine Learning into products at Quora, Uber, and YouTube/Google Deepmind, with a proven track record in developing strategic new products and driving growth.</p>
+                <p class="text-base text-gray-600 mb-3">My technical expertise spans integrating Machine Learning into products at Quora, Uber, and YouTube/Google Deepmind, with a proven track record in developing strategic new products and driving growth.</p>
 
-                <p class="text-lg text-gray-600">I graduated from the University of Waterloo with a degree in Systems Design Engineering, where I studied Product Design, Machine Learning, Data Structures and Algorithms, Optimization, Systems Design, and Economics.</p>
+                <p class="text-base text-gray-600">I graduated from the University of Waterloo with a degree in Systems Design Engineering, where I studied Product Design, Machine Learning, Data Structures and Algorithms, Optimization, Systems Design, and Economics.</p>
             </div>
             
-            <h2 class="text-2xl font-bold text-primary mb-6">Professional Journey</h2>
+            <h2 class="text-2xl font-bold text-primary mb-4">Professional Journey</h2>
             
-            <div class="timeline-container mb-16">
+            <div class="timeline-container">
                 <div class="timeline-item">
                     <div class="year-marker">17</div>
                     <div class="timeline-item-content">
-                        <div class="font-bold text-xl text-primary mb-2">2017 - Present</div>
+                        <div class="font-bold text-lg text-primary mb-2">2017 - Present</div>
                         <div class="text-gray-700">
                             <p class="font-semibold">Google/YouTube, Software Engineer</p>
-                            <p class="mb-2">Zurich, Switzerland & San Francisco, CA</p>
-                            <ul class="list-disc pl-5 space-y-1">
+                            <p class="mb-2 text-sm">Zurich, Switzerland & San Francisco, CA</p>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
                                 <li>UberTL for Youtube Select ($XB ARR)</li>
                                 <li>Led Youtube Flash: Moment-Level Youtube Ads ($XXXM incremental ARR)</li>
                                 <li>Launched Youtube Select for Shorts, competing with TikTok Pulse</li>
@@ -216,11 +282,11 @@
                 <div class="timeline-item">
                     <div class="year-marker">16</div>
                     <div class="timeline-item-content">
-                        <div class="font-bold text-xl text-primary mb-2">2016 - 2017</div>
+                        <div class="font-bold text-lg text-primary mb-2">2016 - 2017</div>
                         <div class="text-gray-700">
                             <p class="font-semibold">Uber, Software Engineer</p>
-                            <p class="mb-2">San Francisco, CA</p>
-                            <ul class="list-disc pl-5 space-y-1">
+                            <p class="mb-2 text-sm">San Francisco, CA</p>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
                                 <li>Onboarded ML onto Communications Platform with AutoML team</li>
                                 <li>TL for Rosetta, the translations service (highest read throughput across Uber)</li>
                             </ul>
@@ -231,11 +297,11 @@
                 <div class="timeline-item">
                     <div class="year-marker">15</div>
                     <div class="timeline-item-content">
-                        <div class="font-bold text-xl text-primary mb-2">2015 - 2016</div>
+                        <div class="font-bold text-lg text-primary mb-2">2015 - 2016</div>
                         <div class="text-gray-700">
                             <p class="font-semibold">Opendoor, Software Engineer</p>
-                            <p class="mb-2">San Francisco, CA</p>
-                            <ul class="list-disc pl-5 space-y-1">
+                            <p class="mb-2 text-sm">San Francisco, CA</p>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
                                 <li>Engineer #5 at Opendoor (NASDAQ: $OPEN)</li>
                                 <li>Built first A/B testing platform and automated offer pipeline</li>
                             </ul>
@@ -246,11 +312,11 @@
                 <div class="timeline-item">
                     <div class="year-marker">14</div>
                     <div class="timeline-item-content">
-                        <div class="font-bold text-xl text-primary mb-2">2014 - 2015</div>
+                        <div class="font-bold text-lg text-primary mb-2">2014 - 2015</div>
                         <div class="text-gray-700">
                             <p class="font-semibold">Quora, Software Engineer & Product Manager</p>
-                            <p class="mb-2">Mountain View, CA</p>
-                            <ul class="list-disc pl-5 space-y-1">
+                            <p class="mb-2 text-sm">Mountain View, CA</p>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
                                 <li>Led growth team to launch signup wall revamp</li>
                                 <li>Drove 100x search traffic increase</li>
                             </ul>
@@ -259,67 +325,67 @@
                 </div>
             </div>
             
-            <h2 class="text-2xl font-bold text-primary mb-6">Technical Skills</h2>
+            <h2 class="text-2xl font-bold text-primary mb-4">Technical Skills</h2>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
                 <div class="skill-item">
                     <div class="skill-marker bg-blue-500"></div>
-                    <span>Java</span>
+                    <span class="text-sm">Java</span>
                 </div>
                 <div class="skill-item">
                     <div class="skill-marker bg-yellow-500"></div>
-                    <span>JavaScript</span>
+                    <span class="text-sm">JavaScript</span>
                 </div>
                 <div class="skill-item">
                     <div class="skill-marker bg-green-500"></div>
-                    <span>Python</span>
+                    <span class="text-sm">Python</span>
                 </div>
                 <div class="skill-item">
                     <div class="skill-marker bg-purple-500"></div>
-                    <span>Go</span>
+                    <span class="text-sm">Go</span>
                 </div>
                 <div class="skill-item">
                     <div class="skill-marker bg-red-500"></div>
-                    <span>Machine Learning</span>
+                    <span class="text-sm">Machine Learning</span>
                 </div>
                 <div class="skill-item">
                     <div class="skill-marker bg-indigo-500"></div>
-                    <span>Ruby</span>
+                    <span class="text-sm">Ruby</span>
                 </div>
                 <div class="skill-item">
                     <div class="skill-marker bg-teal-500"></div>
-                    <span>Spanner</span>
+                    <span class="text-sm">Spanner</span>
                 </div>
                 <div class="skill-item">
                     <div class="skill-marker bg-pink-500"></div>
-                    <span>MySQL</span>
+                    <span class="text-sm">MySQL</span>
                 </div>
                 <div class="skill-item">
                     <div class="skill-marker bg-orange-500"></div>
-                    <span>GCP</span>
+                    <span class="text-sm">GCP</span>
                 </div>
             </div>
             
             <div class="contact-section">
                 <div class="contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <a href="mailto:ziyadmir@gmail.com" class="hover:text-blue-300 transition duration-300">ziyadmir@gmail.com</a>
+                    <a href="mailto:ziyadmir@gmail.com" class="text-sm hover:text-blue-300 transition duration-300">ziyadmir@gmail.com</a>
                 </div>
                 <div class="contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <a href="https://www.linkedin.com/in/ziyadmir/" target="_blank" class="hover:text-blue-300 transition duration-300">linkedin.com/in/ziyadmir</a>
+                    <a href="https://www.linkedin.com/in/ziyadmir/" target="_blank" class="text-sm hover:text-blue-300 transition duration-300">linkedin.com/in/ziyadmir</a>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="bg-primary text-white py-6 mt-auto">
+    <footer class="bg-primary text-white py-4 mt-auto">
         <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Ziyad Mir | <a href="https://www.linkedin.com/in/ziyadmir/" class="hover:text-blue-300 transition duration-300">LinkedIn</a></p>
+            <p class="text-sm">&copy; 2025 Ziyad Mir | <a href="https://www.linkedin.com/in/ziyadmir/" class="hover:text-blue-300 transition duration-300">LinkedIn</a></p>
         </div>
     </footer>
 </body>

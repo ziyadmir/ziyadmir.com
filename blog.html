@@ -10,6 +10,8 @@
             --color-primary: #0f172a;
             --color-secondary: #334155;
         }
+        html { font-size: 15px; } /* Slightly smaller base font */
+        body { font-size: 0.95rem; }
         .bg-primary { background-color: var(--color-primary); }
         .text-primary { color: var(--color-primary); }
         .bg-secondary { background-color: var(--color-secondary); }
@@ -18,82 +20,221 @@
         .hover\:bg-secondary:hover { background-color: var(--color-secondary); }
         .hover\:text-blue-300:hover { color: #93c5fd; }
         .focus\:ring-primary:focus { --tw-ring-color: var(--color-primary); }
+        
+        /* Blog post cards */
+        .blog-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-card:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .blog-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Newsletter section */
+        .newsletter-section {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .newsletter-input {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            width: 100%;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+        
+        .newsletter-button {
+            padding: 0.5rem 1rem;
+            background-color: var(--color-primary);
+            color: white;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        
+        .newsletter-button:hover {
+            background-color: var(--color-secondary);
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            body { font-size: 0.85rem; } /* Reduce base font size on mobile */
+            
+            .container {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+            
+            .text-3xl, .text-4xl {
+                font-size: 1.25rem !important;
+            }
+            
+            .text-2xl {
+                font-size: 1.1rem !important;
+            }
+            
+            .text-xl {
+                font-size: 1rem !important;
+            }
+            
+            .text-lg {
+                font-size: 0.9rem !important;
+            }
+            
+            .text-base {
+                font-size: 0.85rem !important;
+            }
+            
+            .text-sm {
+                font-size: 0.75rem !important;
+            }
+            
+            .text-xs {
+                font-size: 0.7rem !important;
+            }
+            
+            .p-6, .p-5 {
+                padding: 0.75rem !important;
+            }
+            
+            .py-8, .py-6 {
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+            
+            .gap-10, .gap-6 {
+                gap: 1rem !important;
+            }
+            
+            .gap-3, .gap-2 {
+                gap: 0.5rem !important;
+            }
+            
+            .mt-16, .mt-8 {
+                margin-top: 1.5rem !important;
+            }
+            
+            .mb-8, .mb-6 {
+                margin-bottom: 1rem !important;
+            }
+            
+            .mb-4, .mb-3 {
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .newsletter-section {
+                padding: 0.75rem;
+            }
+            
+            .newsletter-input, .newsletter-button {
+                font-size: 0.7rem;
+                padding: 0.4rem;
+            }
+            
+            .blog-tag {
+                padding: 0.15rem 0.5rem;
+                font-size: 0.65rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
     <header class="bg-primary text-white shadow-md">
-        <div class="container mx-auto px-4 py-6">
+        <div class="container mx-auto px-4 py-3">
             <nav class="flex justify-between items-center">
-                <a href="/" class="text-xl font-bold">Ziyad Mir</a>
-                <ul class="flex space-x-6">
-                    <li><a href="/" class="hover:text-blue-300 transition duration-300">Home</a></li>
-                    <li><a href="/about.html" class="hover:text-blue-300 transition duration-300">About</a></li>
-                    <li><a href="/projects.html" class="hover:text-blue-300 transition duration-300">Projects</a></li>
-                    <li><a href="/blog.html" class="hover:text-blue-300 transition duration-300">Blog</a></li>
+                <a href="/" class="text-lg font-bold">Ziyad Mir</a>
+                <ul class="flex space-x-4">
+                    <li><a href="/" class="text-sm md:text-base hover:text-blue-300 transition duration-300">Home</a></li>
+                    <li><a href="/about.html" class="text-sm md:text-base hover:text-blue-300 transition duration-300">About</a></li>
+                    <li><a href="/projects.html" class="text-sm md:text-base hover:text-blue-300 transition duration-300">Projects</a></li>
+                    <li><a href="/blog.html" class="text-sm md:text-base hover:text-blue-300 transition duration-300">Blog</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-8 flex-grow">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl font-bold text-primary mb-8">Blog</h1>
+    <main class="container mx-auto px-4 py-6 flex-grow">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-3xl font-bold text-primary mb-6">Blog</h1>
             
-            <div class="grid grid-cols-1 gap-10">
-                <article class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <div class="p-6">
-                        <h2 class="text-2xl font-bold text-primary mb-2">Integrating Machine Learning in Large-Scale Products</h2>
-                        <p class="text-gray-500 mb-4">April 7, 2025 · 8 min read</p>
-                        <p class="text-gray-700 mb-4">Machine learning integration at scale presents unique challenges that require careful consideration of infrastructure, data pipelines, and monitoring systems. Based on my experience at Google, Uber, and other tech companies, I've compiled some best practices for successfully integrating ML models into production systems.</p>
-                        <div class="flex gap-2 mb-4">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Machine Learning</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Engineering</span>
+            <div class="grid grid-cols-1 gap-6">
+                <article class="blog-card bg-white">
+                    <div class="p-5">
+                        <h2 class="text-xl font-bold text-primary mb-2">Integrating Machine Learning in Large-Scale Products</h2>
+                        <p class="text-gray-500 text-xs mb-3">April 7, 2025 · 8 min read</p>
+                        <p class="text-gray-700 text-sm mb-3">Machine learning integration at scale presents unique challenges that require careful consideration of infrastructure, data pipelines, and monitoring systems. Based on my experience at Google, Uber, and other tech companies, I've compiled some best practices for successfully integrating ML models into production systems.</p>
+                        <div class="flex gap-2 mb-3">
+                            <span class="blog-tag">Machine Learning</span>
+                            <span class="blog-tag">Engineering</span>
                         </div>
-                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Read more →</a>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Read more →</a>
                     </div>
                 </article>
 
-                <article class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <div class="p-6">
-                        <h2 class="text-2xl font-bold text-primary mb-2">Building Brand Identity Through Digital Advertising</h2>
-                        <p class="text-gray-500 mb-4">March 15, 2025 · 6 min read</p>
-                        <p class="text-gray-700 mb-4">Brand advertising has evolved significantly with the rise of digital platforms. At YouTube, I've worked on systems that help brands establish and reinforce their identity through targeted digital campaigns. This post explores the technical challenges of building advertising systems that align with brand values and resonate with audiences.</p>
-                        <div class="flex gap-2 mb-4">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Brand Advertising</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Digital Marketing</span>
+                <article class="blog-card bg-white">
+                    <div class="p-5">
+                        <h2 class="text-xl font-bold text-primary mb-2">Building Brand Identity Through Digital Advertising</h2>
+                        <p class="text-gray-500 text-xs mb-3">March 15, 2025 · 6 min read</p>
+                        <p class="text-gray-700 text-sm mb-3">Brand advertising has evolved significantly with the rise of digital platforms. At YouTube, I've worked on systems that help brands establish and reinforce their identity through targeted digital campaigns. This post explores the technical challenges of building advertising systems that align with brand values and resonate with audiences.</p>
+                        <div class="flex gap-2 mb-3">
+                            <span class="blog-tag">Brand Advertising</span>
+                            <span class="blog-tag">Digital Marketing</span>
                         </div>
-                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Read more →</a>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Read more →</a>
                     </div>
                 </article>
 
-                <article class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <div class="p-6">
-                        <h2 class="text-2xl font-bold text-primary mb-2">Scaling Engineering Teams: Lessons from Tech Giants</h2>
-                        <p class="text-gray-500 mb-4">February 22, 2025 · 10 min read</p>
-                        <p class="text-gray-700 mb-4">Growing an engineering organization presents unique challenges around communication, knowledge sharing, and maintaining velocity. Drawing from my experience at companies like Google, Uber, and early-stage startups, I share insights on building processes that scale with your engineering team without sacrificing innovation or speed.</p>
-                        <div class="flex gap-2 mb-4">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Engineering Management</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Leadership</span>
+                <article class="blog-card bg-white">
+                    <div class="p-5">
+                        <h2 class="text-xl font-bold text-primary mb-2">Scaling Engineering Teams: Lessons from Tech Giants</h2>
+                        <p class="text-gray-500 text-xs mb-3">February 22, 2025 · 10 min read</p>
+                        <p class="text-gray-700 text-sm mb-3">Growing an engineering organization presents unique challenges around communication, knowledge sharing, and maintaining velocity. Drawing from my experience at companies like Google, Uber, and early-stage startups, I share insights on building processes that scale with your engineering team without sacrificing innovation or speed.</p>
+                        <div class="flex gap-2 mb-3">
+                            <span class="blog-tag">Engineering Management</span>
+                            <span class="blog-tag">Leadership</span>
                         </div>
-                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Read more →</a>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Read more →</a>
                     </div>
                 </article>
             </div>
             
-            <div class="mt-16 bg-gray-50 p-8 rounded-lg border border-gray-200 shadow-sm text-center">
-                <h2 class="text-2xl font-bold text-primary mb-4">Subscribe to my newsletter</h2>
-                <p class="text-lg text-gray-600 mb-6">Get notified when I publish new articles about technology, engineering, and product development.</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <input type="email" placeholder="Your email address" class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                    <button class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-secondary transition duration-300 shadow-md">Subscribe</button>
+            <div class="newsletter-section mt-8">
+                <h2 class="text-xl font-bold text-primary mb-3">Subscribe to my newsletter</h2>
+                <p class="text-sm text-gray-600 mb-4">Get notified when I publish new articles about technology, engineering, and product development.</p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <input type="email" placeholder="Your email address" class="newsletter-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                    <button class="newsletter-button">Subscribe</button>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="bg-primary text-white py-6 mt-auto">
+    <footer class="bg-primary text-white py-4 mt-auto">
         <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Ziyad Mir | <a href="https://www.linkedin.com/in/ziyadmir/" class="hover:text-blue-300 transition duration-300">LinkedIn</a></p>
+            <p class="text-sm">&copy; 2025 Ziyad Mir | <a href="https://www.linkedin.com/in/ziyadmir/" class="hover:text-blue-300 transition duration-300">LinkedIn</a></p>
         </div>
     </footer>
 </body>

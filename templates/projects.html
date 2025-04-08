@@ -1,15 +1,36 @@
 {% extends "base.html" %}
 
-{% block title %}Projects | My Personal Website{% endblock %}
+{% block title %}Projects | Ziyad Mir{% endblock %}
 
 {% block content %}
-<h1>My Projects</h1>
-<ul>
-    {% for project in projects %}
-    <li>
-        <h2>{{ project.name }}</h2>
-        <p>{{ project.description }}</p>
-    </li>
-    {% endfor %}
-</ul>
+<div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-primary mb-8">My Projects</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {% for project in projects %}
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+            <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                <h2 class="text-2xl font-bold text-white">{{ project.name }}</h2>
+            </div>
+            <div class="p-6">
+                <p class="text-gray-700 mb-4">{{ project.description }}</p>
+                <div class="flex gap-2">
+                    <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Python</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">FastAPI</span>
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Learn more →</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Add a call to action at the bottom -->
+    <div class="mt-16 bg-gray-50 p-8 rounded-lg text-center border border-gray-200 shadow-sm">
+        <h2 class="text-2xl font-bold text-primary mb-4">Interested in working together?</h2>
+        <p class="text-lg text-gray-600 mb-6">I'm always open to discussing new projects and opportunities.</p>
+        <a href="mailto:contact@ziyadmir.com" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-secondary transition duration-300 shadow-md inline-block">Get in Touch</a>
+    </div>
+</div>
 {% endblock %}

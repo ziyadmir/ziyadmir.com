@@ -76,4 +76,9 @@ cover/
 dmypy.json
 .pytype/
 cython_debug/
-.pypirc
+.pypirc-e 
+# Demo screenshots
+screenshots/
+navigation_test/
+recordings/
+record_navigation.sh

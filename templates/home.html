@@ -1,8 +1,48 @@
 {% extends "base.html" %}
 
-{% block title %}Home | My Personal Website{% endblock %}
+{% block title %}Home | Ziyad Mir{% endblock %}
 
 {% block content %}
-<h1>Welcome to My Personal Website</h1>
-<p>This is the home page of my FastAPI-powered personal website.</p>
+<div class="flex flex-col items-center justify-center py-12 md:py-24">
+    <div class="max-w-3xl text-center">
+        <h1 class="text-4xl md:text-6xl font-bold text-primary mb-6">Welcome to My Website</h1>
+        <p class="text-xl text-gray-600 mb-8">Hi, I'm Ziyad Mir. I'm passionate about technology, programming, and building amazing digital experiences.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/about" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-secondary transition duration-300 shadow-md">Learn About Me</a>
+            <a href="/projects" class="px-6 py-3 bg-white text-primary border border-primary rounded-lg hover:bg-gray-100 transition duration-300 shadow-md">View My Projects</a>
+        </div>
+    </div>
+</div>
+
+<div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+        </div>
+        <h2 class="text-xl font-semibold mb-2">Web Development</h2>
+        <p class="text-gray-600">Creating responsive and modern web applications using cutting-edge technologies.</p>
+    </div>
+    
+    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+        </div>
+        <h2 class="text-xl font-semibold mb-2">Programming</h2>
+        <p class="text-gray-600">Building efficient and elegant solutions to complex problems.</p>
+    </div>
+    
+    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            </svg>
+        </div>
+        <h2 class="text-xl font-semibold mb-2">Technology</h2>
+        <p class="text-gray-600">Exploring new tools and technologies to stay at the cutting edge.</p>
+    </div>
+</div>
 {% endblock %}

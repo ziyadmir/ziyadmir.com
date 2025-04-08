@@ -3,24 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My Personal Website{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+    <title>{% block title %}Ziyad Mir{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#334155'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/projects">Projects</a></li>
-            </ul>
-        </nav>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <nav class="flex justify-between items-center">
+                <a href="/" class="text-xl font-bold">Ziyad Mir</a>
+                <ul class="flex space-x-6">
+                    <li><a href="/" class="hover:text-blue-300 transition duration-300">Home</a></li>
+                    <li><a href="/about" class="hover:text-blue-300 transition duration-300">About</a></li>
+                    <li><a href="/projects" class="hover:text-blue-300 transition duration-300">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main>
+
+    <main class="container mx-auto px-4 py-8 flex-grow">
         {% block content %}{% endblock %}
     </main>
-    <footer>
-        <p>&copy; 2023 My Personal Website</p>
+
+    <footer class="bg-primary text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Ziyad Mir</p>
+        </div>
     </footer>
 </body>
 </html>

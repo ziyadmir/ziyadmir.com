@@ -58,20 +58,20 @@
         /* Mobile optimizations */
         @media (max-width: 640px) {
             .container {
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
             }
             
             .text-3xl, .text-4xl {
-                font-size: 1.5rem !important;
-            }
-            
-            .text-2xl {
                 font-size: 1.25rem !important;
             }
             
-            .text-xl {
+            .text-2xl {
                 font-size: 1.1rem !important;
+            }
+            
+            .text-xl {
+                font-size: 1rem !important;
             }
             
             .p-6 {
@@ -99,19 +99,8 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
-    <header class="bg-primary text-white shadow-md">
-        <div class="container mx-auto px-4 py-3 md:py-4">
-            <nav class="flex justify-between items-center">
-                <a href="/" class="text-base md:text-lg font-bold">Ziyad Mir</a>
-                <ul class="flex space-x-3 md:space-x-6">
-                    <li><a href="/" class="text-xs md:text-base hover:text-blue-300 transition duration-300">Home</a></li>
-                    <li><a href="/about.html" class="text-xs md:text-base hover:text-blue-300 transition duration-300">About</a></li>
-                    <li><a href="/projects.html" class="text-xs md:text-base hover:text-blue-300 transition duration-300">Projects</a></li>
-                    <li><a href="/blog.html" class="text-xs md:text-base hover:text-blue-300 transition duration-300">Blog</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
 
     <main class="container mx-auto px-4 py-6 flex-grow">
         <div class="max-w-4xl mx-auto">
@@ -185,10 +174,9 @@
         </div>
     </main>
 
-    <footer class="bg-primary text-white py-4 mt-auto">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-sm">&copy; 2025 Ziyad Mir | <a href="https://www.linkedin.com/in/ziyadmir/" class="hover:text-blue-300 transition duration-300">LinkedIn</a></p>
-        </div>
-    </footer>
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
 </body>
 </html>

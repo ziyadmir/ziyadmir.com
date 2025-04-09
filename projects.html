@@ -16,11 +16,19 @@
             overflow: hidden;
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
         }
         
         .project-card:hover {
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
             transform: translateY(-2px);
+        }
+        
+        .project-card-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
         
         .project-header {
@@ -102,12 +110,13 @@
                     </div>
                     <div class="p-5">
                         <p class="text-gray-700 text-sm mb-4">Developed next-generation Brand Advertising solution using multimodal, video content understanding models (Gemini, PaLI, ytbert-ASR) for emotion analysis to build and reinforce Brand Identity. Generated $XXXM in incremental ARR for YouTube.</p>
-                        <div class="flex flex-wrap">
+                        <div class="flex flex-wrap mb-3">
                             <span class="project-tag">Java</span>
                             <span class="project-tag">Python</span>
                             <span class="project-tag">Gemini</span>
                             <span class="project-tag">Machine Learning</span>
                         </div>
+                        <a href="/projects/youtube-flash.html" class="text-blue-600 hover:text-blue-800 text-sm font-medium block mt-3">View project details →</a>
                     </div>
                 </div>
 
@@ -117,11 +126,12 @@
                     </div>
                     <div class="p-5">
                         <p class="text-gray-700 text-sm mb-4">Launched and grew new Brand Advertising business for YouTube Shorts, competing directly with TikTok Pulse and Instagram Contextual Ads. Initiated and coordinated cross-YouTube efforts with partner senior ICs and leads, generating $XXXM in incremental ARR.</p>
-                        <div class="flex flex-wrap">
+                        <div class="flex flex-wrap mb-3">
                             <span class="project-tag">JavaScript</span>
                             <span class="project-tag">Java</span>
                             <span class="project-tag">Spanner</span>
                         </div>
+                        <a href="/projects/youtube-shorts.html" class="text-blue-600 hover:text-blue-800 text-sm font-medium inline-block">View project details →</a>
                     </div>
                 </div>
 
@@ -131,11 +141,12 @@
                     </div>
                     <div class="p-5">
                         <p class="text-gray-700 text-sm mb-4">Developed next-generation metrics for Brand Identity ($XB ARR in targeting products). Evolved BrandLift into BrandShift: a holistic brand perception measurement solution (partnering with Google Ads Measurement, Reporting, Target Frequency and Sequencing and Video Understanding teams).</p>
-                        <div class="flex flex-wrap">
+                        <div class="flex flex-wrap mb-3">
                             <span class="project-tag">Python</span>
                             <span class="project-tag">Java</span>
                             <span class="project-tag">Data Analysis</span>
                         </div>
+                        <a href="/projects/brandshift.html" class="text-blue-600 hover:text-blue-800 text-sm font-medium block mt-3">View project details →</a>
                     </div>
                 </div>
 
@@ -145,12 +156,13 @@
                     </div>
                     <div class="p-5">
                         <p class="text-gray-700 text-sm mb-4">Technical Lead for Rosetta, the translations (i18n) service which had the highest read throughput of all 2000+ microservices at Uber. Also led the integration of ML onto Communications Platform with the AutoML (Michelangelo) team, resulting in 50% increase in communication engagement and significant cost savings.</p>
-                        <div class="flex flex-wrap">
+                        <div class="flex flex-wrap mb-3">
                             <span class="project-tag">Go</span>
                             <span class="project-tag">Python</span>
                             <span class="project-tag">MySQL</span>
                             <span class="project-tag">Redis</span>
                         </div>
+                        <a href="/projects/uber-rosetta.html" class="text-blue-600 hover:text-blue-800 text-sm font-medium block mt-3">View project details →</a>
                     </div>
                 </div>
             </div>

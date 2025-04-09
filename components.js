@@ -20,6 +20,8 @@ function includeHTML() {
                     activePage = 'projects';
                 } else if (currentPage.includes('blog')) {
                     activePage = 'blog';
+                } else if (currentPage.includes('memoir')) {
+                    activePage = 'memoir';
                 }
                 
                 // Add active class to the current page link

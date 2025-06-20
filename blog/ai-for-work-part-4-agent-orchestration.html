@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Orchestration at Scale - Building an Enterprise Platform | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+        
+        .blog-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.25rem;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-content ul li {
+            list-style-type: disc;
+        }
+        
+        .blog-content ol li {
+            list-style-type: decimal;
+        }
+        
+        .blog-content code {
+            background-color: #f3f4f6;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+        }
+        
+        .blog-content pre {
+            margin: 1.5rem 0;
+        }
+        
+        .blog-content pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        
+        .blog-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .series-nav {
+            background-color: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 2rem 0;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            body { font-size: 0.85rem; }
+            .blog-content h2 { font-size: 1.25rem; }
+            .blog-content h3 { font-size: 1.1rem; }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.initialize({ startOnLoad: true });
+        });
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <article class="blog-content">
+            <h1 class="text-3xl font-bold text-primary mb-3">Agent Orchestration at Scale - Building an Enterprise Platform</h1>
+            <p class="text-gray-500 text-sm mb-4">2025-01-24 · AI-for-Work Series</p>
+            
+            <div class="flex gap-2 mb-6">
+                <span class="blog-tag">AI</span><span class="blog-tag">Agents</span><span class="blog-tag">Orchestration</span><span class="blog-tag">Platform</span><span class="blog-tag">Enterprise</span>
+            </div>
+
+            <h2>Beyond Chat: The Agent Revolution</h2>
+
+<p>Your developers are using AI IDEs. Your MCP gateway provides context. Your observability platform ensures security. Now it's time for the next leap: autonomous AI agents that handle complex, multi-step workflows.</p>
+
+<p>But here's the challenge: consumer AI agents are toys. Enterprise agents need orchestration, governance, and reliability. This post details how we built an agent orchestration platform handling 10,000+ workflows daily across 50+ different agent types.</p>
+
+<h2>Why Orchestration Matters</h2>
+
+<p>Individual AI agents are powerful but limited. Real enterprise value comes from orchestration:</p>
+
+<p><strong>Without Orchestration</strong>:
+<ul>
+<li>Developer manually triggers each AI task</li>
+<li>No memory between interactions</li>
+<li>Can't handle multi-step processes</li>
+<li>No error recovery</li>
+</ul></p>
+
+<p><strong>With Orchestration</strong>:
+<ul>
+<li>Agents collaborate on complex workflows</li>
+<li>Persistent state across steps</li>
+<li>Automatic retry and error handling</li>
+<li>Full audit trail</li>
+</ul></p>
+
+<p>Example: Our "dependency update" workflow involves 7 different agents working together—from identifying outdated packages to running tests to creating PRs. No human intervention required.</p>
+
+<h2>Architecture Overview</h2>
+
+<p>Our platform (let's call it EMUX - Enterprise Multi-Agent eXecution) uses a step-based architecture:</p>
+
+<p>``<code>
+┌─────────────┐     ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
+│   Trigger   │────▶│  Scheduler  │────▶│ Step Runner  │────▶│   Agents    │
+│  (API/Cron) │     │  (Temporal) │     │  (K8s Jobs)  │     │ (Isolated)  │
+└─────────────┘     └─────────────┘     └──────────────┘     └─────────────┘
+                            │                    │
+                            ▼                    ▼
+                    ┌─────────────┐     ┌──────────────┐
+                    │ State Store │     │ Audit Logger │
+                    │  (DynamoDB) │     │   (Kinesis)  │
+                    └─────────────┘     └──────────────┘
+</code>`<code></p>
+
+<h2>Core Components</h2>
+
+<h3>1. Workflow Definition Language</h3>
+
+<p>We use YAML for defining agent workflows:</p>
+
+<p></code>`<code>yaml
+name: dependency-update-workflow
+description: Automatically update dependencies and create PR
+triggers:
+<ul>
+<li>type: schedule</li>
+</ul>
+    cron: "0 9 <em> </em> MON"  # Weekly on Mondays
+<ul>
+<li>type: webhook</li>
+</ul>
+    path: /api/workflows/dep-update</p>
+
+<p>inputs:
+  repository:
+    type: string
+    required: true
+  update_type:
+    type: enum
+    values: [patch, minor, major]
+    default: patch</p>
+
+<p>steps:
+<ul>
+<li>id: analyze_deps</li>
+</ul>
+    agent: dependency-analyzer
+    inputs:
+      repo: ${inputs.repository}
+      type: ${inputs.update_type}
+    outputs:
+      updates: list[package_update]
+      risk_score: float
+<ul>
+<li>id: check_breaking_changes</li>
+</ul>
+    agent: breaking-change-detector
+    when: ${steps.analyze_deps.outputs.risk_score} > 0.3
+    inputs:
+      updates: ${steps.analyze_deps.outputs.updates}
+    outputs:
+      breaking_changes: list[string]
+<ul>
+<li>id: update_code</li>
+</ul>
+    agent: code-updater
+    inputs:
+      repo: ${inputs.repository}
+      updates: ${steps.analyze_deps.outputs.updates}
+      handle_breaking: ${steps.check_breaking_changes.outputs.breaking_changes}
+    outputs:
+      changed_files: list[string]
+<ul>
+<li>id: run_tests</li>
+</ul>
+    agent: test-runner
+    inputs:
+      repo: ${inputs.repository}
+      changed_files: ${steps.update_code.outputs.changed_files}
+    outputs:
+      test_results: test_report
+<ul>
+<li>id: create_pr</li>
+</ul>
+    agent: pr-creator
+    when: ${steps.run_tests.outputs.test_results.passed} == true
+    inputs:
+      repo: ${inputs.repository}
+      changes: ${steps.update_code.outputs}
+      test_report: ${steps.run_tests.outputs.test_results}
+</code>`<code></p>
+
+<h3>2. Step Runner Engine</h3>
+
+<p>The heart of EMUX - executes individual steps with full isolation:</p>
+
+<p></code>`<code>python
+class StepRunner:
+    def __init__(self):
+        self.k8s_client = kubernetes.client.BatchV1Api()
+        self.state_store = DynamoDBStateStore()
+        self.audit_logger = KinesisAuditLogger()
+        
+    async def run_step(self, workflow_id: str, step: Step) -> StepResult:
+        # Evaluate conditions
+        if step.when and not self.evaluate_condition(step.when, workflow_id):
+            return StepResult(status="skipped")
+        
+        # Prepare execution environment
+        env = self.prepare_environment(workflow_id, step)
+        
+        # Create isolated K8s job
+        job = self.create_k8s_job(
+            name=f"{workflow_id}-{step.id}",
+            image=f"agents/{step.agent}:latest",
+            env=env,
+            resources=step.resources or self.default_resources()
+        )
+        
+        # Execute with monitoring
+        start_time = time.time()
+        try:
+            # Launch job
+            self.k8s_client.create_namespaced_job(
+                namespace="emux-agents",
+                body=job
+            )
+            
+            # Monitor execution
+            result = await self.monitor_job(job.metadata.name)
+            
+            # Store outputs
+            await self.state_store.save_step_output(
+                workflow_id, step.id, result.outputs
+            )
+            
+            # Audit log
+            await self.audit_logger.log_step_execution(
+                workflow_id=workflow_id,
+                step_id=step.id,
+                duration=time.time() - start_time,
+                status=result.status,
+                outputs_summary=self.summarize_outputs(result.outputs)
+            )
+            
+            return result
+            
+        except Exception as e:
+            # Handle failures gracefully
+            return await self.handle_step_failure(workflow_id, step, e)
+</code>`<code></p>
+
+<h3>3. Agent Framework</h3>
+
+<p>Each agent is a containerized service with a standard interface:</p>
+
+<p></code>`<code>python
+# Base agent class
+class BaseAgent(ABC):
+    def __init__(self):
+        self.llm = self.init_llm()
+        self.tools = self.init_tools()
+        self.memory = self.init_memory()
+    
+    @abstractmethod
+    async def execute(self, inputs: Dict[str, Any]) -> Dict[str, Any]:
+        """Execute agent logic"""
+        pass
+    
+    def validate_inputs(self, inputs: Dict[str, Any]) -> None:
+        """Validate input schema"""
+        schema = self.get_input_schema()
+        jsonschema.validate(inputs, schema)
+    
+    def validate_outputs(self, outputs: Dict[str, Any]) -> None:
+        """Validate output schema"""
+        schema = self.get_output_schema()
+        jsonschema.validate(outputs, schema)</p>
+
+<p># Example: Code Review Agent
+class CodeReviewAgent(BaseAgent):
+    def get_input_schema(self):
+        return {
+            "type": "object",
+            "properties": {
+                "pr_url": {"type": "string"},
+                "review_depth": {"type": "string", "enum": ["basic", "thorough"]},
+                "focus_areas": {"type": "array", "items": {"type": "string"}}
+            },
+            "required": ["pr_url"]
+        }
+    
+    async def execute(self, inputs: Dict[str, Any]) -> Dict[str, Any]:
+        self.validate_inputs(inputs)
+        
+        # Fetch PR details
+        pr_data = await self.fetch_pr_data(inputs['pr_url'])
+        
+        # Analyze each file
+        reviews = []
+        for file in pr_data['files']:
+            review = await self.review_file(
+                file=file,
+                context=pr_data['description'],
+                depth=inputs.get('review_depth', 'basic'),
+                focus=inputs.get('focus_areas', [])
+            )
+            reviews.append(review)
+        
+        # Synthesize overall review
+        summary = await self.synthesize_review(reviews)
+        
+        outputs = {
+            "summary": summary,
+            "file_reviews": reviews,
+            "risk_score": self.calculate_risk_score(reviews),
+            "suggested_changes": self.extract_suggestions(reviews)
+        }
+        
+        self.validate_outputs(outputs)
+        return outputs
+</code>`<code></p>
+
+<h3>4. State Management</h3>
+
+<p>Workflows need persistent state across steps:</p>
+
+<p></code>`<code>python
+class WorkflowStateManager:
+    def __init__(self):
+        self.dynamodb = boto3.resource('dynamodb')
+        self.table = self.dynamodb.Table('emux-workflow-state')
+    
+    async def save_step_output(self, workflow_id: str, step_id: str, outputs: Dict):
+        # Encrypt sensitive data
+        encrypted_outputs = self.encrypt_sensitive_fields(outputs)
+        
+        self.table.put_item(
+            Item={
+                'workflow_id': workflow_id,
+                'step_id': step_id,
+                'outputs': encrypted_outputs,
+                'timestamp': datetime.utcnow().isoformat(),
+                'ttl': int(time.time()) + 7 <em> 24 </em> 3600  # 7 day retention
+            }
+        )
+    
+    async def get_workflow_state(self, workflow_id: str) -> WorkflowState:
+        # Fetch all steps for workflow
+        response = self.table.query(
+            KeyConditionExpression='workflow_id = :wid',
+            ExpressionAttributeValues={':wid': workflow_id}
+        )
+        
+        # Build state object
+        state = WorkflowState(workflow_id=workflow_id)
+        for item in response['Items']:
+            state.add_step_output(
+                step_id=item['step_id'],
+                outputs=self.decrypt_sensitive_fields(item['outputs'])
+            )
+        
+        return state
+    
+    def resolve_variable(self, variable: str, workflow_id: str) -> Any:
+        # Handle variable references like ${steps.analyze.outputs.risk_score}
+        if variable.startswith('${') and variable.endswith('}'):
+            path = variable[2:-1].split('.')
+            state = self.get_workflow_state(workflow_id)
+            return self.traverse_path(state, path)
+</code>`<code></p>
+
+<h3>5. Monitoring and Observability</h3>
+
+<p>Real-time insights into agent performance:</p>
+
+<p></code>`<code>python
+class AgentMetricsCollector:
+    def __init__(self):
+        self.prometheus = PrometheusClient()
+        
+    def record_step_execution(self, workflow_id: str, step: Step, result: StepResult):
+        # Execution metrics
+        self.prometheus.histogram(
+            'emux_step_duration_seconds',
+            value=result.duration,
+            labels={
+                'agent': step.agent,
+                'workflow': step.workflow_name,
+                'status': result.status
+            }
+        )
+        
+        # Token usage (for LLM-based agents)
+        if result.token_usage:
+            self.prometheus.counter(
+                'emux_tokens_consumed_total',
+                value=result.token_usage,
+                labels={
+                    'agent': step.agent,
+                    'model': result.model_used
+                }
+            )
+        
+        # Error tracking
+        if result.status == 'failed':
+            self.prometheus.counter(
+                'emux_step_failures_total',
+                labels={
+                    'agent': step.agent,
+                    'error_type': result.error_type
+                }
+            )</p>
+
+<p># Grafana dashboards use these metrics
+"""
+# Agent success rate
+rate(emux_step_executions_total{status="success"}[5m]) 
+/ rate(emux_step_executions_total[5m])</p>
+
+<p># Workflow completion time (p95)
+histogram_quantile(0.95, 
+  sum(rate(emux_workflow_duration_seconds_bucket[5m])) by (le, workflow)
+)</p>
+
+<p># Cost per workflow (based on token usage)
+sum(rate(emux_tokens_consumed_total[1h])) by (workflow) * 0.002
+"""
+</code>`<code></p>
+
+<h2>Advanced Features</h2>
+
+<h3>1. Human-in-the-Loop</h3>
+
+<p>Some workflows need human approval:</p>
+
+<p></code>`<code>yaml
+steps:
+<ul>
+<li>id: propose_changes</li>
+</ul>
+    agent: change-proposer
+    outputs:
+      proposed_changes: list[change]
+<ul>
+<li>id: human_review</li>
+</ul>
+    type: human_approval
+    inputs:
+      title: "Review proposed changes"
+      description: ${steps.propose_changes.outputs.summary}
+      options:
+<ul>
+<li>approve_all</li>
+<li>approve_selective</li>
+<li>reject</li>
+</ul>
+    timeout: 24h
+    escalation:
+      after: 4h
+      notify: ["team-lead@company.com"]
+<ul>
+<li>id: apply_changes</li>
+</ul>
+    agent: change-applier
+    when: ${steps.human_review.outputs.decision} != "reject"
+    inputs:
+      changes: ${steps.human_review.outputs.approved_changes}
+</code>`<code></p>
+
+<h3>2. Parallel Execution</h3>
+
+<p>Run multiple agents concurrently:</p>
+
+<p></code>`<code>yaml
+steps:
+<ul>
+<li>id: analyze_code</li>
+</ul>
+    parallel:
+<ul>
+<li>agent: security-scanner</li>
+</ul>
+        outputs: security_report
+<ul>
+<li>agent: performance-analyzer</li>
+</ul>
+        outputs: perf_report
+<ul>
+<li>agent: style-checker</li>
+</ul>
+        outputs: style_report
+<ul>
+<li>id: synthesize_results</li>
+</ul>
+    agent: report-synthesizer
+    inputs:
+      security: ${steps.analyze_code[0].outputs.security_report}
+      performance: ${steps.analyze_code[1].outputs.perf_report}
+      style: ${steps.analyze_code[2].outputs.style_report}
+</code>`<code></p>
+
+<h3>3. Dynamic Workflows</h3>
+
+<p>Generate workflow steps at runtime:</p>
+
+<p></code>`<code>python
+class DynamicWorkflowGenerator:
+    async def generate_test_workflow(self, pr_data: Dict) -> Workflow:
+        # Analyze PR to determine needed tests
+        changed_services = self.identify_changed_services(pr_data)
+        
+        # Generate workflow dynamically
+        workflow = Workflow(name=f"test-pr-{pr_data['number']}")
+        
+        # Add test steps for each service
+        for service in changed_services:
+            workflow.add_step(
+                Step(
+                    id=f"test_{service}",
+                    agent="service-tester",
+                    inputs={
+                        "service": service,
+                        "test_level": "integration" if service in CRITICAL_SERVICES else "unit"
+                    }
+                )
+            )
+        
+        # Add synthesis step
+        workflow.add_step(
+            Step(
+                id="summarize_results",
+                agent="test-summarizer",
+                inputs={
+                    "test_results": f"${{steps.test_*.outputs}}"
+                }
+            )
+        )
+        
+        return workflow
+</code>`<code></p>
+
+<h3>4. Self-Healing Workflows</h3>
+
+<p>Automatic error recovery:</p>
+
+<p></code>`<code>python
+class SelfHealingOrchestrator:
+    async def handle_step_failure(self, workflow_id: str, step: Step, error: Exception):
+        # Categorize error
+        error_type = self.categorize_error(error)
+        
+        # Apply healing strategy
+        if error_type == "transient":
+            # Simple retry with backoff
+            return await self.retry_with_backoff(workflow_id, step)
+            
+        elif error_type == "resource_constraint":
+            # Scale up resources and retry
+            step.resources = self.scale_resources(step.resources)
+            return await self.retry_step(workflow_id, step)
+            
+        elif error_type == "data_quality":
+            # Run data cleaning agent first
+            cleaning_step = Step(
+                id=f"{step.id}_cleaning",
+                agent="data-cleaner",
+                inputs=step.inputs
+            )
+            await self.run_step(workflow_id, cleaning_step)
+            return await self.retry_step(workflow_id, step)
+            
+        else:
+            # Unrecoverable - notify humans
+            await self.escalate_to_human(workflow_id, step, error)
+</code>`<code></p>
+
+<h2>Real-World Workflows</h2>
+
+<h3>1. Automated Dependency Updates</h3>
+
+<p></code>`<code>yaml
+name: smart-dependency-updater
+triggers:
+<ul>
+<li>type: schedule</li>
+</ul>
+    cron: "0 0 <em> </em> SUN"  # Weekly
+    
+steps:
+<ul>
+<li>agent: dependency-scanner</li>
+</ul>
+    outputs: outdated_deps
+<ul>
+<li>agent: risk-analyzer</li>
+</ul>
+    inputs: 
+      deps: ${outdated_deps}
+    outputs: risk_matrix
+<ul>
+<li>agent: update-planner</li>
+</ul>
+    inputs:
+      deps: ${outdated_deps}
+      risk: ${risk_matrix}
+    outputs: update_plan
+<ul>
+<li>parallel:</li>
+<li>agent: code-updater</li>
+</ul>
+      inputs: ${update_plan}
+<ul>
+<li>agent: test-generator</li>
+</ul>
+      inputs: ${update_plan}
+<ul>
+<li>agent: test-runner</li>
+</ul>
+    retry: 3
+<ul>
+<li>agent: pr-creator</li>
+</ul>
+    when: ${test_results.passed}
+</code>`<code></p>
+
+<p><strong>Results</strong>: 
+<ul>
+<li>+ PRs created monthly</li>
+<li>% merge rate without human changes</li>
+<li>% reduction in security vulnerabilities</li>
+</ul></p>
+
+<h3>2. Intelligent Code Review</h3>
+
+<p></code>`<code>yaml
+name: ai-code-reviewer
+triggers:
+<ul>
+<li>type: github_webhook</li>
+</ul>
+    events: [pull_request.opened, pull_request.synchronize]
+    
+steps:
+<ul>
+<li>agent: pr-analyzer</li>
+</ul>
+    outputs: 
+      complexity: float
+      risk_areas: list[string]
+<ul>
+<li>agent: focused-reviewer</li>
+</ul>
+    inputs:
+      pr_url: ${trigger.pr_url}
+      focus: ${risk_areas}
+      depth: ${complexity > 0.7 ? "thorough" : "standard"}
+<ul>
+<li>agent: test-suggester</li>
+</ul>
+    when: ${review.test_coverage} < 0.8
+<ul>
+<li>agent: comment-poster</li>
+</ul>
+    inputs:
+      review: ${review}
+      suggestions: ${test_suggestions}
+</code>`<code></p>
+
+<p><strong>Results</strong>:
+<ul>
+<li>Reviews 100% of PRs within 5 minutes</li>
+<li>Catches 40% more issues than human-only review</li>
+<li>Reduces review cycle time by 50%</li>
+</ul></p>
+
+<h3>3. Incident Response Automation</h3>
+
+<p></code>`<code>yaml
+name: incident-responder
+triggers:
+<ul>
+<li>type: alert_webhook</li>
+</ul>
+    source: prometheus
+    
+steps:
+<ul>
+<li>agent: incident-analyzer</li>
+</ul>
+    inputs:
+      alert: ${trigger.alert}
+<ul>
+<li>parallel:</li>
+<li>agent: log-analyzer</li>
+</ul>
+      inputs: 
+        time_range: ${alert.time_range}
+        service: ${alert.service}
+<ul>
+<li>agent: metric-analyzer</li>
+</ul>
+      inputs:
+        metrics: ${alert.related_metrics}
+<ul>
+<li>agent: root-cause-identifier</li>
+</ul>
+    inputs:
+      logs: ${log_analysis}
+      metrics: ${metric_analysis}
+<ul>
+<li>agent: fix-generator</li>
+</ul>
+    when: ${root_cause.confidence} > 0.8
+<ul>
+<li>agent: fix-validator</li>
+</ul>
+    inputs:
+      fix: ${generated_fix}
+<ul>
+<li>type: human_approval</li>
+</ul>
+    when: ${fix.risk_score} > 0.5
+    timeout: 15m
+<ul>
+<li>agent: fix-applier</li>
+</ul>
+    when: ${approval.decision} == "approve"
+</code>`<code></p>
+
+<p><strong>Results</strong>:
+<ul>
+<li>% of incidents resolved without human intervention</li>
+<li>minute average resolution time (down from 45 minutes)</li>
+<li>% reduction in cascade failures</li>
+</ul></p>
+
+<h2>Security and Governance</h2>
+
+<h3>Agent Permissions</h3>
+
+<p>Fine-grained permission model:</p>
+
+<p></code>`<code>python
+class AgentPermissionManager:
+    def get_agent_permissions(self, agent_name: str) -> Permissions:
+        return Permissions({
+            "code-reviewer": {
+                "github": ["read"],
+                "mcp": ["search", "read"],
+                "llm": ["gpt-4", "claude"],
+                "max_tokens_per_hour": 100000
+            },
+            "code-updater": {
+                "github": ["read", "write"],
+                "mcp": ["search", "read"],
+                "llm": ["gpt-4"],
+                "max_tokens_per_hour": 50000,
+                "requires_approval_for": ["main", "production"]
+            },
+            "production-deployer": {
+                "github": ["read"],
+                "k8s": ["read", "write"],
+                "requires_human_approval": true,
+                "allowed_hours": "09:00-17:00",
+                "allowed_days": ["mon", "tue", "wed", "thu"]
+            }
+        }[agent_name])
+</code>`<code></p>
+
+<h3>Audit Trail</h3>
+
+<p>Complete record of all agent actions:</p>
+
+<p></code>`<code>json
+{
+  "workflow_id": "dep-update-2025-01-24",
+  "step_id": "create_pr",
+  "agent": "pr-creator",
+  "timestamp": "2025-01-24T10:30:45Z",
+  "inputs_hash": "sha256:abcd1234...",
+  "outputs_summary": {
+    "pr_number": 1234,
+    "files_changed": 5,
+    "additions": 120,
+    "deletions": 45
+  },
+  "resources_used": {
+    "llm_tokens": 2500,
+    "cpu_seconds": 45,
+    "memory_mb_seconds": 2048
+  },
+  "security_context": {
+    "triggered_by": "schedule",
+    "permissions_used": ["github:write", "mcp:read"]
+  }
+}
+</code>``</p>
+
+<h2>Platform Metrics</h2>
+
+<p>After 1 year of operation:</p>
+
+<p><strong>Scale</strong>:
+<ul>
+<li>,000+ workflows executed daily</li>
+<li>+ unique agent types</li>
+<li>+ unique workflow definitions</li>
+<li>% availability</li>
+</ul></p>
+
+<p><strong>Performance</strong>:
+<ul>
+<li>P50 workflow completion: 3 minutes</li>
+<li>P95 workflow completion: 15 minutes</li>
+<li>P99 workflow completion: 45 minutes</li>
+</ul></p>
+
+<p><strong>Business Impact</strong>:
+<ul>
+<li>% reduction in manual toil</li>
+<li>% faster feature delivery</li>
+<li>% reduction in production incidents</li>
+<li>$2M annual savings in engineering time</li>
+</ul></p>
+
+<h2>Getting Started</h2>
+
+<p>Building your own agent orchestration platform:
+<ol>
+<li><strong>Start Small</strong>: Single agent, simple workflows</li>
+<li><strong>Standardize Early</strong>: Common interfaces, schemas</li>
+<li><strong>Invest in Observability</strong>: You can't optimize what you can't measure</li>
+<li><strong>Plan for Failure</strong>: Every agent will fail sometimes</li>
+<li><strong>Human Oversight</strong>: Keep humans in the loop for critical decisions</li>
+</ol></p>
+
+<h2>Conclusion</h2>
+
+<p>Agent orchestration transforms AI from a productivity tool into a force multiplier. By treating agents as reliable, composable units of work, you can automate complex workflows that would be impossible with traditional approaches.</p>
+
+<p>The key is starting with solid foundations: standardized interfaces, robust state management, comprehensive observability, and strong governance. With these in place, you can build increasingly sophisticated automations that genuinely transform how work gets done.</p>
+
+<p>---</p>
+
+<p><strong>Next in Series</strong>: <a href="/blog/ai-for-work-part-5-knowledge-preservation" class="text-blue-600 hover:text-blue-800">Part 5: Preserving Institutional Knowledge in the Age of AI</a></p>
+
+<p><em>Working on agent orchestration? I'd love to hear about your use cases. Connect on <a href="https://twitter.com/ziyadmir" class="text-blue-600 hover:text-blue-800">Twitter</a> or <a href="https://linkedin.com/in/ziyadmir" class="text-blue-600 hover:text-blue-800">LinkedIn</a>.</em></p>
+            
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

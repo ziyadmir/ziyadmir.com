@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Proxy Logs to Intelligence - Enterprise AI Observability | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+        
+        .blog-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.25rem;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-content ul li {
+            list-style-type: disc;
+        }
+        
+        .blog-content ol li {
+            list-style-type: decimal;
+        }
+        
+        .blog-content code {
+            background-color: #f3f4f6;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+        }
+        
+        .blog-content pre {
+            margin: 1.5rem 0;
+        }
+        
+        .blog-content pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        
+        .blog-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .series-nav {
+            background-color: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 2rem 0;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            body { font-size: 0.85rem; }
+            .blog-content h2 { font-size: 1.25rem; }
+            .blog-content h3 { font-size: 1.1rem; }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.initialize({ startOnLoad: true });
+        });
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <article class="blog-content">
+            <h1 class="text-3xl font-bold text-primary mb-3">From Proxy Logs to Intelligence - Enterprise AI Observability</h1>
+            <p class="text-gray-500 text-sm mb-4">2025-01-23 · AI-for-Work Series</p>
+            
+            <div class="flex gap-2 mb-6">
+                <span class="blog-tag">AI</span><span class="blog-tag">Observability</span><span class="blog-tag">Security</span><span class="blog-tag">Analytics</span><span class="blog-tag">Enterprise</span>
+            </div>
+
+            <h2>The Hidden Gold Mine</h2>
+
+<p>Your security team already mandates that all outbound traffic goes through a corporate proxy. What if I told you this "compliance burden" is actually your most valuable AI analytics asset?</p>
+
+<p>Every LLM request from your organization—every prompt, every response, every context injection—flows through that proxy. At scale, this becomes a real-time stream of how AI is transforming your engineering culture.</p>
+
+<p>We built an AI-driven analysis system on top of our proxy logs. It processes 15-20M events daily, provides sub-minute security alerting, and delivers insights that have fundamentally changed how we think about AI adoption.</p>
+
+<h2>The Data Deluge Problem</h2>
+
+<p>When we first enabled proxy logging for LLM traffic, we were overwhelmed:</p>
+
+<p><strong>Volume</strong>: 20GB of JSON logs per day
+<strong>Velocity</strong>: 200 requests per second at peak  
+<strong>Variety</strong>: IDEs, CLI tools, browser extensions, custom scripts
+<strong>Veracity</strong>: How do you separate signal from noise?</p>
+
+<p>Traditional approaches failed:
+<ul>
+<li>SIEM rules couldn't handle the variety</li>
+<li>Dashboards showed vanity metrics</li>
+<li>Manual sampling missed critical events</li>
+<li>Storage costs exploded</li>
+</ul></p>
+
+<p>We needed something smarter.</p>
+
+<h2>Architecture: AI Analyzing AI</h2>
+
+<p>The solution? Use AI to analyze AI usage. Here's our architecture:</p>
+
+<p>``<code>
+┌─────────────┐     ┌──────────────┐     ┌─────────────────┐     ┌──────────────┐
+│   Proxy     │────▶│   Kinesis    │────▶│  Stream Processor│────▶│   Actions    │
+│  (Zscaler)  │     │   Firehose   │     │   (AI Agents)   │     │  Alerts      │
+└─────────────┘     └──────────────┘     │                 │     │  Metrics     │
+                                          │ • Security      │     │  Storage     │
+                                          │ • Productivity  │     └──────────────┘
+                                          │ • Quality       │
+                                          └─────────────────┘
+</code>`<code></p>
+
+<h2>Stream Processing Pipeline</h2>
+
+<h3>1. Ingestion Layer</h3>
+
+<p>First, we capture and normalize the proxy logs:</p>
+
+<p></code>`<code>python
+class ProxyLogProcessor:
+    def process_log_entry(self, raw_log: dict) -> StandardizedEvent:
+        # Extract LLM request/response from proxy payload
+        if self.is_llm_traffic(raw_log):
+            return StandardizedEvent(
+                timestamp=raw_log['timestamp'],
+                user_id=self.extract_user(raw_log),
+                endpoint=raw_log['url'],
+                method=raw_log['method'],
+                request_payload=self.decode_payload(raw_log['request_body']),
+                response_payload=self.decode_payload(raw_log['response_body']),
+                latency_ms=raw_log['response_time'],
+                status_code=raw_log['status_code']
+            )
+    
+    def is_llm_traffic(self, log: dict) -> bool:
+        llm_domains = [
+            'api.openai.com',
+            'api.anthropic.com', 
+            'generativelanguage.googleapis.com',
+            'api.cohere.ai',
+            'your-internal-llm.company.com'
+        ]
+        return any(domain in log['url'] for domain in llm_domains)
+</code>`<code></p>
+
+<h3>2. Real-Time Analysis Agents</h3>
+
+<p>We run specialized AI agents on the event stream:</p>
+
+<p><strong>Security Agent</strong>
+</code>`<code>python
+class SecurityAnalysisAgent:
+    def __init__(self):
+        self.secret_patterns = self.load_secret_patterns()
+        self.anomaly_detector = self.load_anomaly_model()
+    
+    async def analyze(self, event: StandardizedEvent) -> SecurityAnalysis:
+        results = await asyncio.gather(
+            self.check_secret_leakage(event),
+            self.detect_jailbreak_attempts(event),
+            self.identify_policy_violations(event),
+            self.detect_anomalous_behavior(event)
+        )
+        
+        return SecurityAnalysis(
+            risk_score=self.calculate_risk_score(results),
+            findings=results,
+            recommended_actions=self.determine_actions(results)
+        )
+    
+    async def check_secret_leakage(self, event: StandardizedEvent) -> Finding:
+        prompt = event.request_payload.get('messages', [])
+        
+        # Use local LLM for speed
+        analysis = await self.local_llm.analyze({
+            "task": "identify_secrets",
+            "content": prompt,
+            "patterns": self.secret_patterns
+        })
+        
+        if analysis.found_secrets:
+            return Finding(
+                severity="CRITICAL",
+                type="SECRET_LEAK",
+                details=analysis.details,
+                evidence=analysis.matched_content
+            )
+</code>`<code></p>
+
+<p><strong>Productivity Agent</strong>
+</code>`<code>python
+class ProductivityAnalysisAgent:
+    async def analyze(self, event: StandardizedEvent) -> ProductivityMetrics:
+        # Extract metrics from the interaction
+        metrics = {
+            'tokens_consumed': self.count_tokens(event),
+            'response_accepted': self.was_accepted(event),
+            'task_category': self.categorize_task(event),
+            'quality_score': self.assess_quality(event)
+        }
+        
+        # Aggregate to user/team level
+        await self.update_aggregates(event.user_id, metrics)
+        
+        return ProductivityMetrics(
+            user_efficiency=self.calculate_efficiency(metrics),
+            task_complexity=self.assess_complexity(event),
+            time_saved_estimate=self.estimate_time_saved(metrics)
+        )
+    
+    def categorize_task(self, event: StandardizedEvent) -> str:
+        # Use embeddings to classify the type of work
+        embedding = self.embed_prompt(event.request_payload)
+        return self.task_classifier.predict(embedding)
+        # Returns: 'code_generation', 'debugging', 'documentation', etc.
+</code>`<code></p>
+
+<h3>3. Action Layer</h3>
+
+<p>Based on analysis, we trigger automated responses:</p>
+
+<p></code>`<code>python
+class ActionOrchestrator:
+    async def handle_findings(self, analysis: AnalysisResult):
+        if analysis.security.risk_score > 0.8:
+            await self.high_risk_response(analysis)
+        elif analysis.security.risk_score > 0.5:
+            await self.medium_risk_response(analysis)
+        
+        # Always record metrics
+        await self.record_metrics(analysis)
+    
+    async def high_risk_response(self, analysis: AnalysisResult):
+        # Immediate actions for critical issues
+        await asyncio.gather(
+            self.send_slack_alert(
+                channel="#security-incidents",
+                message=self.format_security_alert(analysis)
+            ),
+            self.create_jira_ticket(
+                project="SECURITY",
+                priority="P1",
+                details=analysis.security.findings
+            ),
+            self.notify_user(
+                user_id=analysis.event.user_id,
+                message="Potential security issue detected"
+            )
+        )
+        
+        # Optional: Rate limit the user
+        if "SECRET_LEAK" in analysis.security.finding_types:
+            await self.rate_limiter.throttle_user(
+                analysis.event.user_id,
+                duration_minutes=30
+            )
+</code>`<code></p>
+
+<h2>Deep Dive: Detection Patterns</h2>
+
+<h3>Secret Leakage Detection</h3>
+
+<p>We use a multi-layered approach:</p>
+
+<p></code>`<code>python
+class SecretDetector:
+    def __init__(self):
+        # Layer 1: Regex patterns
+        self.patterns = {
+            'aws_key': r'AKIA[0-9A-Z]{16}',
+            'github_token': r'gh[ps]_[a-zA-Z0-9]{36}',
+            'private_key': r'-----BEGIN (?:RSA |EC )?PRIVATE KEY-----',
+            'jwt': r'eyJ[a-zA-Z0-9_-]<em>\.eyJ[a-zA-Z0-9_-]</em>\.[a-zA-Z0-9_-]*'
+        }
+        
+        # Layer 2: Entropy analysis
+        self.entropy_threshold = 4.5
+        
+        # Layer 3: Context-aware LLM
+        self.llm_analyzer = self.load_secret_detection_model()
+    
+    async def detect(self, content: str) -> List[Secret]:
+        secrets = []
+        
+        # Quick regex scan
+        for name, pattern in self.patterns.items():
+            if match := re.search(pattern, content):
+                secrets.append(Secret(type=name, value=match.group()))
+        
+        # Entropy-based detection for unknown secrets
+        for token in self.tokenize(content):
+            if self.calculate_entropy(token) > self.entropy_threshold:
+                # Use LLM to verify if it's actually a secret
+                if await self.llm_analyzer.is_secret(token, content):
+                    secrets.append(Secret(type='high_entropy', value=token))
+        
+        return secrets
+</code>`<code></p>
+
+<h3>Jailbreak Detection</h3>
+
+<p>Identifying attempts to bypass AI safety measures:</p>
+
+<p></code>`<code>python
+class JailbreakDetector:
+    def __init__(self):
+        self.known_techniques = self.load_jailbreak_database()
+        self.embedding_model = self.load_embedding_model()
+        
+    async def detect_jailbreak(self, prompt: str) -> JailbreakAnalysis:
+        # Check against known patterns
+        for technique in self.known_techniques:
+            if technique.matches(prompt):
+                return JailbreakAnalysis(
+                    detected=True,
+                    technique=technique.name,
+                    confidence=technique.confidence
+                )
+        
+        # Semantic similarity to known jailbreaks
+        prompt_embedding = self.embedding_model.encode(prompt)
+        similarities = self.calculate_similarities(
+            prompt_embedding, 
+            self.jailbreak_embeddings
+        )
+        
+        if max(similarities) > 0.85:
+            return JailbreakAnalysis(
+                detected=True,
+                technique='semantic_similarity',
+                confidence=max(similarities)
+            )
+        
+        # Behavioral analysis
+        if self.looks_suspicious(prompt):
+            return JailbreakAnalysis(
+                detected=True,
+                technique='behavioral',
+                confidence=0.7
+            )
+</code>`<code></p>
+
+<h3>Anomaly Detection</h3>
+
+<p>Catching unusual usage patterns:</p>
+
+<p></code>`<code>python
+class AnomalyDetector:
+    def __init__(self):
+        self.user_profiles = {}
+        self.isolation_forest = IsolationForest(contamination=0.1)
+    
+    def detect_anomalies(self, event: StandardizedEvent) -> AnomalyScore:
+        user_id = event.user_id
+        
+        # Build feature vector
+        features = np.array([
+            event.tokens_consumed,
+            event.latency_ms,
+            self.get_hour_of_day(event.timestamp),
+            self.get_request_complexity(event),
+            self.get_endpoint_rarity(event.endpoint)
+        ])
+        
+        # Update user profile
+        if user_id not in self.user_profiles:
+            self.user_profiles[user_id] = UserProfile()
+        
+        profile = self.user_profiles[user_id]
+        anomaly_score = profile.calculate_anomaly_score(features)
+        
+        # Global anomaly detection
+        global_anomaly = self.isolation_forest.decision_function([features])[0]
+        
+        return AnomalyScore(
+            user_anomaly=anomaly_score,
+            global_anomaly=global_anomaly,
+            is_anomalous=anomaly_score > 3.0 or global_anomaly < -0.5
+        )
+</code>`<code></p>
+
+<h2>Dashboards and Insights</h2>
+
+<h3>Security Dashboard</h3>
+
+<p>Real-time security monitoring in Grafana:</p>
+
+<p></code>`<code>promql
+# Secret leak attempts per hour
+sum(rate(ai_security_events_total{type="secret_leak"}[1h])) by (severity)</p>
+
+<p># Jailbreak attempts by technique
+sum(ai_jailbreak_attempts_total) by (technique)</p>
+
+<p># Risk score distribution
+histogram_quantile(0.99, ai_risk_score_bucket)</p>
+
+<p># Top users by security events
+topk(10, sum(ai_security_events_total) by (user_id))
+</code>`<code></p>
+
+<h3>Productivity Dashboard</h3>
+
+<p>Understanding AI's impact on development:</p>
+
+<p></code>`<code>sql
+-- Daily active AI users
+SELECT 
+    DATE(timestamp) as date,
+    COUNT(DISTINCT user_id) as daily_active_users,
+    SUM(tokens_consumed) as total_tokens,
+    AVG(quality_score) as avg_quality
+FROM ai_usage_events
+GROUP BY DATE(timestamp);</p>
+
+<p>-- Task distribution
+SELECT 
+    task_category,
+    COUNT(*) as request_count,
+    AVG(time_saved_seconds) as avg_time_saved,
+    SUM(time_saved_seconds) / 3600 as total_hours_saved
+FROM ai_productivity_metrics
+WHERE timestamp > NOW() - INTERVAL '7 days'
+GROUP BY task_category
+ORDER BY request_count DESC;</p>
+
+<p>-- Team adoption metrics
+SELECT 
+    team_name,
+    COUNT(DISTINCT user_id) as active_users,
+    COUNT(*) / COUNT(DISTINCT user_id) as avg_requests_per_user,
+    AVG(acceptance_rate) as avg_acceptance_rate
+FROM ai_usage_events e
+JOIN users u ON e.user_id = u.id
+GROUP BY team_name
+ORDER BY active_users DESC;
+</code>`<code></p>
+
+<h2>Operational Learnings</h2>
+
+<h3>What Surprised Us</h3>
+<ol>
+<li><strong>Volume Patterns</strong>: 70% of LLM traffic happens between 2-5 PM</li>
+<li><strong>Secret Leaks</strong>: 0.3% of prompts contained potential secrets (mostly test data)</li>
+<li><strong>Task Distribution</strong>: 40% code generation, 30% debugging, 20% documentation, 10% other</li>
+<li><strong>Cost Insights</strong>: 5% of users consume 60% of tokens</li>
+</ol>
+
+<h3>Performance Tuning</h3>
+
+<p>To handle 20M events/day with <30s latency:</p>
+
+<p><strong>Stream Processing</strong>:
+</code>`<code>yaml
+# Kinesis configuration
+ShardCount: 20
+RetentionPeriod: 24 hours
+ShardLevelMetrics: 
+<ul>
+<li>IncomingRecords</li>
+<li>OutgoingRecords</li>
+</ul>
+</code>`<code></p>
+
+<p><strong>Analysis Workers</strong>:
+</code>`<code>python
+# Parallel processing with backpressure
+async def process_stream():
+    semaphore = asyncio.Semaphore(100)  # Max concurrent analyses
+    
+    async for record in kinesis_stream:
+        async with semaphore:
+            asyncio.create_task(analyze_record(record))
+</code>`<code></p>
+
+<p><strong>Storage Optimization</strong>:
+</code>`<code>sql
+-- Partitioned tables for efficient queries
+CREATE TABLE ai_events (
+    timestamp TIMESTAMP,
+    user_id VARCHAR(50),
+    event_data JSONB
+) PARTITION BY RANGE (timestamp);</p>
+
+<p>-- Automatic partition creation
+CREATE TABLE ai_events_2025_01 PARTITION OF ai_events
+FOR VALUES FROM ('2025-01-01') TO ('2025-02-01');
+</code>`<code></p>
+
+<h3>Cost Management</h3>
+
+<p>Monthly costs for 20M events/day:</p>
+
+<table class="min-w-full border-collapse border border-gray-300 my-4">
+<thead><tr class="bg-gray-100">
+<th class="border border-gray-300 px-4 py-2 text-left">Component</th>
+<th class="border border-gray-300 px-4 py-2 text-left">Cost</th>
+<th class="border border-gray-300 px-4 py-2 text-left">Notes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="border border-gray-300 px-4 py-2">Kinesis Streams</td>
+<td class="border border-gray-300 px-4 py-2">$500</td>
+<td class="border border-gray-300 px-4 py-2">20 shards</td>
+</tr>
+<tr>
+<td class="border border-gray-300 px-4 py-2">Lambda Functions</td>
+<td class="border border-gray-300 px-4 py-2">$300</td>
+<td class="border border-gray-300 px-4 py-2">1B invocations</td>
+</tr>
+<tr>
+<td class="border border-gray-300 px-4 py-2">S3 Storage</td>
+<td class="border border-gray-300 px-4 py-2">$200</td>
+<td class="border border-gray-300 px-4 py-2">600GB compressed</td>
+</tr>
+<tr>
+<td class="border border-gray-300 px-4 py-2">OpenSearch</td>
+<td class="border border-gray-300 px-4 py-2">$800</td>
+<td class="border border-gray-300 px-4 py-2">3-node cluster</td>
+</tr>
+<tr>
+<td class="border border-gray-300 px-4 py-2">Local LLM Inference</td>
+<td class="border border-gray-300 px-4 py-2">$400</td>
+<td class="border border-gray-300 px-4 py-2">2x GPU instances</td>
+</tr>
+<tr>
+<td class="border border-gray-300 px-4 py-2"><strong>Total</strong></td>
+<td class="border border-gray-300 px-4 py-2"><strong>$2,200</strong></td>
+<td class="border border-gray-300 px-4 py-2">~$0.10 per 1k events</td>
+</tr>
+</tbody></table>
+
+<h2>Security and Privacy Considerations</h2>
+
+<h3>Data Minimization</h3>
+
+<p>We hash sensitive fields before storage:</p>
+
+<p></code>`<code>python
+def sanitize_event(event: StandardizedEvent) -> SanitizedEvent:
+    return SanitizedEvent(
+        timestamp=event.timestamp,
+        user_hash=hashlib.sha256(event.user_id.encode()).hexdigest(),
+        endpoint=event.endpoint,
+        tokens_consumed=event.tokens_consumed,
+        # Don't store actual prompts long-term
+        prompt_hash=hashlib.sha256(event.request_payload.encode()).hexdigest(),
+        task_category=event.task_category,
+        risk_indicators=event.security_findings
+    )
+</code>`<code></p>
+
+<h3>Access Controls</h3>
+
+<p>Strict access to analysis results:</p>
+
+<p></code>`<code>python
+class AccessControl:
+    def can_view_security_data(self, user: User, data: SecurityData) -> bool:
+        # Security team can see everything
+        if user.role == 'security_analyst':
+            return True
+        
+        # Managers can see their team's aggregated data
+        if user.role == 'manager' and data.level == 'team':
+            return data.team_id in user.managed_teams
+        
+        # Users can only see their own data
+        if data.level == 'user':
+            return data.user_id == user.id
+        
+        return False
+</code>``</p>
+
+<h2>Business Impact</h2>
+
+<p>After 6 months of operation:</p>
+
+<p><strong>Security Wins</strong>:
+<ul>
+<li>Prevented 12 potential data leaks</li>
+<li>Identified 3 compromised developer accounts</li>
+<li>% reduction in secrets in prompts</li>
+</ul></p>
+
+<p><strong>Productivity Gains</strong>:
+<ul>
+<li>hours saved per developer per week</li>
+<li>% reduction in debugging time</li>
+<li>% faster API integration tasks</li>
+</ul></p>
+
+<p><strong>Cost Optimization</strong>:
+<ul>
+<li>Identified and optimized inefficient LLM usage</li>
+<li>% reduction in token consumption</li>
+<li>$50k/month savings on LLM costs</li>
+</ul></p>
+
+<h2>Future Roadmap</h2>
+
+<h3>Near Term (Q1 2025)</h3>
+<ul>
+<li>Real-time coaching for prompt engineering</li>
+<li>Predictive token budgeting</li>
+<li>Integration with CI/CD for automated PR analysis</li>
+</ul>
+
+<h3>Medium Term (Q2-Q3 2025)</h3>
+<ul>
+<li>Cross-organization benchmarking</li>
+<li>AI code review quality metrics</li>
+<li>Automated compliance reporting</li>
+</ul>
+
+<h3>Long Term (Q4 2025+)</h3>
+<ul>
+<li>Predictive security threat modeling</li>
+<li>Organization-wide AI strategy optimization</li>
+<li>Federated learning from usage patterns</li>
+</ul>
+
+<h2>Open Source Components</h2>
+
+<p>We've released several components:
+<ul>
+<li><a href="https://github.com/yourcompany/llm-proxy-analyzer" class="text-blue-600 hover:text-blue-800">llm-proxy-analyzer</a>: Core analysis framework</li>
+<li><a href="https://github.com/yourcompany/ai-security-patterns" class="text-blue-600 hover:text-blue-800">security-patterns</a>: Detection rule library</li>
+<li><a href="https://github.com/yourcompany/ai-productivity-metrics" class="text-blue-600 hover:text-blue-800">productivity-metrics</a>: Metric calculation engine</li>
+</ul></p>
+
+<h2>Getting Started</h2>
+
+<p>Want to build your own AI observability platform?
+<ol>
+<li><strong>Week 1</strong>: Set up proxy log streaming</li>
+<li><strong>Week 2</strong>: Deploy basic security detections</li>
+<li><strong>Week 3</strong>: Add productivity metrics</li>
+<li><strong>Week 4</strong>: Build dashboards and alerting</li>
+<li><strong>Month 2</strong>: Tune and optimize based on your patterns</li>
+</ol></p>
+
+<h2>Conclusion</h2>
+
+<p>Your security proxy isn't just a compliance checkbox—it's a window into how AI is transforming your organization. By applying AI to analyze AI usage, you can ensure security, optimize costs, and accelerate adoption.</p>
+
+<p>The key insight: treat LLM logs not as data to store, but as a real-time intelligence stream to mine. The patterns you discover will surprise you and guide your AI strategy.</p>
+
+<p>---</p>
+
+<p><strong>Next in Series</strong>: <a href="/blog/ai-for-work-part-4-agent-orchestration" class="text-blue-600 hover:text-blue-800">Part 4: Agent Orchestration at Scale - Building an Enterprise Platform</a></p>
+
+<p><em>Have questions about AI observability? Reach out on <a href="https://twitter.com/ziyadmir" class="text-blue-600 hover:text-blue-800">Twitter</a> or <a href="https://linkedin.com/in/ziyadmir" class="text-blue-600 hover:text-blue-800">LinkedIn</a>.</em></p>
+            
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

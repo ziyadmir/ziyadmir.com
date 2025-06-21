@@ -1,5 +1,11 @@
 /* Modern, minimalist design system */
 
+/* 
+ * NOTE: If experiencing rendering issues locally, ensure you're using a local server
+ * (e.g., python -m http.server 8000) instead of opening HTML files directly.
+ * Direct file:// protocol may cause CORS issues with fonts and relative paths.
+ */
+
 /* Import clean, modern fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 

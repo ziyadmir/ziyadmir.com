@@ -179,7 +179,7 @@
 
 <h2>Architecture Overview</h2>
 
-<p></code></pre>
+</code></pre>
 ┌─────────────┐     ┌─────────────────┐     ┌──────────────┐
 │   AI IDEs   │────▶│   MCP Gateway   │────▶│Context Sources│
 │  (2,500+)   │     │  (Centralized)  │     │  GitHub      │
@@ -197,7 +197,7 @@
 
 <p>Every request must be authenticated:</p>
 
-<p></code></pre>
+</code></pre>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 class MCPAuthMiddleware {
@@ -233,7 +233,7 @@ class MCPAuthMiddleware {
 
 <p>The router maps MCP requests to appropriate backends:</p>
 
-<p></code></pre>
+</code></pre>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 class MCPRouter {
@@ -270,7 +270,7 @@ class MCPRouter {
 
 <p>Each context source has a specialized handler:</p>
 
-<p></code></pre>
+</code></pre>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 class GitHubHandler implements ContextHandler {
@@ -305,7 +305,7 @@ class GitHubHandler implements ContextHandler {
 
 <p>Context doesn't change every millisecond. Aggressive caching dramatically improves performance:</p>
 
-<p></code></pre>
+</code></pre>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 class MCPCache {
@@ -346,7 +346,7 @@ class MCPCache {
 
 <p>Every context request is logged for compliance:</p>
 
-<p></code></pre>
+</code></pre>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 class MCPAuditLogger {
@@ -379,7 +379,7 @@ class MCPAuditLogger {
 
 <p>We run the gateway as a horizontally scalable service:</p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 apiVersion: apps/v1
 kind: Deployment
@@ -536,18 +536,18 @@ function filterResults(results: ContextResult[], auth: AuthContext): ContextResu
 
 <p>We track these KPIs on our Grafana dashboard:</p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-promql">
 # Request rate by source
 rate(mcp_requests_total[5m]) by (source)</p>
 
-<p># Cache hit ratio
+# Cache hit ratio
 rate(mcp_cache_hits_total[5m]) / rate(mcp_requests_total[5m])</p>
 
-<p># p99 latency by method
+# p99 latency by method
 histogram_quantile(0.99, mcp_request_duration_bucket) by (method)</p>
 
-<p># Error rate
+# Error rate
 rate(mcp_errors_total[5m]) / rate(mcp_requests_total[5m])
 </code></pre>
 
@@ -681,6 +681,12 @@ rate(mcp_errors_total[5m]) / rate(mcp_requests_total[5m])
 
 <p><em>Building an MCP Gateway? I'd love to hear about your architecture choices. Find me on <a href="https://twitter.com/ziyadmir" class="text-blue-600 hover:text-blue-800">Twitter</a> or <a href="https://linkedin.com/in/ziyadmir" class="text-blue-600 hover:text-blue-800">LinkedIn</a>.</em></p>
             
+        
+            <div class="series-nav flex justify-between items-center">
+                <div><a href="/blog/ai-for-work-part-1-ai-ide.html" class="text-blue-600 hover:text-blue-800">← Part 1</a></div>
+                <a href="/blog/ai-for-work-series-index.html" class="text-gray-600 hover:text-gray-800">Series Index</a>
+                <div><a href="/blog/ai-for-work-part-3-ai-observability.html" class="text-blue-600 hover:text-blue-800">Part 3 →</a></div>
+            </div>
         </article>
     </main>
 

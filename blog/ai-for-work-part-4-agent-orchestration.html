@@ -166,7 +166,7 @@
 
 <p>We use YAML for defining agent workflows:</p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 name: dependency-update-workflow
 description: Automatically update dependencies and create PR
@@ -243,7 +243,7 @@ triggers:
 
 <p>The heart of EMUX - executes individual steps with full isolation:</p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class StepRunner:
     def __init__(self):
@@ -304,7 +304,7 @@ class StepRunner:
 
 <p>Each agent is a containerized service with a standard interface:</p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 # Base agent class
 class BaseAgent(ABC):
@@ -328,7 +328,7 @@ class BaseAgent(ABC):
         schema = self.get_output_schema()
         jsonschema.validate(outputs, schema)</p>
 
-<p># Example: Code Review Agent
+# Example: Code Review Agent
 class CodeReviewAgent(BaseAgent):
     def get_input_schema(self):
         return {
@@ -376,7 +376,7 @@ class CodeReviewAgent(BaseAgent):
 
 <p>Workflows need persistent state across steps:</p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class WorkflowStateManager:
     def __init__(self):
@@ -426,7 +426,7 @@ class WorkflowStateManager:
 
 <p>Real-time insights into agent performance:</p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class AgentMetricsCollector:
     def __init__(self):
@@ -465,18 +465,18 @@ class AgentMetricsCollector:
                 }
             )</p>
 
-<p># Grafana dashboards use these metrics
+# Grafana dashboards use these metrics
 """
 # Agent success rate
 rate(emux_step_executions_total{status="success"}[5m]) 
 / rate(emux_step_executions_total[5m])</p>
 
-<p># Workflow completion time (p95)
+# Workflow completion time (p95)
 histogram_quantile(0.95, 
   sum(rate(emux_workflow_duration_seconds_bucket[5m])) by (le, workflow)
 )</p>
 
-<p># Cost per workflow (based on token usage)
+# Cost per workflow (based on token usage)
 sum(rate(emux_tokens_consumed_total[1h])) by (workflow) * 0.002
 """
 </code></pre>
@@ -487,7 +487,7 @@ sum(rate(emux_tokens_consumed_total[1h])) by (workflow) * 0.002
 
 <p>Some workflows need human approval:</p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 steps:
 <ul>
@@ -526,7 +526,7 @@ steps:
 
 <p>Run multiple agents concurrently:</p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 steps:
 <ul>
@@ -559,7 +559,7 @@ steps:
 
 <p>Generate workflow steps at runtime:</p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class DynamicWorkflowGenerator:
     async def generate_test_workflow(self, pr_data: Dict) -> Workflow:
@@ -600,7 +600,7 @@ class DynamicWorkflowGenerator:
 
 <p>Automatic error recovery:</p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class SelfHealingOrchestrator:
     async def handle_step_failure(self, workflow_id: str, step: Step, error: Exception):
@@ -636,7 +636,7 @@ class SelfHealingOrchestrator:
 
 <p><strong>1. Automated Dependency Updates</strong></p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 name: smart-dependency-updater
 triggers:
@@ -691,7 +691,7 @@ steps:
 
 <p><strong>2. Intelligent Code Review</strong></p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 name: ai-code-reviewer
 triggers:
@@ -735,7 +735,7 @@ steps:
 
 <p><strong>3. Incident Response Automation</strong></p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 name: incident-responder
 triggers:
@@ -801,7 +801,7 @@ steps:
 
 <p>Fine-grained permission model:</p>
 
-<p></code></pre>
+</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class AgentPermissionManager:
     def get_agent_permissions(self, agent_name: str) -> Permissions:
@@ -833,7 +833,7 @@ class AgentPermissionManager:
 
 <p>Complete record of all agent actions:</p>
 
-<p></code></pre>
+</code></pre>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-json">
 {
@@ -910,6 +910,12 @@ class AgentPermissionManager:
 
 <p><em>Working on agent orchestration? I'd love to hear about your use cases. Connect on <a href="https://twitter.com/ziyadmir" class="text-blue-600 hover:text-blue-800">Twitter</a> or <a href="https://linkedin.com/in/ziyadmir" class="text-blue-600 hover:text-blue-800">LinkedIn</a>.</em></p>
             
+        
+            <div class="series-nav flex justify-between items-center">
+                <div><a href="/blog/ai-for-work-part-3-ai-observability.html" class="text-blue-600 hover:text-blue-800">← Part 3</a></div>
+                <a href="/blog/ai-for-work-series-index.html" class="text-gray-600 hover:text-gray-800">Series Index</a>
+                <div><a href="/blog/ai-for-work-part-5-knowledge-preservation.html" class="text-blue-600 hover:text-blue-800">Part 5 →</a></div>
+            </div>
         </article>
     </main>
 

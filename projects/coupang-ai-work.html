@@ -7,7 +7,24 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/shared-styles.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({ startOnLoad: true, theme: 'default' });</script>
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'default',
+            flowchart: { 
+                useMaxWidth: false, 
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 40,
+                nodeSpacing: 80,
+                rankSpacing: 80
+            },
+            themeVariables: {
+                fontSize: '20px',
+                fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif'
+            }
+        });
+    </script>
     <style type="text/css">
         /* Project content styling */
         .project-content {
@@ -150,17 +167,49 @@
         
         /* Mermaid diagram styling */
         .mermaid {
-            margin: var(--space-2xl) 0;
+            margin: var(--space-2xl) auto;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+            font-size: 18px !important;
         }
         
         .mermaid-container {
             background: var(--color-surface);
             border: 1px solid var(--color-border-light);
             border-radius: var(--radius-lg);
-            padding: var(--space-xl);
-            margin: var(--space-2xl) 0;
+            padding: var(--space-2xl);
+            margin: var(--space-2xl) auto;
             overflow-x: auto;
+            width: 100%;
+            max-width: min(100%, 1200px);
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* Override default mermaid styles */
+        .mermaid svg {
+            max-width: 100% !important;
+            height: auto;
+            margin: 0 auto;
+            min-height: 400px;
+        }
+        
+        /* Make mermaid text larger */
+        .mermaid .nodeLabel {
+            font-size: 18px !important;
+        }
+        
+        .mermaid .edgeLabel {
+            font-size: 16px !important;
+        }
+        
+        /* Increase size of subgraph labels */
+        .mermaid .cluster-label {
+            font-size: 20px !important;
+            font-weight: bold !important;
         }
     </style>
 </head>
@@ -234,56 +283,6 @@
             
             <div style="margin: var(--space-2xl) 0; text-align: center;">
                 <img src="/images/projects/coupang-ai-work-system-design.png" alt="Coupang AI-for-Work System Architecture" style="max-width: 100%; height: auto; border: 1px solid var(--color-border-light); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
-            </div>
-            
-            <div class="mermaid-container">
-                <div class="mermaid">
-                    graph TB
-                        subgraph "Developer Workstations"
-                            IDE1[Windsurf IDE]
-                            IDE2[Windsurf IDE]
-                            IDE3[Windsurf IDE]
-                        end
-                        
-                        subgraph "AI Infrastructure"
-                            Gateway[MCP Gateway]
-                            Auth[OAuth Service]
-                            Audit[Audit Logs]
-                        end
-                        
-                        subgraph "Internal Systems"
-                            JIRA[JIRA]
-                            GH[GitHub Enterprise]
-                            CONF[Confluence]
-                            APIs[Internal APIs]
-                        end
-                        
-                        subgraph "Observability"
-                            Metrics[Metrics Collector]
-                            Analytics[Analytics Engine]
-                            Dashboard[Dashboards]
-                        end
-                        
-                        IDE1 --> Gateway
-                        IDE2 --> Gateway
-                        IDE3 --> Gateway
-                        
-                        Gateway --> Auth
-                        Gateway --> Audit
-                        Gateway --> JIRA
-                        Gateway --> GH
-                        Gateway --> CONF
-                        Gateway --> APIs
-                        
-                        Gateway --> Metrics
-                        Metrics --> Analytics
-                        Analytics --> Dashboard
-                        
-                        style Gateway fill:#4facfe
-                        style IDE1 fill:#00f2fe
-                        style IDE2 fill:#00f2fe
-                        style IDE3 fill:#00f2fe
-                </div>
             </div>
             
             <h3>AI IDE Deployment (Windsurf)</h3>

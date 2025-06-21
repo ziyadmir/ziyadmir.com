@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work-as-Code: The Micro-MCP Revolution | Ziyad Mir</title>
+    <title>Part 6: Work-as-Code: The Micro-MCP Revolution | Ziyad Mir</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/shared-styles.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
@@ -108,8 +108,8 @@
 
     <main class="container mx-auto px-4 py-8 flex-grow">
         <article class="blog-content">
-            <h1 class="text-3xl font-bold text-primary mb-3">Work-as-Code: The Micro-MCP Revolution</h1>
-            <p class="text-gray-500 text-sm mb-4">2025-01-26 · AI-for-Work Series</p>
+            <h1 class="text-3xl font-bold text-primary mb-3">Part 6: Work-as-Code: The Micro-MCP Revolution</h1>
+            <p class="text-gray-500 text-sm mb-4">May 15, 2025 · AI-for-Work Series</p>
             
             <div class="flex gap-2 mb-6">
                 <span class="blog-tag">AI</span><span class="blog-tag">MCP</span><span class="blog-tag">Automation</span><span class="blog-tag">Platform Engineering</span><span class="blog-tag">Developer Tools</span>
@@ -125,8 +125,7 @@
 
 <p>We measured our AI agents' effectiveness and found a disturbing pattern:</p>
 
-<p>``<code>mermaid
-graph TD
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-mermaid">graph TD
     A[AI Agent Starts Task] --> B{Can it be done via API?}
     B -->|Yes 10%| C[Agent Completes Autonomously]
     B -->|No 90%| D[Agent Asks Human]
@@ -136,7 +135,7 @@ graph TD
     
     style D fill:#ff6b6b
     style E fill:#ff6b6b
-</code>`<code></p>
+</code></pre>
 
 <p><strong>The 90% Wall</strong>: Most engineering tasks require:
 <ul>
@@ -144,7 +143,7 @@ graph TD
 <li>Navigate to internal dashboard, click three buttons</li>
 <li>Run undocumented CLI tool with tribal knowledge flags</li>
 <li>Check Slack for that one pinned message with instructions</li>
-</ul></p>
+</ul>
 
 <p>Our AI agents hit this wall constantly. Time to tear it down.</p>
 
@@ -152,7 +151,9 @@ graph TD
 
 <h3>Traditional MCP Approach (What We Had)</h3>
 
-<p></code>`<code>typescript
+<p></code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Coarse-grained MCP - trying to do too much
 class JiraMCPTool {
   async execute(params: {
@@ -170,7 +171,7 @@ class JiraMCPTool {
     }
   }
 }
-</code>`<code></p>
+</code></pre>
 
 <p><strong>Problems</strong>:
 <ul>
@@ -178,11 +179,13 @@ class JiraMCPTool {
 <li>Poor discoverability</li>
 <li>Difficult to test</li>
 <li>Brittle prompt engineering needed</li>
-</ul></p>
+</ul>
 
 <h3>Micro-MCP Approach (The Revolution)</h3>
 
-<p></code>`<code>typescript
+<p></code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Each task is its own MCP - do one thing well
 class CheckServiceHealthMCP {
   async execute(params: {
@@ -207,15 +210,16 @@ class CheckServiceHealthMCP {
     await this.auditLog.record('feature_flag_toggle', params);
   }
 }
-</code>`<code></p>
+</code></pre>
 
 <h2>The Micro-MCP Factory</h2>
 
 <p>To scale from dozens to thousands of MCPs, we built a factory system:</p>
 
-<h3>1. CLI Tool for MCP Creation</h3>
+<p><strong>1. CLI Tool for MCP Creation</strong></p>
 
-<p></code>`<code>bash
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-bash">
 $ mcp create check-service-health</p>
 
 <p>? What does this MCP do? Check health status of a service
@@ -236,24 +240,26 @@ $ mcp create check-service-health</p>
 <li>Run 'mcp test' to validate</li>
 <li>Run 'mcp publish' to deploy</li>
 </ol>
-</code>`<code></p>
+</code></pre>
 
-<h3>2. Standardized Structure</h3>
+<p><strong>2. Standardized Structure</strong></p>
 
 <p>Every micro-MCP follows the same pattern:</p>
 
-<p></code>`<code>
+<p></code></pre>
 check-service-health/
 ├── index.ts           # Implementation (≤100 lines)
 ├── schema.json        # Input/output contracts  
 ├── test.ts            # Automated tests
 ├── README.md          # Auto-generated docs
 └── metadata.json      # Registry information
-</code>`<code></p>
+</code></pre>
 
-<h3>3. Central Registry</h3>
+<p><strong>3. Central Registry</strong></p>
 
-<p></code>`<code>json
+<p></code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-json">
 {
   "mcp_id": "check-service-health",
   "version": "1.0.0",
@@ -287,14 +293,16 @@ check-service-health/
     "required_scopes": ["service:read"]
   }
 }
-</code>`<code></p>
+</code></pre>
 
 <h2>Real-World Micro-MCPs in Action</h2>
 
 <p>After 6 months, we've built 1,000+ micro-MCPs. Here are the categories that emerged:</p>
 
 <h3>Observability MCPs</h3>
-</code>`<code>typescript
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Before: SSH to box, grep logs, parse with awk
 get_error_rate(service, timeRange)
 
@@ -303,10 +311,12 @@ fetch_p99_latency(service, metric, duration)</p>
 
 <p>// Before: Custom script on monitoring host
 list_firing_alerts(severity, team)
-</code>`<code></p>
+</code></pre>
 
 <h3>Configuration MCPs</h3>
-</code>`<code>typescript
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Before: Jenkins UI navigation  
 toggle_feature_flag(flag, env, state)
 
@@ -315,10 +325,12 @@ scale_deployment(service, replicas, env)</p>
 
 <p>// Before: AWS console clicking
 update_parameter_store(key, value, env)
-</code>`<code></p>
+</code></pre>
 
 <h3>Cost & Capacity MCPs</h3>
-</code>`<code>typescript
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Before: Manually export from AWS Cost Explorer
 get_service_aws_cost(service, period)
 
@@ -327,10 +339,12 @@ calculate_capacity_remaining(service, growth_rate)</p>
 
 <p>// Before: SQL query on internal database
 check_quota_usage(resource, team)
-</code>`<code></p>
+</code></pre>
 
 <h3>Operational MCPs</h3>
-</code>`<code>typescript
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Before: Slack search for runbook
 get_oncall_runbook(service, alert_type)
 
@@ -339,13 +353,14 @@ verify_deployment_safety(service, version)</p>
 
 <p>// Before: Manual ticket creation
 create_capacity_request(service, justification)
-</code>`<code></p>
+</code></pre>
 
 <h2>The Architecture Behind 1,000 MCPs</h2>
 
 <h3>Execution Platform</h3>
 
-<p></code>`<code>mermaid
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-mermaid">
 graph LR
     A[AI Agent] --> B[MCP Gateway]
     B --> C{Route to MCP}
@@ -359,11 +374,12 @@ graph LR
         H --> I[Execute Logic]
         I --> J[Audit Log]
     end
-</code>`<code></p>
+</code></pre>
 
 <h3>Discovery & Composition</h3>
 
-<p></code>`<code>python
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class MCPDiscoveryService:
     def find_mcps_for_task(self, task_description: str) -> List[MCP]:
         # Semantic search across all MCPs
@@ -387,13 +403,14 @@ class MCPDiscoveryService:
         )
         
         return workflow
-</code>`<code></p>
+</code></pre>
 
 <h3>Quality Enforcement</h3>
 
 <p>Every MCP must pass automated checks:</p>
 
-<p></code>`<code>python
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class MCPQualityGates:
     def validate_new_mcp(self, mcp_path: str) -> ValidationResult:
         results = []
@@ -420,14 +437,15 @@ class MCPQualityGates:
         results.append(self.security_scan(mcp_path))
         
         return ValidationResult(results)
-</code>`<code></p>
+</code></pre>
 
 <h2>Measuring AI Autonomy</h2>
 
 <p>We track the <strong>AI Autonomy Index</strong>: percentage of tasks completed without human intervention.</p>
 
 <h3>Before Micro-MCPs</h3>
-</code>`<code>python
+</code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 autonomy_metrics = {
     "tasks_attempted": 10000,
     "completed_autonomously": 3800,
@@ -443,10 +461,11 @@ blockers = [
     "Check deployment status",  # 8%
     # ... hundreds more
 ]
-</code>`<code></p>
+</code></pre>
 
 <h3>After Micro-MCPs</h3>
-</code>`<code>python
+</code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 autonomy_metrics = {
     "tasks_attempted": 10000,
     "completed_autonomously": 7200,
@@ -461,13 +480,14 @@ blockers = [
     "Review security implications",  # 20%
     "Approve budget increase"  # 15%
 ]
-</code>`<code></p>
+</code></pre>
 
 <h2>The Compound Benefits</h2>
 
-<h3>1. Velocity Acceleration</h3>
+<p><strong>1. Velocity Acceleration</strong></p>
 
-<p></code>`<code>mermaid
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-mermaid">
 graph LR
     A[Task Request] --> B[AI Agent]
     B --> C{Find MCPs}
@@ -477,15 +497,17 @@ graph LR
     
     style A fill:#90EE90
     style F fill:#90EE90
-</code>`<code></p>
+</code></pre>
 
 <p>Tasks that took 30 minutes of human coordination now complete in 30 seconds.</p>
 
-<h3>2. Tribal Knowledge Codification</h3>
+<p><strong>2. Tribal Knowledge Codification</strong></p>
 
 <p>Every micro-MCP captures institutional knowledge:</p>
 
-<p></code>`<code>typescript
+<p></code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // The comment explains what took 3 years to learn
 class CheckCanaryDeploymentMCP {
   async execute(params) {
@@ -506,32 +528,33 @@ class CheckCanaryDeploymentMCP {
     }
   }
 }
-</code>`<code></p>
+</code></pre>
 
-<h3>3. Democratized Capabilities</h3>
+<p><strong>3. Democratized Capabilities</strong></p>
 
-<p>Junior engineers and AI agents have the same capabilities as senior engineers:
+<p>Junior engineers and AI agents have the same capabilities as senior engineers:</p>
 <ul>
 <li>No need to know which box to SSH into</li>
 <li>No need to remember complex command flags</li>
 <li>No need to have dashboard access</li>
 <li>Just call the right MCP</li>
-</ul></p>
+</ul>
 
-<h3>4. Observability & Compliance Built-In</h3>
+<p><strong>4. Observability & Compliance Built-In</strong></p>
 
-<p>Every MCP execution is automatically:
+<p>Every MCP execution is automatically:</p>
 <ul>
 <li>Logged with full context</li>
 <li>Attributed to user/agent</li>
 <li>Rate limited and access controlled</li>
 <li>Monitored for SLA compliance</li>
-</ul></p>
+</ul>
 
 <h2>Getting Started with Micro-MCPs</h2>
 
 <h3>Week 1-2: Foundation</h3>
-</code>`<code>bash
+</code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-bash">
 # Install MCP Factory
 npm install -g @company/mcp-factory
 
@@ -542,7 +565,7 @@ mcp create get-service-uptime</p>
 cd mcps/get-service-uptime
 npm test
 mcp publish
-</code>`<code></p>
+</code></pre>
 
 <h3>Week 3-4: High-Value Targets</h3>
 Identify your top 20 "toil tasks" and convert them:
@@ -572,7 +595,9 @@ Identify your top 20 "toil tasks" and convert them:
 <h2>Common Patterns and Anti-Patterns</h2>
 
 <h3>✅ Good Micro-MCP</h3>
-</code>`<code>typescript
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Single purpose, clear contract
 class GetDatabaseConnectionCountMCP {
   async execute(params: {
@@ -586,10 +611,12 @@ class GetDatabaseConnectionCountMCP {
     // 30 lines of focused code
   }
 }
-</code>`<code>
+</code></pre>
 
 <h3>❌ Bad Micro-MCP</h3>
-</code>`<code>typescript
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Trying to do too much
 class DatabaseManagementMCP {
   async execute(params: {
@@ -599,13 +626,14 @@ class DatabaseManagementMCP {
     // 500 lines of spaghetti
   }
 }
-</code>`<code>
+</code></pre>
 
 <h2>The Network Effect</h2>
 
 <p>The magic happens when micro-MCPs start composing:</p>
 
-<p></code>`<code>yaml
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 # AI agents can now build complex workflows
 name: investigate-latency-spike
 steps:
@@ -646,7 +674,7 @@ steps:
 </ul>
     params:
       findings: ${correlations}
-</code>``</p>
+</code></pre>
 
 <h2>Conclusion: Infrastructure as Code → Work as Code</h2>
 
@@ -658,7 +686,7 @@ steps:
 <li><strong>Agent Orchestration</strong> enabled complex workflows</li>
 <li><strong>Knowledge Preservation</strong> captured institutional memory</li>
 <li><strong>Micro-MCPs</strong> made everything programmable</li>
-</ol></p>
+</ol>
 
 <p>The result? An organization where AI agents are first-class citizens, capable of handling 70%+ of routine engineering work autonomously.</p>
 
@@ -672,7 +700,7 @@ steps:
 
 <p><em>Thank you for following this journey. If you're implementing these patterns at your organization, I'd love to hear about your experience. Find me on <a href="https://twitter.com/ziyadmir" class="text-blue-600 hover:text-blue-800">Twitter</a> or <a href="https://linkedin.com/in/ziyadmir" class="text-blue-600 hover:text-blue-800">LinkedIn</a>.</em></p>
 
-<p><em>Special thanks to all the engineers who made these systems possible. The future of work is collaborative—between humans, between teams, and between humans and AI.</em></p>
+<p>*Special thanks to all the engineers who made these systems possible. The future of work is collaborative—between humans, between teams, and between humans and AI.*</p>
             
         </article>
     </main>

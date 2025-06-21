@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>From Proxy Logs to Intelligence - Enterprise AI Observability | Ziyad Mir</title>
+    <title>Part 3: From Proxy Logs to Intelligence - Enterprise AI Observability | Ziyad Mir</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/shared-styles.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
@@ -108,8 +108,8 @@
 
     <main class="container mx-auto px-4 py-8 flex-grow">
         <article class="blog-content">
-            <h1 class="text-3xl font-bold text-primary mb-3">From Proxy Logs to Intelligence - Enterprise AI Observability</h1>
-            <p class="text-gray-500 text-sm mb-4">2025-01-23 · AI-for-Work Series</p>
+            <h1 class="text-3xl font-bold text-primary mb-3">Part 3: From Proxy Logs to Intelligence - Enterprise AI Observability</h1>
+            <p class="text-gray-500 text-sm mb-4">February 15, 2025 · AI-for-Work Series</p>
             
             <div class="flex gap-2 mb-6">
                 <span class="blog-tag">AI</span><span class="blog-tag">Observability</span><span class="blog-tag">Security</span><span class="blog-tag">Analytics</span><span class="blog-tag">Enterprise</span>
@@ -132,13 +132,13 @@
 <strong>Variety</strong>: IDEs, CLI tools, browser extensions, custom scripts
 <strong>Veracity</strong>: How do you separate signal from noise?</p>
 
-<p>Traditional approaches failed:
+<p>Traditional approaches failed:</p>
 <ul>
 <li>SIEM rules couldn't handle the variety</li>
 <li>Dashboards showed vanity metrics</li>
 <li>Manual sampling missed critical events</li>
 <li>Storage costs exploded</li>
-</ul></p>
+</ul>
 
 <p>We needed something smarter.</p>
 
@@ -146,7 +146,7 @@
 
 <p>The solution? Use AI to analyze AI usage. Here's our architecture:</p>
 
-<p>``<code>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code>
 ┌─────────────┐     ┌──────────────┐     ┌─────────────────┐     ┌──────────────┐
 │   Proxy     │────▶│   Kinesis    │────▶│  Stream Processor│────▶│   Actions    │
 │  (Zscaler)  │     │   Firehose   │     │   (AI Agents)   │     │  Alerts      │
@@ -155,15 +155,16 @@
                                           │ • Productivity  │     └──────────────┘
                                           │ • Quality       │
                                           └─────────────────┘
-</code>`<code></p>
+</code></pre>
 
 <h2>Stream Processing Pipeline</h2>
 
-<h3>1. Ingestion Layer</h3>
+<p><strong>1. Ingestion Layer</strong></p>
 
 <p>First, we capture and normalize the proxy logs:</p>
 
-<p></code>`<code>python
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class ProxyLogProcessor:
     def process_log_entry(self, raw_log: dict) -> StandardizedEvent:
         # Extract LLM request/response from proxy payload
@@ -188,14 +189,15 @@ class ProxyLogProcessor:
             'your-internal-llm.company.com'
         ]
         return any(domain in log['url'] for domain in llm_domains)
-</code>`<code></p>
+</code></pre>
 
-<h3>2. Real-Time Analysis Agents</h3>
+<p><strong>2. Real-Time Analysis Agents</strong></p>
 
 <p>We run specialized AI agents on the event stream:</p>
 
 <p><strong>Security Agent</strong>
-</code>`<code>python
+</code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class SecurityAnalysisAgent:
     def __init__(self):
         self.secret_patterns = self.load_secret_patterns()
@@ -232,10 +234,11 @@ class SecurityAnalysisAgent:
                 details=analysis.details,
                 evidence=analysis.matched_content
             )
-</code>`<code></p>
+</code></pre>
 
 <p><strong>Productivity Agent</strong>
-</code>`<code>python
+</code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class ProductivityAnalysisAgent:
     async def analyze(self, event: StandardizedEvent) -> ProductivityMetrics:
         # Extract metrics from the interaction
@@ -260,13 +263,14 @@ class ProductivityAnalysisAgent:
         embedding = self.embed_prompt(event.request_payload)
         return self.task_classifier.predict(embedding)
         # Returns: 'code_generation', 'debugging', 'documentation', etc.
-</code>`<code></p>
+</code></pre>
 
-<h3>3. Action Layer</h3>
+<p><strong>3. Action Layer</strong></p>
 
 <p>Based on analysis, we trigger automated responses:</p>
 
-<p></code>`<code>python
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class ActionOrchestrator:
     async def handle_findings(self, analysis: AnalysisResult):
         if analysis.security.risk_score > 0.8:
@@ -301,7 +305,7 @@ class ActionOrchestrator:
                 analysis.event.user_id,
                 duration_minutes=30
             )
-</code>`<code></p>
+</code></pre>
 
 <h2>Deep Dive: Detection Patterns</h2>
 
@@ -309,7 +313,8 @@ class ActionOrchestrator:
 
 <p>We use a multi-layered approach:</p>
 
-<p></code>`<code>python
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class SecretDetector:
     def __init__(self):
         # Layer 1: Regex patterns
@@ -317,7 +322,7 @@ class SecretDetector:
             'aws_key': r'AKIA[0-9A-Z]{16}',
             'github_token': r'gh[ps]_[a-zA-Z0-9]{36}',
             'private_key': r'-----BEGIN (?:RSA |EC )?PRIVATE KEY-----',
-            'jwt': r'eyJ[a-zA-Z0-9_-]<em>\.eyJ[a-zA-Z0-9_-]</em>\.[a-zA-Z0-9_-]*'
+            'jwt': r'eyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*'
         }
         
         # Layer 2: Entropy analysis
@@ -342,13 +347,14 @@ class SecretDetector:
                     secrets.append(Secret(type='high_entropy', value=token))
         
         return secrets
-</code>`<code></p>
+</code></pre>
 
 <h3>Jailbreak Detection</h3>
 
 <p>Identifying attempts to bypass AI safety measures:</p>
 
-<p></code>`<code>python
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class JailbreakDetector:
     def __init__(self):
         self.known_techniques = self.load_jailbreak_database()
@@ -385,13 +391,14 @@ class JailbreakDetector:
                 technique='behavioral',
                 confidence=0.7
             )
-</code>`<code></p>
+</code></pre>
 
 <h3>Anomaly Detection</h3>
 
 <p>Catching unusual usage patterns:</p>
 
-<p></code>`<code>python
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class AnomalyDetector:
     def __init__(self):
         self.user_profiles = {}
@@ -424,7 +431,7 @@ class AnomalyDetector:
             global_anomaly=global_anomaly,
             is_anomalous=anomaly_score > 3.0 or global_anomaly < -0.5
         )
-</code>`<code></p>
+</code></pre>
 
 <h2>Dashboards and Insights</h2>
 
@@ -432,7 +439,8 @@ class AnomalyDetector:
 
 <p>Real-time security monitoring in Grafana:</p>
 
-<p></code>`<code>promql
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-promql">
 # Secret leak attempts per hour
 sum(rate(ai_security_events_total{type="secret_leak"}[1h])) by (severity)</p>
 
@@ -444,21 +452,22 @@ histogram_quantile(0.99, ai_risk_score_bucket)</p>
 
 <p># Top users by security events
 topk(10, sum(ai_security_events_total) by (user_id))
-</code>`<code></p>
+</code></pre>
 
 <h3>Productivity Dashboard</h3>
 
 <p>Understanding AI's impact on development:</p>
 
-<p></code>`<code>sql
--- Daily active AI users
+<p></code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-sql">-- Daily active AI users
 SELECT 
     DATE(timestamp) as date,
     COUNT(DISTINCT user_id) as daily_active_users,
     SUM(tokens_consumed) as total_tokens,
     AVG(quality_score) as avg_quality
 FROM ai_usage_events
-GROUP BY DATE(timestamp);</p>
+GROUP BY DATE(timestamp);
 
 <p>-- Task distribution
 SELECT 
@@ -481,7 +490,7 @@ FROM ai_usage_events e
 JOIN users u ON e.user_id = u.id
 GROUP BY team_name
 ORDER BY active_users DESC;
-</code>`<code></p>
+</code></pre>
 
 <h2>Operational Learnings</h2>
 
@@ -498,7 +507,8 @@ ORDER BY active_users DESC;
 <p>To handle 20M events/day with <30s latency:</p>
 
 <p><strong>Stream Processing</strong>:
-</code>`<code>yaml
+</code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 # Kinesis configuration
 ShardCount: 20
 RetentionPeriod: 24 hours
@@ -507,10 +517,11 @@ ShardLevelMetrics:
 <li>IncomingRecords</li>
 <li>OutgoingRecords</li>
 </ul>
-</code>`<code></p>
+</code></pre>
 
 <p><strong>Analysis Workers</strong>:
-</code>`<code>python
+</code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 # Parallel processing with backpressure
 async def process_stream():
     semaphore = asyncio.Semaphore(100)  # Max concurrent analyses
@@ -518,27 +529,28 @@ async def process_stream():
     async for record in kinesis_stream:
         async with semaphore:
             asyncio.create_task(analyze_record(record))
-</code>`<code></p>
+</code></pre>
 
 <p><strong>Storage Optimization</strong>:
-</code>`<code>sql
--- Partitioned tables for efficient queries
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-sql">-- Partitioned tables for efficient queries
 CREATE TABLE ai_events (
     timestamp TIMESTAMP,
     user_id VARCHAR(50),
     event_data JSONB
-) PARTITION BY RANGE (timestamp);</p>
+) PARTITION BY RANGE (timestamp);
 
 <p>-- Automatic partition creation
 CREATE TABLE ai_events_2025_01 PARTITION OF ai_events
 FOR VALUES FROM ('2025-01-01') TO ('2025-02-01');
-</code>`<code></p>
+</code></pre>
 
 <h3>Cost Management</h3>
 
 <p>Monthly costs for 20M events/day:</p>
 
-<table class="min-w-full border-collapse border border-gray-300 my-4">
+<table class="min-w-full border-collapse border border-gray-300 my-4" class="min-w-full border-collapse border border-gray-300 my-4">
 <thead><tr class="bg-gray-100">
 <th class="border border-gray-300 px-4 py-2 text-left">Component</th>
 <th class="border border-gray-300 px-4 py-2 text-left">Cost</th>
@@ -583,7 +595,8 @@ FOR VALUES FROM ('2025-01-01') TO ('2025-02-01');
 
 <p>We hash sensitive fields before storage:</p>
 
-<p></code>`<code>python
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 def sanitize_event(event: StandardizedEvent) -> SanitizedEvent:
     return SanitizedEvent(
         timestamp=event.timestamp,
@@ -595,13 +608,14 @@ def sanitize_event(event: StandardizedEvent) -> SanitizedEvent:
         task_category=event.task_category,
         risk_indicators=event.security_findings
     )
-</code>`<code></p>
+</code></pre>
 
 <h3>Access Controls</h3>
 
 <p>Strict access to analysis results:</p>
 
-<p></code>`<code>python
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class AccessControl:
     def can_view_security_data(self, user: User, data: SecurityData) -> bool:
         # Security team can see everything
@@ -617,7 +631,7 @@ class AccessControl:
             return data.user_id == user.id
         
         return False
-</code>``</p>
+</code></pre>
 
 <h2>Business Impact</h2>
 
@@ -627,22 +641,22 @@ class AccessControl:
 <ul>
 <li>Prevented 12 potential data leaks</li>
 <li>Identified 3 compromised developer accounts</li>
-<li>% reduction in secrets in prompts</li>
-</ul></p>
+<li>40% reduction in secrets in prompts</li>
+</ul>
 
 <p><strong>Productivity Gains</strong>:
 <ul>
-<li>hours saved per developer per week</li>
-<li>% reduction in debugging time</li>
-<li>% faster API integration tasks</li>
-</ul></p>
+<li>5 hours saved per developer per week</li>
+<li>40% reduction in debugging time</li>
+<li>30% faster API integration tasks</li>
+</ul>
 
 <p><strong>Cost Optimization</strong>:
 <ul>
 <li>Identified and optimized inefficient LLM usage</li>
-<li>% reduction in token consumption</li>
+<li>40% reduction in token consumption</li>
 <li>$50k/month savings on LLM costs</li>
-</ul></p>
+</ul>
 
 <h2>Future Roadmap</h2>
 
@@ -669,12 +683,12 @@ class AccessControl:
 
 <h2>Open Source Components</h2>
 
-<p>We've released several components:
+<p>We've released several components:</p>
 <ul>
 <li><a href="https://github.com/yourcompany/llm-proxy-analyzer" class="text-blue-600 hover:text-blue-800">llm-proxy-analyzer</a>: Core analysis framework</li>
 <li><a href="https://github.com/yourcompany/ai-security-patterns" class="text-blue-600 hover:text-blue-800">security-patterns</a>: Detection rule library</li>
 <li><a href="https://github.com/yourcompany/ai-productivity-metrics" class="text-blue-600 hover:text-blue-800">productivity-metrics</a>: Metric calculation engine</li>
-</ul></p>
+</ul>
 
 <h2>Getting Started</h2>
 
@@ -685,7 +699,7 @@ class AccessControl:
 <li><strong>Week 3</strong>: Add productivity metrics</li>
 <li><strong>Week 4</strong>: Build dashboards and alerting</li>
 <li><strong>Month 2</strong>: Tune and optimize based on your patterns</li>
-</ol></p>
+</ol>
 
 <h2>Conclusion</h2>
 
@@ -695,7 +709,7 @@ class AccessControl:
 
 <p>---</p>
 
-<p><strong>Next in Series</strong>: <a href="/blog/ai-for-work-part-4-agent-orchestration" class="text-blue-600 hover:text-blue-800">Part 4: Agent Orchestration at Scale - Building an Enterprise Platform</a></p>
+<p><strong>Next in Series</strong>: <a href="/blog/ai-for-work-part-4-agent-orchestration.html" class="text-blue-600 hover:text-blue-800">Part 4: Agent Orchestration at Scale - Building an Enterprise Platform</a></p>
 
 <p><em>Have questions about AI observability? Reach out on <a href="https://twitter.com/ziyadmir" class="text-blue-600 hover:text-blue-800">Twitter</a> or <a href="https://linkedin.com/in/ziyadmir" class="text-blue-600 hover:text-blue-800">LinkedIn</a>.</em></p>
             

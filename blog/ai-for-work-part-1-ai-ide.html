@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Everyone an AI IDE - The Foundation of Enterprise AI | Ziyad Mir</title>
+    <title>Part 1: Get Everyone an AI IDE - The Foundation of Enterprise AI | Ziyad Mir</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/shared-styles.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
@@ -108,8 +108,8 @@
 
     <main class="container mx-auto px-4 py-8 flex-grow">
         <article class="blog-content">
-            <h1 class="text-3xl font-bold text-primary mb-3">Get Everyone an AI IDE - The Foundation of Enterprise AI</h1>
-            <p class="text-gray-500 text-sm mb-4">2025-01-21 · AI-for-Work Series</p>
+            <h1 class="text-3xl font-bold text-primary mb-3">Part 1: Get Everyone an AI IDE - The Foundation of Enterprise AI</h1>
+            <p class="text-gray-500 text-sm mb-4">December 15, 2024 · AI-for-Work Series</p>
             
             <div class="flex gap-2 mb-6">
                 <span class="blog-tag">AI</span><span class="blog-tag">IDE</span><span class="blog-tag">Developer Tools</span><span class="blog-tag">Enterprise</span><span class="blog-tag">AI Adoption</span>
@@ -125,39 +125,39 @@
 
 <h2>Why AI IDEs First?</h2>
 
-<h3>1. Immediate, Tangible Value</h3>
+<p><strong>1. Immediate, Tangible Value</strong></p>
 
 <p>Unlike abstract "AI strategies," developers understand IDEs. They use them 6-8 hours daily. Adding AI capabilities to a familiar tool removes adoption friction.</p>
 
-<p>Our metrics after 6 months:
+<p>Our metrics after 6 months:</p>
 <ul>
 <li><strong>73% daily active usage</strong> (compare to ~15% for most enterprise tools)</li>
 <li><strong>35% reduction in time-to-first-commit</strong> for new features</li>
 <li><strong>52% fewer Stack Overflow visits</strong> during work hours</li>
 <li><strong>28% increase in PR throughput</strong> (more code, same quality)</li>
-</ul></p>
+</ul>
 
-<h3>2. Natural Training Ground</h3>
+<p><strong>2. Natural Training Ground</strong></p>
 
-<p>AI IDEs teach developers how to work with AI naturally:
+<p>AI IDEs teach developers how to work with AI naturally:</p>
 <ul>
 <li>How to write effective prompts</li>
 <li>When AI helps vs. hinders</li>
 <li>Security consciousness (what not to share)</li>
 <li>Quality validation habits</li>
-</ul></p>
+</ul>
 
 <p>This learning transfers to every other AI tool you'll deploy.</p>
 
-<h3>3. Built-in Governance</h3>
+<p><strong>3. Built-in Governance</strong></p>
 
-<p>Modern AI IDEs support enterprise controls:
+<p>Modern AI IDEs support enterprise controls:</p>
 <ul>
 <li>Audit logging of all AI interactions</li>
 <li>Code leak prevention</li>
 <li>License compliance checking</li>
 <li>Configurable model endpoints</li>
-</ul></p>
+</ul>
 
 <p>You're building security habits from day one.</p>
 
@@ -167,79 +167,78 @@
 
 <p><strong>1. Choose Your Platform</strong></p>
 
-<p>Don't overthink this. As of 2025, the leaders are:
+<p>Don't overthink this. As of 2025, the leaders are:</p>
 <ul>
 <li><strong>Cursor</strong> - Best AI-first experience</li>
 <li><strong>GitHub Copilot</strong> - Best integration with GitHub ecosystem</li>
 <li><strong>Windsurf</strong> - Best for customization needs</li>
 <li><strong>Continue.dev</strong> - Best open-source option</li>
-</ul></p>
+</ul>
 
-<p>We chose based on:
+<p>We chose based on:</p>
 <ul>
 <li>Model flexibility (can we use our preferred LLMs?)</li>
 <li>Enterprise controls (SSO, audit logs, policies)</li>
 <li>Extensibility (can we add internal tools?)</li>
-</ul></p>
+</ul>
 
 <p><strong>2. Set Up Centralized Configuration</strong></p>
 
 <p>Deploy with standardized settings:
-``<code>json
-{
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-json">{
   "ai-ide": {
     "modelEndpoint": "https://api.company.com/llm-gateway",
     "enableTelemetry": true,
     "auditLogEndpoint": "https://logs.company.com/ai-ide",
     "contextProviders": ["github", "jira", "confluence"],
     "maxContextLength": 8000,
-    "blockedPatterns": ["<strong>/secrets/</strong>", "<em></em>/*.key"]
+    "blockedPatterns": ["**/secrets/**", "**/*.key"]
   }
 }
-</code>`<code></p>
+</code></pre>
 
 <p><strong>3. Route Through Your Proxy</strong></p>
 
-<p>Don't let IDEs call LLM APIs directly. Route through your corporate proxy:
+<p>Don't let IDEs call LLM APIs directly. Route through your corporate proxy:</p>
 <ul>
 <li>Enables audit logging</li>
 <li>Prevents data exfiltration</li>
 <li>Allows rate limiting</li>
 <li>Provides cost controls</li>
-</ul></p>
+</ul>
 
 <h3>Phase 2: Organizational Rollout (Week 3-4)</h3>
 
 <p><strong>1. Start with Early Adopters</strong></p>
 
-<p>Find your innovation champions:
+<p>Find your innovation champions:</p>
 <ul>
 <li>Teams working on greenfield projects</li>
 <li>Developers already using AI tools personally</li>
 <li>Groups with metrics-driven cultures</li>
-</ul></p>
+</ul>
 
 <p>Give them white-glove support. Their success stories drive broader adoption.</p>
 
 <p><strong>2. Create Internal Champions</strong></p>
 
-<p>Each team needs an AI IDE expert:
+<p>Each team needs an AI IDE expert:</p>
 <ul>
-<li>hour training session</li>
+<li>1-hour training session</li>
 <li>Slack channel for tips</li>
 <li>Weekly office hours</li>
 <li>Recognition program</li>
-</ul></p>
+</ul>
 
 <p><strong>3. Document Everything</strong></p>
 
-<p>Create internal resources:
+<p>Create internal resources:</p>
 <ul>
 <li>Quick start guide (< 5 min to productivity)</li>
 <li>Prompt engineering tips</li>
 <li>Security do's and don'ts</li>
 <li>Troubleshooting guide</li>
-</ul></p>
+</ul>
 
 <h3>Phase 3: Drive Adoption (Week 5-8)</h3>
 
@@ -249,17 +248,18 @@
 <li>Include in onboarding checklist</li>
 <li>Set as default IDE in documentation</li>
 <li>Remove friction at every step</li>
-</ul></p>
+</ul>
 
 <p><strong>2. Measure Relentlessly</strong></p>
 
 <p>Track both usage and impact:
-</code>`<code>sql
--- Daily Active Usage
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-sql">-- Daily Active Usage
 SELECT DATE(timestamp), COUNT(DISTINCT user_id)
 FROM ai_ide_logs
 WHERE action_type = 'completion_accepted'
-GROUP BY DATE(timestamp);</p>
+GROUP BY DATE(timestamp);
 
 <p>-- Productivity Metrics
 SELECT 
@@ -269,33 +269,35 @@ SELECT
   SUM(lines_accepted) as productivity_score
 FROM ai_ide_metrics
 GROUP BY user_id;
-</code>`<code></p>
+</code></pre>
 
 <p><strong>3. Share Success Stories</strong></p>
 
-<p>Weekly highlights:
+<p>Weekly highlights:</p>
 <ul>
 <li>"Sarah reduced boilerplate by 80% using AI suggestions"</li>
 <li>"Team X shipped feature 3 days early with AI assistance"</li>
 <li>"AI caught potential security issue in PR review"</li>
-</ul></p>
+</ul>
 
 <h3>Phase 4: Advanced Integration (Month 3+)</h3>
 
 <p><strong>1. Connect Internal Context</strong></p>
 
-<p>Use Model Context Protocol (MCP) to provide:
+<p>Use Model Context Protocol (MCP) to provide:</p>
 <ul>
 <li>Internal documentation</li>
 <li>Code standards</li>
 <li>API specifications</li>
 <li>Design patterns</li>
-</ul></p>
+</ul>
 
 <p><strong>2. Build Custom Tools</strong></p>
 
 <p>Extend the IDE with internal capabilities:
-</code>`<code>typescript
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Example: Internal API generator
 async function generateAPIClient(endpoint: string) {
   const spec = await fetchInternalAPISpec(endpoint);
@@ -305,24 +307,26 @@ async function generateAPIClient(endpoint: string) {
   });
   return formatCode(code);
 }
-</code>`<code></p>
+</code></pre>
 
 <p><strong>3. Automate Workflows</strong></p>
 
-<p>Common patterns we've automated:
+<p>Common patterns we've automated:</p>
 <ul>
 <li>PR description generation</li>
 <li>Test case creation</li>
 <li>Documentation updates</li>
 <li>Code review preparation</li>
-</ul></p>
+</ul>
 
 <h2>Security Considerations</h2>
 
 <h3>What We Log</h3>
 
 <p>Every AI interaction should be logged:
-</code>`<code>json
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-json">
 {
   "timestamp": "2025-01-20T10:30:00Z",
   "user_id": "emp_12345",
@@ -333,45 +337,45 @@ async function generateAPIClient(endpoint: string) {
   "accepted": true,
   "sensitivity_score": 0.1
 }
-</code>``</p>
+</code></pre>
 
 <h3>What We Block</h3>
 
-<p>Prevent sensitive data exposure:
+<p>Prevent sensitive data exposure:</p>
 <ul>
 <li>Files matching security patterns</li>
 <li>Recent customer data</li>
 <li>Production credentials</li>
 <li>Unreleased product code</li>
-</ul></p>
+</ul>
 
 <h3>What We Monitor</h3>
 
-<p>Real-time alerts for:
+<p>Real-time alerts for:</p>
 <ul>
 <li>Unusual usage patterns</li>
 <li>Potential data leaks</li>
 <li>Policy violations</li>
 <li>Cost anomalies</li>
-</ul></p>
+</ul>
 
 <h2>Common Pitfalls and Solutions</h2>
 
 <h3>Pitfall 1: "Optional" Deployment</h3>
-<strong>Problem</strong>: Making AI IDE optional leads to fragmented adoption.
-<strong>Solution</strong>: Deploy as standard tooling, like your version control system.
+<p><strong>Problem</strong>: Making AI IDE optional leads to fragmented adoption.<br>
+<strong>Solution</strong>: Deploy as standard tooling, like your version control system.</p>
 
 <h3>Pitfall 2: No Metrics</h3>
-<strong>Problem</strong>: Can't prove ROI without measurement.
-<strong>Solution</strong>: Instrument from day one. Usage, acceptance rate, and velocity metrics.
+<p><strong>Problem</strong>: Can't prove ROI without measurement.<br>
+<strong>Solution</strong>: Instrument from day one. Usage, acceptance rate, and velocity metrics.</p>
 
 <h3>Pitfall 3: Ignoring Security Concerns</h3>
-<strong>Problem</strong>: Security team blocks deployment due to data concerns.
-<strong>Solution</strong>: Involve security early. Route through proxy. Implement audit logging.
+<p><strong>Problem</strong>: Security team blocks deployment due to data concerns.<br>
+<strong>Solution</strong>: Involve security early. Route through proxy. Implement audit logging.</p>
 
 <h3>Pitfall 4: Poor Onboarding</h3>
-<strong>Problem</strong>: Developers don't know how to use AI effectively.
-<strong>Solution</strong>: Mandatory 30-minute training. Internal prompt library. Pair programming sessions.
+<p><strong>Problem</strong>: Developers don't know how to use AI effectively.<br>
+<strong>Solution</strong>: Mandatory 30-minute training. Internal prompt library. Pair programming sessions.</p>
 
 <h2>The Business Case</h2>
 
@@ -379,24 +383,24 @@ async function generateAPIClient(endpoint: string) {
 
 <p><strong>Productivity Gains</strong>:
 <ul>
-<li>% faster feature development</li>
-<li>% reduction in boilerplate code</li>
-<li>% fewer bugs in initial commits</li>
-</ul></p>
+<li>30% faster feature development</li>
+<li>40% reduction in boilerplate code</li>
+<li>25% fewer bugs in initial commits</li>
+</ul>
 
 <p><strong>Cost Analysis</strong>:
 <ul>
 <li>$50/developer/month for AI IDE</li>
-<li>hours saved per developer per week</li>
+<li>5 hours saved per developer per week</li>
 <li>ROI: 300%+ in first year</li>
-</ul></p>
+</ul>
 
 <p><strong>Risk Mitigation</strong>:
 <ul>
 <li>All AI interactions logged</li>
 <li>No direct internet access</li>
 <li>Compliance controls in place</li>
-</ul></p>
+</ul>
 
 <h2>Next Steps</h2>
 <ol>
@@ -409,19 +413,19 @@ async function generateAPIClient(endpoint: string) {
 
 <h2>Looking Ahead</h2>
 
-<p>AI IDEs are just the beginning. They create the foundation for:
+<p>AI IDEs are just the beginning. They create the foundation for:</p>
 <ul>
 <li>Agent-based development workflows</li>
 <li>Automated code review and testing</li>
 <li>AI-powered debugging and optimization</li>
 <li>Natural language to code pipelines</li>
-</ul></p>
+</ul>
 
 <p>But none of that matters if your developers aren't comfortable with AI. Start with IDEs. Build the muscle memory. Establish the governance. Then expand.</p>
 
 <p>---</p>
 
-<p><strong>Next in Series</strong>: <a href="/blog/ai-for-work-part-2-mcp-gateway" class="text-blue-600 hover:text-blue-800">Part 2: Building a Centralized MCP Gateway - The Context Layer</a></p>
+<p><strong>Next in Series</strong>: <a href="/blog/ai-for-work-part-2-mcp-gateway.html" class="text-blue-600 hover:text-blue-800">Part 2: Building a Centralized MCP Gateway - The Context Layer</a></p>
 
 <p><em>Have questions about AI IDE deployment? Reach out on <a href="https://twitter.com/ziyadmir" class="text-blue-600 hover:text-blue-800">Twitter</a> or <a href="https://linkedin.com/in/ziyadmir" class="text-blue-600 hover:text-blue-800">LinkedIn</a>.</em></p>
             

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building a Centralized MCP Gateway - The Context Layer | Ziyad Mir</title>
+    <title>Part 2: Building a Centralized MCP Gateway - The Context Layer | Ziyad Mir</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/shared-styles.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
@@ -108,8 +108,8 @@
 
     <main class="container mx-auto px-4 py-8 flex-grow">
         <article class="blog-content">
-            <h1 class="text-3xl font-bold text-primary mb-3">Building a Centralized MCP Gateway - The Context Layer</h1>
-            <p class="text-gray-500 text-sm mb-4">2025-01-22 · AI-for-Work Series</p>
+            <h1 class="text-3xl font-bold text-primary mb-3">Part 2: Building a Centralized MCP Gateway - The Context Layer</h1>
+            <p class="text-gray-500 text-sm mb-4">January 15, 2025 · AI-for-Work Series</p>
             
             <div class="flex gap-2 mb-6">
                 <span class="blog-tag">AI</span><span class="blog-tag">MCP</span><span class="blog-tag">Architecture</span><span class="blog-tag">Security</span><span class="blog-tag">Enterprise</span>
@@ -127,8 +127,7 @@
 
 <p>Model Context Protocol is an open standard for connecting LLMs to external context sources. Think of it as GraphQL for AI context:</p>
 
-<p>``<code>typescript
-// MCP Request
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">// MCP Request
 {
   "method": "context/search",
   "params": {
@@ -149,7 +148,7 @@
     }
   ]
 }
-</code>`<code></p>
+</code></pre>
 
 <h2>Why Centralize?</h2>
 
@@ -160,27 +159,27 @@
 <li>Developers storing credentials insecurely</li>
 <li>No audit trail of data access</li>
 <li>Inconsistent access controls</li>
-</ul></p>
+</ul>
 
 <p><strong>Operational Chaos</strong>:
 <ul>
 <li>,500 different configurations</li>
 <li>No monitoring or debugging</li>
 <li>Update nightmare</li>
-</ul></p>
+</ul>
 
 <p><strong>Performance Problems</strong>:
 <ul>
 <li>Redundant API calls</li>
 <li>No caching layer</li>
 <li>Resource waste</li>
-</ul></p>
+</ul>
 
 <p>A centralized gateway solves all these issues while adding enterprise capabilities.</p>
 
 <h2>Architecture Overview</h2>
 
-<p></code>`<code>
+<p></code></pre>
 ┌─────────────┐     ┌─────────────────┐     ┌──────────────┐
 │   AI IDEs   │────▶│   MCP Gateway   │────▶│Context Sources│
 │  (2,500+)   │     │  (Centralized)  │     │  GitHub      │
@@ -190,15 +189,17 @@
                     │ • Cache         │     │  Databases   │
                     │ • Audit Log     │     └──────────────┘
                     └─────────────────┘
-</code>`<code></p>
+</code></pre>
 
 <h2>Core Components</h2>
 
-<h3>1. Authentication Layer</h3>
+<p><strong>1. Authentication Layer</strong></p>
 
 <p>Every request must be authenticated:</p>
 
-<p></code>`<code>typescript
+<p></code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 class MCPAuthMiddleware {
   async authenticate(request: MCPRequest): Promise<AuthContext> {
     // Extract token from request
@@ -219,20 +220,22 @@ class MCPAuthMiddleware {
     };
   }
 }
-</code>`<code></p>
+</code></pre>
 
-<p>We use personal access tokens (PATs) with automatic rotation:
+<p>We use personal access tokens (PATs) with automatic rotation:</p>
 <ul>
 <li>day expiration</li>
 <li>Scope-limited permissions</li>
 <li>Audit trail of usage</li>
-</ul></p>
+</ul>
 
-<h3>2. Request Router</h3>
+<p><strong>2. Request Router</strong></p>
 
 <p>The router maps MCP requests to appropriate backends:</p>
 
-<p></code>`<code>typescript
+<p></code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 class MCPRouter {
   private handlers: Map<string, ContextHandler> = new Map([
     ['github', new GitHubHandler()],
@@ -261,13 +264,15 @@ class MCPRouter {
     return this.mergeResults(results);
   }
 }
-</code>`<code></p>
+</code></pre>
 
-<h3>3. Context Handlers</h3>
+<p><strong>3. Context Handlers</strong></p>
 
 <p>Each context source has a specialized handler:</p>
 
-<p></code>`<code>typescript
+<p></code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 class GitHubHandler implements ContextHandler {
   async handle(request: MCPRequest, auth: AuthContext): Promise<ContextResult[]> {
     // Transform MCP query to GitHub search
@@ -294,13 +299,15 @@ class GitHubHandler implements ContextHandler {
     }));
   }
 }
-</code>`<code></p>
+</code></pre>
 
-<h3>4. Caching Layer</h3>
+<p><strong>4. Caching Layer</strong></p>
 
 <p>Context doesn't change every millisecond. Aggressive caching dramatically improves performance:</p>
 
-<p></code>`<code>typescript
+<p></code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 class MCPCache {
   private redis: RedisClient;
   
@@ -333,13 +340,15 @@ class MCPCache {
     return 60; // 1 minute default
   }
 }
-</code>`<code></p>
+</code></pre>
 
-<h3>5. Audit Logging</h3>
+<p><strong>5. Audit Logging</strong></p>
 
 <p>Every context request is logged for compliance:</p>
 
-<p></code>`<code>typescript
+<p></code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 class MCPAuditLogger {
   async log(request: MCPRequest, auth: AuthContext, response: MCPResponse) {
     const entry = {
@@ -362,7 +371,7 @@ class MCPAuditLogger {
     ]);
   }
 }
-</code>`<code></p>
+</code></pre>
 
 <h2>Implementation Deep Dive</h2>
 
@@ -370,7 +379,8 @@ class MCPAuditLogger {
 
 <p>We run the gateway as a horizontally scalable service:</p>
 
-<p></code>`<code>yaml
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -404,22 +414,26 @@ spec:
             path: /health
             port: 8080
           periodSeconds: 10
-</code>`<code></p>
+</code></pre>
 
 <h3>Performance Optimizations</h3>
 
 <p><strong>1. Connection Pooling</strong>
-</code>`<code>typescript
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Reuse connections to backends
 const githubPool = new ConnectionPool({
   min: 10,
   max: 100,
   idleTimeout: 30000
 });
-</code>`<code></p>
+</code></pre>
 
 <p><strong>2. Request Deduplication</strong>
-</code>`<code>typescript
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // If multiple IDEs request same context, make one backend call
 const inflightRequests = new Map<string, Promise<any>>();</p>
 
@@ -437,10 +451,12 @@ const inflightRequests = new Map<string, Promise<any>>();</p>
     inflightRequests.delete(key);
   }
 }
-</code>`<code></p>
+</code></pre>
 
 <p><strong>3. Smart Batching</strong>
-</code>`<code>typescript
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Batch multiple queries to same source
 class QueryBatcher {
   private batch: Map<string, Set<string>> = new Map();
@@ -460,12 +476,14 @@ class QueryBatcher {
     return this.promises.get(query);
   }
 }
-</code>`<code></p>
+</code></pre>
 
 <h3>Security Hardening</h3>
 
 <p><strong>1. Request Validation</strong>
-</code>`<code>typescript
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 const requestSchema = z.object({
   method: z.enum(['context/search', 'context/get']),
   params: z.object({
@@ -478,10 +496,12 @@ const requestSchema = z.object({
 <p>function validateRequest(request: any): MCPRequest {
   return requestSchema.parse(request);
 }
-</code>`<code></p>
+</code></pre>
 
 <p><strong>2. Rate Limiting</strong>
-</code>`<code>typescript
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 const rateLimiter = new RateLimiter({
   points: 1000, // requests
   duration: 60, // per minute
@@ -495,10 +515,12 @@ const rateLimiter = new RateLimiter({
     throw new Error('Rate limit exceeded');
   }
 }
-</code>`<code></p>
+</code></pre>
 
 <p><strong>3. Content Filtering</strong>
-</code>`<code>typescript
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Prevent sensitive data leakage
 function filterResults(results: ContextResult[], auth: AuthContext): ContextResult[] {
   return results
@@ -506,7 +528,7 @@ function filterResults(results: ContextResult[], auth: AuthContext): ContextResu
     .filter(r => hasAccess(r.metadata, auth.permissions))
     .map(r => sanitizeContent(r));
 }
-</code>`<code></p>
+</code></pre>
 
 <h2>Monitoring and Operations</h2>
 
@@ -514,7 +536,8 @@ function filterResults(results: ContextResult[], auth: AuthContext): ContextResu
 
 <p>We track these KPIs on our Grafana dashboard:</p>
 
-<p></code>`<code>promql
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-promql">
 # Request rate by source
 rate(mcp_requests_total[5m]) by (source)</p>
 
@@ -526,7 +549,7 @@ histogram_quantile(0.99, mcp_request_duration_bucket) by (method)</p>
 
 <p># Error rate
 rate(mcp_errors_total[5m]) / rate(mcp_requests_total[5m])
-</code>``</p>
+</code></pre>
 
 <h3>Operational Runbook</h3>
 
@@ -537,21 +560,21 @@ rate(mcp_errors_total[5m]) / rate(mcp_requests_total[5m])
 <li>Check cache hit ratio (should be >80%)</li>
 <li>Verify backend service health</li>
 <li>Scale up if CPU >70%</li>
-</ol></p>
+</ol>
 
 <p><strong>Authentication Failures</strong>
 <ol>
 <li>Verify identity provider connectivity</li>
 <li>Check token expiration</li>
 <li>Review recent permission changes</li>
-</ol></p>
+</ol>
 
 <p><strong>Context Quality Issues</strong>
 <ol>
 <li>Analyze query patterns</li>
 <li>Tune relevance scoring</li>
 <li>Update index freshness</li>
-</ol></p>
+</ol>
 
 <h2>Lessons Learned</h2>
 
@@ -575,7 +598,7 @@ rate(mcp_errors_total[5m]) / rate(mcp_requests_total[5m])
 
 <p>Running MCP Gateway for 2,500 developers:</p>
 
-<table class="min-w-full border-collapse border border-gray-300 my-4">
+<table class="min-w-full border-collapse border border-gray-300 my-4" class="min-w-full border-collapse border border-gray-300 my-4">
 <thead><tr class="bg-gray-100">
 <th class="border border-gray-300 px-4 py-2 text-left">Component</th>
 <th class="border border-gray-300 px-4 py-2 text-left">Monthly Cost</th>
@@ -625,16 +648,16 @@ rate(mcp_errors_total[5m]) / rate(mcp_requests_total[5m])
 <li><strong>Week 3</strong>: Implement caching and monitoring</li>
 <li><strong>Week 4</strong>: Add audit logging and admin UI</li>
 <li><strong>Month 2</strong>: Scale to more sources and users</li>
-</ol></p>
+</ol>
 
 <h2>Open Source Components</h2>
 
-<p>We've open-sourced several components:
+<p>We've open-sourced several components:</p>
 <ul>
 <li><a href="https://github.com/yourcompany/mcp-auth" class="text-blue-600 hover:text-blue-800">mcp-auth</a>: Authentication middleware</li>
 <li><a href="https://github.com/yourcompany/mcp-cache" class="text-blue-600 hover:text-blue-800">mcp-cache</a>: Redis-based caching layer</li>
 <li><a href="https://github.com/yourcompany/mcp-router" class="text-blue-600 hover:text-blue-800">mcp-router</a>: Request routing engine</li>
-</ul></p>
+</ul>
 
 <h2>Future Enhancements</h2>
 
@@ -644,7 +667,7 @@ rate(mcp_errors_total[5m]) / rate(mcp_requests_total[5m])
 <li><strong>Proactive Context</strong>: Predict needed context before it's requested</li>
 <li><strong>Write Operations</strong>: Not just read, but update context sources</li>
 <li><strong>Federation</strong>: Connect to partner company MCP gateways</li>
-</ol></p>
+</ol>
 
 <h2>Conclusion</h2>
 
@@ -654,7 +677,7 @@ rate(mcp_errors_total[5m]) / rate(mcp_requests_total[5m])
 
 <p>---</p>
 
-<p><strong>Next in Series</strong>: <a href="/blog/ai-for-work-part-3-ai-observability" class="text-blue-600 hover:text-blue-800">Part 3: From Proxy Logs to Intelligence - Enterprise AI Observability</a></p>
+<p><strong>Next in Series</strong>: <a href="/blog/ai-for-work-part-3-ai-observability.html" class="text-blue-600 hover:text-blue-800">Part 3: From Proxy Logs to Intelligence - Enterprise AI Observability</a></p>
 
 <p><em>Building an MCP Gateway? I'd love to hear about your architecture choices. Find me on <a href="https://twitter.com/ziyadmir" class="text-blue-600 hover:text-blue-800">Twitter</a> or <a href="https://linkedin.com/in/ziyadmir" class="text-blue-600 hover:text-blue-800">LinkedIn</a>.</em></p>
             

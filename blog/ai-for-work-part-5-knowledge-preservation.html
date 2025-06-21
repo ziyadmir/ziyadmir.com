@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preserving Institutional Knowledge in the Age of AI | Ziyad Mir</title>
+    <title>Part 5: Preserving Institutional Knowledge in the Age of AI | Ziyad Mir</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/shared-styles.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
@@ -108,8 +108,8 @@
 
     <main class="container mx-auto px-4 py-8 flex-grow">
         <article class="blog-content">
-            <h1 class="text-3xl font-bold text-primary mb-3">Preserving Institutional Knowledge in the Age of AI</h1>
-            <p class="text-gray-500 text-sm mb-4">2025-01-25 · AI-for-Work Series</p>
+            <h1 class="text-3xl font-bold text-primary mb-3">Part 5: Preserving Institutional Knowledge in the Age of AI</h1>
+            <p class="text-gray-500 text-sm mb-4">April 15, 2025 · AI-for-Work Series</p>
             
             <div class="flex gap-2 mb-6">
                 <span class="blog-tag">AI</span><span class="blog-tag">Knowledge Management</span><span class="blog-tag">Enterprise</span><span class="blog-tag">Retention</span><span class="blog-tag">Context</span>
@@ -125,22 +125,21 @@
 
 <p>When we analyzed developer productivity metrics, we discovered a shocking pattern:</p>
 
-<p>``<code>mermaid
-graph LR
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-mermaid">graph LR
     A[Design Decision Made] --> B[Documented in Slack]
     B --> C[10 Days Pass]
     C --> D[Knowledge Lost]
     D --> E[6 Months Later...]
     E --> F[Same Decision Debated Again]
     F --> G[20 Hours Wasted]
-</code>`<code></p>
+</code></pre>
 
 <p><strong>Real Examples from Our Teams</strong>:
 <ul>
 <li>Architecture discussions lost → 3 teams independently built similar services</li>
 <li>Migration learnings vanished → Same database issues hit 5 different teams</li>
 <li>Incident post-mortems deleted → Similar outages repeated quarterly</li>
-</ul></p>
+</ul>
 
 <p>Conservative estimate: <strong>15% of engineering time</strong> spent rediscovering lost knowledge.</p>
 
@@ -148,22 +147,22 @@ graph LR
 
 <h3>The Documentation Myth</h3>
 
-<p>"Just document everything properly!" sounds great until you realize:
+<p>"Just document everything properly!" sounds great until you realize:</p>
 <ul>
-<li>Engineers document <em>after</em> the work is done (if at all)</li>
+<li>Engineers document *after* the work is done (if at all)</li>
 <li>By then, critical context from discussions is already gone</li>
 <li>Wiki pages become stale without the original conversation threads</li>
-</ul></p>
+</ul>
 
 <h3>The Archive Everything Approach</h3>
 
-<p>Some teams tried auto-archiving all communications:
+<p>Some teams tried auto-archiving all communications:</p>
 <ul>
 <li>Generated TBs of noise drowning out signal</li>
 <li>Made search impossible</li>
 <li>Created compliance nightmares</li>
 <li>Still lost context when tools changed</li>
-</ul></p>
+</ul>
 
 <h2>SaveBot: Selective Context Preservation</h2>
 
@@ -171,7 +170,7 @@ graph LR
 
 <h3>How It Works</h3>
 
-<p></code>`<code>
+<p></code></pre>
 User realizes discussion is important
          │
          ▼
@@ -186,26 +185,28 @@ User realizes discussion is important
          │
          ▼
    Searchable via MCP Gateway
-</code>`<code></p>
+</code></pre>
 
 <h3>The User Experience</h3>
 
 <p><strong>In Slack:</strong>
-</code>`<code>bash
+</code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-bash">
 /save thread PROJ-1234 "Architecture decision for service mesh"
-</code>`<code></p>
+</code></pre>
 
 <p><strong>Via Email:</strong>
 Forward important threads to </code>savebot@company.com<code> with subject:
-</code>`<code>
+</code></pre>
 FW: [SAVE: PROJ-1234] Security review feedback
-</code>`<code></p>
+</code></pre>
 
 <p><strong>In Wiki:</strong>
-</code>`<code>markdown
+</code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-markdown">
 <!-- @savebot preserve -->
 This page contains critical migration steps...
-</code>`<code></p>
+</code></pre>
 
 <h2>Architecture: Simple but Powerful</h2>
 
@@ -213,7 +214,7 @@ This page contains critical migration steps...
 
 <p>We evaluated multiple backends:</p>
 
-<table class="min-w-full border-collapse border border-gray-300 my-4">
+<table class="min-w-full border-collapse border border-gray-300 my-4" class="min-w-full border-collapse border border-gray-300 my-4">
 <thead><tr class="bg-gray-100">
 <th class="border border-gray-300 px-4 py-2 text-left">Storage Type</th>
 <th class="border border-gray-300 px-4 py-2 text-left">Chosen For</th>
@@ -241,7 +242,8 @@ This page contains critical migration steps...
 
 <p>Every saved item becomes searchable through our MCP gateway:</p>
 
-<p></code>`<code>python
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class SaveBotMCPTool:
     def search_preserved_knowledge(self, query: str, filters: dict):
         # Search across all preserved content
@@ -257,14 +259,14 @@ class SaveBotMCPTool:
         results.extend(self.search_confluence_preservations(query))
         
         return self.rank_by_relevance(results, query)
-</code>`<code></p>
+</code></pre>
 
-<p>This means AI agents can access historical context:
+<p>This means AI agents can access historical context:</p>
 <ul>
 <li>"What was the decision about service mesh architecture?"</li>
 <li>"Find all discussions about database migration issues"</li>
 <li>"Show security review feedback for authentication service"</li>
-</ul></p>
+</ul>
 
 <h3>Governance & Compliance</h3>
 
@@ -274,9 +276,11 @@ class SaveBotMCPTool:
 <li><strong>Audit Trail</strong>: Who saved, when, why</li>
 <li><strong>Access Control</strong>: Inherits from original source</li>
 <li><strong>Review Process</strong>: Quarterly audits of saved content</li>
-</ol></p>
+</ol>
 
-<p></code>`<code>json
+<p></code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-json">
 {
   "preservation_id": "pres_2025_01_24_abc123",
   "source": {
@@ -299,13 +303,14 @@ class SaveBotMCPTool:
     }
   ]
 }
-</code>`<code></p>
+</code></pre>
 
 <h2>Implementation Patterns</h2>
 
-<h3>1. Slack Integration</h3>
+<p><strong>1. Slack Integration</strong></p>
 
-<p></code>`<code>python
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 @app.command("/save")
 async def save_command(ack, command, client):
     await ack()
@@ -341,15 +346,16 @@ async def save_command(ack, command, client):
         
         # Notify user
         await respond_success(f"Thread preserved: {preservation_id}")
-</code>`<code></p>
+</code></pre>
 
-<h3>2. Email Integration</h3>
+<p><strong>2. Email Integration</strong></p>
 
-<p></code>`<code>python
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class SaveBotEmailHandler:
     def process_email(self, email_message):
         # Extract preservation request from subject
-        match = re.match(r'.<em>\[SAVE: ([\w-]+)\](.</em>)$', email_message.subject)
+        match = re.match(r'.*\[SAVE: ([\w-]+)\](.*)$', email_message.subject)
         if not match:
             return self.send_error_response("Missing [SAVE: TICKET-ID] in subject")
         
@@ -375,11 +381,12 @@ class SaveBotEmailHandler:
         
         # Confirm preservation
         self.send_confirmation(email_message.sender, preservation_id)
-</code>`<code></p>
+</code></pre>
 
-<h3>3. Wiki Integration</h3>
+<p><strong>3. Wiki Integration</strong></p>
 
-<p></code>`<code>python
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class WikiPreservationMonitor:
     def scan_for_preservation_tags(self):
         # Look for @savebot preserve comments
@@ -408,7 +415,7 @@ class WikiPreservationMonitor:
         
         # Index in MCP
         self.mcp_indexer.index_preserved_page(page)
-</code>`<code></p>
+</code></pre>
 
 <h2>Measuring Impact</h2>
 
@@ -416,7 +423,8 @@ class WikiPreservationMonitor:
 
 <p>After 6 months of SaveBot deployment:</p>
 
-<p></code>`<code>python
+<p></code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 metrics = {
     "preserved_items": {
         "slack_threads": 3847,
@@ -434,7 +442,7 @@ metrics = {
         "onboarding_time_saved": "2 days average"
     }
 }
-</code>``</p>
+</code></pre>
 
 <h3>Qualitative Feedback</h3>
 
@@ -446,23 +454,23 @@ metrics = {
 
 <h2>Best Practices for Knowledge Preservation</h2>
 
-<h3>1. Make It Frictionless</h3>
+<p><strong>1. Make It Frictionless</strong></p>
 
 <p>The moment someone thinks "this is important," they should be able to preserve it in under 10 seconds.</p>
 
-<h3>2. Preserve Context, Not Just Content</h3>
+<p><strong>2. Preserve Context, Not Just Content</strong></p>
 
 <p>Save the entire discussion thread, not just the final decision. The "why" is often more valuable than the "what."</p>
 
-<h3>3. Tag Meaningfully</h3>
+<p><strong>3. Tag Meaningfully</strong></p>
 
 <p>Require connection to projects/tickets. Free-form preservation leads to unsearchable archives.</p>
 
-<h3>4. Regular Pruning</h3>
+<p><strong>4. Regular Pruning</strong></p>
 
 <p>Not everything needs eternal preservation. Quarterly reviews keep the signal-to-noise ratio high.</p>
 
-<h3>5. Integrate with AI Workflows</h3>
+<p><strong>5. Integrate with AI Workflows</strong></p>
 
 <p>Preserved knowledge is most valuable when it's accessible to both humans and AI agents through your MCP gateway.</p>
 
@@ -511,13 +519,13 @@ metrics = {
 
 <h2>The Compound Effect</h2>
 
-<p>Knowledge preservation is a compound investment. Every saved discussion becomes a building block for future decisions. After a year, teams report:
+<p>Knowledge preservation is a compound investment. Every saved discussion becomes a building block for future decisions. After a year, teams report:</p>
 <ul>
 <li>% less time spent on "archaeology" (finding old decisions)</li>
-<li>% reduction in repeated mistakes</li>
-<li>% faster onboarding for new team members</li>
+<li>40% reduction in repeated mistakes</li>
+<li>30% faster onboarding for new team members</li>
 <li>AI agents that actually understand your organization's context</li>
-</ul></p>
+</ul>
 
 <h2>Conclusion</h2>
 
@@ -529,7 +537,7 @@ metrics = {
 
 <p>---</p>
 
-<p><strong>Next in Series</strong>: <a href="/blog/ai-for-work-part-6-work-as-code" class="text-blue-600 hover:text-blue-800">Part 6: Work-as-Code - The Micro-MCP Revolution</a></p>
+<p><strong>Next in Series</strong>: <a href="/blog/ai-for-work-part-6-work-as-code.html" class="text-blue-600 hover:text-blue-800">Part 6: Work-as-Code - The Micro-MCP Revolution</a></p>
 
 <p><em>Building knowledge preservation at your company? I'd love to hear your approach. Find me on <a href="https://twitter.com/ziyadmir" class="text-blue-600 hover:text-blue-800">Twitter</a> or <a href="https://linkedin.com/in/ziyadmir" class="text-blue-600 hover:text-blue-800">LinkedIn</a>.</em></p>
             

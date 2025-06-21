@@ -125,7 +125,8 @@
 
 <p>We measured our AI agents' effectiveness and found a disturbing pattern:</p>
 
-<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-mermaid">graph TD
+<div class="mermaid">
+graph TD
     A[AI Agent Starts Task] --> B{Can it be done via API?}
     B -->|Yes 10%| C[Agent Completes Autonomously]
     B -->|No 90%| D[Agent Asks Human]
@@ -135,7 +136,7 @@
     
     style D fill:#ff6b6b
     style E fill:#ff6b6b
-</code></pre>
+</div>
 
 <p><strong>The 90% Wall</strong>: Most engineering tasks require:
 <ul>
@@ -359,8 +360,7 @@ create_capacity_request(service, justification)
 
 <h3>Execution Platform</h3>
 
-</code></pre>
-<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-mermaid">
+<div class="mermaid">
 graph LR
     A[AI Agent] --> B[MCP Gateway]
     B --> C{Route to MCP}
@@ -374,7 +374,7 @@ graph LR
         H --> I[Execute Logic]
         I --> J[Audit Log]
     end
-</code></pre>
+</div>
 
 <h3>Discovery & Composition</h3>
 
@@ -486,8 +486,7 @@ blockers = [
 
 <p><strong>1. Velocity Acceleration</strong></p>
 
-</code></pre>
-<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-mermaid">
+<div class="mermaid">
 graph LR
     A[Task Request] --> B[AI Agent]
     B --> C{Find MCPs}
@@ -497,7 +496,7 @@ graph LR
     
     style A fill:#90EE90
     style F fill:#90EE90
-</code></pre>
+</div>
 
 <p>Tasks that took 30 minutes of human coordination now complete in 30 seconds.</p>
 

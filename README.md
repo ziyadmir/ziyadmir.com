@@ -1,4 +1,2 @@
 # ziyadmir.com
 Personal Website
-
-

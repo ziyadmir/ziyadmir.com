@@ -252,8 +252,7 @@
 
 <p><strong>2. Measure Relentlessly</strong></p>
 
-<p>Track both usage and impact:
-</code></pre>
+<p>Track both usage and impact:</p>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-sql">-- Daily Active Usage
 SELECT DATE(timestamp), COUNT(DISTINCT user_id)
@@ -261,7 +260,7 @@ FROM ai_ide_logs
 WHERE action_type = 'completion_accepted'
 GROUP BY DATE(timestamp);
 
-<p>-- Productivity Metrics
+-- Productivity Metrics
 SELECT 
   user_id,
   AVG(completion_acceptance_rate) as acceptance_rate,
@@ -294,8 +293,7 @@ GROUP BY user_id;
 
 <p><strong>2. Build Custom Tools</strong></p>
 
-<p>Extend the IDE with internal capabilities:
-</code></pre>
+<p>Extend the IDE with internal capabilities:</p>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Example: Internal API generator
@@ -323,8 +321,7 @@ async function generateAPIClient(endpoint: string) {
 
 <h3>What We Log</h3>
 
-<p>Every AI interaction should be logged:
-</code></pre>
+<p>Every AI interaction should be logged:</p>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-json">
 {

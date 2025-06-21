@@ -165,34 +165,26 @@
 <p><strong>1. Workflow Definition Language</strong></p>
 
 <p>We use YAML for defining agent workflows:</p>
-
-</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 name: dependency-update-workflow
 description: Automatically update dependencies and create PR
 triggers:
-<ul>
-<li>type: schedule</li>
-</ul>
+  - type: schedule
     cron: "0 9 * * MON"  # Weekly on Mondays
-<ul>
-<li>type: webhook</li>
-</ul>
-<p>    path: /api/workflows/dep-update</p>
+  - type: webhook
+    path: /api/workflows/dep-update
 
-<p>inputs:
+inputs:
   repository:
     type: string
     required: true
   update_type:
     type: enum
     values: [patch, minor, major]
-    default: patch</p>
+    default: patch
 
-<p>steps:</p>
-<ul>
-<li>id: analyze_deps</li>
-</ul>
+steps:
+  - id: analyze_deps
     agent: dependency-analyzer
     inputs:
       repo: ${inputs.repository}
@@ -200,18 +192,14 @@ triggers:
     outputs:
       updates: list[package_update]
       risk_score: float
-<ul>
-<li>id: check_breaking_changes</li>
-</ul>
+  - id: check_breaking_changes
     agent: breaking-change-detector
     when: ${steps.analyze_deps.outputs.risk_score} > 0.3
     inputs:
       updates: ${steps.analyze_deps.outputs.updates}
     outputs:
       breaking_changes: list[string]
-<ul>
-<li>id: update_code</li>
-</ul>
+  - id: update_code
     agent: code-updater
     inputs:
       repo: ${inputs.repository}
@@ -219,18 +207,14 @@ triggers:
       handle_breaking: ${steps.check_breaking_changes.outputs.breaking_changes}
     outputs:
       changed_files: list[string]
-<ul>
-<li>id: run_tests</li>
-</ul>
+  - id: run_tests
     agent: test-runner
     inputs:
       repo: ${inputs.repository}
       changed_files: ${steps.update_code.outputs.changed_files}
     outputs:
       test_results: test_report
-<ul>
-<li>id: create_pr</li>
-</ul>
+  - id: create_pr
     agent: pr-creator
     when: ${steps.run_tests.outputs.test_results.passed} == true
     inputs:
@@ -246,58 +230,25 @@ triggers:
 </code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class StepRunner:
-    def __init__(self):
-        self.k8s_client = kubernetes.client.BatchV1Api()
-        self.state_store = DynamoDBStateStore()
-        self.audit_logger = KinesisAuditLogger()
-        
     async def run_step(self, workflow_id: str, step: Step) -> StepResult:
-        # Evaluate conditions
+        # Skip if conditions not met
         if step.when and not self.evaluate_condition(step.when, workflow_id):
             return StepResult(status="skipped")
         
-        # Prepare execution environment
-        env = self.prepare_environment(workflow_id, step)
-        
-        # Create isolated K8s job
+        # Create isolated K8s job for the agent
         job = self.create_k8s_job(
             name=f"{workflow_id}-{step.id}",
             image=f"agents/{step.agent}:latest",
-            env=env,
-            resources=step.resources or self.default_resources()
+            env=self.prepare_environment(workflow_id, step)
         )
         
-        # Execute with monitoring
-        start_time = time.time()
-        try:
-            # Launch job
-            self.k8s_client.create_namespaced_job(
-                namespace="emux-agents",
-                body=job
-            )
-            
-            # Monitor execution
-            result = await self.monitor_job(job.metadata.name)
-            
-            # Store outputs
-            await self.state_store.save_step_output(
-                workflow_id, step.id, result.outputs
-            )
-            
-            # Audit log
-            await self.audit_logger.log_step_execution(
-                workflow_id=workflow_id,
-                step_id=step.id,
-                duration=time.time() - start_time,
-                status=result.status,
-                outputs_summary=self.summarize_outputs(result.outputs)
-            )
-            
-            return result
-            
-        except Exception as e:
-            # Handle failures gracefully
-            return await self.handle_step_failure(workflow_id, step, e)
+        # Execute and monitor
+        result = await self.monitor_job(job)
+        
+        # Persist outputs for next steps
+        await self.state_store.save_step_output(workflow_id, step.id, result.outputs)
+        
+        return result
 </code></pre>
 
 <p><strong>3. Agent Framework</strong></p>
@@ -326,50 +277,21 @@ class BaseAgent(ABC):
     def validate_outputs(self, outputs: Dict[str, Any]) -> None:
         """Validate output schema"""
         schema = self.get_output_schema()
-        jsonschema.validate(outputs, schema)</p>
+        jsonschema.validate(outputs, schema)
 
 # Example: Code Review Agent
 class CodeReviewAgent(BaseAgent):
-    def get_input_schema(self):
-        return {
-            "type": "object",
-            "properties": {
-                "pr_url": {"type": "string"},
-                "review_depth": {"type": "string", "enum": ["basic", "thorough"]},
-                "focus_areas": {"type": "array", "items": {"type": "string"}}
-            },
-            "required": ["pr_url"]
-        }
-    
     async def execute(self, inputs: Dict[str, Any]) -> Dict[str, Any]:
-        self.validate_inputs(inputs)
-        
-        # Fetch PR details
+        # Fetch and analyze PR
         pr_data = await self.fetch_pr_data(inputs['pr_url'])
+        reviews = await self.review_files(pr_data['files'], inputs.get('review_depth', 'basic'))
         
-        # Analyze each file
-        reviews = []
-        for file in pr_data['files']:
-            review = await self.review_file(
-                file=file,
-                context=pr_data['description'],
-                depth=inputs.get('review_depth', 'basic'),
-                focus=inputs.get('focus_areas', [])
-            )
-            reviews.append(review)
-        
-        # Synthesize overall review
-        summary = await self.synthesize_review(reviews)
-        
-        outputs = {
-            "summary": summary,
+        return {
+            "summary": await self.synthesize_review(reviews),
             "file_reviews": reviews,
             "risk_score": self.calculate_risk_score(reviews),
-            "suggested_changes": self.extract_suggestions(reviews)
+            "approved": all(r['approved'] for r in reviews)
         }
-        
-        self.validate_outputs(outputs)
-        return outputs
 </code></pre>
 
 <p><strong>4. State Management</strong></p>
@@ -596,41 +518,6 @@ class DynamicWorkflowGenerator:
         return workflow
 </code></pre>
 
-<p><strong>4. Self-Healing Workflows</strong></p>
-
-<p>Automatic error recovery:</p>
-
-</code></pre>
-<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
-class SelfHealingOrchestrator:
-    async def handle_step_failure(self, workflow_id: str, step: Step, error: Exception):
-        # Categorize error
-        error_type = self.categorize_error(error)
-        
-        # Apply healing strategy
-        if error_type == "transient":
-            # Simple retry with backoff
-            return await self.retry_with_backoff(workflow_id, step)
-            
-        elif error_type == "resource_constraint":
-            # Scale up resources and retry
-            step.resources = self.scale_resources(step.resources)
-            return await self.retry_step(workflow_id, step)
-            
-        elif error_type == "data_quality":
-            # Run data cleaning agent first
-            cleaning_step = Step(
-                id=f"{step.id}_cleaning",
-                agent="data-cleaner",
-                inputs=step.inputs
-            )
-            await self.run_step(workflow_id, cleaning_step)
-            return await self.retry_step(workflow_id, step)
-            
-        else:
-            # Unrecoverable - notify humans
-            await self.escalate_to_human(workflow_id, step, error)
-</code></pre>
 
 <h2>Real-World Workflows</h2>
 
@@ -733,67 +620,6 @@ steps:
 <li>Reduces review cycle time by 50%</li>
 </ul>
 
-<p><strong>3. Incident Response Automation</strong></p>
-
-</code></pre>
-<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
-name: incident-responder
-triggers:
-<ul>
-<li>type: alert_webhook</li>
-</ul>
-    source: prometheus
-    
-steps:
-<ul>
-<li>agent: incident-analyzer</li>
-</ul>
-    inputs:
-      alert: ${trigger.alert}
-<ul>
-<li>parallel:</li>
-<li>agent: log-analyzer</li>
-</ul>
-      inputs: 
-        time_range: ${alert.time_range}
-        service: ${alert.service}
-<ul>
-<li>agent: metric-analyzer</li>
-</ul>
-      inputs:
-        metrics: ${alert.related_metrics}
-<ul>
-<li>agent: root-cause-identifier</li>
-</ul>
-    inputs:
-      logs: ${log_analysis}
-      metrics: ${metric_analysis}
-<ul>
-<li>agent: fix-generator</li>
-</ul>
-    when: ${root_cause.confidence} > 0.8
-<ul>
-<li>agent: fix-validator</li>
-</ul>
-    inputs:
-      fix: ${generated_fix}
-<ul>
-<li>type: human_approval</li>
-</ul>
-    when: ${fix.risk_score} > 0.5
-    timeout: 15m
-<ul>
-<li>agent: fix-applier</li>
-</ul>
-    when: ${approval.decision} == "approve"
-</code></pre>
-
-<p><strong>Results</strong>:
-<ul>
-<li>% of incidents resolved without human intervention</li>
-<li>minute average resolution time (down from 45 minutes)</li>
-<li>40% reduction in cascade failures</li>
-</ul>
 
 <h2>Security and Governance</h2>
 
@@ -840,23 +666,9 @@ class AgentPermissionManager:
   "workflow_id": "dep-update-2025-01-24",
   "step_id": "create_pr",
   "agent": "pr-creator",
-  "timestamp": "2025-01-24T10:30:45Z",
-  "inputs_hash": "sha256:abcd1234...",
-  "outputs_summary": {
-    "pr_number": 1234,
-    "files_changed": 5,
-    "additions": 120,
-    "deletions": 45
-  },
-  "resources_used": {
-    "llm_tokens": 2500,
-    "cpu_seconds": 45,
-    "memory_mb_seconds": 2048
-  },
-  "security_context": {
-    "triggered_by": "schedule",
-    "permissions_used": ["github:write", "mcp:read"]
-  }
+  "outputs_summary": {"pr_number": 1234, "files_changed": 5},
+  "resources_used": {"llm_tokens": 2500, "cpu_seconds": 45},
+  "permissions_used": ["github:write", "mcp:read"]
 }
 </code></pre>
 

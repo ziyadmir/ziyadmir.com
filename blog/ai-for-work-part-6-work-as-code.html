@@ -152,8 +152,6 @@ graph TD
 
 <h3>Traditional MCP Approach (What We Had)</h3>
 
-</code></pre>
-
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Coarse-grained MCP - trying to do too much
 class JiraMCPTool {
@@ -183,8 +181,6 @@ class JiraMCPTool {
 </ul>
 
 <h3>Micro-MCP Approach (The Revolution)</h3>
-
-</code></pre>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Each task is its own MCP - do one thing well
@@ -218,36 +214,22 @@ class ToggleFeatureFlagMCP {
 <p>To scale from dozens to thousands of MCPs, we built a factory system:</p>
 
 <p><strong>1. CLI Tool for MCP Creation</strong></p>
-
-</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-bash">
-$ mcp create check-service-health</p>
+$ mcp create check-service-health
 
-<p>? What does this MCP do? Check health status of a service
+? What does this MCP do? Check health status of a service
 ? Input parameters? serviceId:string, environment:enum[prod,staging,dev]
 ? Output type? HealthStatus object
-? Auth required? Read access to service registry
-? Idempotent? Yes
-? Example usage? Check if payment-service is healthy in prod</p>
 
-<p>✓ Created MCP scaffold at ./mcps/check-service-health/
-✓ Generated TypeScript interface
-✓ Created test template
-✓ Added to MCP registry</p>
-
-<p>Next steps:
-<ol>
-<li>Implement execute() method in index.ts</li>
-<li>Run 'mcp test' to validate</li>
-<li>Run 'mcp publish' to deploy</li>
-</ol>
+✓ Created MCP scaffold at ./mcps/check-service-health/
+✓ Ready to implement in index.ts
 </code></pre>
 
 <p><strong>2. Standardized Structure</strong></p>
 
 <p>Every micro-MCP follows the same pattern:</p>
 
-</code></pre>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code>
 check-service-health/
 ├── index.ts           # Implementation (≤100 lines)
 ├── schema.json        # Input/output contracts  
@@ -258,41 +240,20 @@ check-service-health/
 
 <p><strong>3. Central Registry</strong></p>
 
-</code></pre>
-
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-json">
 {
   "mcp_id": "check-service-health",
-  "version": "1.0.0",
   "description": "Check health status of a service",
   "category": "observability",
   "inputs": {
-    "serviceId": {
-      "type": "string",
-      "description": "Service identifier",
-      "example": "payment-service"
-    },
-    "environment": {
-      "type": "enum",
-      "values": ["prod", "staging", "dev"],
-      "description": "Target environment"
-    }
+    "serviceId": {"type": "string"},
+    "environment": {"type": "enum", "values": ["prod", "staging", "dev"]}
   },
   "output": {
-    "type": "object",
-    "properties": {
-      "status": {"type": "enum", "values": ["healthy", "degraded", "down"]},
-      "latency_ms": {"type": "number"},
-      "last_check": {"type": "timestamp"}
-    }
+    "status": "healthy | degraded | down",
+    "latency_ms": "number"
   },
-  "sla": {
-    "timeout_ms": 5000,
-    "availability": 0.999
-  },
-  "auth": {
-    "required_scopes": ["service:read"]
-  }
+  "auth": ["service:read"]
 }
 </code></pre>
 
@@ -301,60 +262,31 @@ check-service-health/
 <p>After 6 months, we've built 1,000+ micro-MCPs. Here are the categories that emerged:</p>
 
 <h3>Observability MCPs</h3>
-</code></pre>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Before: SSH to box, grep logs, parse with awk
 get_error_rate(service, timeRange)
 
-<p>// Before: Open Grafana, navigate to dashboard, screenshot
-fetch_p99_latency(service, metric, duration)</p>
+// Before: Open Grafana, navigate to dashboard, screenshot
+fetch_p99_latency(service, metric, duration)
 
-<p>// Before: Custom script on monitoring host
+// Before: Custom script on monitoring host
 list_firing_alerts(severity, team)
 </code></pre>
 
 <h3>Configuration MCPs</h3>
-</code></pre>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Before: Jenkins UI navigation  
 toggle_feature_flag(flag, env, state)
 
-<p>// Before: K8s kubectl commands with complex selectors
-scale_deployment(service, replicas, env)</p>
+// Before: K8s kubectl commands with complex selectors
+scale_deployment(service, replicas, env)
 
-<p>// Before: AWS console clicking
+// Before: AWS console clicking
 update_parameter_store(key, value, env)
 </code></pre>
 
-<h3>Cost & Capacity MCPs</h3>
-</code></pre>
-
-<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
-// Before: Manually export from AWS Cost Explorer
-get_service_aws_cost(service, period)
-
-<p>// Before: Spreadsheet with formulas
-calculate_capacity_remaining(service, growth_rate)</p>
-
-<p>// Before: SQL query on internal database
-check_quota_usage(resource, team)
-</code></pre>
-
-<h3>Operational MCPs</h3>
-</code></pre>
-
-<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
-// Before: Slack search for runbook
-get_oncall_runbook(service, alert_type)
-
-<p>// Before: Multiple dashboard checks
-verify_deployment_safety(service, version)</p>
-
-<p>// Before: Manual ticket creation
-create_capacity_request(service, justification)
-</code></pre>
 
 <h2>The Architecture Behind 1,000 MCPs</h2>
 
@@ -377,8 +309,6 @@ graph LR
 </div>
 
 <h3>Discovery & Composition</h3>
-
-</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 class MCPDiscoveryService:
     def find_mcps_for_task(self, task_description: str) -> List[MCP]:
@@ -408,43 +338,20 @@ class MCPDiscoveryService:
 <h3>Quality Enforcement</h3>
 
 <p>Every MCP must pass automated checks:</p>
-
-</code></pre>
-<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
-class MCPQualityGates:
-    def validate_new_mcp(self, mcp_path: str) -> ValidationResult:
-        results = []
-        
-        # Size check
-        results.append(self.check_size_limit(mcp_path))  # ≤100 lines
-        
-        # Contract validation  
-        results.append(self.validate_schema(mcp_path))
-        
-        # Naming standards
-        results.append(self.check_naming_convention(mcp_path))
-        
-        # Test coverage
-        results.append(self.check_test_coverage(mcp_path))  # ≥80%
-        
-        # Idempotency verification
-        results.append(self.verify_idempotency(mcp_path))
-        
-        # Documentation completeness
-        results.append(self.check_documentation(mcp_path))
-        
-        # Security scan
-        results.append(self.security_scan(mcp_path))
-        
-        return ValidationResult(results)
-</code></pre>
+<ul>
+<li>Size limit: ≤100 lines of code</li>
+<li>Contract validation: Input/output schemas</li>
+<li>Test coverage: ≥80%</li>
+<li>Idempotency: Must be safe to retry</li>
+<li>Documentation: Complete README</li>
+<li>Security scan: No secrets or vulnerabilities</li>
+</ul>
 
 <h2>Measuring AI Autonomy</h2>
 
 <p>We track the <strong>AI Autonomy Index</strong>: percentage of tasks completed without human intervention.</p>
 
 <h3>Before Micro-MCPs</h3>
-</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 autonomy_metrics = {
     "tasks_attempted": 10000,
@@ -464,7 +371,6 @@ blockers = [
 </code></pre>
 
 <h3>After Micro-MCPs</h3>
-</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
 autonomy_metrics = {
     "tasks_attempted": 10000,
@@ -486,25 +392,11 @@ blockers = [
 
 <p><strong>1. Velocity Acceleration</strong></p>
 
-<div class="mermaid">
-graph LR
-    A[Task Request] --> B[AI Agent]
-    B --> C{Find MCPs}
-    C --> D[Compose Workflow]
-    D --> E[Execute Autonomously]
-    E --> F[Task Complete]
-    
-    style A fill:#90EE90
-    style F fill:#90EE90
-</div>
-
 <p>Tasks that took 30 minutes of human coordination now complete in 30 seconds.</p>
 
 <p><strong>2. Tribal Knowledge Codification</strong></p>
 
 <p>Every micro-MCP captures institutional knowledge:</p>
-
-</code></pre>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // The comment explains what took 3 years to learn
@@ -557,12 +449,13 @@ class CheckCanaryDeploymentMCP {
 npm install -g @company/mcp-factory
 
 # Create your first micro-MCP
-mcp create get-service-uptime</p>
+mcp create get-service-uptime
 
 # Implement, test, publish
 cd mcps/get-service-uptime
 npm test
 mcp publish
+</code></pre>
 
 <h3>Week 3-4: High-Value Targets</h3>
 Identify your top 20 "toil tasks" and convert them:
@@ -592,7 +485,6 @@ Identify your top 20 "toil tasks" and convert them:
 <h2>Common Patterns and Anti-Patterns</h2>
 
 <h3>✅ Good Micro-MCP</h3>
-</code></pre>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Single purpose, clear contract
@@ -611,7 +503,6 @@ class GetDatabaseConnectionCountMCP {
 </code></pre>
 
 <h3>❌ Bad Micro-MCP</h3>
-</code></pre>
 
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
 // Trying to do too much
@@ -628,47 +519,31 @@ class DatabaseManagementMCP {
 <h2>The Network Effect</h2>
 
 <p>The magic happens when micro-MCPs start composing:</p>
-
-</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 # AI agents can now build complex workflows
 name: investigate-latency-spike
 steps:
-<ul>
-<li>mcp: get-service-p99-latency</li>
-</ul>
+  - mcp: get-service-p99-latency
     params: 
       service: api-gateway
       duration: 1h
-<ul>
-<li>mcp: get-dependent-services</li>
-</ul>
+  - mcp: get-dependent-services
     params:
       service: api-gateway
-<ul>
-<li>parallel:</li>
-<li>mcp: check-database-connections</li>
-</ul>
+  - parallel:
+    - mcp: check-database-connections
       params: 
         database: primary-db
-<ul>
-<li>mcp: get-cache-hit-rate</li>
-</ul>
+    - mcp: get-cache-hit-rate
       params:
         cache: redis-main
-<ul>
-<li>mcp: list-recent-deployments</li>
-</ul>
+    - mcp: list-recent-deployments
       params:
         services: ${dependent_services}
-<ul>
-<li>mcp: correlate-metrics</li>
-</ul>
+  - mcp: correlate-metrics
     params:
       metrics: ${all_previous_outputs}
-<ul>
-<li>mcp: generate-investigation-report</li>
-</ul>
+  - mcp: generate-investigation-report
     params:
       findings: ${correlations}
 </code></pre>

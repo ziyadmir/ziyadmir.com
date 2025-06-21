@@ -7,172 +7,371 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/shared-styles.css" rel="stylesheet">
     <style type="text/css">
-        html { font-size: 15px; } /* Slightly smaller base font */
-        body { font-size: 0.95rem; }
+        /* Page header */
+        .page-header {
+            padding: var(--space-3xl) 0;
+            text-align: center;
+            border-bottom: 1px solid var(--color-border-light);
+        }
         
-        /* Project cards */
+        .page-title {
+            font-size: var(--font-4xl);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--space-md);
+            color: var(--color-text-primary);
+        }
+        
+        .page-subtitle {
+            font-size: var(--font-lg);
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Project grid */
+        .projects-section {
+            padding: var(--space-3xl) 0;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-2xl);
+            margin-top: var(--space-3xl);
+        }
+        
+        /* Modern project card */
         .project-card {
-            transition: all 0.3s ease;
+            background: var(--color-background);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-xl);
             overflow: hidden;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all var(--transition-base);
             display: flex;
             flex-direction: column;
         }
         
         .project-card:hover {
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
+            border-color: var(--color-border);
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
         }
         
-        .project-card-content {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        
+        /* Project header with gradient overlay */
         .project-header {
-            height: auto;
-            min-height: 160px;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .project-header-content {
+            position: absolute;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            padding: var(--space-2xl);
+            background: rgba(0, 0, 0, 0.4);
+        }
+        
+        .project-title {
+            font-size: var(--font-2xl);
+            font-weight: 600;
             color: white;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Project content */
+        .project-content {
+            padding: var(--space-2xl);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-description {
+            font-size: var(--font-base);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-xl);
+            flex-grow: 1;
+        }
+        
+        /* Project tags */
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
         }
         
         .project-tag {
             display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            background-color: #f3f4f6;
-            color: #4b5563;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: var(--font-xs);
+            font-weight: 500;
+            background-color: var(--color-surface);
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border-light);
+            transition: all var(--transition-fast);
         }
         
-        /* Mobile optimizations */
-        @media (max-width: 640px) {
-            .container {
-                padding-left: 0.75rem !important;
-                padding-right: 0.75rem !important;
-            }
-            
-            .text-3xl, .text-4xl {
-                font-size: 1.25rem !important;
-            }
-            
-            .text-2xl {
-                font-size: 1.1rem !important;
-            }
-            
-            .text-xl {
-                font-size: 1rem !important;
-            }
-            
-            .p-6 {
-                padding: 1rem !important;
-            }
-            
-            .py-8 {
-                padding-top: 1.5rem !important;
-                padding-bottom: 1.5rem !important;
-            }
-            
-            .gap-8 {
-                gap: 1.5rem !important;
+        .project-tag:hover {
+            background-color: var(--color-text-primary);
+            color: white;
+            border-color: var(--color-text-primary);
+        }
+        
+        /* Project link */
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--color-accent);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            font-size: var(--font-sm);
+        }
+        
+        .project-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform var(--transition-fast);
+        }
+        
+        .project-link:hover {
+            color: var(--color-accent-hover);
+        }
+        
+        .project-link:hover svg {
+            transform: translateX(4px);
+        }
+        
+        /* Custom gradients for each project */
+        .gradient-flash {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-shorts {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .gradient-brandshift {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+        
+        .gradient-rosetta {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .gradient-coupang {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        /* CTA section */
+        .cta-section {
+            padding: var(--space-3xl) 0;
+            text-align: center;
+            background-color: var(--color-surface);
+            border-radius: var(--radius-xl);
+            margin-top: var(--space-3xl);
+        }
+        
+        .cta-title {
+            font-size: var(--font-2xl);
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            color: var(--color-text-primary);
+        }
+        
+        .cta-description {
+            font-size: var(--font-base);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-xl);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: var(--font-3xl);
             }
             
             .project-header {
-                min-height: 120px;
-                padding: 1rem;
+                height: 180px;
             }
             
-            .project-header h2 {
-                font-size: 1.25rem !important;
+            .project-title {
+                font-size: var(--font-xl);
+            }
+            
+            .project-content {
+                padding: var(--space-lg);
             }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+<body>
     <!-- Shared header will be loaded here -->
     <div id="shared-header"></div>
 
-    <main class="container mx-auto px-4 py-6 flex-grow">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-3xl font-bold text-primary mb-6">Key Projects</h1>
-            
-            <div class="grid grid-cols-1 gap-6">
-                <div class="project-card bg-white shadow-md">
-                    <div class="project-header" style="background-image: url('https://techcrunch.com/wp-content/uploads/2025/05/Peak-Points-Still-e1747247791393.png'); background-size: cover; background-position: center;">
-                        <h2 class="text-xl font-bold text-white text-center" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8); background-color: rgba(0,0,0,0.7); padding: 0.5rem 1rem; border-radius: 0.25rem; position: relative; z-index: 1;">YouTube Flash: Moment-Level YouTube Ads</h2>
-                    </div>
-                    <div class="p-5">
-                        <p class="text-gray-700 text-sm mb-4">Developed next-generation Brand Advertising solution using multimodal, video content understanding models (Gemini, PaLI, ytbert-ASR) for emotion analysis to build and reinforce Brand Identity. Generated hundreds of millions in incremental ARR for YouTube.</p>
-                        <div class="flex flex-wrap mb-3">
-                            <span class="project-tag">Java</span>
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">Gemini</span>
-                            <span class="project-tag">Machine Learning</span>
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title animate-fadeIn">Key Projects</h1>
+                <p class="page-subtitle animate-fadeIn" style="animation-delay: 0.1s;">
+                    Engineering initiatives that have driven significant business impact across enterprise AI, distributed systems, and developer productivity.
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <section class="projects-section">
+            <div class="container">
+                <div class="project-grid">
+                    <!-- YouTube Flash -->
+                    <article class="project-card animate-fadeIn" style="animation-delay: 0.2s;">
+                        <div class="project-header gradient-flash">
+                            <div class="project-header-content">
+                                <h2 class="project-title">YouTube Flash: Moment-Level YouTube Ads</h2>
+                            </div>
                         </div>
-                        <a href="/projects/youtube-flash.html" class="text-blue-600 hover:text-blue-800 text-sm font-medium block mt-3">View project details →</a>
-                    </div>
+                        <div class="project-content">
+                            <p class="project-description">
+                                Developed next-generation Brand Advertising solution using multimodal, video content understanding models (Gemini, PaLI, ytbert-ASR) for emotion analysis to build and reinforce Brand Identity. Generated hundreds of millions in incremental ARR for YouTube.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Java</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Gemini</span>
+                                <span class="project-tag">Machine Learning</span>
+                            </div>
+                            <a href="/projects/youtube-flash.html" class="project-link">
+                                View project details
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- YouTube Select for Shorts -->
+                    <article class="project-card animate-fadeIn" style="animation-delay: 0.3s;">
+                        <div class="project-header gradient-shorts">
+                            <div class="project-header-content">
+                                <h2 class="project-title">YouTube Select for Shorts</h2>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-description">
+                                Launched and grew new Brand Advertising business for YouTube Shorts, competing directly with TikTok Pulse and Instagram Contextual Ads. Initiated and coordinated cross-YouTube efforts with partner senior ICs and leads, generating hundreds of millions in incremental ARR.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">JavaScript</span>
+                                <span class="project-tag">Java</span>
+                                <span class="project-tag">Spanner</span>
+                            </div>
+                            <a href="/projects/youtube-select-shorts.html" class="project-link">
+                                View project details
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- BrandShift -->
+                    <article class="project-card animate-fadeIn" style="animation-delay: 0.4s;">
+                        <div class="project-header gradient-brandshift">
+                            <div class="project-header-content">
+                                <h2 class="project-title">BrandShift: Metrics for Branded YouTube Ads</h2>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-description">
+                                Developed next-generation metrics for Brand Identity ($XB ARR in targeting products). Evolved BrandLift into BrandShift: a holistic brand perception measurement solution (partnering with Google Ads Measurement, Reporting, Target Frequency and Sequencing and Video Understanding teams).
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Java</span>
+                                <span class="project-tag">Data Analysis</span>
+                            </div>
+                            <a href="/projects/brandshift.html" class="project-link">
+                                View project details
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Uber Rosetta -->
+                    <article class="project-card animate-fadeIn" style="animation-delay: 0.5s;">
+                        <div class="project-header gradient-rosetta">
+                            <div class="project-header-content">
+                                <h2 class="project-title">Uber Rosetta: Translations Service</h2>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-description">
+                                Technical Lead for Rosetta, the translations (i18n) service which had the highest read throughput of all 2000+ microservices at Uber. Also led the integration of ML onto Communications Platform with the AutoML (Michelangelo) team, resulting in 50% increase in communication engagement and significant cost savings.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Go</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">MySQL</span>
+                                <span class="project-tag">Redis</span>
+                            </div>
+                            <a href="/projects/uber-rosetta.html" class="project-link">
+                                View project details
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Coupang AI-for-Work -->
+                    <article class="project-card animate-fadeIn" style="animation-delay: 0.6s;">
+                        <div class="project-header gradient-coupang">
+                            <div class="project-header-content">
+                                <h2 class="project-title">Coupang AI-for-Work Initiative</h2>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-description">
+                                Leading enterprise-wide AI transformation that has fundamentally changed how 2,500+ engineers work. Built centralized MCP Gateway, AI observability platform, and agent orchestration systems. Achieved 40%+ productivity gains through systematic AI tool adoption.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">TypeScript</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">AI Infrastructure</span>
+                                <span class="project-tag">Enterprise Scale</span>
+                            </div>
+                            <a href="/projects/coupang-ai-work.html" class="project-link">
+                                View project details
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
                 </div>
 
-                <div class="project-card bg-white shadow-md">
-                    <div class="project-header" style="background-image: url('images/projects/youtube-select-shorts-banner.png'); background-size: cover; background-position: center 20%; min-height: 160px;">
-                        <h2 class="text-xl font-bold text-white text-center" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8); background-color: rgba(0,0,0,0.7); padding: 0.5rem 1rem; border-radius: 0.25rem;">YouTube Select for Shorts</h2>
-                    </div>
-                    <div class="p-5">
-                        <p class="text-gray-700 text-sm mb-4">Launched and grew new Brand Advertising business for YouTube Shorts, competing directly with TikTok Pulse and Instagram Contextual Ads. Initiated and coordinated cross-YouTube efforts with partner senior ICs and leads, generating hundreds of millions in incremental ARR.</p>
-                        <div class="flex flex-wrap mb-3">
-                            <span class="project-tag">JavaScript</span>
-                            <span class="project-tag">Java</span>
-                            <span class="project-tag">Spanner</span>
-                        </div>
-                        <a href="/projects/youtube-select-shorts.html" class="text-blue-600 hover:text-blue-800 text-sm font-medium inline-block">View project details →</a>
-                    </div>
-                </div>
-
-                <div class="project-card bg-white shadow-md">
-                    <div class="project-header bg-green-500">
-                        <h2 class="text-xl font-bold text-white text-center">BrandShift: Metrics for Branded YouTube Ads</h2>
-                    </div>
-                    <div class="p-5">
-                        <p class="text-gray-700 text-sm mb-4">Developed next-generation metrics for Brand Identity ($XB ARR in targeting products). Evolved BrandLift into BrandShift: a holistic brand perception measurement solution (partnering with Google Ads Measurement, Reporting, Target Frequency and Sequencing and Video Understanding teams).</p>
-                        <div class="flex flex-wrap mb-3">
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">Java</span>
-                            <span class="project-tag">Data Analysis</span>
-                        </div>
-                        <a href="/projects/brandshift.html" class="text-blue-600 hover:text-blue-800 text-sm font-medium block mt-3">View project details →</a>
-                    </div>
-                </div>
-
-                <div class="project-card bg-white shadow-md">
-                    <div class="project-header" style="background-image: url('images/projects/uber-rosetta-banner.png'); background-size: cover; background-position: center;">
-                        <h2 class="text-xl font-bold text-white text-center" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8); background-color: rgba(0,0,0,0.7); padding: 0.5rem 1rem; border-radius: 0.25rem;">Uber Rosetta: Translations Service</h2>
-                    </div>
-                    <div class="p-5">
-                        <p class="text-gray-700 text-sm mb-4">Technical Lead for Rosetta, the translations (i18n) service which had the highest read throughput of all 2000+ microservices at Uber. Also led the integration of ML onto Communications Platform with the AutoML (Michelangelo) team, resulting in 50% increase in communication engagement and significant cost savings.</p>
-                        <div class="flex flex-wrap mb-3">
-                            <span class="project-tag">Go</span>
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">MySQL</span>
-                            <span class="project-tag">Redis</span>
-                        </div>
-                        <a href="/projects/uber-rosetta.html" class="text-blue-600 hover:text-blue-800 text-sm font-medium block mt-3">View project details →</a>
-                    </div>
+                <!-- CTA Section -->
+                <div class="cta-section">
+                    <h2 class="cta-title">Interested in discussing these projects?</h2>
+                    <p class="cta-description">I'm always open to connecting with fellow engineers and discussing technical challenges.</p>
+                    <a href="mailto:ziyadmir@gmail.com" class="btn btn-primary">Get in Touch</a>
                 </div>
             </div>
-            
-            <div class="bg-gray-50 p-6 rounded-lg text-center border border-gray-200 shadow-sm mt-8">
-                <h2 class="text-xl font-bold text-primary mb-3">Interested in discussing these projects?</h2>
-                <p class="text-base text-gray-600 mb-4">I'm always open to connecting with fellow engineers and discussing technical challenges.</p>
-                <a href="mailto:ziyadmir@gmail.com" class="px-4 py-2 bg-primary text-white text-sm rounded-lg hover:bg-secondary transition duration-300 shadow-md inline-block" style="background-color: var(--color-primary);">Get in Touch</a>
-            </div>
-        </div>
+        </section>
     </main>
 
     <!-- Shared footer will be loaded here -->

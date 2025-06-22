@@ -17,9 +17,48 @@
         
         .hero-content {
             width: 100%;
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .hero-text {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .hero-image {
+            flex: 0 0 300px;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .hero-text {
+                text-align: center;
+            }
+            
+            .hero-image {
+                flex: 0 0 200px;
+                order: -1;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
         }
         
         .hero-title {
@@ -36,13 +75,13 @@
             color: var(--color-text-secondary);
             line-height: 1.7;
             max-width: 700px;
-            margin: 0 auto var(--space-2xl);
+            margin: 0 0 var(--space-2xl) 0;
         }
         
         .hero-buttons {
             display: flex;
             gap: var(--space-lg);
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: wrap;
         }
         
@@ -201,14 +240,19 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-content fade-in">
-                    <h1 class="hero-title">Ziyad Mir</h1>
-                    <p class="hero-subtitle">
-                        Software Engineer scaling distributed systems and deploying enterprise AI solutions.
-                        Currently at Coupang leading AI-for-Work initiatives. Previously drove $100M+ incremental ARR at Google/YouTube.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="/about.html" class="btn btn-primary">About Me</a>
-                        <a href="/projects.html" class="btn btn-secondary">View Projects</a>
+                    <div class="hero-text">
+                        <h1 class="hero-title">Ziyad Mir</h1>
+                        <p class="hero-subtitle">
+                            Software Engineer scaling distributed systems and deploying enterprise AI solutions.
+                            Currently at Coupang leading AI-for-Work initiatives. Previously drove $100M+ incremental ARR at Google/YouTube.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="/about.html" class="btn btn-primary">About Me</a>
+                            <a href="/projects.html" class="btn btn-secondary">View Projects</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="/images/projects/ziyad-headshot.png" alt="Ziyad Mir">
                     </div>
                 </div>
             </div>

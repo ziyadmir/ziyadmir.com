@@ -339,6 +339,14 @@ body {
     }
 }
 
+/* Related projects spacing */
+.related-projects {
+    border-top: 1px solid var(--color-border, #e5e7eb);
+    padding-top: var(--space-xl, 2rem);
+    margin-top: var(--space-xl, 2rem);
+    padding-bottom: var(--space-xl, 2rem);
+}
+
 /* Add spacing to account for fixed header */
 body {
     padding-top: 80px;

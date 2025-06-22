@@ -116,6 +116,16 @@ body {
     text-decoration: none;
     letter-spacing: -0.02em;
     transition: opacity var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.site-brand-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .site-brand:hover {

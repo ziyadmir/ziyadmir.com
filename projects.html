@@ -51,6 +51,7 @@
             transition: all var(--transition-base);
             display: flex;
             flex-direction: column;
+            position: relative;
         }
         
         .project-card:hover {
@@ -139,6 +140,16 @@
             text-decoration: none;
             transition: all var(--transition-fast);
             font-size: var(--font-sm);
+        }
+        
+        .project-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
         }
         
         .project-link svg {

@@ -57,7 +57,7 @@ function includeHTML() {
     }
     
     const footerElement = document.getElementById('shared-footer');
-    
+
     if (footerElement) {
         fetch('/footer.html')
             .then(response => response.text())
@@ -69,6 +69,22 @@ function includeHTML() {
                 footerElement.innerHTML = '<div class="site-footer-container"><p class="site-footer-text">&copy; 2025 Ziyad Mir</p></div>';
             });
     }
+
+    // Insert the CTA block above the footer
+    fetch('/cta.html')
+        .then(response => response.text())
+        .then(data => {
+            const ctaWrapper = document.createElement('div');
+            ctaWrapper.innerHTML = data;
+            if (footerElement) {
+                footerElement.insertAdjacentElement('beforebegin', ctaWrapper);
+            } else {
+                document.body.appendChild(ctaWrapper);
+            }
+        })
+        .catch(error => {
+            console.error('Error loading CTA:', error);
+        });
 }
 
 // Execute when DOM is fully loaded

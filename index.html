@@ -169,21 +169,32 @@
         }
         
         .metric-item {
-            padding: var(--space-lg);
+            padding: var(--space-xl);
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-base);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .metric-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            border-color: var(--color-accent);
         }
         
         .metric-value {
-            font-size: var(--font-3xl);
-            font-weight: 700;
-            color: var(--color-text-primary);
+            font-size: var(--font-4xl);
+            font-weight: 800;
+            color: var(--color-accent);
             margin-bottom: var(--space-xs);
+            letter-spacing: -0.02em;
         }
         
         .metric-label {
             font-size: var(--font-sm);
-            color: var(--color-text-tertiary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            color: var(--color-text-secondary);
+            font-weight: 500;
         }
         
         /* Responsive */
@@ -243,11 +254,10 @@
                     <div class="hero-text">
                         <h1 class="hero-title">Ziyad Mir</h1>
                         <p class="hero-subtitle">
-                            Software Engineer scaling distributed systems and deploying enterprise AI solutions.
-                            Currently at Coupang leading AI-for-Work initiatives. Previously drove $100M+ incremental ARR at Google/YouTube.
+                            Building AI platforms that generate $100M+ in enterprise value
                         </p>
                         <div class="hero-buttons">
-                            <a href="/about.html" class="btn btn-primary">About Me</a>
+                            <a href="https://calendar.google.com/calendar/u/0?cid=OWZlMWI2YzVlNTIwMjk5NjQ4YjJiZDlmMDY0MjM5YzdhZWY4MDdmZmJkM2MwOGEzNTBlNWI2MDU0ZmFlMWE5YUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" class="btn btn-primary" target="_blank">Let's Talk AI Strategy →</a>
                             <a href="/projects.html" class="btn btn-secondary">View Projects</a>
                         </div>
                     </div>

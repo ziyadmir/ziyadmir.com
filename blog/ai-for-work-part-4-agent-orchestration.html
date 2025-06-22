@@ -389,18 +389,18 @@ class AgentMetricsCollector:
                     'agent': step.agent,
                     'error_type': result.error_type
                 }
-            )</p>
+            )
 
 # Grafana dashboards use these metrics
 """
 # Agent success rate
 rate(emux_step_executions_total{status="success"}[5m]) 
-/ rate(emux_step_executions_total[5m])</p>
+/ rate(emux_step_executions_total[5m])
 
 # Workflow completion time (p95)
 histogram_quantile(0.95, 
   sum(rate(emux_workflow_duration_seconds_bucket[5m])) by (le, workflow)
-)</p>
+)
 
 # Cost per workflow (based on token usage)
 sum(rate(emux_tokens_consumed_total[1h])) by (workflow) * 0.002
@@ -413,35 +413,28 @@ sum(rate(emux_tokens_consumed_total[1h])) by (workflow) * 0.002
 
 <p>Some workflows need human approval:</p>
 
-</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 steps:
-<ul>
-<li>id: propose_changes</li>
-</ul>
+  - id: propose_changes
     agent: change-proposer
     outputs:
       proposed_changes: list[change]
-<ul>
-<li>id: human_review</li>
-</ul>
+      
+  - id: human_review
     type: human_approval
     inputs:
       title: "Review proposed changes"
       description: ${steps.propose_changes.outputs.summary}
       options:
-<ul>
-<li>approve_all</li>
-<li>approve_selective</li>
-<li>reject</li>
-</ul>
+        - approve_all
+        - approve_selective
+        - reject
     timeout: 24h
     escalation:
       after: 4h
       notify: ["team-lead@company.com"]
-<ul>
-<li>id: apply_changes</li>
-</ul>
+      
+  - id: apply_changes
     agent: change-applier
     when: ${steps.human_review.outputs.decision} != "reject"
     inputs:
@@ -452,28 +445,18 @@ steps:
 
 <p>Run multiple agents concurrently:</p>
 
-</code></pre>
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 steps:
-<ul>
-<li>id: analyze_code</li>
-</ul>
+  - id: analyze_code
     parallel:
-<ul>
-<li>agent: security-scanner</li>
-</ul>
+      - agent: security-scanner
         outputs: security_report
-<ul>
-<li>agent: performance-analyzer</li>
-</ul>
+      - agent: performance-analyzer
         outputs: perf_report
-<ul>
-<li>agent: style-checker</li>
-</ul>
+      - agent: style-checker
         outputs: style_report
-<ul>
-<li>id: synthesize_results</li>
-</ul>
+        
+  - id: synthesize_results
     agent: report-synthesizer
     inputs:
       security: ${steps.analyze_code[0].outputs.security_report}
@@ -531,45 +514,34 @@ class DynamicWorkflowGenerator:
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 name: smart-dependency-updater
 triggers:
-<ul>
-<li>type: schedule</li>
-</ul>
+  - type: schedule
     cron: "0 0 * * SUN"  # Weekly
     
 steps:
-<ul>
-<li>agent: dependency-scanner</li>
-</ul>
+  - agent: dependency-scanner
     outputs: outdated_deps
-<ul>
-<li>agent: risk-analyzer</li>
-</ul>
+    
+  - agent: risk-analyzer
     inputs: 
       deps: ${outdated_deps}
     outputs: risk_matrix
-<ul>
-<li>agent: update-planner</li>
-</ul>
+    
+  - agent: update-planner
     inputs:
       deps: ${outdated_deps}
       risk: ${risk_matrix}
     outputs: update_plan
-<ul>
-<li>parallel:</li>
-<li>agent: code-updater</li>
-</ul>
+    
+  - parallel:
+    - agent: code-updater
       inputs: ${update_plan}
-<ul>
-<li>agent: test-generator</li>
-</ul>
+    - agent: test-generator
       inputs: ${update_plan}
-<ul>
-<li>agent: test-runner</li>
-</ul>
+      
+  - agent: test-runner
     retry: 3
-<ul>
-<li>agent: pr-creator</li>
-</ul>
+    
+  - agent: pr-creator
     when: ${test_results.passed}
 </code></pre>
 
@@ -586,32 +558,25 @@ steps:
 <pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
 name: ai-code-reviewer
 triggers:
-<ul>
-<li>type: github_webhook</li>
-</ul>
+  - type: github_webhook
     events: [pull_request.opened, pull_request.synchronize]
     
 steps:
-<ul>
-<li>agent: pr-analyzer</li>
-</ul>
+  - agent: pr-analyzer
     outputs: 
       complexity: float
       risk_areas: list[string]
-<ul>
-<li>agent: focused-reviewer</li>
-</ul>
+      
+  - agent: focused-reviewer
     inputs:
       pr_url: ${trigger.pr_url}
       focus: ${risk_areas}
       depth: ${complexity > 0.7 ? "thorough" : "standard"}
-<ul>
-<li>agent: test-suggester</li>
-</ul>
+      
+  - agent: test-suggester
     when: ${review.test_coverage} < 0.8
-<ul>
-<li>agent: comment-poster</li>
-</ul>
+    
+  - agent: comment-poster
     inputs:
       review: ${review}
       suggestions: ${test_suggestions}

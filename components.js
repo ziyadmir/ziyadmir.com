@@ -1,3 +1,21 @@
+// Add Google Analytics
+function addGoogleAnalytics() {
+    // Google Analytics 4 (GA4)
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NW46YVD2QH';
+    document.head.appendChild(script);
+    
+    const configScript = document.createElement('script');
+    configScript.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NW46YVD2QH');
+    `;
+    document.head.appendChild(configScript);
+}
+
 // Function to include HTML components
 function includeHTML() {
     const headerElement = document.getElementById('shared-header');
@@ -54,4 +72,7 @@ function includeHTML() {
 }
 
 // Execute when DOM is fully loaded
-document.addEventListener('DOMContentLoaded', includeHTML);
+document.addEventListener('DOMContentLoaded', function() {
+    includeHTML();
+    addGoogleAnalytics();
+});

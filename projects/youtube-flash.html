@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Flash: Moment-Level YouTube Ads | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+        
+        .project-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .project-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .project-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        
+        .project-content p {
+            margin-bottom: 1.25rem;
+        }
+        
+        .project-content ul, .project-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .project-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-content ul li {
+            list-style-type: disc;
+        }
+        
+        .project-content ol li {
+            list-style-type: decimal;
+        }
+        
+        .project-header-banner {
+            background-color: #2563eb;
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        .project-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-image {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight-box {
+            background-color: #f8fafc;
+            border-left: 4px solid var(--color-primary);
+            padding: 1.5rem 1.5rem 1.5rem 2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .highlight-box:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-primary), transparent);
+        }
+        
+        .highlight-box:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-primary), transparent);
+        }
+        
+        .highlight-box p {
+            font-weight: 500;
+            color: var(--color-primary);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+        
+        .highlight-box-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--color-secondary);
+        }
+        
+        .highlight-box-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--color-primary);
+            margin-right: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .related-projects {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 640px) {
+            .project-content h2 {
+                font-size: 1.25rem;
+            }
+            
+            .project-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            .project-header-banner {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <article class="project-content" style="padding-top: 2rem;">
+            <div class="mb-6">
+                <a href="/projects.html" class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to Projects
+                </a>
+            </div>
+            
+            <header class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">YouTube Flash: Moment-Level YouTube Ads</h1>
+                <div class="flex items-center text-gray-500 text-sm mb-4">
+                    <span>2022-Present</span>
+                    <span class="mx-2">·</span>
+                    <span>Hundreds of Millions in Incremental ARR</span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="project-tag">Brand Advertising</span>
+                    <span class="project-tag">Machine Learning</span>
+                    <span class="project-tag">Video Analysis</span>
+                    <span class="project-tag">Multimodal Models</span>
+                </div>
+            </header>
+                <div class="highlight-box mb-8">
+                    <p>YouTube Flash is a next-generation Brand Advertising solution that uses multimodal, video content understanding models to identify optimal moments for brand advertising within YouTube videos, enhancing brand identity and driving significant revenue growth.</p>
+                    <div class="highlight-box-meta">
+                        <span class="mr-4">2022-Present</span>
+                        <span class="mr-4">Hundreds of Millions in Incremental ARR</span>
+                          <span class="mr-4">AI Architect</span>
+                    </div>
+                    <div class="mt-2">
+                        <span class="highlight-box-tag">Multimodal ML</span>
+                        <span class="highlight-box-tag">Content Analysis</span>
+                        <span class="highlight-box-tag">Brand Identity</span>
+                        <span class="highlight-box-tag">Video Targeting</span>
+                    </div>
+                </div>
+                    
+                <h2>Project Overview</h2>
+                <p>
+                    YouTube Flash represents a significant innovation in Brand Advertising, moving beyond traditional auction-based advertising models to a more sophisticated, contextually-aware approach. The system analyzes video content to identify moments that are emotionally resonant and aligned with brand values, allowing for hyper-contextual targeting that strengthens brand identity.
+                </p>
+                
+                <p>
+                    <strong>Press Coverage & Recognition:</strong> 
+                    <a href="https://blog.youtube/news-and-events/brandcast-2025/" target="_blank" class="text-blue-600 hover:text-blue-800">YouTube Brandcast 2025</a> (Featured at YouTube's premier annual brand advertising event) | 
+                    <a href="https://techcrunch.com/2025/05/14/youtube-viewers-will-start-seeing-ads-after-peak-moments-in-videos/" target="_blank" class="text-blue-600 hover:text-blue-800">TechCrunch: YouTube viewers will start seeing ads after peak moments in videos</a> | 
+                    <a href="https://www.linkedin.com/news/story/youtube-leverages-ai-tech-for-ads-7314338/?utm_source=rss&utm_campaign=storylines_en" target="_blank" class="text-blue-600 hover:text-blue-800">LinkedIn News: YouTube leverages AI tech for ads</a> | 
+                    <a href="https://worldbrandaffairs.com/youtube-unveils-ai-driven-peak-points-for-smarter-ad-placements/" target="_blank" class="text-blue-600 hover:text-blue-800">World Brand Affairs: YouTube unveils AI-driven Peak Points</a>
+                </p>
+                
+                <div class="project-image">
+                    <img src="https://techcrunch.com/wp-content/uploads/2025/05/peakpoints_cut.gif?w=680" alt="YouTube Peak Moments Demo" class="w-full" />
+                    <p class="text-sm text-gray-600 text-center mt-2">YouTube Flash identifying peak moments for ad placement</p>
+                </div>
+                    
+                    <h2>The Challenge</h2>
+                    <p>
+                        Brand advertisers face significant challenges in digital advertising:
+                    </p>
+                    
+                    <ul>
+                        <li>Ensuring brand safety while maintaining reach</li>
+                        <li>Finding contextually relevant placements at scale</li>
+                        <li>Identifying emotional moments that resonate with their brand values</li>
+                        <li>Measuring brand impact beyond simple metrics like views and clicks</li>
+                    </ul>
+                    
+                    <p>
+                        Traditional video advertising approaches lacked the granularity to address these challenges effectively. Advertisers could target entire videos but couldn't pinpoint specific moments within content that would best reinforce their brand identity.
+                    </p>
+                    
+                    <h2>Technical Implementation</h2>
+                    
+                    <h3>AI Models & Architecture</h3>
+                    <p>
+                        At the core of YouTube Flash is a sophisticated ML pipeline leveraging several state-of-the-art models:
+                    </p>
+                    
+                    <ul>
+                        <li><strong>Gemini</strong> - Multimodal analysis of video content for scene understanding</li>
+                        <li><strong>PaLI</strong> - Image-text modeling for visual concept recognition</li>
+                        <li><strong>ytbert-ASR</strong> - Audio transcript analysis for context and sentiment</li>
+                        <li><strong>Custom emotion classifiers</strong> - Trained on proprietary emotion-labeled datasets</li>
+                    </ul>
+                    
+                    <p>
+                        The system processes millions of videos daily, creating a detailed moment-by-moment map of content, emotions, and brand suitability factors. This processing happens within a distributed compute framework that optimizes for both throughput and latency.
+                    </p>
+                    
+                    <h3>Tiered Caching Strategy</h3>
+                    <p>
+                        To achieve the scale required for YouTube's massive content library, we implemented a sophisticated tiered caching system:
+                    </p>
+                    
+                    <ul>
+                        <li>L1 cache: In-memory storage for frequently accessed moment data</li>
+                        <li>L2 cache: Distributed cache for popular video segments</li>
+                        <li>L3 cache: Persistent storage for all processed video data</li>
+                    </ul>
+                    
+                    <p>
+                        This approach reduced redundant processing by over 80% and significantly improved serving latency for advertiser queries.
+                    </p>
+                    
+                    <h3>Brand Identity Modeling</h3>
+                    <p>
+                        We developed a framework for representing brand identity as a multi-dimensional vector in an embedding space that captures:
+                    </p>
+                    
+                    <ul>
+                        <li>Brand personality attributes</li>
+                        <li>Emotional tone preferences</li>
+                        <li>Content category affinities</li>
+                        <li>Target audience characteristics</li>
+                    </ul>
+                    
+                    <p>
+                        This allowed for efficient similarity matching between brand profiles and video moments, enabling precise targeting at scale.
+                    </p>
+                    
+                    <h2>Results & Impact</h2>
+                    
+                    <p>
+                        YouTube Flash delivered exceptional results for both YouTube and its advertising partners:
+                    </p>
+                    
+                    <ul>
+                        <li>Generated hundreds of millions in incremental ARR for YouTube</li>
+                        <li>Improved brand lift metrics by 30% compared to traditional video targeting</li>
+                        <li>Increased advertiser retention by 25% through superior performance</li>
+                        <li>Processed over 100M hours of video content daily with 99.9% availability</li>
+                    </ul>
+                    
+                    <p>
+                        The platform became a cornerstone of YouTube's brand advertising offering, with adoption by major global brands across diverse industries from automotive to consumer packaged goods.
+                    </p>
+                    
+                    <h2>Technical Challenges Overcome</h2>
+                    
+                    <h3>Scale & Performance</h3>
+                    <p>
+                        Processing YouTube's vast content library required sophisticated engineering solutions:
+                    </p>
+                    
+                    <ul>
+                        <li>Built custom batch processing pipelines for historical content</li>
+                        <li>Developed real-time processing for new uploads</li>
+                        <li>Optimized models for inference speed without sacrificing accuracy</li>
+                        <li>Implemented adaptive sampling based on content popularity</li>
+                    </ul>
+                    
+                    <h3>Accuracy & Quality</h3>
+                    <p>
+                        Ensuring the quality of moment-level targeting was critical for brand safety:
+                    </p>
+                    
+                    <ul>
+                        <li>Created human evaluation workflows for model output validation</li>
+                        <li>Developed confidence scoring for all predictions</li>
+                        <li>Implemented fallback mechanisms for low-confidence results</li>
+                        <li>Established continuous evaluation metrics for model drift detection</li>
+                    </ul>
+                    
+                    <h2>My Role & Contributions</h2>
+                    
+                    <p>
+                          As the AI Architect for YouTube Flash, I:
+                    </p>
+                    
+                    <ul>
+                        <li>Architected the overall system design and technical approach</li>
+                        <li>Led a cross-functional team of ML engineers, backend developers, and data scientists</li>
+                        <li>Coordinated and steered the work of many L6-L8 engineers across YouTube and Google, including Director-level (L8+) leads across organizations</li>
+                        <li>Worked directly with product leadership to align technical capabilities with business needs</li>
+                        <li>Coordinated with YouTube ads serving systems for integration</li>
+                        <li>Developed the initial proof-of-concept that secured executive buy-in</li>
+                    </ul>
+                    
+                    <h2>Technologies Used</h2>
+                    
+                    <ul>
+                        <li><strong>Languages:</strong> Java, Python, C++</li>
+                        <li><strong>ML Frameworks:</strong> TensorFlow, PyTorch</li>
+                        <li><strong>Infrastructure:</strong> Google Cloud, MapReduce, Spanner</li>
+                        <li><strong>Models:</strong> Gemini, PaLI, ytbert-ASR, custom CNN/transformer models</li>
+                        <li><strong>Monitoring:</strong> Prometheus, Grafana, custom YouTube observability tools</li>
+                    </ul>
+                    
+                    <div class="related-projects">
+                        <h3 class="text-xl font-bold text-primary mb-4">Related Projects</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <a href="/projects/youtube-select-shorts.html" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                                <h4 class="font-bold text-primary">YouTube Select for Shorts</h4>
+                                <p class="text-sm text-gray-600 mt-1">Brand advertising for YouTube's short-form video format</p>
+                            </a>
+                            <a href="/projects/brandshift.html" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                                <h4 class="font-bold text-primary">BrandShift: Metrics for Branded YouTube Ads</h4>
+                                <p class="text-sm text-gray-600 mt-1">Next-generation measurement for brand identity</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

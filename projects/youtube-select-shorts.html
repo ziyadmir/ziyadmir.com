@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Select for Shorts | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+        
+        .project-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .project-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .project-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        
+        .project-content p {
+            margin-bottom: 1.25rem;
+        }
+        
+        .project-content ul, .project-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .project-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-content ul li {
+            list-style-type: disc;
+        }
+        
+        .project-content ol li {
+            list-style-type: decimal;
+        }
+        
+        .project-header-banner {
+            background-color: #2563eb;
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        .project-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-image {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight-box {
+            background-color: #f8fafc;
+            border-left: 4px solid var(--color-primary);
+            padding: 1.5rem 1.5rem 1.5rem 2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .highlight-box:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-primary), transparent);
+        }
+        
+        .highlight-box:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-primary), transparent);
+        }
+        
+        .highlight-box p {
+            font-weight: 500;
+            color: var(--color-primary);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+        
+        .highlight-box-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--color-secondary);
+        }
+        
+        .highlight-box-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--color-primary);
+            margin-right: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .related-projects {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 640px) {
+            .project-content h2 {
+                font-size: 1.25rem;
+            }
+            
+            .project-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            .project-header-banner {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <article class="project-content" style="padding-top: 2rem;">
+            <div class="mb-6">
+                <a href="/projects.html" class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to Projects
+                </a>
+            </div>
+            
+            <header class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">YouTube Select for Shorts</h1>
+                <div class="flex items-center text-gray-500 text-sm mb-4">
+                    <span>2021-Present</span>
+                    <span class="mx-2">·</span>
+                    <span>Hundreds of Millions in Incremental ARR</span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="project-tag">Short-form Content</span>
+                    <span class="project-tag">Brand Advertising</span>
+                    <span class="project-tag">Product Strategy</span>
+                    <span class="project-tag">Cross-team</span>
+                </div>
+            </header>
+            
+            <div class="highlight-box mb-8">
+                <p>YouTube Select for Shorts created a premium brand advertising solution for YouTube's short-form video format, competing directly with TikTok Pulse and Instagram Contextual Ads while generating significant new revenue streams.</p>
+                <div class="highlight-box-meta">
+                    <span class="mr-4">2021-Present</span>
+                    <span class="mr-4">Hundreds of Millions in Incremental ARR</span>
+                    <span class="mr-4">AI Architect</span>
+                </div>
+                <div class="mt-2">
+                    <span class="highlight-box-tag">Short-form Content</span>
+                    <span class="highlight-box-tag">Brand Advertising</span>
+                    <span class="highlight-box-tag">Go-to-Market</span>
+                    <span class="highlight-box-tag">Cross-team</span>
+                </div>
+            </div>
+            
+            <h2>Project Overview</h2>
+            
+            <p>
+                In 2021, YouTube was facing increasing competition from TikTok and Instagram Reels in the short-form video space. The company had launched YouTube Shorts as its answer to these platforms, but needed an effective monetization strategy that would attract both creators and advertisers to the format.
+            </p>
+            
+            <p>
+                YouTube Select for Shorts was conceived as an extension of YouTube's premium advertising solution (YouTube Select) specifically designed for the unique characteristics of short-form content. The project aimed to create a brand-safe, contextually relevant advertising environment that would deliver value to advertisers while maintaining a positive user experience.
+            </p>
+            
+            <p>
+                <strong>Press Coverage:</strong> 
+                <a href="https://blog.google/products/ads-commerce/youtube-shorts-ads-select-lineups-abcds/" target="_blank" class="text-blue-600 hover:text-blue-800">Google Blog: YouTube Shorts ads, Select lineups and ABCDs</a> | 
+                <a href="https://blog.google/products/ads-commerce/new-ways-to-build-awareness-with-youtube-shorts/" target="_blank" class="text-blue-600 hover:text-blue-800">New ways to build awareness with YouTube Shorts</a>
+            </p>
+            
+            <div class="project-image" style="max-width: 400px; margin: 0 auto 1.5rem auto;">
+                <img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/Canadian_Tire_Shorts_ABCDs.gif" alt="Canadian Tire Shorts Campaign Example" class="w-full" style="max-height: 600px; object-fit: contain;" />
+                <p class="text-sm text-gray-600 text-center mt-2">Canadian Tire's successful YouTube Shorts campaign showcasing the ABCD framework</p>
+            </div>
+            
+            <h2>The Challenge</h2>
+            
+            <p>
+                Developing an advertising solution for Shorts presented several unique challenges:
+            </p>
+            
+            <ul>
+                <li><strong>Format Constraints</strong> - Short-form videos (≤60 seconds) required different ad formats and placements than traditional YouTube videos</li>
+                <li><strong>User Experience</strong> - Users had different expectations for Shorts consumption, with rapid vertical scrolling and shorter attention spans</li>
+                <li><strong>Content Diversity</strong> - The Shorts ecosystem included a wide range of content types, requiring sophisticated content understanding for brand safety</li>
+                <li><strong>Competitive Pressure</strong> - TikTok had already launched TikTok Pulse, setting expectations for short-form video advertising</li>
+                <li><strong>Creator Economics</strong> - We needed to ensure the solution would adequately compensate creators and incentivize quality content production</li>
+            </ul>
+            
+            <h2>Solution Architecture</h2>
+            
+            <p>
+                YouTube Select for Shorts was built around several key components:
+            </p>
+            
+            <h3>1. Content Classification System</h3>
+            
+            <p>
+                We developed a sophisticated classification system that could rapidly analyze and categorize Short videos across multiple dimensions:
+            </p>
+            
+            <ul>
+                <li>Topic and content category (e.g., beauty, gaming, cooking)</li>
+                <li>Brand safety classification</li>
+                <li>Engagement potential</li>
+                <li>Creator reputation and history</li>
+            </ul>
+            
+            <p>
+                This system leveraged YouTube's existing content understanding technologies but adapted them for the unique characteristics of short-form content, including the faster processing speeds required.
+            </p>
+            
+            <h3>2. Lineups and Packages</h3>
+            
+            <p>
+                We created curated "lineups" of Short videos grouped by theme, allowing advertisers to place their ads in contextually relevant environments:
+            </p>
+            
+            <ul>
+                <li><strong>Beauty & Fashion</strong> - Makeup tutorials, outfit ideas, fashion trends</li>
+                <li><strong>Food & Recipes</strong> - Quick recipes, cooking tips, food reviews</li>
+                <li><strong>Entertainment</strong> - Comedy, skits, music performances</li>
+                <li><strong>Technology</strong> - Product reviews, tech tips, gadget highlights</li>
+                <li><strong>Sports & Fitness</strong> - Workout tips, sports highlights, athlete content</li>
+            </ul>
+            
+            <p>
+                Each lineup was carefully curated to ensure brand safety while delivering the engagement advertisers sought.
+            </p>
+            
+            <h3>3. Ad Format and Delivery</h3>
+            
+            <p>
+                We designed ad formats specifically for the Shorts experience:
+            </p>
+            
+            <ul>
+                <li><strong>Interstitial Ads</strong> - Brief, visually engaging ads that appeared between Shorts</li>
+                <li><strong>Sponsored Shorts</strong> - Branded content clearly marked as sponsored</li>
+                <li><strong>Overlay Elements</strong> - Non-intrusive branding elements that appeared alongside content</li>
+            </ul>
+            
+            <p>
+                These formats were designed to be effective while respecting the user experience and flow of Shorts consumption.
+            </p>
+            
+            <h3>4. Measurement and Reporting</h3>
+            
+            <p>
+                We developed specific metrics and reporting tools for Shorts advertising:
+            </p>
+            
+            <ul>
+                <li>View-through metrics adapted for short-form content</li>
+                <li>Engagement measures (likes, shares, comments)</li>
+                <li>Brand recall and awareness lifts</li>
+                <li>Cross-platform comparison tools</li>
+            </ul>
+            
+            <h2>Cross-YouTube Coordination</h2>
+            
+            <p>
+                One of my key contributions to this project was initiating and coordinating efforts across multiple YouTube teams:
+            </p>
+            
+            <ul>
+                <li><strong>Shorts Product Team</strong> - Ensuring ad integration aligned with overall Shorts product vision</li>
+                <li><strong>YouTube Ads Team</strong> - Leveraging existing ad technology while developing Shorts-specific solutions</li>
+                <li><strong>Content Understanding Teams</strong> - Adapting classification systems for short-form content</li>
+                <li><strong>Sales and Partner Teams</strong> - Gathering requirements from advertisers and developing go-to-market strategies</li>
+                <li><strong>Creator Teams</strong> - Ensuring creator incentives aligned with the advertising program</li>
+            </ul>
+            
+            <p>
+                This cross-functional coordination was critical to the project's success, as it required balancing multiple stakeholder needs and technical constraints.
+            </p>
+            
+            <h2>Technical Implementation</h2>
+            
+            <p>
+                The technical implementation of YouTube Select for Shorts involved several innovative components:
+            </p>
+            
+            <h3>Real-time Content Analysis</h3>
+            
+            <p>
+                We developed a real-time content analysis pipeline that could process Shorts as they were uploaded, assessing:
+            </p>
+            
+            <ul>
+                <li>Visual content using computer vision models</li>
+                <li>Audio content through speech recognition and audio analysis</li>
+                <li>Text overlays and captions</li>
+                <li>Creator metadata and historical performance</li>
+            </ul>
+            
+            <p>
+                This pipeline needed to be extremely efficient, as Shorts were being uploaded at massive scale and needed to be monetizable quickly.
+            </p>
+            
+            <h3>Ad Serving Infrastructure</h3>
+            
+            <p>
+                We extended YouTube's ad serving infrastructure to support the unique requirements of Shorts:
+            </p>
+            
+            <ul>
+                <li>Lower latency requirements for seamless viewing experience</li>
+                <li>Different ad loading patterns based on user scrolling behavior</li>
+                <li>Caching strategies optimized for the Shorts viewing pattern</li>
+                <li>Synchronized ad delivery across devices and platforms</li>
+            </ul>
+            
+            <h3>Monetization and Revenue Sharing</h3>
+            
+            <p>
+                We designed and implemented systems for:
+            </p>
+            
+            <ul>
+                <li>Attributing ad revenue to specific creators</li>
+                <li>Calculating revenue shares based on engagement and quality metrics</li>
+                <li>Providing transparent reporting to creators</li>
+                <li>Detecting and preventing fraudulent activity</li>
+            </ul>
+            
+            <h2>Results and Impact</h2>
+            
+            <p>
+                YouTube Select for Shorts has delivered significant business impact:
+            </p>
+            
+            <ul>
+                <li>Generated $XXXM in incremental ARR since launch</li>
+                <li>Attracted major brand advertisers to the Shorts format</li>
+                <li>Increased creator participation in the Shorts ecosystem</li>
+                <li>Improved YouTube's competitive position against TikTok and Instagram</li>
+                <li>Established a sustainable monetization model for short-form content</li>
+            </ul>
+            
+            <p>
+                The program has been particularly successful in attracting brand advertisers who were previously spending on competing platforms, demonstrating the value of YouTube's brand-safe, contextually relevant approach.
+            </p>
+            
+            <h2>Case Study: Beauty Brand Launch</h2>
+            
+            <p>
+                A major beauty brand used YouTube Select for Shorts as part of a product launch campaign, with impressive results:
+            </p>
+            
+            <ul>
+                <li>+42% increase in brand awareness among target demographic</li>
+                <li>+37% increase in consideration</li>
+                <li>+23% increase in purchase intent</li>
+                <li>2.3x higher engagement compared to their traditional video campaigns</li>
+            </ul>
+            
+            <p>
+                The campaign demonstrated how Shorts could deliver both broad reach and deep engagement, particularly with younger audiences who were heavy consumers of short-form content.
+            </p>
+            
+            <h2>Future Directions</h2>
+            
+            <p>
+                YouTube Select for Shorts continues to evolve, with several exciting directions:
+            </p>
+            
+            <ul>
+                <li><strong>Enhanced Creator Collaboration</strong> - Tools to facilitate brand-creator partnerships for Shorts</li>
+                <li><strong>Interactive Ad Formats</strong> - Developing more engaging, interactive ad experiences for Shorts</li>
+                <li><strong>Cross-Format Campaigns</strong> - Enabling seamless campaigns across Shorts, long-form videos, and other YouTube formats</li>
+                <li><strong>Enhanced Measurement</strong> - More sophisticated attribution and measurement tools specific to Shorts</li>
+                <li><strong>Global Expansion</strong> - Extending the program to more markets with localized content lineups</li>
+            </ul>
+            
+            <p>
+                These innovations will further strengthen YouTube's position in the competitive short-form video landscape while delivering value to advertisers, creators, and viewers.
+            </p>
+            
+            <div class="related-projects">
+                <h3 class="text-xl font-bold text-primary mb-4">Related Projects</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="/projects/youtube-flash.html" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                        <h4 class="font-bold text-primary">YouTube Flash: Moment-Level YouTube Ads</h4>
+                        <p class="text-sm text-gray-600 mt-1">Emotion-targeted advertising within video content</p>
+                    </a>
+                    <a href="/projects/brandshift.html" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                        <h4 class="font-bold text-primary">BrandShift: Metrics for Branded YouTube Ads</h4>
+                        <p class="text-sm text-gray-600 mt-1">Next-generation measurement for brand identity</p>
+                    </a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

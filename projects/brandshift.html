@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrandShift: Metrics for Branded YouTube Ads | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+        
+        .project-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .project-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .project-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        
+        .project-content p {
+            margin-bottom: 1.25rem;
+        }
+        
+        .project-content ul, .project-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .project-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-content ul li {
+            list-style-type: disc;
+        }
+        
+        .project-content ol li {
+            list-style-type: decimal;
+        }
+        
+        .project-header-banner {
+            background-color: #10b981;
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        .project-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-image {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight-box {
+            background-color: #f8fafc;
+            border-left: 4px solid var(--color-primary);
+            padding: 1.5rem 1.5rem 1.5rem 2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .highlight-box:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-primary), transparent);
+        }
+        
+        .highlight-box:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-primary), transparent);
+        }
+        
+        .highlight-box p {
+            font-weight: 500;
+            color: var(--color-primary);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+        
+        .highlight-box-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--color-secondary);
+        }
+        
+        .highlight-box-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--color-primary);
+            margin-right: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .related-projects {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 640px) {
+            .project-content h2 {
+                font-size: 1.25rem;
+            }
+            
+            .project-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            .project-header-banner {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <article class="project-content" style="padding-top: 2rem;">
+            <div class="mb-6">
+                <a href="/projects.html" class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to Projects
+                </a>
+            </div>
+            
+            <header class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">BrandShift: Metrics for Branded YouTube Ads</h1>
+                <div class="flex items-center text-gray-500 text-sm mb-4">
+                    <span>2021-2023</span>
+                    <span class="mx-2">·</span>
+                    <span>$XXM Impact</span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="project-tag">Brand Measurement</span>
+                    <span class="project-tag">Data Science</span>
+                    <span class="project-tag">Machine Learning</span>
+                </div>
+            </header>
+                <div class="highlight-box mb-8">
+                    <p>BrandShift evolved from Google's BrandLift product to create a holistic brand perception measurement solution that helps advertisers understand the true impact of their YouTube brand campaigns beyond simple performance metrics.</p>
+                    <div class="highlight-box-meta">
+                        <span class="mr-4">2021-2023</span>
+                        <span class="mr-4">$XXM Impact</span>
+                        <span class="mr-4">Technical Lead & Architect</span>
+                    </div>
+                    <div class="mt-2">
+                        <span class="highlight-box-tag">Brand Measurement</span>
+                        <span class="highlight-box-tag">Data Science</span>
+                        <span class="highlight-box-tag">NLP</span>
+                        <span class="highlight-box-tag">Surveys</span>
+                    </div>
+                </div>
+                    
+                <h2>Project Overview</h2>
+                <p>
+                    BrandShift was a next-generation metrics framework I developed at YouTube to measure how digital advertising affects brand perception across multiple dimensions. Moving beyond traditional brand lift metrics, BrandShift provides a holistic view of how advertising shifts consumer perceptions of brand identity.
+                </p>
+                    
+                    <h2>The Challenge</h2>
+                    <p>
+                        Digital advertisers faced significant limitations with traditional measurement approaches:
+                    </p>
+                    
+                    <ul>
+                        <li>Metrics focused narrowly on awareness, consideration, and intent</li>
+                        <li>Brand identity effects were poorly measured</li>
+                        <li>Survey mechanisms were disruptive to the user experience</li>
+                        <li>Results often took weeks to process</li>
+                        <li>Insights weren't actionable for creative optimization</li>
+                    </ul>
+                    
+                    <p>
+                        YouTube's targeting products (representing $XB in ARR) needed more sophisticated measurement to demonstrate their full value to brand advertisers investing in identity-building campaigns.
+                    </p>
+                    
+                    <h2>Technical Implementation</h2>
+                    
+                    <h3>Multi-Dimensional Measurement Framework</h3>
+                    <p>
+                        BrandShift implemented a comprehensive measurement approach covering:
+                    </p>
+                    
+                    <ul>
+                        <li><strong>Brand personality attributes</strong> - Measuring how consumers describe the brand's character</li>
+                        <li><strong>Emotional associations</strong> - Capturing the feelings the brand evokes</li>
+                        <li><strong>Value alignment</strong> - Assessing how well the brand's perceived values match its intended identity</li>
+                        <li><strong>Category differentiation</strong> - Measuring how distinctly the brand stands out from competitors</li>
+                    </ul>
+                    
+                    <p>
+                        This required building both quantitative and qualitative measurement capabilities that could scale across YouTube's global platform.
+                    </p>
+                    
+                    <h3>Non-Disruptive Survey Mechanism</h3>
+                    <p>
+                        We designed a novel survey approach that:
+                    </p>
+                    
+                    <ul>
+                        <li>Integrated seamlessly into the YouTube viewing experience</li>
+                        <li>Used micro-surveys with 1-2 questions</li>
+                        <li>Employed adaptive question selection</li>
+                        <li>Leveraged natural language processing for open-ended responses</li>
+                        <li>Balanced statistical significance with user disruption</li>
+                    </ul>
+                    
+                    <p>
+                        This approach achieved 3x higher response rates than traditional survey methods while maintaining high data quality.
+                    </p>
+                    
+                    <h3>Real-Time Data Processing</h3>
+                    <p>
+                        We built a sophisticated data pipeline that:
+                    </p>
+                    
+                    <ul>
+                        <li>Processed responses in near real-time</li>
+                        <li>Applied NLP techniques to analyze open-ended responses</li>
+                        <li>Generated statistically rigorous experimental results</li>
+                        <li>Created intuitive visualizations for advertisers</li>
+                        <li>Integrated with YouTube's experiment framework</li>
+                    </ul>
+                    
+                    <p>
+                        This system reduced insight generation time from weeks to hours, enabling much faster optimization cycles for advertisers.
+                    </p>
+                    
+                    <h2>Cross-Team Collaboration</h2>
+                    
+                    <p>
+                        BrandShift required extensive partnership across multiple teams:
+                    </p>
+                    
+                    <ul>
+                        <li><strong>Google Ads Measurement</strong> - Aligning with broader measurement standards</li>
+                        <li><strong>Reporting</strong> - Integrating with advertiser dashboards</li>
+                        <li><strong>Target Frequency and Sequencing</strong> - Connecting exposure patterns to perception shifts</li>
+                        <li><strong>Video Understanding</strong> - Correlating content characteristics with brand perception</li>
+                    </ul>
+                    
+                    <p>
+                        This collaboration ensured BrandShift met the needs of all stakeholders while maintaining methodological rigor.
+                    </p>
+                    
+                    <h2>Results & Impact</h2>
+                    
+                    <p>
+                        BrandShift delivered significant value to both YouTube and its advertising partners:
+                    </p>
+                    
+                    <ul>
+                        <li>Demonstrated 30% higher impact from targeted ads vs. traditional demographic targeting</li>
+                        <li>Increased advertiser retention by providing deeper insights into campaign effectiveness</li>
+                        <li>Generated actionable creative optimization recommendations that improved performance by 25%</li>
+                        <li>Helped secure $XXM in incremental revenue from brands adopting advanced targeting products</li>
+                    </ul>
+                    
+                    <p>
+                        Most importantly, BrandShift evolved how advertisers thought about measurement, moving from transactional metrics to holistic brand identity measurement.
+                    </p>
+                    
+                    <h2>Technical Challenges Overcome</h2>
+                    
+                    <h3>Scale & Representativeness</h3>
+                    <p>
+                        Ensuring statistically valid results across diverse campaigns required innovative approaches:
+                    </p>
+                    
+                    <ul>
+                        <li>Developed intelligent sampling strategies to balance representativeness with cost</li>
+                        <li>Built sophisticated experimental design methodologies</li>
+                        <li>Created power calculation tools to determine minimum sample sizes</li>
+                        <li>Implemented bias correction models to account for response patterns</li>
+                    </ul>
+                    
+                    <h3>Natural Language Processing</h3>
+                    <p>
+                        Analyzing open-ended brand perception responses presented unique challenges:
+                    </p>
+                    
+                    <ul>
+                        <li>Trained domain-specific language models for brand attribute classification</li>
+                        <li>Developed multilingual capabilities for global campaigns</li>
+                        <li>Built emotion detection models calibrated to brand contexts</li>
+                        <li>Created sentiment analysis tuned for brand perception nuances</li>
+                    </ul>
+                    
+                    <h2>My Role & Contributions</h2>
+                    
+                    <p>
+                        As the lead for BrandShift, I:
+                    </p>
+                    
+                    <ul>
+                        <li>Conceptualized the multi-dimensional measurement framework</li>
+                        <li>Designed the technical architecture for data collection and analysis</li>
+                        <li>Led the cross-functional team across measurement, reporting, and ML</li>
+                        <li>Drove the evolution from traditional brand lift to holistic brand identity measurement</li>
+                        <li>Presented the methodology and results to senior leadership</li>
+                        <li>Worked directly with major brand partners to refine the approach</li>
+                    </ul>
+                    
+                    <h2>Technologies Used</h2>
+                    
+                    <ul>
+                        <li><strong>Languages:</strong> Python, Java, R (for statistical analysis)</li>
+                        <li><strong>Data Processing:</strong> Apache Beam, BigQuery, Data Studio</li>
+                        <li><strong>Machine Learning:</strong> TensorFlow, BERT-based models for NLP</li>
+                        <li><strong>Visualization:</strong> Custom D3.js dashboards</li>
+                        <li><strong>Experimentation:</strong> YouTube's internal A/B testing framework</li>
+                    </ul>
+                    
+                    <div class="related-projects">
+                        <h3 class="text-xl font-bold text-primary mb-4">Related Projects</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <a href="/projects/youtube-flash.html" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                                <h4 class="font-bold text-primary">YouTube Flash: Moment-Level YouTube Ads</h4>
+                                <p class="text-sm text-gray-600 mt-1">Emotion-targeted advertising within video content</p>
+                            </a>
+                            <a href="/projects/youtube-select-shorts.html" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                                <h4 class="font-bold text-primary">YouTube Select for Shorts</h4>
+                                <p class="text-sm text-gray-600 mt-1">Brand advertising for YouTube's short-form video format</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

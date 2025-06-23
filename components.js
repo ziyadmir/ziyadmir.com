@@ -57,7 +57,7 @@ function includeHTML() {
     }
     
     const footerElement = document.getElementById('shared-footer');
-    
+
     if (footerElement) {
         fetch('/footer.html')
             .then(response => response.text())
@@ -71,8 +71,26 @@ function includeHTML() {
     }
 }
 
+// Insert CTA section before the shared footer
+function insertCTA() {
+    const footerElement = document.getElementById('shared-footer');
+    if (!footerElement) return;
+
+    fetch('/cta.html')
+        .then(response => response.text())
+        .then(data => {
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = data;
+            footerElement.parentNode.insertBefore(wrapper.firstElementChild, footerElement);
+        })
+        .catch(error => {
+            console.error('Error loading CTA:', error);
+        });
+}
+
 // Execute when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     includeHTML();
+    insertCTA();
     addGoogleAnalytics();
 });

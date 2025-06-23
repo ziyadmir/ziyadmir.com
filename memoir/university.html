@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University of Waterloo | My Life | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+        
+        .blog-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.25rem;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-content ul li {
+            list-style-type: disc;
+        }
+        
+        .blog-content ol li {
+            list-style-type: decimal;
+        }
+        
+        .chapter-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .chapter-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--color-primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .chapter-link:hover {
+            color: var(--color-secondary);
+        }
+        
+        .chapter-link svg {
+            width: 1rem;
+            height: 1rem;
+        }
+        
+        .memoir-period {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 640px) {
+            .blog-content h2 {
+                font-size: 1.25rem;
+            }
+            
+            .blog-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            body { font-size: 0.85rem; }
+            
+            .container {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-6 flex-grow">
+        <article class="blog-content">
+            <div class="mb-6">
+                <a href="/memoir.html" class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to All Chapters
+                </a>
+            </div>
+            
+            <header class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">University of Waterloo</h1>
+                <div class="flex items-center text-gray-500 text-sm mb-4">
+                    <span>2009-2014</span>
+                    <span class="mx-2">·</span>
+                    <span>Systems Design Engineering</span>
+                </div>
+                <div class="flex gap-2 mb-6">
+                    <span class="memoir-period">Education</span>
+                    <span class="memoir-period">Co-op</span>
+                    <span class="memoir-period">Technology</span>
+                </div>
+            </header>
+            
+            <p>
+                I went to the University of Waterloo in September of 2009 to study systems design engineering. This was a multidisciplinary course, but mainly combined mechanical, electrical and a little software engineering together. As part of this program, I did 6 4-month long internships (or co-ops) — alternating between school and internships every 4 months. My last three internships were in high tech jobs, as a software engineer at LinkedIn and Google and then as an APM at Google.
+            </p>
+            
+            <h2>The Accidental Engineer</h2>
+            
+            <p>
+                There's actually a funny story about how I ended up at Waterloo to begin with. My older brother had been into computers his whole life. I didn't quite understand how computers worked that well, didn't know about all of their settings and how to get them to do what I wanted. It was pretty frustrating, and to add to that my brothers and cousins were much better at computers then me, and would make fun of me because I didn't know what I was doing. I remember that making me feel like "fuck this", computers suck if they make you feel like this.
+            </p>
+            
+            <p>
+                So as I was heading into 12th grade, when I finally had to decide what to do after, I didn't know where to go to school or what to study. I saw a (Cameron Diaz?) movie, I think it was called Fools Gold, so I thought it would be cool to be a marine biologist. Be in the sun, swim a lot, spend time in the water and swim with the fishes. Wouldn't that be kinda cool?
+            </p>
+            
+            <h2>Choosing Waterloo</h2>
+            
+            <p>
+                But my brother ended up going to Waterloo to study computer engineering. I wasn't sold and had my own ideas about what was best for me. I remember thinking that I really needed to go to a social university that had strong academics but also strong social stuff. I must have just been parroting that off of some Canadian university forums because I definitely didn't have any idea what that meant.
+            </p>
+            
+            <p>
+                I'm the type of person where if I don't really understand something and if I can't visualize it then I have no clue what to expect at all. So anyway, there was this university that was about as far from Waterloo, where we lived called McMaster. It was pretty well known to be good, especially for people going to become doctors. The other thing about McMaster was that a lot of people that were pretty cool were there and I guess the parties were pretty fun. I decided that I should really be going to McMaster and I kept telling my brother and everyone else that's probably where I would end up.
+            </p>
+            
+            <p>
+                Nevertheless I applied to Waterloo and listed mechanical engineering program that I wanted to be in and then I got back to my 12th grade year where I was mostly just hanging out. I don't remember exactly where I was but I think I was in the computer in the basement just a few months into 12th grade when we got early admission results from Waterloo. I got in. I was pretty shocked, but relieved and also expected at the same time. It was a weird mixture of feelings that would become pretty normal for me over the next 15 years of my life. I simultaneously knew that I was gonna get in but didn't expect it and was fine with whatever happened anyways.
+            </p>
+            
+            <h2>The Pivot to Systems Design</h2>
+            
+            <p>
+                By now it was the middle of the summer and Waterloo is coming up in probably six or eight weeks. So one day I went on the computer to double check exactly what I got myself into and I went to the website for mechanical engineering. I was horrified. It seemed like I had signed up for a physics class. The only thing I could think of was that I freaking hate physics and I suck at it. I do not want to be doing this.
+            </p>
+            
+            <p>
+                I knew I had to do something, but I had no idea what, so I went to the engineering website and looked around at what else was offered at Waterloo. Nothing seemed that interesting and then I saw it. Systems Design Engineering. My first thought and I shit you not was that I had to be in that program for the very reason that the name just had a nice ring to it.
+            </p>
+            
+            <p>
+                I called up Waterloo and asked them to see if I could transfer into systems. They said they'd get back to me and in the meantime, I took a look at all the courses that were offered. I didn't really know what a lot of them were, but I liked the words that they were using: holistic, multidisciplinary, integrated. Sometimes, in life, you know before you actually know, and this is one of those moments. It sounds ridiculous thinking back but in a sense and when I told my friends this, this is how they described it, that was a really "me" moment.
+            </p>
+            
+            <h2>Discovering My Inner Nerd</h2>
+            
+            <p>
+                One day though, I got it into my head to install Ubuntu. It might have been my brothers doing, or maybe he mentioned it to me and I was like fuck it, let's try it. I think I had a Dell laptop at the time, and was so frustrated by how weird everything on Windows was. I just didn't get how things worked. I could never get it to do what I wanted. I'd get confused or stuck and just couldn't figure out why I wasn't able to get the computer to act how I wanted. It was so frustrating.
+            </p>
+            
+            <p>
+                And part of it was probably that pretty much everyone else in my family was good with computers. And when you grow up with a bunch of boys, and they are all good at something and you aren't — you won't get much time to learn. Remember, we grew up with just one computer that we all shared. Remember accounts on computers that you had to sign into? 🤣😅
+            </p>
+            
+            <p>
+                So that day, I found out about wine or dual booting a Windows laptop with Ubuntu, and I installed Linux on my laptop. I didn't know what it meant to partition a drive, I didn't understand what it meant to have a BIOS, or any of that. But eventually, I got it running. And I swear, that was one of those days that changed my life. I didn't realize it at the time, but looking back it was one of those pivotal moments for me.
+            </p>
+            
+            <h2>The Linux Revelation</h2>
+            
+            <p>
+                I didn't really know how to navigate Linux to begin with, but I liked how things felt simpler. They felt cleaner. I just felt like I could slowly start to get the computer to do what I wanted. I started learning to use the terminal and the unix utilities. I found it so awesome that I could use one program (the terminal) to control so much of what I wanted to control on the computer. It felt powerful and it felt easier.
+            </p>
+            
+            <p>
+                I started using vim to edit files, and g++ to compile and run programs. I learned about debugging through print statements and reading logs. Little by little I started to get a little more comfortable with the computer. Around this time, my older brother was already at the University of Waterloo and was part of the co-op program there.
+            </p>
+            
+            <p>
+                As part of the interview process for co-ops, the companies would ask you coding tests and algorithm questions that you would need to answer, usually optimally, and then code up. So my brother was practicing these problems around that time, and sometimes I'd try to copy him and study some of these problems as well. It was hard, and usually I couldn't solve most of the problems. But for the first time in my life, outside of video games on them, I started to like computers.
+            </p>
+            
+            <h2>First Programming Experience</h2>
+            
+            <p>
+                There's another funny story here about how I first programmed. In tenth grade, we had the option to take our first programming class and I signed up. My teacher was awful. She was unbelievably boring and didn't have the faintest idea of how to motivate people. So she started teaching us Pascal —- my first programming language was Pascal.
+            </p>
+            
+            <p>
+                The games and things she showed us in class were so boring to me, that I just tried to do the absolute bare minimum and then get rid of this programming thing. I remember making a simple card game for my final project. I barely tried. And it showed. The game sucked, it was buggy and just not something to be proud of.
+            </p>
+            
+            <p>
+                This is something that would mark the next 15 years of my life. I just couldn't be damned to try hard if I wasn't genuinely interested in what I had to do. But I always had the wherewithal to be able to scrape by even in those cases. And funny enough — I'm not proud to say this, but Mrs. Parker was also graduate of the University of Waterloo.
+            </p>
+            
+            <h2>The Pivotal Internships</h2>
+            
+            <p>
+                The co-op program at Waterloo was transformative for my career trajectory. My first internships were at smaller Canadian companies where I worked on web development projects. While these experiences were valuable, they didn't ignite the same passion I would later discover.
+            </p>
+            
+            <p>
+                Everything changed with my fourth internship when I landed a position at LinkedIn in Mountain View. Suddenly, I was in the heart of Silicon Valley, surrounded by brilliant engineers working on products used by millions. The scale and impact were intoxicating. I remember working on search optimization features that would dramatically improve how users found connections — watching the metrics improve after deploying my code was an adrenaline rush I hadn't experienced before.
+            </p>
+            
+            <p>
+                My fifth internship brought me to Google as a Software Engineer intern. The interviewing process had been grueling — multiple rounds of algorithmic challenges and system design questions. Getting the offer felt like validation of everything I'd been working toward. At Google, I was assigned to a team working on internal tools for data analysis. The complexity of the systems was mind-boggling, but I thrived in that environment of intellectual rigor.
+            </p>
+            
+            <p>
+                For my final internship, I returned to Google but in a different role — Associate Product Manager intern. This was unusual, as most students stayed in either engineering or product management, but I was curious about the product side. This experience gave me a broader view of how technology products are conceived, developed, and launched. Working with designers, marketers, and business strategists expanded my perspective beyond pure engineering concerns.
+            </p>
+            
+            <h2>Finding My Path</h2>
+            
+            <p>
+                These internships helped me understand something crucial about myself: I was drawn to roles where I could bridge technical and strategic thinking. I enjoyed coding, but I was equally fascinated by the "why" behind products — what problems they solved and how they created value.
+            </p>
+            
+            <p>
+                By the time I graduated from Waterloo in 2014, I had a much clearer sense of direction than when I'd started. The unconventional path I'd taken — from considering marine biology to systems design to Silicon Valley — had equipped me with a unique perspective that combined technical skills, business understanding, and a willingness to take the road less traveled.
+            </p>
+            
+            <p>
+                Looking back at my university years, I realize that the most valuable education happened outside the classroom, in the real-world environments of my internships. Waterloo's co-op program wasn't just a series of jobs — it was a journey that helped me discover my strengths, interests, and the impact I wanted to make in the world of technology.
+            </p>
+            
+            <div class="chapter-navigation">
+                <a href="/memoir/high-school.html" class="chapter-link prev-chapter">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Previous: High School Years
+                </a>
+                
+                <a href="/memoir/quora.html" class="chapter-link next-chapter">
+                    Next: My Time at Quora
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

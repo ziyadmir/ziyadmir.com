@@ -221,136 +221,55 @@
                     
                     <h2>The Challenge</h2>
                     <p>
-                        Brand advertisers face significant challenges in digital advertising:
-                    </p>
-                    
-                    <ul>
-                        <li>Ensuring brand safety while maintaining reach</li>
-                        <li>Finding contextually relevant placements at scale</li>
-                        <li>Identifying emotional moments that resonate with their brand values</li>
-                        <li>Measuring brand impact beyond simple metrics like views and clicks</li>
-                    </ul>
-                    
-                    <p>
-                        Traditional video advertising approaches lacked the granularity to address these challenges effectively. Advertisers could target entire videos but couldn't pinpoint specific moments within content that would best reinforce their brand identity.
+                        Brand advertisers want placements that feel authentic and safe. They need to reach viewers when emotions are high without risking their reputation. The usual approach targets entire videos, so the most resonant moments are lost in the noise.
                     </p>
                     
                     <h2>Technical Implementation</h2>
                     
                     <h3>AI Models & Architecture</h3>
                     <p>
-                        At the core of YouTube Flash is a sophisticated ML pipeline leveraging several state-of-the-art models:
-                    </p>
-                    
-                    <ul>
-                        <li><strong>Gemini</strong> - Multimodal analysis of video content for scene understanding</li>
-                        <li><strong>PaLI</strong> - Image-text modeling for visual concept recognition</li>
-                        <li><strong>ytbert-ASR</strong> - Audio transcript analysis for context and sentiment</li>
-                        <li><strong>Custom emotion classifiers</strong> - Trained on proprietary emotion-labeled datasets</li>
-                    </ul>
-                    
-                    <p>
-                        The system processes millions of videos daily, creating a detailed moment-by-moment map of content, emotions, and brand suitability factors. This processing happens within a distributed compute framework that optimizes for both throughput and latency.
+                        At its core, Flash stitches together a mix of models—Gemini for scene understanding, PaLI for visual cues, ytbert-ASR for transcripts, and custom emotion classifiers. They work in concert to map every second of video into searchable signals that can be served quickly at scale.
                     </p>
                     
                     <h3>Tiered Caching Strategy</h3>
                     <p>
-                        To achieve the scale required for YouTube's massive content library, we implemented a sophisticated tiered caching system:
-                    </p>
-                    
-                    <ul>
-                        <li>L1 cache: In-memory storage for frequently accessed moment data</li>
-                        <li>L2 cache: Distributed cache for popular video segments</li>
-                        <li>L3 cache: Persistent storage for all processed video data</li>
-                    </ul>
-                    
-                    <p>
-                        This approach reduced redundant processing by over 80% and significantly improved serving latency for advertiser queries.
+                        We keep those signals close with a three-layer cache. Hot moments live in memory, popular segments sit in a distributed layer, and the rest are stored persistently. This trimmed redundant processing by more than 80% and keeps query latency low.
                     </p>
                     
                     <h3>Brand Identity Modeling</h3>
                     <p>
-                        We developed a framework for representing brand identity as a multi-dimensional vector in an embedding space that captures:
-                    </p>
-                    
-                    <ul>
-                        <li>Brand personality attributes</li>
-                        <li>Emotional tone preferences</li>
-                        <li>Content category affinities</li>
-                        <li>Target audience characteristics</li>
-                    </ul>
-                    
-                    <p>
-                        This allowed for efficient similarity matching between brand profiles and video moments, enabling precise targeting at scale.
+                        Each advertiser is represented as an embedding that mixes personality, emotional tone, and audience traits. By comparing that vector to the signals from our models, we can surface the moments that best match a brand’s identity.
                     </p>
                     
                     <h2>Results & Impact</h2>
-                    
+
                     <p>
-                        YouTube Flash delivered exceptional results for both YouTube and its advertising partners:
-                    </p>
-                    
-                    <ul>
-                        <li>Generated hundreds of millions in incremental ARR for YouTube</li>
-                        <li>Improved brand lift metrics by 30% compared to traditional video targeting</li>
-                        <li>Increased advertiser retention by 25% through superior performance</li>
-                        <li>Processed over 100M hours of video content daily with 99.9% availability</li>
-                    </ul>
-                    
-                    <p>
-                        The platform became a cornerstone of YouTube's brand advertising offering, with adoption by major global brands across diverse industries from automotive to consumer packaged goods.
+                        Flash generated hundreds of millions in incremental ARR and improved brand lift metrics by roughly thirty percent. It processes over a hundred million hours of video every day with high reliability, and it has become a cornerstone of YouTube’s brand advertising platform.
                     </p>
                     
                     <h2>Technical Challenges Overcome</h2>
-                    
+
                     <h3>Scale & Performance</h3>
                     <p>
-                        Processing YouTube's vast content library required sophisticated engineering solutions:
+                        To handle the entire YouTube library we combined batch pipelines, real-time processing for new uploads, and lightweight models tuned for speed. Adaptive sampling kept resources focused on the most popular content.
                     </p>
-                    
-                    <ul>
-                        <li>Built custom batch processing pipelines for historical content</li>
-                        <li>Developed real-time processing for new uploads</li>
-                        <li>Optimized models for inference speed without sacrificing accuracy</li>
-                        <li>Implemented adaptive sampling based on content popularity</li>
-                    </ul>
-                    
+
                     <h3>Accuracy & Quality</h3>
                     <p>
-                        Ensuring the quality of moment-level targeting was critical for brand safety:
+                        Quality mattered just as much as scale. We built human evaluation loops, confidence scoring, and fallback paths to keep ads safe and relevant while monitoring for model drift.
                     </p>
-                    
-                    <ul>
-                        <li>Created human evaluation workflows for model output validation</li>
-                        <li>Developed confidence scoring for all predictions</li>
-                        <li>Implemented fallback mechanisms for low-confidence results</li>
-                        <li>Established continuous evaluation metrics for model drift detection</li>
-                    </ul>
                     
                     <h2>My Role & Contributions</h2>
-                    
+
                     <p>
-                          As the AI Architect for YouTube Flash, I:
+                        I served as the AI architect, designed the overall system, led engineers across multiple teams, and partnered with product leads to align our work with business needs. I also built the early proof of concept that secured executive support and guided integration with YouTube’s ads stack.
                     </p>
                     
-                    <ul>
-                        <li>Architected the overall system design and technical approach</li>
-                        <li>Led a cross-functional team of ML engineers, backend developers, and data scientists</li>
-                        <li>Coordinated and steered the work of many L6-L8 engineers across YouTube and Google, including Director-level (L8+) leads across organizations</li>
-                        <li>Worked directly with product leadership to align technical capabilities with business needs</li>
-                        <li>Coordinated with YouTube ads serving systems for integration</li>
-                        <li>Developed the initial proof-of-concept that secured executive buy-in</li>
-                    </ul>
-                    
                     <h2>Technologies Used</h2>
-                    
-                    <ul>
-                        <li><strong>Languages:</strong> Java, Python, C++</li>
-                        <li><strong>ML Frameworks:</strong> TensorFlow, PyTorch</li>
-                        <li><strong>Infrastructure:</strong> Google Cloud, MapReduce, Spanner</li>
-                        <li><strong>Models:</strong> Gemini, PaLI, ytbert-ASR, custom CNN/transformer models</li>
-                        <li><strong>Monitoring:</strong> Prometheus, Grafana, custom YouTube observability tools</li>
-                    </ul>
+
+                    <p>
+                        The stack spans Java, Python, and C++, built on Google Cloud with MapReduce and Spanner. We trained models with TensorFlow and PyTorch and monitored everything through Prometheus, Grafana, and in-house tools.
+                    </p>
                     
                     <div class="related-projects">
                         <h3 class="text-xl font-bold text-primary mb-4">Related Projects</h3>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            background-color: #f9fafb;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .series-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .series-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .series-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            color: white;
+        }
+        
+        .series-header.threat-models {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .series-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .series-meta {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+        
+        .post-item {
+            padding: 1.25rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+            transition: background-color 0.2s;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .post-item:hover {
+            background-color: #f9fafb;
+        }
+        
+        .post-item:last-child {
+            border-bottom: none;
+        }
+        
+        .post-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+        }
+        
+        .post-date {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .view-series-link {
+            display: inline-flex;
+            align-items: center;
+            color: #4f46e5;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .view-series-link:hover {
+            color: #4338ca;
+        }
+        
+        .view-series-link svg {
+            margin-left: 0.25rem;
+            transition: transform 0.2s;
+        }
+        
+        .view-series-link:hover svg {
+            transform: translateX(4px);
+        }
+        
+        .coming-soon {
+            color: #9ca3af;
+            font-style: italic;
+        }
+        
+        @media (max-width: 640px) {
+            .series-header {
+                padding: 1.5rem;
+            }
+            
+            .series-title {
+                font-size: 1.25rem;
+            }
+            
+            .post-item {
+                padding: 1rem 1.5rem;
+            }
+            
+            .post-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto" style="padding-top: 2rem;">
+            <h1 class="text-3xl font-bold text-primary mb-2">Writing</h1>
+            <p class="text-gray-600 mb-8">Deep dives into AI engineering, threat models, and building at scale.</p>
+            
+            <div class="grid gap-8">
+                <!-- AI-for-Work Series -->
+                <div class="series-card">
+                    <div class="series-header">
+                        <h2 class="series-title">AI-for-Work: An AI Architect's Guide to Enterprise AI</h2>
+                        <p class="series-meta">7-Part Series • December 2024 - June 2025</p>
+                    </div>
+                    <div class="series-content">
+                        <a href="/blog/ai-for-work-part-1-ai-ide.html" class="post-item">
+                            <h3 class="post-title">Part 1: Deploy AI IDEs to Everyone Without Breaking Security</h3>
+                            <p class="post-date">December 15, 2024</p>
+                        </a>
+                        <a href="/blog/ai-for-work-part-2-mcp-gateway.html" class="post-item">
+                            <h3 class="post-title">Part 2: Build a Centralized, Audited MCP Gateway</h3>
+                            <p class="post-date">January 15, 2025</p>
+                        </a>
+                        <a href="/blog/ai-for-work-part-3-ai-observability.html" class="post-item">
+                            <h3 class="post-title">Part 3: Transform Proxy Logs into Actionable Intelligence</h3>
+                            <p class="post-date">February 15, 2025</p>
+                        </a>
+                        <a href="/blog/ai-for-work-part-4-agent-orchestration.html" class="post-item">
+                            <h3 class="post-title">Part 4: Build Agent Orchestration for Enterprise Scale</h3>
+                            <p class="post-date">March 15, 2025</p>
+                        </a>
+                        <a href="/blog/ai-for-work-part-5-knowledge-preservation.html" class="post-item">
+                            <h3 class="post-title">Part 5: Preserve Institutional Knowledge Before It Vanishes</h3>
+                            <p class="post-date">April 15, 2025</p>
+                        </a>
+                        <a href="/blog/ai-for-work-part-6-work-as-code.html" class="post-item">
+                            <h3 class="post-title">Part 6: Create Micro-MCPs for Every Engineering Task</h3>
+                            <p class="post-date">May 15, 2025</p>
+                        </a>
+                        <a href="/blog/ai-for-work-part-7-engineering-org-needs.html" class="post-item">
+                            <h3 class="post-title">Part 7: Building AI Observability and Adoption Programs</h3>
+                            <p class="post-date">June 15, 2025</p>
+                        </a>
+                        <div class="post-item" style="background-color: #f9fafb;">
+                            <a href="/blog/ai-for-work-series-index.html" class="view-series-link">
+                                View Complete Series
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experiment: AI Voice Series -->
+                <div class="series-card">
+                    <div class="series-header" style="background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);">
+                        <h2 class="series-title">The Voice Test: AI Models Attempt My Writing Style</h2>
+                        <p class="series-meta">A Series on AI Mimicry • Started July 2025</p>
+                    </div>
+                    <div class="series-content">
+                        <div class="post-item" style="background-color: #f3f4f6; font-style: italic;">
+                            <p style="margin-bottom: 1rem; color: #374151;">
+                                <strong>About this experiment:</strong> What happens when you feed an AI model your own writing and ask it to mimic your voice? This series explores AI voice mimicry by having multiple models (Claude 4 Opus, Gemini 2.5 Pro, OpenAI o3, OpenAI o3 Pro, OpenAI Codex) write the same blog posts in my style.
+                            </p>
+                            <p style="color: #374151;">
+                                I provided each model with a 3,000-word unpublished personal essay as a sample of my writing style. The goal? To see how well different AI models can capture individual writing voice, what the output looks like, and how readers perceive the different versions. It's an experiment in AI authenticity and the boundaries of voice replication.
+                            </p>
+                        </div>
+                        <a href="/blog/youth-vs-experience.html" class="post-item">
+                            <h3 class="post-title">[Codex, No Mimicry] Youth vs. Experience: Finding the Balance</h3>
+                            <p class="post-date">July 1, 2025</p>
+                        </a>
+                        <a href="/blog/bravado-vs-wisdom.html" class="post-item">
+                            <h3 class="post-title">[Codex, 200 Words] Bravado vs. Wisdom: A Tale of Two Generations</h3>
+                            <p class="post-date">July 1, 2025</p>
+                        </a>
+                        <a href="/blog/youthful-fire-seasoned-wisdom.html" class="post-item">
+                            <h3 class="post-title">[Codex, 3k Essay] Youthful Fire, Seasoned Wisdom</h3>
+                            <p class="post-date">July 1, 2025</p>
+                        </a>
+                        <a href="/blog/youth-wisdom-o3.html" class="post-item">
+                            <h3 class="post-title">[OpenAI o3, 3k Essay] Young Bulls, Old Bulls</h3>
+                            <p class="post-date">July 1, 2025</p>
+                        </a>
+                        <a href="/blog/youthful-exuberance-aged-wisdom.html" class="post-item">
+                            <h3 class="post-title">[Gemini 2.5 Pro, 3k Essay] Of Youthful Exuberance and Aged Wisdom</h3>
+                            <p class="post-date">July 1, 2025</p>
+                        </a>
+                        <a href="/blog/between-boldness-wisdom.html" class="post-item">
+                            <h3 class="post-title">[OpenAI o3 Pro, 3k Essay] Between Boldness and Wisdom</h3>
+                            <p class="post-date">July 1, 2025</p>
+                        </a>
+                        <div class="post-item">
+                            <p class="coming-soon">More experiments coming soon...</p>
+                        </div>
+                        <div class="post-item" style="background-color: #f9fafb;">
+                            <a href="/blog/youth-vs-experience.html" class="view-series-link">
+                                View Series
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Threat Models and AI Series -->
+                <div class="series-card">
+                    <div class="series-header threat-models">
+                        <h2 class="series-title">Threat Models and AI</h2>
+                        <p class="series-meta">Ongoing Series • Started January 2025</p>
+                    </div>
+                    <div class="series-content">
+                        <a href="/blog/threat-models-ai-agentic-misalignment.html" class="post-item">
+                            <h3 class="post-title">Part 1: When AI Agents Learn to Blackmail: Lessons from Agentic Misalignment Research</h3>
+                            <p class="post-date">January 22, 2025</p>
+                        </a>
+                        <div class="post-item">
+                            <p class="coming-soon">More posts coming soon...</p>
+                        </div>
+                        <div class="post-item" style="background-color: #f9fafb;">
+                            <a href="/blog/threat-models-ai-agentic-misalignment.html" class="view-series-link">
+                                View Series
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deep Analytics Series -->
+                <div class="series-card">
+                    <div class="series-header">
+                        <h2 class="series-title">Deep Analytics</h2>
+                        <p class="series-meta">Ongoing Series • Started June 2025</p>
+                    </div>
+                    <div class="series-content">
+                        <a href="/blog/deep-analytics-part-1-layer-deeper.html" class="post-item">
+                            <h3 class="post-title">Part 1: Going One Layer Deeper — Why Granular Metrics Matter</h3>
+                            <p class="post-date">June 30, 2025</p>
+                        </a>
+                        <div class="post-item">
+                            <p class="coming-soon">More posts coming soon...</p>
+                        </div>
+                        <div class="post-item" style="background-color: #f9fafb;">
+                            <a href="/blog/deep-analytics-part-1-layer-deeper.html" class="view-series-link">
+                                View Series
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy & Philosophy Series -->
+                <div class="series-card">
+                    <div class="series-header">
+                        <h2 class="series-title">Strategy &amp; Philosophy</h2>
+                        <p class="series-meta">Ongoing Series • Started July 2025</p>
+                    </div>
+                    <div class="series-content">
+                        <a href="/blog/riding-the-tech-wave.html" class="post-item">
+                            <h3 class="post-title">Riding the Tech Wave: Lessons from Surfing</h3>
+                            <p class="post-date">July 10, 2025</p>
+                        </a>
+                        <a href="/blog/ai-first-workflow-poc.html" class="post-item">
+                            <h3 class="post-title">Proof of Concept: Coding an MCP Client with Claude</h3>
+                            <p class="post-date">July 15, 2025</p>
+                        </a>
+                        <a href="/blog/future-of-work-ai-guidance.html" class="post-item">
+                            <h3 class="post-title">The Future of Work: AI Guidance and the New Engineering Paradigm</h3>
+                            <p class="post-date">June 24, 2025</p>
+                        </a>
+                        <a href="/blog/two-tiered-internet-ai-content.html" class="post-item">
+                            <h3 class="post-title">The Coming Two-Tiered Internet</h3>
+                            <p class="post-date">August 10, 2025</p>
+                        </a>
+                        <a href="/blog/autonomous-mcp-server-hitl.html" class="post-item">
+                            <h3 class="post-title">Building an Autonomous MCP Server with HITL</h3>
+                            <p class="post-date">August 20, 2025</p>
+                        </a>
+                        <div class="post-item">
+                            <p class="coming-soon">More posts coming soon...</p>
+                        </div>
+                        <div class="post-item" style="background-color: #f9fafb;">
+                            <a href="/blog/riding-the-tech-wave.html" class="view-series-link">
+                                View Series
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learn to Surf Series -->
+                <div class="series-card">
+                    <div class="series-header">
+                        <h2 class="series-title">Learn to Surf</h2>
+                        <p class="series-meta">Ongoing Series • Started August 2025</p>
+                    </div>
+                    <div class="series-content">
+                        <a href="/blog/learn-to-surf-part-1-your-first-time.html" class="post-item">
+                            <h3 class="post-title">Part 1: Your First Time - Getting Comfortable in the Water</h3>
+                            <p class="post-date">August 1, 2025</p>
+                        </a>
+                        <a href="/blog/learn-to-surf-part-2-catching-white-water.html" class="post-item">
+                            <h3 class="post-title">Part 2: Catching White Water - Your First Real Waves</h3>
+                            <p class="post-date">August 15, 2025</p>
+                        </a>
+                        <div class="post-item" style="background-color: #f9fafb;">
+                            <a href="/blog/learn-to-surf-part-1-your-first-time.html" class="view-series-link">
+                                View Series
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

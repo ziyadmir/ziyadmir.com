@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise AI Platform | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'default',
+            flowchart: { 
+                useMaxWidth: false, 
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 40,
+                nodeSpacing: 80,
+                rankSpacing: 80
+            },
+            themeVariables: {
+                fontSize: '20px',
+                fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif'
+            }
+        });
+    </script>
+    <style type="text/css">
+        /* Project content styling */
+        .project-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .project-content h2 {
+            font-size: var(--font-2xl);
+            font-weight: 700;
+            margin-top: var(--space-3xl);
+            margin-bottom: var(--space-lg);
+            color: var(--color-text-primary);
+        }
+        
+        .project-content h3 {
+            font-size: var(--font-xl);
+            font-weight: 600;
+            margin-top: var(--space-2xl);
+            margin-bottom: var(--space-md);
+            color: var(--color-text-primary);
+        }
+        
+        .project-content p {
+            margin-bottom: var(--space-lg);
+            color: var(--color-text-secondary);
+        }
+        
+        .project-content ul, .project-content ol {
+            margin-bottom: var(--space-lg);
+            padding-left: var(--space-xl);
+        }
+        
+        .project-content li {
+            margin-bottom: var(--space-sm);
+            color: var(--color-text-secondary);
+        }
+        
+        .project-content ul li {
+            list-style-type: disc;
+        }
+        
+        .project-content ol li {
+            list-style-type: decimal;
+        }
+        
+        .project-tag {
+            display: inline-block;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: var(--font-xs);
+            background-color: var(--color-surface);
+            color: var(--color-text-secondary);
+            margin-right: var(--space-sm);
+            margin-bottom: var(--space-sm);
+            border: 1px solid var(--color-border-light);
+        }
+        
+        .highlight-box {
+            background-color: var(--color-surface);
+            border-left: 4px solid var(--color-accent);
+            padding: var(--space-xl);
+            margin: var(--space-2xl) 0;
+            border-radius: var(--radius-md);
+        }
+        
+        .highlight-box p {
+            font-weight: 500;
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            margin-bottom: var(--space-md);
+        }
+        
+        .highlight-box-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: var(--space-lg);
+            font-size: var(--font-sm);
+            color: var(--color-text-secondary);
+            gap: var(--space-lg);
+        }
+        
+        .related-projects {
+            border-top: 1px solid var(--color-border);
+            padding-top: var(--space-3xl);
+            margin-top: var(--space-3xl);
+            padding-bottom: var(--space-3xl);
+            margin-bottom: var(--space-3xl);
+        }
+        
+        .related-project-card {
+            background: var(--color-background);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            transition: all var(--transition-base);
+            text-decoration: none;
+            display: block;
+        }
+        
+        .related-project-card:hover {
+            border-color: var(--color-border);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: var(--font-sm);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .back-link svg {
+            transition: transform var(--transition-fast);
+        }
+        
+        .back-link:hover {
+            color: var(--color-accent-hover);
+        }
+        
+        .back-link:hover svg {
+            transform: translateX(-4px);
+        }
+        
+        @media (max-width: 640px) {
+            .project-content h2 {
+                font-size: var(--font-xl);
+            }
+            
+            .project-content h3 {
+                font-size: var(--font-lg);
+            }
+        }
+        
+        /* Mermaid diagram styling */
+        .mermaid {
+            margin: var(--space-2xl) auto;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+            font-size: 18px !important;
+        }
+        
+        .mermaid-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            margin: var(--space-2xl) auto;
+            overflow-x: auto;
+            width: 100%;
+            max-width: min(100%, 1200px);
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* Override default mermaid styles */
+        .mermaid svg {
+            max-width: 100% !important;
+            height: auto;
+            margin: 0 auto;
+            min-height: 400px;
+        }
+        
+        /* Make mermaid text larger */
+        .mermaid .nodeLabel {
+            font-size: 18px !important;
+        }
+        
+        .mermaid .edgeLabel {
+            font-size: 16px !important;
+        }
+        
+        /* Increase size of subgraph labels */
+        .mermaid .cluster-label {
+            font-size: 20px !important;
+            font-weight: bold !important;
+        }
+        
+        /* Make diagrams clickable for zoom */
+        .mermaid-container {
+            cursor: zoom-in;
+            position: relative;
+        }
+        
+        .mermaid-container::after {
+            content: "Click to zoom";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .mermaid-container:hover::after {
+            opacity: 1;
+        }
+        
+        /* Modal styles for zoomed diagram */
+        .diagram-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-y: auto;
+            overflow-x: auto;
+            padding: 20px;
+        }
+        
+        .diagram-modal.active {
+            display: block;
+        }
+        
+        .diagram-modal-content {
+            position: relative;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin: 40px auto;
+            width: fit-content;
+            min-width: 80vw;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .diagram-modal-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1002;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        
+        .diagram-modal-close:hover,
+        .diagram-modal-close:focus {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .diagram-modal .mermaid-container {
+            cursor: default;
+            margin: 0;
+            max-width: none;
+            width: fit-content;
+        }
+        
+        .diagram-modal .mermaid {
+            transform: scale(1.5);
+            transform-origin: top left;
+            min-height: auto;
+            margin: 0;
+        }
+        
+        .diagram-modal .mermaid svg {
+            max-width: none !important;
+            width: auto !important;
+        }
+        
+        /* Hide the "click to zoom" text in modal */
+        .diagram-modal .mermaid-container::after {
+            display: none;
+        }
+        
+        /* Responsive zoom */
+        @media (max-width: 768px) {
+            .diagram-modal .mermaid {
+                transform: scale(1);
+            }
+            
+            .diagram-modal-content {
+                min-width: 95vw;
+                padding: 20px;
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <article class="project-content" style="padding-top: 2rem;">
+            <a href="/projects.html" class="back-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Projects
+            </a>
+            
+            <header class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">Enterprise AI Platform</h1>
+                <div class="flex items-center text-gray-500 text-sm mb-4">
+                    <span>2024 - Present</span>
+                    <span class="mx-2">·</span>
+                    <span>Thousands of Engineers Enabled</span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="project-tag">TypeScript</span>
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">AI Infrastructure</span>
+                    <span class="project-tag">Enterprise Scale</span>
+                    <span class="project-tag">MCP</span>
+                    <span class="project-tag">LLM Observability</span>
+                </div>
+            </header>
+            
+            <div class="highlight-box mb-8">
+                <p>Leading a Fortune 150 e-commerce company's enterprise-wide AI transformation, fundamentally changing how thousands of engineers work through systematic AI tool deployment, infrastructure development, and cultural change. This initiative has achieved 30%+ productivity gains and established the company as a leader in enterprise AI adoption.</p>
+                <div class="highlight-box-meta">
+                      <span>AI Architect</span>
+                    <span>2024 - Present</span>
+                </div>
+            </div>
+            
+            <h2>Project Overview</h2>
+            <p>
+                As AI Architect at a major e-commerce company, I'm leading the Enterprise AI Initiative - a comprehensive transformation of how engineering work is done at enterprise scale. This isn't just about deploying AI tools; it's about fundamentally reimagining engineering workflows, building critical infrastructure, and driving cultural change across a large engineering organization.
+            </p>
+            
+            <p>
+                The initiative spans multiple workstreams: from deploying cutting-edge AI IDEs to building secure infrastructure that connects AI tools to internal systems, from creating observability platforms that process millions of LLM requests to developing frameworks that make engineering work programmatically accessible to AI agents.
+            </p>
+            
+            <h2>The Challenge</h2>
+            <p>
+                The organization faced several critical challenges in adopting AI at enterprise scale:
+            </p>
+            
+            <ul>
+                <li>Fragmented AI tool adoption with no centralized strategy or infrastructure</li>
+                <li>Security concerns about AI tools accessing internal systems and codebases</li>
+                <li>Lack of visibility into AI usage, costs, and effectiveness</li>
+                <li>Engineering workflows not designed for AI integration</li>
+                <li>Cultural resistance and uncertainty about AI's role in engineering</li>
+                <li>No frameworks for measuring productivity gains or ROI</li>
+            </ul>
+            
+            <p>
+                These challenges required a comprehensive approach that went beyond simply purchasing AI licenses - we needed to build infrastructure, change processes, and transform culture.
+            </p>
+            
+            <h2>Technical Implementation</h2>
+            
+            <h3>System Architecture</h3>
+            <p>
+                The Enterprise AI Platform is built on a modular, scalable architecture that integrates multiple AI tools through a secure gateway, orchestrates complex workflows via the Agentic AI Platform, and provides comprehensive observability:
+            </p>
+            
+            <div style="margin: var(--space-2xl) 0; text-align: center; background: #f8f9fa; padding: 40px; border-radius: var(--radius-lg); border: 1px solid var(--color-border-light);">
+                <img src="/images/projects/enterprise-ai-platform-system-design.svg" alt="Agentic AI Platform Architecture" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+                <p style="margin-top: 20px; font-size: 14px; color: #666; font-style: italic;">Enterprise AI Platform Architecture - Showing AI Tools, MCP Gateway, Agentic AI Platform, and Observability Components</p>
+            </div>
+            
+            <h3>AI IDE Deployment</h3>
+            <p>
+                Led the enterprise-wide deployment of advanced AI coding assistants to thousands of engineers:
+            </p>
+            
+            <ul>
+                <li>Architected rollout strategy with phased adoption and success metrics</li>
+                <li>Built custom integrations with the company's development environment</li>
+                <li>Created training programs and best practices documentation</li>
+                <li>Established feedback loops for continuous improvement</li>
+                <li>Achieved 90%+ adoption rate within 6 months</li>
+            </ul>
+            
+            <h3>Centralized MCP Gateway</h3>
+            <p>
+                Built a secure, audited gateway for AI tools to access internal systems:
+            </p>
+            
+            <div class="mermaid-container">
+                <div class="mermaid">
+                    graph LR
+                        subgraph "AI Tools"
+                            Tool1[AI IDE]
+                            Tool2[Claude]
+                            Tool3[GitHub Copilot]
+                        end
+                        
+                        subgraph "MCP Gateway"
+                            Router[Request Router]
+                            AuthZ[Authorization]
+                            RateLimit[Rate Limiter]
+                            Transform[Data Transform]
+                            Logger[Audit Logger]
+                        end
+                        
+                        subgraph "Backend Services"
+                            API1[JIRA API]
+                            API2[GitHub API]
+                            API3[Confluence API]
+                            API4[Internal Services]
+                        end
+                        
+                        Tool1 --> Router
+                        Tool2 --> Router
+                        Tool3 --> Router
+                        
+                        Router --> AuthZ
+                        AuthZ --> RateLimit
+                        RateLimit --> Transform
+                        Transform --> Logger
+                        
+                        Logger --> API1
+                        Logger --> API2
+                        Logger --> API3
+                        Logger --> API4
+                        
+                        style Router fill:#ff6b6b
+                        style AuthZ fill:#4ecdc4
+                        style Logger fill:#95e1d3
+                </div>
+            </div>
+            
+            <ul>
+                <li><strong>Architecture</strong>: TypeScript-based proxy with fine-grained access controls</li>
+                <li><strong>Security</strong>: OAuth integration, request signing, and comprehensive audit logging</li>
+                <li><strong>Integrations</strong>: Connected to JIRA, Confluence, GitHub Enterprise, internal APIs</li>
+                <li><strong>Performance</strong>: Sub-50ms latency with 99.99% availability</li>
+                <li><strong>Compliance</strong>: Full audit trail for security and compliance requirements</li>
+            </ul>
+            
+            <p>
+                This gateway became the foundation for secure AI-to-enterprise connectivity, enabling AI tools to work with internal data while maintaining security standards. It also serves as the central integration point for the Agent Orchestration Platform and MicroMCPs, providing secure access to internal systems for AI agents.
+            </p>
+            
+            <h3>AI Observability Platform</h3>
+            <p>
+                Developed comprehensive observability for AI tool usage:
+            </p>
+            
+            <div class="mermaid-container">
+                <div class="mermaid">
+                    flowchart TD
+                        subgraph "Data Collection"
+                            LLM[LLM Requests]
+                            Code[Code Changes]
+                            Metrics[Performance Metrics]
+                        end
+                        
+                        subgraph "Processing Pipeline"
+                            Stream[Stream Processor]
+                            Enrich[Data Enrichment]
+                            Aggregate[Aggregation Engine]
+                        end
+                        
+                        subgraph "Analytics"
+                            TokenAnalytics[Token Usage Analytics]
+                            QualityMetrics[Code Quality Metrics]
+                            ProductivityMetrics[Productivity Analytics]
+                            CostAnalytics[Cost Attribution]
+                        end
+                        
+                        subgraph "Outputs"
+                            TeamDash[Team Dashboards]
+                            ExecDash[Executive Reports]
+                            Alerts[Anomaly Alerts]
+                        end
+                        
+                        LLM --> Stream
+                        Code --> Stream
+                        Metrics --> Stream
+                        
+                        Stream --> Enrich
+                        Enrich --> Aggregate
+                        
+                        Aggregate --> TokenAnalytics
+                        Aggregate --> QualityMetrics
+                        Aggregate --> ProductivityMetrics
+                        Aggregate --> CostAnalytics
+                        
+                        TokenAnalytics --> TeamDash
+                        QualityMetrics --> TeamDash
+                        ProductivityMetrics --> ExecDash
+                        CostAnalytics --> ExecDash
+                        
+                        Aggregate --> Alerts
+                        
+                        style Stream fill:#667eea
+                        style Aggregate fill:#764ba2
+                        style ExecDash fill:#f093fb
+                </div>
+            </div>
+            
+            <ul>
+                <li>Real-time processing of 1M+ LLM requests daily</li>
+                <li>Token usage tracking and cost attribution by team/project</li>
+                <li>Quality metrics for AI-generated code (test coverage, review feedback)</li>
+                <li>Productivity analytics showing time saved and efficiency gains</li>
+                <li>Anomaly detection for unusual usage patterns or potential issues</li>
+            </ul>
+            
+            <p>
+                This platform provided unprecedented visibility into AI adoption and effectiveness, enabling data-driven decisions about tool investments and training needs.
+            </p>
+            
+            <h3>Agent Orchestration Platform</h3>
+            <p>
+                Built a sophisticated infrastructure for complex multi-step AI workflows that multiplexes engineer capabilities through AI agents:
+            </p>
+            
+            <div class="mermaid-container">
+                <div class="mermaid">
+                    graph TD
+                        subgraph "Orchestration Core"
+                            Scheduler[Task Scheduler]
+                            Executor[Agent Executor]
+                            State[State Manager]
+                            HITL[Human-in-the-Loop]
+                        end
+                        
+                        subgraph "AI Agents"
+                            Agent1[Code Review Agent]
+                            Agent2[Test Generation Agent]
+                            Agent3[Documentation Agent]
+                            Agent4[Deployment Agent]
+                        end
+                        
+                        subgraph "MicroMCPs"
+                            MCP1[PR Review MCP]
+                            MCP2[Test Runner MCP]
+                            MCP3[Doc Gen MCP]
+                            MCP4[Deploy MCP]
+                            MCP5[Task Tracker MCP]
+                            MCP6[Analytics MCP]
+                        end
+                        
+                        subgraph "Human Interface"
+                            Slack[Slack Integration]
+                            Approvals[Approval Workflows]
+                            Notif[Real-time Notifications]
+                        end
+                        
+                        subgraph "Integration Points"
+                            CI[CI/CD Pipeline]
+                            PR[Pull Requests]
+                            Deploy[Deployment Systems]
+                            TaskTracker[Task Tracker]
+                        end
+                        
+                        Scheduler --> Executor
+                        Executor --> State
+                        State --> HITL
+                        HITL --> Slack
+                        
+                        Executor --> Agent1
+                        Executor --> Agent2
+                        Executor --> Agent3
+                        Executor --> Agent4
+                        
+                        Agent1 --> MCP1
+                        Agent2 --> MCP2
+                        Agent3 --> MCP3
+                        Agent4 --> MCP4
+                        
+                        Agent1 --> MCP5
+                        Agent2 --> MCP5
+                        Agent3 --> MCP6
+                        Agent4 --> MCP6
+                        
+                        MCP1 --> PR
+                        MCP2 --> CI
+                        MCP3 --> PR
+                        MCP4 --> Deploy
+                        MCP5 --> TaskTracker
+                        
+                        Slack --> Approvals
+                        Approvals --> Notif
+                        
+                        style Scheduler fill:#ff6b6b
+                        style Executor fill:#4ecdc4
+                        style HITL fill:#95e1d3
+                        style Slack fill:#4a154b
+                        style MCP1 fill:#feca57
+                        style MCP2 fill:#feca57
+                        style MCP3 fill:#feca57
+                        style MCP4 fill:#feca57
+                </div>
+            </div>
+            
+            <ul>
+                <li><strong>Orchestration Core</strong>: Platform that orchestrates AI agents and manages complex workflows</li>
+                <li><strong>MicroMCPs</strong>: Specialized Model Context Protocol servers for ad-hoc workflow tasks (PR reviews, test running, doc generation, deployments)</li>
+                <li><strong>Human-in-the-Loop</strong>: Slack integration for approval workflows, notifications, and engineer oversight</li>
+                <li><strong>Agent-to-MCP Communication</strong>: Agents dynamically call MicroMCPs for specific subtasks during workflow execution</li>
+                <li><strong>Parallel Execution</strong>: Performance optimization for running multiple agents and MicroMCPs concurrently</li>
+                <li><strong>Real-time Monitoring</strong>: Progress tracking and state management across distributed agent workflows</li>
+            </ul>
+            
+            <h3>Work-as-Code Framework</h3>
+            <p>
+                Pioneered making engineering tasks programmatically accessible:
+            </p>
+            
+            <div class="mermaid-container">
+                <div class="mermaid">
+                    graph LR
+                        subgraph "Work Definitions"
+                            Task1[Review PR]
+                            Task2[Run Tests]
+                            Task3[Update Docs]
+                            Task4[Deploy Service]
+                        end
+                        
+                        subgraph "MCP Servers"
+                            MCP1[PR Review MCP]
+                            MCP2[Test Runner MCP]
+                            MCP3[Doc Generator MCP]
+                            MCP4[Deployment MCP]
+                        end
+                        
+                        subgraph "AI Interface"
+                            Interface[Unified API]
+                            Discovery[Service Discovery]
+                            Registry[MCP Registry]
+                        end
+                        
+                        subgraph "AI Agents"
+                            AI1[AI IDE]
+                            AI2[Claude]
+                            AI3[Custom Agents]
+                        end
+                        
+                        Task1 --> MCP1
+                        Task2 --> MCP2
+                        Task3 --> MCP3
+                        Task4 --> MCP4
+                        
+                        MCP1 --> Registry
+                        MCP2 --> Registry
+                        MCP3 --> Registry
+                        MCP4 --> Registry
+                        
+                        Registry --> Discovery
+                        Discovery --> Interface
+                        
+                        AI1 --> Interface
+                        AI2 --> Interface
+                        AI3 --> Interface
+                        
+                        style Interface fill:#fa709a
+                        style Registry fill:#fee140
+                        style Discovery fill:#30cfd0
+                </div>
+            </div>
+            
+            <ul>
+                <li>Developed micro-MCP servers for specific engineering domains</li>
+                <li>Created standardized interfaces for common operations</li>
+                <li>Built SDK for teams to expose their workflows to AI</li>
+                <li>Established patterns for safe, auditable AI interactions</li>
+                <li>Enabled "serverless" approach to AI tool integration</li>
+            </ul>
+            
+            <h2>Results & Impact</h2>
+            
+            <p>
+                The Enterprise AI Initiative has delivered transformative results:
+            </p>
+            
+            <ul>
+                <li><strong>30%+ Productivity Gains</strong>: Measured reduction in time for common engineering tasks</li>
+                <li><strong>Thousands of Engineers Enabled</strong>: Near-universal adoption across engineering</li>
+                <li><strong>Significant Annual Savings</strong>: Through improved efficiency and reduced development time</li>
+                <li><strong>50% Reduction in Boilerplate</strong>: AI handling repetitive coding tasks</li>
+                <li><strong>30% Faster PR Reviews</strong>: AI-assisted code review and testing</li>
+                <li><strong>Cultural Transformation</strong>: AI now integral to engineering workflows</li>
+            </ul>
+            
+            <h2>Key Innovations</h2>
+            
+            <h3>Security-First Architecture</h3>
+            <p>
+                Developed novel approaches to secure AI integration:
+            </p>
+            
+            <ul>
+                <li>Zero-trust model for AI tool access to internal systems</li>
+                <li>Granular permission system based on user, tool, and resource</li>
+                <li>Real-time monitoring and anomaly detection</li>
+                <li>Compliance-ready audit trails for all AI interactions</li>
+            </ul>
+            
+            <h3>Measurement Framework</h3>
+            <p>
+                Created comprehensive metrics for AI effectiveness:
+            </p>
+            
+            <ul>
+                <li>Productivity metrics tied to business outcomes</li>
+                <li>Quality indicators for AI-generated code</li>
+                <li>Team-level dashboards for adoption tracking</li>
+                <li>ROI calculations for AI tool investments</li>
+            </ul>
+            
+            <h3>Cultural Change Management</h3>
+            <p>
+                Led organizational transformation:
+            </p>
+            
+            <ul>
+                <li>Executive alignment and sponsorship</li>
+                <li>Champion program for early adopters</li>
+                <li>Regular showcases of AI success stories</li>
+                <li>Integration into engineering onboarding</li>
+                <li>Continuous education and best practices sharing</li>
+            </ul>
+            
+            <h2>Technical Challenges Overcome</h2>
+            
+            <h3>Scale & Performance</h3>
+            <p>
+                Handling enterprise-scale AI adoption required innovative solutions:
+            </p>
+            
+            <ul>
+                <li>Built distributed architecture to handle millions of daily requests</li>
+                <li>Implemented intelligent caching to reduce API costs</li>
+                <li>Developed request prioritization for critical workflows</li>
+                <li>Created fallback mechanisms for AI service outages</li>
+            </ul>
+            
+            <h3>Integration Complexity</h3>
+            <p>
+                Connecting AI tools to diverse internal systems:
+            </p>
+            
+            <ul>
+                <li>Developed adapters for 20+ internal APIs and tools</li>
+                <li>Built translation layers for different data formats</li>
+                <li>Created unified authentication across systems</li>
+                <li>Implemented retry logic and error handling</li>
+            </ul>
+            
+            <h2>Future Roadmap</h2>
+            
+            <p>
+                The Enterprise AI Initiative continues to evolve:
+            </p>
+            
+            <ul>
+                <li><strong>Autonomous Agents</strong>: Moving from AI assistance to autonomous task completion</li>
+                <li><strong>Custom Models</strong>: Fine-tuning LLMs on the company's codebase and patterns</li>
+                <li><strong>Predictive Analytics</strong>: Using AI to predict and prevent engineering bottlenecks</li>
+                <li><strong>Cross-functional Expansion</strong>: Extending AI tools to product, design, and operations</li>
+                <li><strong>Open Source Contributions</strong>: Sharing our frameworks with the community</li>
+            </ul>
+            
+            <h2>My Role & Leadership</h2>
+            
+            <p>
+                As AI Architect leading this initiative, I:
+            </p>
+            
+            <ul>
+                <li>Define technical strategy and architecture for AI adoption</li>
+                <li>Lead cross-functional teams across engineering, security, and operations</li>
+                <li>Drive executive alignment and secure funding for initiatives</li>
+                <li>Mentor engineers on AI integration best practices</li>
+                <li>Represent the company at AI conferences and industry forums</li>
+                <li>Collaborate with AI vendors on enterprise features</li>
+            </ul>
+            
+            <h2>Technologies Used</h2>
+            
+            <ul>
+                <li><strong>Languages</strong>: TypeScript, Python, Go</li>
+                <li><strong>AI Tools</strong>: Various AI IDEs, Claude, GPT-4, GitHub Copilot</li>
+                <li><strong>Infrastructure</strong>: Kubernetes, AWS, Terraform</li>
+                <li><strong>Observability</strong>: Datadog, Grafana, Custom Analytics Platform</li>
+                <li><strong>Frameworks</strong>: MCP (Model Context Protocol), LangChain, Custom SDKs</li>
+            </ul>
+            
+            <h2>Lessons Learned</h2>
+            
+            <p>
+                Key insights from leading enterprise AI transformation:
+            </p>
+            
+            <ul>
+                <li>Infrastructure and security must come before tool deployment</li>
+                <li>Measurement and visibility are crucial for adoption success</li>
+                <li>Cultural change is as important as technical implementation</li>
+                <li>Start with high-value, low-risk use cases to build confidence</li>
+                <li>Invest heavily in training and documentation</li>
+                <li>Build for extensibility - the AI landscape changes rapidly</li>
+            </ul>
+            
+            <div class="related-projects">
+                <h3 class="text-xl font-bold text-primary mb-4">Related Projects</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="/projects/uber-rosetta.html" class="related-project-card">
+                        <h4 class="font-bold text-primary">Uber Rosetta: Translations Service</h4>
+                        <p class="text-sm text-gray-600 mt-1">High-throughput internationalization platform</p>
+                    </a>
+                    <a href="/projects/youtube-flash.html" class="related-project-card">
+                        <h4 class="font-bold text-primary">YouTube Flash: Moment-Level Ads</h4>
+                        <p class="text-sm text-gray-600 mt-1">AI-powered advertising innovation</p>
+                    </a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <!-- Modal for zoomed diagrams -->
+    <div id="diagramModal" class="diagram-modal">
+        <span class="diagram-modal-close">&times;</span>
+        <div class="diagram-modal-content" id="modalContent">
+        </div>
+    </div>
+    
+    <script src="/components.js"></script>
+    
+    <script>
+        // Wait for Mermaid diagrams to render
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                // Get all mermaid containers
+                const mermaidContainers = document.querySelectorAll('.mermaid-container');
+                const modal = document.getElementById('diagramModal');
+                const modalContent = document.getElementById('modalContent');
+                const modalClose = document.querySelector('.diagram-modal-close');
+                
+                // Add click event to each mermaid container
+                mermaidContainers.forEach(function(container) {
+                    container.addEventListener('click', function() {
+                        // Clone the mermaid content
+                        const mermaidClone = container.cloneNode(true);
+                        
+                        // Clear modal content and add clone
+                        modalContent.innerHTML = '';
+                        modalContent.appendChild(mermaidClone);
+                        
+                        // Show modal
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+                
+                // Close modal when clicking X
+                modalClose.addEventListener('click', function() {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+                
+                // Close modal when clicking outside the content
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal || !modalContent.contains(e.target)) {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+                
+                // Close modal with Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modal.classList.contains('active')) {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }, 1000); // Wait for Mermaid to render
+        });
+    </script>
+</body>
+</html>

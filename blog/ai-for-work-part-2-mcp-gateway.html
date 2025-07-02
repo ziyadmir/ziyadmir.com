@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2: Building a Centralized MCP Gateway - The Context Layer | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+        
+        .blog-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.25rem;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-content ul li {
+            list-style-type: disc;
+        }
+        
+        .blog-content ol li {
+            list-style-type: decimal;
+        }
+        
+        .blog-content code {
+            background-color: #f3f4f6;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+        }
+        
+        .blog-content pre {
+            margin: 1.5rem 0;
+        }
+        
+        .blog-content pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        
+        .blog-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .series-nav {
+            background-color: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 2rem 0;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            body { font-size: 0.85rem; }
+            .blog-content h2 { font-size: 1.25rem; }
+            .blog-content h3 { font-size: 1.1rem; }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.initialize({ startOnLoad: true });
+        });
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <article class="blog-content">
+            <h1 class="text-3xl font-bold text-primary mb-3 pt-8">Part 2: Building a Centralized MCP Gateway - The Context Layer</h1>
+            <p class="text-gray-500 text-sm mb-4">January 15, 2025 · AI-for-Work Series</p>
+            
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="blog-tag">AI</span>
+                <span class="blog-tag">MCP</span>
+                <span class="blog-tag">Architecture</span>
+                <span class="blog-tag">Security</span>
+                <span class="blog-tag">Enterprise</span>
+            </div>
+
+            <h2>The Context Problem</h2>
+
+<p>Your AI IDE is deployed. Developers are writing code faster. But they keep asking: "How do I make it understand our internal APIs?" "Can it see our design docs?" "Why doesn't it know about our coding standards?"</p>
+
+<p>Welcome to the context problem. LLMs are powerful but ignorant of your organization. Model Context Protocol (MCP) bridges this gap, but deploying it at enterprise scale requires careful architecture.</p>
+
+<p>This post details how we built a centralized MCP gateway serving 2,500+ developers, handling 1M+ requests daily, with sub-100ms latency.</p>
+
+<h2>What is MCP?</h2>
+
+<p>Model Context Protocol is an open standard for connecting LLMs to external context sources. Think of it as GraphQL for AI context:</p>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">// MCP Request
+{
+  "method": "context/search",
+  "params": {
+    "query": "payment service API",
+    "limit": 5,
+    "sources": ["github", "confluence", "api-catalog"]
+  }
+}</p>
+
+<p>// MCP Response  
+{
+  "results": [
+    {
+      "source": "api-catalog",
+      "title": "Payment Service v2 API",
+      "content": "OpenAPI spec...",
+      "relevance": 0.95
+    }
+  ]
+}
+</code></pre>
+
+<h2>Why Centralize?</h2>
+
+<p>The naive approach—letting each developer run their own MCP servers—fails at scale:</p>
+
+<p><strong>Security Issues</strong>:
+<ul>
+<li>Developers storing credentials insecurely</li>
+<li>No audit trail of data access</li>
+<li>Inconsistent access controls</li>
+</ul>
+
+<p><strong>Operational Chaos</strong>:
+<ul>
+<li>1,500 different configurations</li>
+<li>No monitoring or debugging</li>
+<li>Update nightmare</li>
+</ul>
+
+<p><strong>Performance Problems</strong>:
+<ul>
+<li>Redundant API calls</li>
+<li>No caching layer</li>
+<li>Resource waste</li>
+</ul>
+
+<p>A centralized gateway solves all these issues while adding enterprise capabilities.</p>
+
+<h2>Architecture Overview</h2>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code>
+┌─────────────┐     ┌─────────────────┐     ┌──────────────┐
+│   AI IDEs   │────▶│   MCP Gateway   │────▶│Context Sources│
+│  (2,500+)   │     │  (Centralized)  │     │  GitHub      │
+└─────────────┘     │                 │     │  Jira        │
+                    │ • Auth          │     │  Confluence  │
+                    │ • Rate Limit    │     │  APIs        │
+                    │ • Cache         │     │  Databases   │
+                    │ • Audit Log     │     └──────────────┘
+                    └─────────────────┘
+</code></pre>
+
+<h2>Core Components</h2>
+
+<p><strong>1. Authentication Layer</strong></p>
+
+<p>Every request must be authenticated:</p>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+class MCPAuthMiddleware {
+  async authenticate(request: MCPRequest): Promise<AuthContext> {
+    // Extract token from request
+    const token = request.headers['Authorization'];
+    
+    // Validate against identity provider
+    const user = await validateToken(token);
+    
+    // Load user permissions
+    const permissions = await loadPermissions(user.id);
+    
+    // Create scoped context
+    return {
+      userId: user.id,
+      permissions,
+      allowedSources: this.getAllowedSources(permissions),
+      rateLimit: this.getRateLimit(user.tier)
+    };
+  }
+}
+</code></pre>
+
+<p>We use personal access tokens (PATs) with automatic rotation:</p>
+<ul>
+<li>day expiration</li>
+<li>Scope-limited permissions</li>
+<li>Audit trail of usage</li>
+</ul>
+
+<p><strong>2. Request Router</strong></p>
+
+<p>The router maps MCP requests to appropriate backends:</p>
+
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+class MCPRouter {
+  private handlers: Map<string, ContextHandler> = new Map([
+    ['github', new GitHubHandler()],
+    ['jira', new JiraHandler()],
+    ['confluence', new ConfluenceHandler()],
+    ['api-catalog', new APICatalogHandler()],
+    ['database', new DatabaseHandler()]
+  ]);</p>
+
+<p>async route(request: MCPRequest, auth: AuthContext): Promise<MCPResponse> {
+    // Parse requested sources
+    const sources = request.params.sources || ['all'];
+    
+    // Check permissions
+    const allowedSources = sources.filter(s => 
+      auth.allowedSources.includes(s)
+    );
+    
+    // Fan out to handlers
+    const promises = allowedSources.map(source => 
+      this.handlers.get(source)?.handle(request, auth)
+    );
+    
+    // Aggregate results
+    const results = await Promise.all(promises);
+    return this.mergeResults(results);
+  }
+}
+</code></pre>
+
+<p><strong>3. Context Handlers</strong></p>
+
+<p>Each context source has a specialized handler:</p>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+class GitHubHandler implements ContextHandler {
+  async handle(request: MCPRequest, auth: AuthContext): Promise<ContextResult[]> {
+    // Transform MCP query to GitHub search
+    const githubQuery = this.buildQuery(request.params.query);
+    
+    // Search with user's permissions
+    const results = await this.githubClient.search({
+      query: githubQuery,
+      user: auth.userId,
+      repos: auth.allowedRepos
+    });
+    
+    // Transform to MCP format
+    return results.map(r => ({
+      source: 'github',
+      title: r.path,
+      content: r.content,
+      relevance: r.score,
+      metadata: {
+        repo: r.repository,
+        branch: r.branch,
+        lastModified: r.updated_at
+      }
+    }));
+  }
+}
+</code></pre>
+
+<p><strong>4. Caching Layer</strong></p>
+
+<p>Context doesn't change every millisecond. Aggressive caching dramatically improves performance:</p>
+
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+class MCPCache {
+  private redis: RedisClient;
+  
+  async get(request: MCPRequest, auth: AuthContext): Promise<MCPResponse | null> {
+    const key = this.buildKey(request, auth);
+    const cached = await this.redis.get(key);
+    
+    if (cached && !this.isStale(cached)) {
+      return cached.data;
+    }
+    
+    return null;
+  }
+  
+  async set(request: MCPRequest, auth: AuthContext, response: MCPResponse) {
+    const key = this.buildKey(request, auth);
+    const ttl = this.getTTL(request.params.sources);
+    
+    await this.redis.setex(key, ttl, {
+      data: response,
+      timestamp: Date.now(),
+      userId: auth.userId
+    });
+  }
+  
+  private getTTL(sources: string[]): number {
+    // Different TTLs for different sources
+    if (sources.includes('api-catalog')) return 3600; // 1 hour
+    if (sources.includes('github')) return 300; // 5 minutes
+    return 60; // 1 minute default
+  }
+}
+</code></pre>
+
+<p><strong>5. Audit Logging</strong></p>
+
+<p>Every context request is logged for compliance:</p>
+
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+class MCPAuditLogger {
+  async log(request: MCPRequest, auth: AuthContext, response: MCPResponse) {
+    const entry = {
+      timestamp: new Date().toISOString(),
+      userId: auth.userId,
+      method: request.method,
+      query: request.params.query,
+      sources: request.params.sources,
+      resultCount: response.results.length,
+      responseTime: response.metadata.duration,
+      userAgent: request.headers['User-Agent'],
+      ip: request.ip
+    };
+    
+    // Stream to multiple destinations
+    await Promise.all([
+      this.writeToKafka(entry),
+      this.writeToS3(entry),
+      this.updateMetrics(entry)
+    ]);
+  }
+}
+</code></pre>
+
+<h2>Implementation Deep Dive</h2>
+
+<h3>Service Architecture</h3>
+
+<p>We run the gateway as a horizontally scalable service:</p>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-gateway
+spec:
+  replicas: 10
+  template:
+    spec:
+      containers:
+      - name: gateway
+        image: mcp-gateway:latest
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1"
+          limits:
+            memory: "4Gi"
+            cpu: "2"
+        env:
+        - name: CACHE_REDIS_URL
+          valueFrom:
+            secretKeyRef:
+              name: mcp-secrets
+              key: redis-url
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          periodSeconds: 10
+</code></pre>
+
+<h3>Performance Optimizations</h3>
+
+<p><strong>1. Connection Pooling</strong>
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+// Reuse connections to backends
+const githubPool = new ConnectionPool({
+  min: 10,
+  max: 100,
+  idleTimeout: 30000
+});
+</code></pre>
+
+<p><strong>2. Request Deduplication</strong>
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+// If multiple IDEs request same context, make one backend call
+const inflightRequests = new Map<string, Promise<any>>();</p>
+
+<p>async function deduplicatedFetch(key: string, fetcher: () => Promise<any>) {
+  if (inflightRequests.has(key)) {
+    return inflightRequests.get(key);
+  }
+  
+  const promise = fetcher();
+  inflightRequests.set(key, promise);
+  
+  try {
+    return await promise;
+  } finally {
+    inflightRequests.delete(key);
+  }
+}
+</code></pre>
+
+<p><strong>3. Smart Batching</strong>
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+// Batch multiple queries to same source
+class QueryBatcher {
+  private batch: Map<string, Set<string>> = new Map();
+  private timer: NodeJS.Timeout;
+  
+  async add(source: string, query: string): Promise<any> {
+    if (!this.batch.has(source)) {
+      this.batch.set(source, new Set());
+    }
+    
+    this.batch.get(source).add(query);
+    
+    if (!this.timer) {
+      this.timer = setTimeout(() => this.flush(), 10);
+    }
+    
+    return this.promises.get(query);
+  }
+}
+</code></pre>
+
+<h3>Security Hardening</h3>
+
+<p><strong>1. Request Validation</strong>
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+const requestSchema = z.object({
+  method: z.enum(['context/search', 'context/get']),
+  params: z.object({
+    query: z.string().max(1000),
+    sources: z.array(z.string()).max(10).optional(),
+    limit: z.number().max(50).optional()
+  })
+});</p>
+
+<p>function validateRequest(request: any): MCPRequest {
+  return requestSchema.parse(request);
+}
+</code></pre>
+
+<p><strong>2. Rate Limiting</strong>
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+const rateLimiter = new RateLimiter({
+  points: 1000, // requests
+  duration: 60, // per minute
+  blockDuration: 300 // 5 min block
+});</p>
+
+<p>async function checkRateLimit(userId: string) {
+  try {
+    await rateLimiter.consume(userId, 1);
+  } catch (e) {
+    throw new Error('Rate limit exceeded');
+  }
+}
+</code></pre>
+
+<p><strong>3. Content Filtering</strong>
+</code></pre>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+// Prevent sensitive data leakage
+function filterResults(results: ContextResult[], auth: AuthContext): ContextResult[] {
+  return results
+    .filter(r => !containsSensitiveData(r.content))
+    .filter(r => hasAccess(r.metadata, auth.permissions))
+    .map(r => sanitizeContent(r));
+}
+</code></pre>
+
+<h2>Monitoring and Operations</h2>
+
+<h3>Key Metrics</h3>
+
+<p>We track these KPIs on our Grafana dashboard:</p>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-promql">
+# Request rate by source
+rate(mcp_requests_total[5m]) by (source)
+
+# Cache hit ratio
+rate(mcp_cache_hits_total[5m]) / rate(mcp_requests_total[5m])
+
+# p99 latency by method
+histogram_quantile(0.99, mcp_request_duration_bucket) by (method)
+
+# Error rate
+rate(mcp_errors_total[5m]) / rate(mcp_requests_total[5m])
+</code></pre>
+
+<h3>Operational Runbook</h3>
+
+<p>Common issues and solutions:</p>
+
+<p><strong>High Latency</strong>
+<ol>
+<li>Check cache hit ratio (should be >80%)</li>
+<li>Verify backend service health</li>
+<li>Scale up if CPU >70%</li>
+</ol>
+
+<p><strong>Authentication Failures</strong>
+<ol>
+<li>Verify identity provider connectivity</li>
+<li>Check token expiration</li>
+<li>Review recent permission changes</li>
+</ol>
+
+<p><strong>Context Quality Issues</strong>
+<ol>
+<li>Analyze query patterns</li>
+<li>Tune relevance scoring</li>
+<li>Update index freshness</li>
+</ol>
+
+<h2>Lessons Learned</h2>
+
+<h3>What Worked Well</h3>
+<ol>
+<li><strong>Centralization</strong>: Single point for security, monitoring, and optimization</li>
+<li><strong>Caching</strong>: 10x performance improvement, 90% reduction in backend load</li>
+<li><strong>Audit Logging</strong>: Caught several security issues early</li>
+<li><strong>Gradual Rollout</strong>: Started with read-only sources, added write capabilities later</li>
+</ol>
+
+<h3>What We'd Do Differently</h3>
+<ol>
+<li><strong>Start with OpenTelemetry</strong>: Better distributed tracing from day one</li>
+<li><strong>More aggressive caching</strong>: Even 5-second TTLs help significantly</li>
+<li><strong>Earlier investment in admin UI</strong>: Self-service reduces support burden</li>
+<li><strong>Standardize on GraphQL</strong>: Better tooling ecosystem than custom protocol</li>
+</ol>
+
+<h2>Cost Analysis</h2>
+
+<p>Running MCP Gateway for 2,500 developers:</p>
+
+<table class="min-w-full border-collapse border border-gray-300 my-4" class="min-w-full border-collapse border border-gray-300 my-4">
+<thead><tr class="bg-gray-100">
+<th class="border border-gray-300 px-4 py-2 text-left">Component</th>
+<th class="border border-gray-300 px-4 py-2 text-left">Monthly Cost</th>
+<th class="border border-gray-300 px-4 py-2 text-left">Notes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="border border-gray-300 px-4 py-2">Compute (K8s)</td>
+<td class="border border-gray-300 px-4 py-2">$1,200</td>
+<td class="border border-gray-300 px-4 py-2">10 pods, 2 CPU each</td>
+</tr>
+<tr>
+<td class="border border-gray-300 px-4 py-2">Redis Cache</td>
+<td class="border border-gray-300 px-4 py-2">$800</td>
+<td class="border border-gray-300 px-4 py-2">50GB cluster</td>
+</tr>
+<tr>
+<td class="border border-gray-300 px-4 py-2">Load Balancer</td>
+<td class="border border-gray-300 px-4 py-2">$200</td>
+<td class="border border-gray-300 px-4 py-2">AWS ALB</td>
+</tr>
+<tr>
+<td class="border border-gray-300 px-4 py-2">Log Storage</td>
+<td class="border border-gray-300 px-4 py-2">$500</td>
+<td class="border border-gray-300 px-4 py-2">30-day retention</td>
+</tr>
+<tr>
+<td class="border border-gray-300 px-4 py-2">Monitoring</td>
+<td class="border border-gray-300 px-4 py-2">$300</td>
+<td class="border border-gray-300 px-4 py-2">Prometheus + Grafana</td>
+</tr>
+<tr>
+<td class="border border-gray-300 px-4 py-2"><strong>Total</strong></td>
+<td class="border border-gray-300 px-4 py-2"><strong>$3,000</strong></td>
+<td class="border border-gray-300 px-4 py-2">$1.20 per developer</td>
+</tr>
+</tbody></table>
+
+<p>ROI: Developers save 30+ minutes daily finding context. At $100/hour, that's $50/day saved per developer.</p>
+
+<h2>Getting Started</h2>
+
+<p>Want to build your own MCP Gateway? Here's your checklist:
+<ol>
+<li><strong>Week 1</strong>: Set up basic proxy with authentication</li>
+<li><strong>Week 2</strong>: Add first context source (start with GitHub)</li>
+<li><strong>Week 3</strong>: Implement caching and monitoring</li>
+<li><strong>Week 4</strong>: Add audit logging and admin UI</li>
+<li><strong>Month 2</strong>: Scale to more sources and users</li>
+</ol>
+
+
+<h2>Future Enhancements</h2>
+
+<p>Our roadmap for 2025:
+<ol>
+<li><strong>Semantic Search</strong>: Vector embeddings for better relevance</li>
+<li><strong>Proactive Context</strong>: Predict needed context before it's requested</li>
+<li><strong>Write Operations</strong>: Not just read, but update context sources</li>
+<li><strong>Federation</strong>: Connect to partner company MCP gateways</li>
+</ol>
+
+<h2>Conclusion</h2>
+
+<p>A centralized MCP Gateway transforms AI IDEs from smart text editors into context-aware development environments. The investment is modest—about $1 per developer per month—but the productivity gains are substantial.</p>
+
+<p>More importantly, you're building the foundation for agent-based development. Once your AI tools can reliably access internal context, you can start automating complex workflows that require deep organizational knowledge.</p>
+
+<p>---</p>
+
+<p><strong>Next in Series</strong>: <a href="/blog/ai-for-work-part-3-ai-observability.html" class="text-blue-600 hover:text-blue-800">Part 3: From Proxy Logs to Intelligence - Enterprise AI Observability</a></p>
+
+<p><em>Building an MCP Gateway? I'd love to hear about your architecture choices. Find me on <a href="https://twitter.com/ziyadmir" class="text-blue-600 hover:text-blue-800">Twitter</a> or <a href="https://linkedin.com/in/ziyadmir" class="text-blue-600 hover:text-blue-800">LinkedIn</a>.</em></p>
+            
+        
+            <div class="series-nav flex justify-between items-center">
+                <div><a href="/blog/ai-for-work-part-1-ai-ide.html" class="text-blue-600 hover:text-blue-800">← Part 1</a></div>
+                <a href="/blog/ai-for-work-series-index.html" class="text-gray-600 hover:text-gray-800">Series Index</a>
+                <div><a href="/blog/ai-for-work-part-3-ai-observability.html" class="text-blue-600 hover:text-blue-800">Part 3 →</a></div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

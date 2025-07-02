@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Time at Quora | My Life | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+        
+        .blog-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.25rem;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-content ul li {
+            list-style-type: disc;
+        }
+        
+        .blog-content ol li {
+            list-style-type: decimal;
+        }
+        
+        .chapter-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .chapter-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--color-primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .chapter-link:hover {
+            color: var(--color-secondary);
+        }
+        
+        .chapter-link svg {
+            width: 1rem;
+            height: 1rem;
+        }
+        
+        .memoir-period {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            padding-bottom: 1.5rem;
+            border-left: 2px solid #e5e7eb;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -0.5rem;
+            top: 0.25rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 9999px;
+            background-color: white;
+            border: 2px solid var(--color-primary);
+        }
+        
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+        }
+        
+        @media (max-width: 640px) {
+            .blog-content h2 {
+                font-size: 1.25rem;
+            }
+            
+            .blog-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            body { font-size: 0.85rem; }
+            
+            .container {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-6 flex-grow">
+        <article class="blog-content">
+            <div class="mb-6">
+                <a href="/memoir.html" class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to All Chapters
+                </a>
+            </div>
+            
+            <header class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">My Time at Quora</h1>
+                <div class="flex items-center text-gray-500 text-sm mb-4">
+                    <span>2014-2015</span>
+                    <span class="mx-2">·</span>
+                    <span>Silicon Valley</span>
+                </div>
+                <div class="flex gap-2 mb-6">
+                    <span class="memoir-period">Career</span>
+                    <span class="memoir-period">Product</span>
+                    <span class="memoir-period">Engineering</span>
+                </div>
+            </header>
+            
+            <p>
+                After I graduated, I joined a startup called Quora in May 2014. I stayed there for about a year and a half. This was a fun but stressful time for me - I worked closely with the CEO (Adam D'Angelo) on trying to figure out why Quora's search traffic wasn't growing in proportion with its content. In fact, it looked like traffic per piece of content was slightly trending down over time.
+            </p>
+            
+            <h2>The Search Traffic Challenge</h2>
+            
+            <p>
+                After a 6+ month experiment where we moved the signup wall back from the first page ("first click free"), it turned out that search traffic started rising monumentally. We hypothesized that there were domain level impacts on Quora penalizing traffic from search (as a result of users quickly bouncing from the site when seeing the signup wall on initial page load).
+            </p>
+            
+            <p>
+                But we couldn't prove this — if we ran experiments on only a small fraction of traffic (eg. 5% of all user traffic getting no signup wall, whereas 95% of traffic getting the wall), then we would only see the local impact on engagement, etc. for the 5% of folks. We would not be able to measure any domain wide effects until Google determines that there should be a domain wide impact. That's out of our control — what do we do?
+            </p>
+            
+            <h2>Logic vs. Intuition</h2>
+            
+            <p>
+                I felt that the right thing to do was to give people a good user experience; nobody wants to see a wall blocking the content when they search for something and click on a webpage. It's so frustrating, and that frustration will translate (even subconsciously) into a hate for that website. That negative karma is worth something — but I couldn't prove this.
+            </p>
+            
+            <p>
+                And I was operating in an environment where logic and data prevailed. I wasn't equipped with the tools to be able to present a coherent, logical and deep argument — I was embarrassed whenever I was questioned about why this was a worthwhile tradeoff for an experiment.
+            </p>
+            
+            <div class="timeline-item">
+                <h3>The Experiment Dilemma</h3>
+                <p>
+                    What I wanted was a go-ahead to launch a no signup wall experiment for the majority of traffic for a long time — blindly (without experimental data backing it). We ran the small scale experiments for a few weeks and saw negligible engagement and retention changes, and no search traffic changes.
+                </p>
+            </div>
+            
+            <div class="timeline-item">
+                <h3>The Internal Struggle</h3>
+                <p>
+                    Adam and the other senior execs would ask and question me on why we should do what I suggested, and I just couldn't convince them myself. It was painful and agonizing for me. We tried everything else we could beforehand - we enlisted our best engineers (Tao Xu, who later went to Airbnb and OpenAI to help solve AGI, and Jerry Ma, a young Harvard-dropout prodigy who later joined the US government to help in technology patent regulation) to use ML to optimize when and who saw the wall depending on all the user and content signals we had. This didn't work either.
+                </p>
+            </div>
+            
+            <div class="timeline-item">
+                <h3>Allies and Politics</h3>
+                <p>
+                    The design team was semi on my side, but they were non-committal and political. Engineers seemed to be on my side but stayed in their lane and didn't want to get involved. I was the DRI ("directly responsible individual") for the Search Traffic team and I was pounding the table for us to make this change (in my own way, of course, I'm not loud and confrontational — so there was no pounding the table at all and no raised voices and even less direct conflict).
+                </p>
+            </div>
+            
+            <h2>The Breakthrough</h2>
+            
+            <p>
+                I felt pretty trapped. So eventually after months of trying things that summer, Adam finally gave us the go-ahead to launch the experiment I wanted for 6 months and to see what happened. I was exhausted but relieved — the code changes were so easy, literally "trivial" (which is hilarious because we overuse that term in software so often when it isn't actually true). But in this case it was - just don't show a signup wall to users in the experiment variant for the first click. Someone named it "first click free". Then, we waited. A few weeks went by with nothing. And then it happened:
+            </p>
+            
+            <p>
+                The search traffic started exploding off the charts — up and to the right, like it was a meme. Except it was real, and I was the one behind it. We started having Q&A sessions at the weekly all hands and the questions started getting directed at me — "why do we think we are seeing the growth in traffic?"
+            </p>
+            
+            <p>
+                The reality was, nobody knew — not me, not our product council, not Adam, not even the engineers at Google. Some algorithm had likely seen a site wide step-function increase in retention (page view time) and corresponding reduction in poor UX (bounce rate, short visit rate). But we weren't in control of this, and we didn't have transparency into what the Google search ranking algorithms were doing — all we could guess was that we had triggered a reclassification (at the domain level for all quora.com pages) that significantly boosted our rankings in Google.
+            </p>
+            
+            <h2>Learning Moment: Stories Over Truth</h2>
+            
+            <p>
+                I tried to be as honest as possible when answering those questions, but nobody was satisfied. Looking back, this was a big learning lesson that I didn't grok at the time but now have a completely different perspective on. In uncertain times, people don't always want the truth. Sometimes, what people need is a story to believe in. A story that binds together a million threads into a strong, cohesive unit. A story that brings people together.
+            </p>
+            
+            <p>
+                This was an opportunity that I missed — an opportunity to seize the momentum and leverage of the early success, but I wasn't ready to grab it. In my life and career, this theme has repeated itself, but maybe that's just an artifact of my reflective nature more than any reality of the situation at the time.
+            </p>
+            
+            <h2>The Career Pivot</h2>
+            
+            <p>
+                I felt terrible inside at how the project had went - I had spent months in my head repeatedly playing multiple perspectives to analyze against each other about what the "right" decision should have been, I had tirelessly built internal conviction that we needed a bold, radical new product experience, had ultimately wrangled together the buy-in to do the thing, and it had worked. But I was drained.
+            </p>
+            
+            <p>
+                I didn't understand then that the right answer (in this case the right product experience) is only one part of the equation (and in some cases not even the most crucial part). I felt sickened at the political games I had to play as a PM, and was no longer enjoying my day to day (side note: retrospectively thinking back, the politics were not at all that bad; it's just that my baseline expectation was 0 politics and playing the game, so the delta with reality was startling). I wanted to make a change, and I soon started working in a different area.
+            </p>
+            
+            <h2>Finding My Groove Again</h2>
+            
+            <p>
+                A new, young, energetic and sharp designer joined the company, and we were paired together to tackle some growth and search related problems. We instantly became a power couple — throw us a problem, and we'd go into a room and come up with solutions. A week later the experiments would be out in the world and the results were the same everyone — our variants were green. Every time.
+            </p>
+            
+            <p>
+                Her name was Lucy Guo, and we paired to solve these problems from first principles and threw away all the garbage or overhead we hated seeing. I was coding these experiments, and I was loving it. I asked to switch to the engineering team. My manager and other leads were supportive, but I needed to interview for the new role.
+            </p>
+            
+            <p>
+                I remember Shreyes (the Director of Engineering) interviewing me and asking me to code up a skip list. That was fun. Quora was no joke — you had better have been sharp to make it. I think I barely made the cut, but they let me become a SWE. I quit about 2 months later — I had known the company just wasn't for me.
+            </p>
+            
+            <h2>Reflection and Gratitude</h2>
+            
+            <p>
+                It was too academic and too classically nerdy and not risk-taking enough for me. It felt limiting and wrong — in hindsight, I was right and it became a huge bottleneck for the company to rely so heavily on one style of product development, but companies are so often just a projection of the founders, and if you know Adam at all then you know exactly what the DNA of Quora is like.
+            </p>
+            
+            <p>
+                What an introduction to Silicon Valley. The amount I got to do, the amount I learned, the responsibility shoved onto my shoulders, the people I met, the secrets I saw…just incredible. For example, one of the two college dropout-turned-SWEs at Quora (the other was the US patent office Director I mentioned above) was Alexandr Wang who later went on to found and CEO Scale.ai. I'm grateful for the learnings, the people, the experience.
+            </p>
+            
+            <div class="chapter-navigation">
+                <a href="/memoir/university.html" class="chapter-link prev-chapter">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Previous: University of Waterloo
+                </a>
+                
+                <a href="/memoir/opendoor.html" class="chapter-link next-chapter">
+                    Next: Opendoor Experience
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

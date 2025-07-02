@@ -1,0 +1,144 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="1200" height="800" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="600" y="40" font-family="Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="#1a1a1a">Agentic AI Platform Architecture</text>
+    
+    <!-- AI Tools Layer -->
+    <g transform="translate(50, 100)">
+        <rect x="0" y="0" width="250" height="200" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="8"/>
+        <text x="125" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#1976d2">AI Tools</text>
+        <rect x="20" y="50" width="210" height="35" fill="#ffffff" stroke="#90caf9" stroke-width="1" rx="4"/>
+        <text x="125" y="72" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">AI IDE</text>
+        <rect x="20" y="95" width="210" height="35" fill="#ffffff" stroke="#90caf9" stroke-width="1" rx="4"/>
+        <text x="125" y="117" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Claude</text>
+        <rect x="20" y="140" width="210" height="35" fill="#ffffff" stroke="#90caf9" stroke-width="1" rx="4"/>
+        <text x="125" y="162" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">GitHub Copilot</text>
+    </g>
+    
+    <!-- MCP Gateway -->
+    <g transform="translate(350, 100)">
+        <rect x="0" y="0" width="250" height="200" fill="#e8f5e9" stroke="#388e3c" stroke-width="2" rx="8"/>
+        <text x="125" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#388e3c">MCP Gateway</text>
+        <rect x="20" y="50" width="210" height="30" fill="#ffffff" stroke="#81c784" stroke-width="1" rx="4"/>
+        <text x="125" y="69" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Request Router</text>
+        <rect x="20" y="90" width="210" height="30" fill="#ffffff" stroke="#81c784" stroke-width="1" rx="4"/>
+        <text x="125" y="109" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Authorization</text>
+        <rect x="20" y="130" width="210" height="30" fill="#ffffff" stroke="#81c784" stroke-width="1" rx="4"/>
+        <text x="125" y="149" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Rate Limiter</text>
+        <rect x="20" y="170" width="210" height="30" fill="#ffffff" stroke="#81c784" stroke-width="1" rx="4"/>
+        <text x="125" y="189" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Audit Logger</text>
+    </g>
+    
+    <!-- Agentic AI Platform (formerly EMUX) -->
+    <g transform="translate(650, 100)">
+        <rect x="0" y="0" width="250" height="200" fill="#fce4ec" stroke="#c2185b" stroke-width="2" rx="8"/>
+        <text x="125" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#c2185b">Agentic AI Platform</text>
+        <rect x="20" y="50" width="210" height="30" fill="#ffffff" stroke="#f48fb1" stroke-width="1" rx="4"/>
+        <text x="125" y="69" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Task Scheduler</text>
+        <rect x="20" y="90" width="210" height="30" fill="#ffffff" stroke="#f48fb1" stroke-width="1" rx="4"/>
+        <text x="125" y="109" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Agent Executor</text>
+        <rect x="20" y="130" width="210" height="30" fill="#ffffff" stroke="#f48fb1" stroke-width="1" rx="4"/>
+        <text x="125" y="149" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">State Manager</text>
+        <rect x="20" y="170" width="210" height="30" fill="#ffffff" stroke="#f48fb1" stroke-width="1" rx="4"/>
+        <text x="125" y="189" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Human-in-the-Loop</text>
+    </g>
+    
+    <!-- Backend Services -->
+    <g transform="translate(950, 100)">
+        <rect x="0" y="0" width="200" height="200" fill="#fff3e0" stroke="#f57c00" stroke-width="2" rx="8"/>
+        <text x="100" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#f57c00">Services</text>
+        <rect x="20" y="50" width="160" height="30" fill="#ffffff" stroke="#ffb74d" stroke-width="1" rx="4"/>
+        <text x="100" y="69" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">JIRA API</text>
+        <rect x="20" y="90" width="160" height="30" fill="#ffffff" stroke="#ffb74d" stroke-width="1" rx="4"/>
+        <text x="100" y="109" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">GitHub API</text>
+        <rect x="20" y="130" width="160" height="30" fill="#ffffff" stroke="#ffb74d" stroke-width="1" rx="4"/>
+        <text x="100" y="149" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Confluence</text>
+        <rect x="20" y="170" width="160" height="30" fill="#ffffff" stroke="#ffb74d" stroke-width="1" rx="4"/>
+        <text x="100" y="189" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Internal APIs</text>
+    </g>
+    
+    <!-- Arrows -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#666"/>
+        </marker>
+    </defs>
+    
+    <line x1="300" y1="200" x2="350" y2="200" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <line x1="600" y1="200" x2="650" y2="200" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <line x1="900" y1="200" x2="950" y2="200" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- AI Agents -->
+    <g transform="translate(50, 350)">
+        <rect x="0" y="0" width="500" height="150" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2" rx="8"/>
+        <text x="250" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#7b1fa2">AI Agents</text>
+        <rect x="20" y="50" width="110" height="80" fill="#ffffff" stroke="#ba68c8" stroke-width="1" rx="4"/>
+        <text x="75" y="75" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Code Review</text>
+        <text x="75" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Agent</text>
+        <rect x="140" y="50" width="110" height="80" fill="#ffffff" stroke="#ba68c8" stroke-width="1" rx="4"/>
+        <text x="195" y="75" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Test Generation</text>
+        <text x="195" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Agent</text>
+        <rect x="260" y="50" width="110" height="80" fill="#ffffff" stroke="#ba68c8" stroke-width="1" rx="4"/>
+        <text x="315" y="75" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Documentation</text>
+        <text x="315" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Agent</text>
+        <rect x="380" y="50" width="110" height="80" fill="#ffffff" stroke="#ba68c8" stroke-width="1" rx="4"/>
+        <text x="435" y="75" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Deployment</text>
+        <text x="435" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Agent</text>
+    </g>
+    
+    <!-- MicroMCPs -->
+    <g transform="translate(650, 350)">
+        <rect x="0" y="0" width="500" height="150" fill="#e0f2f1" stroke="#00796b" stroke-width="2" rx="8"/>
+        <text x="250" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#00796b">MicroMCPs</text>
+        <rect x="20" y="50" width="110" height="80" fill="#ffffff" stroke="#4db6ac" stroke-width="1" rx="4"/>
+        <text x="75" y="75" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">PR Review</text>
+        <text x="75" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">MCP</text>
+        <rect x="140" y="50" width="110" height="80" fill="#ffffff" stroke="#4db6ac" stroke-width="1" rx="4"/>
+        <text x="195" y="75" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Test Runner</text>
+        <text x="195" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">MCP</text>
+        <rect x="260" y="50" width="110" height="80" fill="#ffffff" stroke="#4db6ac" stroke-width="1" rx="4"/>
+        <text x="315" y="75" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Doc Gen</text>
+        <text x="315" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">MCP</text>
+        <rect x="380" y="50" width="110" height="80" fill="#ffffff" stroke="#4db6ac" stroke-width="1" rx="4"/>
+        <text x="435" y="75" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Deploy</text>
+        <text x="435" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">MCP</text>
+    </g>
+    
+    <!-- Connections from Agentic AI Platform to Agents -->
+    <line x1="775" y1="300" x2="300" y2="350" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- Connections from Agents to MicroMCPs -->
+    <line x1="550" y1="425" x2="650" y2="425" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- Observability Platform -->
+    <g transform="translate(150, 550)">
+        <rect x="0" y="0" width="900" height="180" fill="#e8eaf6" stroke="#3f51b5" stroke-width="2" rx="8"/>
+        <text x="450" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#3f51b5">AI Observability Platform</text>
+        
+        <g transform="translate(50, 50)">
+            <rect x="0" y="0" width="200" height="100" fill="#ffffff" stroke="#7986cb" stroke-width="1" rx="4"/>
+            <text x="100" y="25" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Data Collection</text>
+            <text x="100" y="45" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">• LLM Requests</text>
+            <text x="100" y="60" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">• Code Changes</text>
+            <text x="100" y="75" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">• Performance Metrics</text>
+        </g>
+        
+        <g transform="translate(300, 50)">
+            <rect x="0" y="0" width="200" height="100" fill="#ffffff" stroke="#7986cb" stroke-width="1" rx="4"/>
+            <text x="100" y="25" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Analytics</text>
+            <text x="100" y="45" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">• Token Usage</text>
+            <text x="100" y="60" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">• Code Quality</text>
+            <text x="100" y="75" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">• Productivity Metrics</text>
+        </g>
+        
+        <g transform="translate(550, 50)">
+            <rect x="0" y="0" width="250" height="100" fill="#ffffff" stroke="#7986cb" stroke-width="1" rx="4"/>
+            <text x="125" y="25" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Key Metrics</text>
+            <text x="125" y="45" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">• 1M+ Daily Requests</text>
+            <text x="125" y="60" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">• 99.99% Availability</text>
+            <text x="125" y="75" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">• &lt;50ms P95 Latency</text>
+        </g>
+    </g>
+</svg>

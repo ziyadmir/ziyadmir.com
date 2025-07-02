@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrating Machine Learning in Large-Scale Products | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+        
+        .blog-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.25rem;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-content ul li {
+            list-style-type: disc;
+        }
+        
+        .blog-content ol li {
+            list-style-type: decimal;
+        }
+        
+        .blog-content code {
+            font-family: monospace;
+            background-color: #f1f5f9;
+            padding: 0.125rem 0.25rem;
+            border-radius: 0.25rem;
+            font-size: 0.9em;
+        }
+        
+        .blog-content pre {
+            background-color: #f1f5f9;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin-bottom: 1.25rem;
+        }
+        
+        .blog-content pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        
+        .blog-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+        }
+        
+        .blog-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .blog-author-avatar {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            background-color: #e5e7eb;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+        
+        .related-posts {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 640px) {
+            .blog-content h2 {
+                font-size: 1.25rem;
+            }
+            
+            .blog-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            .blog-author-avatar {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-6 flex-grow">
+        <article class="blog-content">
+            <header class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4 pt-8">Integrating Machine Learning in Large-Scale Products</h1>
+                <div class="flex items-center text-gray-500 text-sm mb-4">
+                    <span>April 7, 2025</span>
+                    <span class="mx-2">·</span>
+                    <span>8 min read</span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="blog-tag">Machine Learning</span>
+                    <span class="blog-tag">Engineering</span>
+                    <span class="blog-tag">Infrastructure</span>
+                </div>
+            </header>
+            
+            <div class="blog-author">
+                <div class="blog-author-avatar">ZM</div>
+                <div>
+                    <div class="font-medium">Ziyad Mir</div>
+                    <div class="text-sm text-gray-500">Software Engineering Leader at Google/YouTube</div>
+                </div>
+            </div>
+            
+            <p>
+                Machine learning has transformed from a specialized field into a key component of modern software products. After working on ML integration at several large tech companies like Google, Uber, and Quora, I've observed consistent patterns in what makes ML implementations successful at scale.
+            </p>
+            
+            <p>
+                In this article, I'll share practical insights on integrating machine learning models into production systems, with a focus on infrastructure, data pipelines, and monitoring frameworks.
+            </p>
+            
+            <h2>The Challenge of ML in Production</h2>
+            
+            <p>
+                Adding machine learning to a large-scale product introduces several challenges that traditional software engineering doesn't typically face:
+            </p>
+            
+            <ul>
+                <li><strong>Data quality and availability</strong> - Models require high-quality, consistent data to function reliably</li>
+                <li><strong>Computational resources</strong> - ML inference can be resource-intensive, especially at scale</li>
+                <li><strong>Performance monitoring</strong> - ML systems degrade in non-obvious ways as the world changes</li>
+                <li><strong>Explainability</strong> - Understanding why a model made a certain prediction can be critical</li>
+                <li><strong>Versioning</strong> - Coordinating data, model, and application code versions is complex</li>
+            </ul>
+            
+            <h2>Architecture: The Foundation of Scalable ML</h2>
+            
+            <p>
+                At YouTube, we've developed a pattern that has proven effective for integrating ML across multiple products:
+            </p>
+            
+            <h3>1. Separation of Concerns</h3>
+            
+            <p>
+                The most successful ML integrations separate model training from model serving. At Uber, we used the Michelangelo platform to enable this pattern, with ML engineers focusing on model development while separate infrastructure teams handled the serving environment.
+            </p>
+            
+            <p>
+                This separation allows for specialized optimization at each layer:
+            </p>
+            
+            <ul>
+                <li><strong>Training infrastructure</strong> - Optimized for throughput, experimentation, and iteration speed</li>
+                <li><strong>Serving infrastructure</strong> - Optimized for latency, reliability, and cost efficiency</li>
+                <li><strong>Feature engineering</strong> - Managed through consistent feature stores with versioning</li>
+            </ul>
+            
+            <h3>2. Feature Stores</h3>
+            
+            <p>
+                One pattern that has become industry standard is the feature store. At Google, we've invested heavily in centralized feature repositories that ensure consistency between training and serving environments.
+            </p>
+            
+            <p>
+                A robust feature store provides:
+            </p>
+            
+            <ul>
+                <li>Point-in-time correctness for training data</li>
+                <li>Low-latency access for online serving</li>
+                <li>Feature versioning and lineage tracking</li>
+                <li>Unified access patterns for batch and streaming data</li>
+            </ul>
+            
+            <h3>3. Model Registry</h3>
+            
+            <p>
+                Versioning for ML goes beyond traditional code versioning. All artifacts of the ML system need to be versioned together:
+            </p>
+            
+            <ul>
+                <li>Model weights and architecture</li>
+                <li>Feature transformations</li>
+                <li>Training and validation datasets</li>
+                <li>Hyperparameters</li>
+                <li>Evaluation metrics</li>
+            </ul>
+            
+            <p>
+                At YouTube, our model registry allows product teams to safely roll back to previous versions and perform controlled experiments with new models.
+            </p>
+            
+            <h2>Monitoring: The Missing Piece</h2>
+            
+            <p>
+                A common mistake I've observed is treating ML models as "set it and forget it" components. Unlike traditional software, ML systems degrade over time as the real world changes, even if the code remains unchanged.
+            </p>
+            
+            <p>
+                A comprehensive monitoring strategy includes:
+            </p>
+            
+            <h3>1. Input Data Monitoring</h3>
+            
+            <ul>
+                <li>Feature distribution shifts</li>
+                <li>Missing values or anomalies</li>
+                <li>Data volume changes</li>
+            </ul>
+            
+            <h3>2. Model Performance Monitoring</h3>
+            
+            <ul>
+                <li>Prediction accuracy compared to ground truth</li>
+                <li>Latency and resource utilization</li>
+                <li>Model confidence metrics</li>
+            </ul>
+            
+            <h3>3. Business Impact Monitoring</h3>
+            
+            <ul>
+                <li>A/B test results for model changes</li>
+                <li>Key business metrics influenced by the model</li>
+                <li>User feedback and engagement signals</li>
+            </ul>
+            
+            <p>
+                At Quora, we built dashboards that alerted teams when model performance degraded significantly or when input data patterns changed unexpectedly. This proactive approach prevented many potential incidents.
+            </p>
+            
+            <h2>Case Study: YouTube Flash Ads</h2>
+            
+            <p>
+                For YouTube Flash, our moment-level YouTube ads product, we implemented a multi-stage ML pipeline that analyzed video content to identify optimal moments for brand advertising.
+            </p>
+            
+            <p>
+                The system processed millions of videos daily using:
+            </p>
+            
+            <ul>
+                <li>Video content understanding models (PaLI, Gemini)</li>
+                <li>Audio transcription and analysis (ytbert-ASR)</li>
+                <li>Emotion and brand safety classifiers</li>
+            </ul>
+            
+            <p>
+                Key success factors included:
+            </p>
+            
+            <ul>
+                <li>Horizontally scalable inference servers with automatic scaling</li>
+                <li>Tiered caching strategy to minimize redundant computation</li>
+                <li>Robust fallback options for each component</li>
+                <li>Comprehensive monitoring of both technical and business metrics</li>
+            </ul>
+            
+            <p>
+                This architecture allowed us to process massive volumes of video content while maintaining strict latency requirements and generating $XXXM in incremental ARR.
+            </p>
+            
+            <h2>Conclusion: ML Integration Best Practices</h2>
+            
+            <p>
+                Based on my experience across multiple large-scale ML implementations, here are the key recommendations:
+            </p>
+            
+            <ol>
+                <li>Start with clear business metrics and objectives</li>
+                <li>Design for separation of concerns (training vs. serving)</li>
+                <li>Invest early in data quality and feature engineering</li>
+                <li>Build comprehensive monitoring from day one</li>
+                <li>Implement gradual rollout strategies for all model changes</li>
+                <li>Create robust fallback mechanisms</li>
+                <li>Establish clear ownership boundaries between ML and product teams</li>
+            </ol>
+            
+            <p>
+                The integration of machine learning into large-scale products requires thoughtful architecture, robust infrastructure, and comprehensive monitoring. By addressing these challenges systematically, organizations can leverage ML to create significant business value while maintaining the reliability and performance expected from production systems.
+            </p>
+            
+            <div class="related-posts">
+                <h3 class="text-xl font-bold text-primary mb-4">Related Posts</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="/blog/brand-identity-advertising.html" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                        <h4 class="font-bold text-primary">Building Brand Identity Through Digital Advertising</h4>
+                        <p class="text-sm text-gray-600 mt-1">October 15, 2024</p>
+                    </a>
+                    <a href="/blog/scaling-engineering-teams.html" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                        <h4 class="font-bold text-primary">Scaling Engineering Teams: Lessons from Tech Giants</h4>
+                        <p class="text-sm text-gray-600 mt-1">February 22, 2025</p>
+                    </a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

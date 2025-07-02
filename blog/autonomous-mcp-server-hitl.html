@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building an Autonomous MCP Server with HITL Guidance | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+
+        .blog-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .blog-content p {
+            margin-bottom: 1.25rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <article class="blog-content">
+            <h1 class="text-3xl font-bold mb-4 pt-8">Building an Autonomous MCP Server with HITL Guidance</h1>
+            <p class="text-gray-500 text-sm mb-4">August 20, 2025</p>
+            <p>Recently I set out to see if a production-grade <a href="https://en.wikipedia.org/wiki/Model_context_protocol" class="text-blue-600 hover:text-blue-800">Model Context Protocol</a> (MCP) server could be written entirely by an AI assistant. The result is <a href="https://www.pulsemcp.com/servers/ziyadmir-nba-player-stats" class="text-blue-600 hover:text-blue-800">this working server</a> that answers basketball questions on demand.</p>
+
+            <h2>Autonomous Coding with Claude</h2>
+            <p>Every line of code came from Claude Code&nbsp;Opus&nbsp;4. I started with an empty repository and guided the model using natural language. Claude generated the server scaffolding, wrote the scraping logic for Basketball Reference, and even set up automated tests.</p>
+
+            <h2>Human-in-the-Loop Steering</h2>
+            <p>I only intervened when the model hit an error or got stuck. My prompts were simple—tell it what to test, ask for evidence that the tests passed, and push it to debug failing cases. That HITL approach ensured quality while keeping the workflow fully AI-driven.</p>
+
+            <h2>Custom Basketball Stats</h2>
+            <p>The finished server can answer questions like “What was Steph Curry’s three-point percentage in 2022?” by fetching live data from Basketball&nbsp;Reference. It’s a tiny example, but it demonstrates how an AI-generated MCP server can serve real requests with minimal human effort.</p>
+
+            <h2>Why It Matters</h2>
+            <p>This project proved that an AI can autonomously build a functioning backend with human oversight. The same pattern scales to far more complex systems—agents do the busy work while humans guide the tests and architecture. It’s a glimpse of how software development will work in the AI-first era.</p>
+        </article>
+    </main>
+
+    <div id="shared-footer"></div>
+
+    <script src="/components.js"></script>
+</body>
+</html>

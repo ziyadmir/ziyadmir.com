@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber Rosetta: Translations Service | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+        
+        .project-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .project-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .project-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        
+        .project-content p {
+            margin-bottom: 1.25rem;
+        }
+        
+        .project-content ul, .project-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .project-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-content ul li {
+            list-style-type: disc;
+        }
+        
+        .project-content ol li {
+            list-style-type: decimal;
+        }
+        
+                
+        .project-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-image {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight-box {
+            background-color: #f8fafc;
+            border-left: 4px solid var(--color-primary);
+            padding: 1.5rem 1.5rem 1.5rem 2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .highlight-box:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-primary), transparent);
+        }
+        
+        .highlight-box:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-primary), transparent);
+        }
+        
+        .highlight-box p {
+            font-weight: 500;
+            color: var(--color-primary);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+        
+        .highlight-box-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--color-secondary);
+        }
+        
+        .highlight-box-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--color-primary);
+            margin-right: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .related-projects {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 640px) {
+            .project-content h2 {
+                font-size: 1.25rem;
+            }
+            
+            .project-content h3 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <article class="project-content" style="padding-top: 2rem;">
+            <div class="mb-6">
+                <a href="/projects.html" class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to Projects
+                </a>
+            </div>
+            
+            <header class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">Uber Rosetta: Translations Service</h1>
+                <div class="flex items-center text-gray-500 text-sm mb-4">
+                    <span>2016-2018</span>
+                    <span class="mx-2">·</span>
+                    <span>1M+ Requests/Second</span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="project-tag">Go</span>
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">Internationalization</span>
+                    <span class="project-tag">High Throughput</span>
+                </div>
+            </header>
+                <div class="highlight-box mb-8">
+                    <p>Rosetta was Uber's internationalization (i18n) service, responsible for translating all user-facing content across Uber's global platform. As Technical Lead, I helped scale the service to handle the highest read throughput of any microservice at Uber while maintaining sub-millisecond latency.</p>
+                    <div class="highlight-box-meta">
+                        <span class="mr-4">2016-2018</span>
+                        <span class="mr-4">1M+ Requests/Second</span>
+                        <span class="mr-4">Technical Lead</span>
+                    </div>
+                    <div class="mt-2">
+                        <span class="highlight-box-tag">Go</span>
+                        <span class="highlight-box-tag">Microservices</span>
+                        <span class="highlight-box-tag">i18n</span>
+                        <span class="highlight-box-tag">High Performance</span>
+                    </div>
+                </div>
+                    
+                <h2>Project Overview</h2>
+                <p>
+                    As Technical Lead for Rosetta, I was responsible for Uber's internationalization (i18n) service, which had the highest read throughput of all 2000+ microservices at Uber. Rosetta powered all translations across Uber's ecosystem, enabling the platform to operate seamlessly across 70+ countries and 30+ languages.
+                </p>
+                
+                <p>
+                    <strong>Recognition:</strong> <a href="https://base.uber.com/6d2425e9f/p/4360d6-global-writing" target="_blank" class="text-blue-600 hover:text-blue-800">Uber Base: Global Writing</a> | <a href="https://www.nimdzi.com/lessons-in-localization-uber/" target="_blank" class="text-blue-600 hover:text-blue-800">Lessons in Localization: Uber</a>
+                </p>
+                    
+                    <h2>The Challenge</h2>
+                    <p>
+                        Uber's rapid global expansion created extraordinary internationalization challenges:
+                    </p>
+                    
+                    <ul>
+                        <li>Supporting 400+ million monthly active users across diverse languages and locales</li>
+                        <li>Handling 1M+ translation requests per second during peak traffic</li>
+                        <li>Maintaining sub-10ms response time for critical user flows</li>
+                        <li>Supporting contextual translations for different user types (riders, drivers, eaters, restaurants)</li>
+                        <li>Managing a translation corpus that grew by thousands of strings weekly</li>
+                    </ul>
+                    
+                    <p>
+                        These challenges were compounded by Uber's microservice architecture, where each service needed to access translations without introducing performance bottlenecks.
+                    </p>
+                    
+                    <h2>Technical Implementation</h2>
+                    
+                    <h3>Architecture Design</h3>
+                    <p>
+                        Rosetta was designed as a high-performance, distributed translation system:
+                    </p>
+                    
+                    <ul>
+                        <li><strong>Core Service</strong> - Go-based API with highly optimized lookup paths</li>
+                        <li><strong>Translation Storage</strong> - Multi-tiered storage with hot path caching</li>
+                        <li><strong>Admin Portal</strong> - React application for translation management</li>
+                        <li><strong>Client Libraries</strong> - SDKs for all Uber programming languages</li>
+                        <li><strong>Integration Layer</strong> - Connectors for translation vendor APIs</li>
+                    </ul>
+                    
+                    <p>
+                        This architecture enabled both performance at scale and flexibility for different use cases across Uber's platform.
+                    </p>
+                    
+                    <h3>Performance Optimizations</h3>
+                    <p>
+                        To achieve the required throughput and latency:
+                    </p>
+                    
+                    <ul>
+                        <li>Implemented multi-level caching strategy (in-process, Redis, distributed cache)</li>
+                        <li>Developed client-side caching with efficient invalidation mechanisms</li>
+                        <li>Designed sharded storage for horizontal scaling</li>
+                        <li>Created custom serialization format for minimal memory footprint</li>
+                        <li>Built traffic throttling and circuit breakers for system stability</li>
+                    </ul>
+                    
+                    <p>
+                        These optimizations allowed Rosetta to deliver translations with p99 latency under 10ms despite handling the highest request volume in Uber's ecosystem.
+                    </p>
+                    
+                    <h3>ML Integration</h3>
+                    <p>
+                        A key innovation was integrating machine learning into the translation workflow:
+                    </p>
+                    
+                    <ul>
+                        <li>Partnered with Uber's AutoML (Michelangelo) team</li>
+                        <li>Implemented automatic translation suggestion system</li>
+                        <li>Created quality prediction models for human translator assistance</li>
+                        <li>Built context-aware ranking for translation alternatives</li>
+                        <li>Developed automated quality assurance workflows</li>
+                    </ul>
+                    
+                    <p>
+                        This ML integration reduced translation costs by 35% while improving quality and reducing time-to-market for new languages.
+                    </p>
+                    
+                    <h2>Communications Platform</h2>
+                    
+                    <p>
+                        Beyond Rosetta, I led the integration of ML onto Uber's Communications Platform:
+                    </p>
+                    
+                    <ul>
+                        <li>Personalized message content and timing based on user behavior patterns</li>
+                        <li>Optimized channel selection (push, SMS, email) using ML models</li>
+                        <li>Developed engagement prediction to minimize notification fatigue</li>
+                        <li>Created A/B testing framework for message effectiveness</li>
+                    </ul>
+                    
+                    <p>
+                        This work resulted in a 50% increase in communication engagement and significant cost savings by reducing low-value notifications.
+                    </p>
+                    
+                    <h2>Results & Impact</h2>
+                    
+                    <p>
+                        The Rosetta service delivered substantial business impact:
+                    </p>
+                    
+                    <ul>
+                        <li>Enabled Uber's expansion to 70+ countries with consistent user experience</li>
+                        <li>Reduced translation costs by 35% through ML-assisted workflows</li>
+                        <li>Shortened time-to-market for new languages from weeks to days</li>
+                        <li>Maintained 99.99% availability despite handling 1M+ requests per second</li>
+                        <li>Improved translation quality through context-aware processing</li>
+                    </ul>
+                    
+                    <p>
+                        For the Communications Platform integration, we achieved:
+                    </p>
+                    
+                    <ul>
+                        <li>50% increase in engagement with critical communications</li>
+                        <li>30% reduction in unnecessary notifications</li>
+                        <li>Significant cost savings on SMS and other communication channels</li>
+                        <li>More effective driver incentives through personalized messaging</li>
+                    </ul>
+                    
+                    <h2>Technical Challenges Overcome</h2>
+                    
+                    <h3>Scale & Performance</h3>
+                    <p>
+                        Handling the highest throughput at Uber required innovative approaches:
+                    </p>
+                    
+                    <ul>
+                        <li>Developed custom benchmark suite to identify performance bottlenecks</li>
+                        <li>Implemented adaptive rate limiting based on system load</li>
+                        <li>Created specialized instrumentation for sub-millisecond latency tracking</li>
+                        <li>Designed gradual rollout strategy for high-risk changes</li>
+                    </ul>
+                    
+                    <h3>Global Deployment</h3>
+                    <p>
+                        Supporting global operations required addressing regional challenges:
+                    </p>
+                    
+                    <ul>
+                        <li>Built multi-region deployment with data replication strategies</li>
+                        <li>Implemented region-specific fallback mechanisms</li>
+                        <li>Created specialized handling for right-to-left languages</li>
+                        <li>Developed support for complex pluralization rules across languages</li>
+                    </ul>
+                    
+                    <h2>My Role & Contributions</h2>
+                    
+                    <p>
+                        As Technical Lead for Rosetta, I:
+                    </p>
+                    
+                    <ul>
+                        <li>Led the architecture design and performance optimization</li>
+                        <li>Managed a team of backend, frontend, and ML engineers</li>
+                        <li>Coordinated with stakeholders across all Uber product lines</li>
+                        <li>Pioneered the ML integration strategy with the Michelangelo team</li>
+                        <li>Established SLAs and monitoring for the high-throughput service</li>
+                        <li>Represented the team in architecture review committees</li>
+                    </ul>
+                    
+                    <h2>Technologies Used</h2>
+                    
+                    <ul>
+                        <li><strong>Languages:</strong> Go, Python, Java</li>
+                        <li><strong>Databases:</strong> MySQL, Redis, Cassandra</li>
+                        <li><strong>Infrastructure:</strong> Uber's internal cloud platform</li>
+                        <li><strong>ML Frameworks:</strong> Michelangelo (Uber's ML platform)</li>
+                        <li><strong>Monitoring:</strong> M3, Grafana, internal observability tools</li>
+                    </ul>
+                    
+                    <div class="related-projects">
+                        <h3 class="text-xl font-bold text-primary mb-4">Related Projects</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <a href="/projects/youtube-flash.html" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                                <h4 class="font-bold text-primary">YouTube Flash: Moment-Level YouTube Ads</h4>
+                                <p class="text-sm text-gray-600 mt-1">Emotion-targeted advertising within video content</p>
+                            </a>
+                            <a href="/projects/brandshift.html" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                                <h4 class="font-bold text-primary">BrandShift: Metrics for Branded YouTube Ads</h4>
+                                <p class="text-sm text-gray-600 mt-1">Next-generation measurement for brand identity</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

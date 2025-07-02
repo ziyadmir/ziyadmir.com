@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 1: Going One Layer Deeper — Why Granular Metrics Matter | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+
+        .blog-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .blog-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+
+        .blog-content p {
+            margin-bottom: 1.25rem;
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-content ul li {
+            list-style-type: disc;
+        }
+
+        .blog-content ol li {
+            list-style-type: decimal;
+        }
+
+        .blog-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .series-nav {
+            background-color: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box {
+            background-color: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 640px) {
+            body { font-size: 0.85rem; }
+            .blog-content h2 { font-size: 1.25rem; }
+            .blog-content h3 { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <article class="blog-content">
+            <h1 class="text-3xl font-bold text-primary mb-3 pt-8">Part 1: Going One Layer Deeper — Why Granular Metrics Matter</h1>
+            <p class="text-gray-500 text-sm mb-4">June 30, 2025 · Deep Analytics Series</p>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="blog-tag">Analytics</span>
+                <span class="blog-tag">Developer Productivity</span>
+                <span class="blog-tag">Systems</span>
+                <span class="blog-tag">AI</span>
+            </div>
+
+            <div class="series-nav">
+                <p class="text-sm text-gray-600">
+                    <strong>Deep Analytics Series</strong> - exploring how detailed metrics unlock new possibilities with AI-driven optimization.
+                </p>
+            </div>
+
+            <p>
+                I've spent most of my career swimming in data: engagement numbers, system health checks, team dashboards. It took years before I realized that all this information was a mile wide and an inch deep. We talk about "analytics" like it's a solved problem, but the truth is we rarely go far enough down the stack. We stop at averages and aggregates because humans can't process the torrent of details underneath. But what if we let machines dig in for us?
+            </p>
+
+            <p>
+                Think about basketball stats. I grew up watching LeBron dominate the league, and websites like Basketball-Reference exploded with every number you could want. But somewhere along the way, the analysis got richer: shot charts by location, matchup-specific tendencies, even fatigue curves over a season. If you're as obsessed as I am, you can spend hours on a single player's page and still find new patterns. Imagine translating that depth of insight to engineering work.
+            </p>
+
+            <div class="highlight-box">
+                <p>Instead of tracking "team velocity" or generic uptime, what if we had <em>LeBron-James-reference</em> for every service and every developer?</p>
+            </div>
+
+            <p>
+                A few years back, we tried this at Opendoor. We built internal tools that recorded exactly how long each integration test suite took, how often developers pushed during the day, how PR review times fluctuated when the on-call engineer changed. At first, it was overwhelming—a firehose of metrics nobody knew how to interpret. But once we fed it into a simple ML model to surface patterns, the lightbulbs started flickering on. Code reviewers with high merge rates had distinct commenting styles. Services with stable p99 latencies shared common deployment schedules. The depth was there; we just needed help seeing it.
+            </p>
+
+            <h2>Going Beyond Human Limits</h2>
+
+            <p>
+                Humans aren't wired to parse that much data. I certainly wasn't. My eyes glazed over at spreadsheets with hundreds of columns. But AI tools thrive on that density. They find the signal in the noise, tease out correlations we never considered, and—crucially—do it continuously. That's the real shift: moving from "just enough metrics" to a constant, granular stream that AIs can analyze and react to in real time.
+            </p>
+
+            <p>
+                The promise of platforms like <a href="https://workweave.dev/" class="text-blue-600 hover:text-blue-800">Workweave</a> is exactly this. They collect data one layer deeper—down to individual lines of code, specific API endpoints, the timing of every CI job. Then they let AIs chew on that data to surface optimizations humans would miss. Maybe your build servers are slow only for pull requests touching a particular library. Maybe your team's top performer commits less code but touches more critical files. With enough depth, the insights compound.
+            </p>
+
+            <h2>Granularity Drives Better AI</h2>
+
+            <p>
+                We're entering an era where broad-strokes dashboards won't cut it. If an AI agent is going to refactor a service or suggest improved workflow habits, it needs a detailed picture of how things behave right now. That means metrics not just at the team level, but at the individual and component level. Call it "micro-analytics" if you like.
+            </p>
+
+            <p>
+                Why does this matter? Because once you have granular metrics, you can train models that optimize on that level. Imagine a per-engineer productivity model that accounts for task complexity, review friction, and context switching. Or a live system map where the AI highlights which service's p99 latency is spiking <em>right now</em> and recommends mitigation steps. The possibilities open up when you stop summarizing and start collecting the raw signals in all their messy glory.
+            </p>
+            <p>
+                This vision extends far beyond engineering dashboards. Customer support tickets, marketing funnels, even legal workflows all generate signals that future AIs can learn from. The more specific the metric, the smarter the optimization.
+            </p>
+
+            <p>
+                All of these measurements feed directly into your MCP gateway and the <a href="/blog/ai-for-work-part-6-work-as-code.html" class="text-blue-600 hover:text-blue-800">micro-MCP approach</a>. Deep analytics give each micro-MCP the context it needs to automate tasks across the company, not just in code.
+            </p>
+
+            <p>
+                This generation of tools finally lets us go deep without drowning. The machines will sift through the details; our job is to gather them faithfully. It's the same philosophy that transformed sports analytics—player tracking cameras, advanced scouting metrics, biometric data. We don't watch an NBA game without that context anymore. We shouldn't run a production service or an engineering org without similar depth.
+            </p>
+
+            <h2>Looking Ahead</h2>
+
+            <p>
+                Over the next few posts in this series, I'll dig into concrete ways to capture and use these granular metrics. We'll start at the individual developer level, then zoom out to services and finally the organization as a whole. My hope is that by the end, you'll see analytics not as a static dashboard, but as a living, breathing pulse feeding directly into your AI systems.
+            </p>
+
+            <div class="series-nav" style="margin-top: 3rem;">
+                <p class="text-sm text-gray-600">
+                    <strong>Next in Series:</strong> Coming soon - capturing per-developer productivity without turning it into a surveillance nightmare.
+                </p>
+                <p class="text-sm text-gray-600 mt-2">
+                    <a href="/blog.html" class="text-blue-600 hover:text-blue-800">← Back to Blog Series</a>
+                </p>
+            </div>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+
+    <script src="/components.js"></script>
+</body>
+</html>

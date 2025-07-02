@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-for-Work: An AI Architect's Pragmatic Guide | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+        
+        .blog-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.25rem;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-content ul li {
+            list-style-type: disc;
+        }
+        
+        .blog-content ol li {
+            list-style-type: decimal;
+        }
+        
+        .blog-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .series-card {
+            background-color: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .series-card:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .series-note {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            body { font-size: 0.85rem; }
+            .blog-content h2 { font-size: 1.25rem; }
+            .blog-content h3 { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <article class="blog-content">
+            <h1 class="text-3xl font-bold text-primary mb-3 pt-8">AI-for-Work: An AI Architect's Pragmatic Guide to AI Deployment in Large Enterprises</h1>
+            <p class="text-gray-500 text-sm mb-4">April 15, 2025 · Series Overview</p>
+            
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="blog-tag">AI</span>
+                <span class="blog-tag">Enterprise</span>
+                <span class="blog-tag">Engineering</span>
+                <span class="blog-tag">AI Agents</span>
+                <span class="blog-tag">MCP</span>
+                <span class="blog-tag">DevTools</span>
+            </div>
+
+            <h2>Series Overview</h2>
+            <p>After leading AI deployment initiatives at scale, I've learned that enterprise AI adoption isn't about the models—it's about the infrastructure, governance, and cultural transformation required to make AI a productive part of daily engineering work.</p>
+
+<p>This series shares battle-tested patterns for deploying AI tools in large engineering organizations, drawn from real-world experience deploying AI IDEs to thousands of developers and building agent orchestration platforms.</p>
+
+            <h2>Posts in This Series</h2>
+
+            <div class="series-card">
+                <h3><a href="/blog/ai-for-work-part-1-ai-ide.html" class="text-blue-600 hover:text-blue-800">Part 1: Get Everyone an AI IDE - The Foundation of Enterprise AI</a></h3>
+                <p class="text-gray-600 italic mb-2">The first and most critical step in enterprise AI adoption</p>
+
+<p>Before diving into complex agent systems, start with the basics: get every developer a properly configured AI IDE. This post covers deployment strategies, security considerations, and how to drive adoption at scale.</p>
+            </div>
+
+            <div class="series-card">
+                <h3><a href="/blog/ai-for-work-part-2-mcp-gateway.html" class="text-blue-600 hover:text-blue-800">Part 2: Building a Centralized MCP Gateway - The Context Layer</a></h3>
+                <p class="text-gray-600 italic mb-2">How to securely connect AI tools to your internal systems</p>
+
+<p>Model Context Protocol (MCP) is the bridge between AI and your enterprise data. Learn how to build a centralized gateway with proper authentication, audit logging, and access controls.</p>
+            </div>
+
+            <div class="series-card">
+                <h3><a href="/blog/ai-for-work-part-3-ai-observability.html" class="text-blue-600 hover:text-blue-800">Part 3: From Proxy Logs to Intelligence - Enterprise AI Observability</a></h3>
+                <p class="text-gray-600 italic mb-2">Turn your security proxy into an AI analytics powerhouse</p>
+
+<p>Your security proxy already sees every LLM request. This post shows how to build real-time analysis pipelines that provide both security monitoring and productivity insights.</p>
+            </div>
+
+            <div class="series-card">
+                <h3><a href="/blog/ai-for-work-part-4-agent-orchestration.html" class="text-blue-600 hover:text-blue-800">Part 4: Agent Orchestration at Scale - Building an Enterprise Platform</a></h3>
+                <p class="text-gray-600 italic mb-2">From simple tools to complex multi-agent workflows</p>
+
+<p>Learn how to build an enterprise agent orchestration platform that can handle everything from simple automations to complex multi-step workflows with proper governance.</p>
+            </div>
+
+            <div class="series-card">
+                <h3><a href="/blog/ai-for-work-part-5-knowledge-preservation.html" class="text-blue-600 hover:text-blue-800">Part 5: Preserving Institutional Knowledge in the Age of AI</a></h3>
+                <p class="text-gray-600 italic mb-2">Don't let your AI forget what your humans learned</p>
+
+<p>Short retention policies and ephemeral communication channels are erasing institutional knowledge. This post presents a systematic approach to selective context preservation.</p>
+            </div>
+
+            <div class="series-card">
+                <h3><a href="/blog/ai-for-work-part-6-work-as-code.html" class="text-blue-600 hover:text-blue-800">Part 6: Work-as-Code - The Micro-MCP Revolution</a></h3>
+                <p class="text-gray-600 italic mb-2">Making every engineering task programmatically accessible</p>
+
+<p>The final frontier: turning every manual task into a callable function. Learn how to build a micro-services approach to MCP that enables true AI autonomy.</p>
+            </div>
+
+            <div class="series-card">
+                <h3><a href="/blog/ai-for-work-part-7-engineering-org-needs.html" class="text-blue-600 hover:text-blue-800">Part 7: Building AI Observability and Adoption Programs</a></h3>
+                <p class="text-gray-600 italic mb-2">Dashboards, metrics, and scaling AI adoption across your organization</p>
+
+<p>Beyond deployment: how to measure AI impact, identify power users, and create systems that turn individual discoveries into organizational capabilities.</p>
+            </div>
+
+            <h2>Key Themes Throughout the Series</h2>
+            <ul>
+                <li><strong>Security First</strong>: Every pattern includes security and compliance considerations</li>
+                <li><strong>Developer Experience</strong>: Solutions that developers actually want to use</li>
+                <li><strong>Measurable Impact</strong>: Metrics and KPIs for tracking AI adoption success</li>
+                <li><strong>Gradual Adoption</strong>: Start simple, scale systematically</li>
+                <li><strong>Cross-Team Collaboration</strong>: Breaking down silos between Security, Platform, and Engineering</li>
+            </ul>
+
+            <h2>Who This Series Is For</h2>
+            <ul>
+                <li><strong>AI Architects</strong> and <strong>Staff Engineers</strong> tasked with AI strategy</li>
+                <li><strong>Engineering Managers</strong> looking to boost team productivity</li>
+                <li><strong>Platform Engineers</strong> building internal AI infrastructure</li>
+                <li><strong>Security Engineers</strong> concerned about AI governance</li>
+                <li><strong>CTOs and VPs</strong> making strategic AI investment decisions</li>
+            </ul>
+
+            <h2>Get Started</h2>
+            <p>Ready to transform how your organization works with AI? Start with <a href="/blog/ai-for-work-part-1-ai-ide.html" class="text-blue-600 hover:text-blue-800">Part 1: Get Everyone an AI IDE</a>.</p>
+
+            <div class="series-note">
+                <p><em>Follow me on <a href="https://twitter.com/ziyadmir" class="text-blue-600 hover:text-blue-800">Twitter</a> or <a href="https://linkedin.com/in/ziyadmir" class="text-blue-600 hover:text-blue-800">LinkedIn</a> for updates when new posts are published.</em></p>
+            </div>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

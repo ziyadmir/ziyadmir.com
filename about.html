@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Ziyad Mir - AI Architect SWE</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; } /* Slightly smaller base font */
+        body { font-size: 0.95rem; }
+        
+        /* Timeline styling */
+        .timeline-container {
+            position: relative;
+            padding: 15px 0;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #d1d5db, transparent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 10px 30px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-item-content {
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item-content:hover {
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .year-marker {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 15px;
+            z-index: 10;
+            font-weight: bold;
+            color: var(--color-primary);
+            font-size: 0.9rem;
+        }
+        
+        .timeline-item:nth-child(odd) .year-marker {
+            right: -17px;
+        }
+        
+        .timeline-item:nth-child(even) .year-marker {
+            left: -17px;
+        }
+        
+        /* Skills styling */
+        .skill-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+        }
+        
+        .skill-item:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-marker {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .contact-section {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .contact-item svg {
+            margin-right: 12px;
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-item a:hover {
+            color: #93c5fd;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            body { font-size: 0.85rem; } /* Reduce base font size on mobile */
+            
+            .timeline-container::after {
+                left: 25px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 15px;
+                margin-bottom: 10px;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd) .year-marker,
+            .timeline-item:nth-child(even) .year-marker {
+                left: 8px;
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
+            }
+            
+            .text-3xl, .text-4xl {
+                font-size: 1.25rem !important;
+            }
+            
+            .text-2xl {
+                font-size: 1.1rem !important;
+            }
+            
+            .text-xl {
+                font-size: 1rem !important;
+            }
+            
+            .text-lg {
+                font-size: 0.9rem !important;
+            }
+            
+            .text-base {
+                font-size: 0.85rem !important;
+            }
+            
+            .text-sm {
+                font-size: 0.8rem !important;
+            }
+            
+            .timeline-item-content {
+                padding: 10px;
+            }
+            
+            .p-8, .p-6 {
+                padding: 1rem !important;
+            }
+            
+            .container {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+            
+            .py-8, .py-6 {
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+            
+            .skill-item {
+                padding: 6px;
+            }
+            
+            .mb-8, .mb-6 {
+                margin-bottom: 1rem !important;
+            }
+            
+            .gap-3 {
+                gap: 0.5rem !important;
+            }
+        }
+        
+        .company-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .company-logo {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto" style="padding-top: 2rem;">
+            <h1 class="text-4xl font-bold text-primary mb-5">About Me</h1>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                <p class="text-lg text-gray-700 mb-4">I'm Ziyad Mir, a Software Engineer with over 13 years of experience deploying real AI-based solutions in enterprises across Fortune 150 companies, Google/YouTube, Uber, Opendoor, and Quora.</p>
+                
+                <p class="text-base text-gray-600 mb-3">I specialize in deploying enterprise-scale AI solutions that drive real business value. At a Fortune 150 e-commerce company, I've led the Enterprise AI Initiative, transforming how thousands of engineers leverage AI tools, building agent orchestration platforms, and establishing AI observability systems that have fundamentally changed engineering productivity.</p>
+                
+                <p class="text-base text-gray-600 mb-3">Previously at Google/YouTube, I drove multiple projects generating hundreds of millions in incremental ARR through Brand Advertising innovations and ML integration with Google DeepMind. My technical expertise spans distributed systems, ML productionization, and building developer tools at scale.</p>
+
+                <p class="text-base text-gray-600">I graduated from the University of Waterloo with a degree in Systems Design Engineering, where I studied Product Design, Machine Learning, Data Structures and Algorithms, Optimization, Systems Design, and Economics.</p>
+            </div>
+            
+            <h2 class="text-2xl font-bold text-primary mb-4">Professional Journey</h2>
+            
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="year-marker">24</div>
+                    <div class="timeline-item-content">
+                        <div class="font-bold text-lg text-primary mb-2">2024 - Present</div>
+                        <div class="text-gray-700">
+                            <div class="company-header">
+                                <p class="font-semibold">Coupang, AI Architect, AI-for-Work</p>
+                            </div>
+                            <p class="mb-2 text-sm">Please contact for details</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="year-marker">17</div>
+                    <div class="timeline-item-content">
+                        <div class="font-bold text-lg text-primary mb-2">2017 - 2024</div>
+                        <div class="text-gray-700">
+                            <div class="company-header">
+                                <img src="/images/companies/google.png" alt="Google" class="company-logo">
+                                <p class="font-semibold">Google/YouTube, Senior Staff Software Engineer</p>
+                            </div>
+                            <p class="mb-2 text-sm">Zurich, Switzerland & San Francisco, CA</p>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
+                                <li>AI Architect for Youtube Select (multi-billion dollar ARR product)</li>
+                                <li>Led Youtube Flash: Moment-Level Youtube Ads (hundreds of millions in incremental ARR)</li>
+                                <li>Launched Youtube Select for Shorts, competing with TikTok Pulse</li>
+                                <li>Developed BrandShift metrics for Brand Identity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="year-marker">16</div>
+                    <div class="timeline-item-content">
+                        <div class="font-bold text-lg text-primary mb-2">2016 - 2017</div>
+                        <div class="text-gray-700">
+                            <div class="company-header">
+                                <img src="/images/companies/uber.png" alt="Uber" class="company-logo">
+                                <p class="font-semibold">Uber, Senior Software Engineer</p>
+                            </div>
+                            <p class="mb-2 text-sm">San Francisco, CA</p>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
+                                <li>Onboarded ML onto Communications Platform with AutoML team</li>
+                                <li>TL for Rosetta, the translations service (highest read throughput across Uber)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="year-marker">15</div>
+                    <div class="timeline-item-content">
+                        <div class="font-bold text-lg text-primary mb-2">2015 - 2016</div>
+                        <div class="text-gray-700">
+                            <div class="company-header">
+                                <img src="/images/companies/opendoor.png" alt="Opendoor" class="company-logo">
+                                <p class="font-semibold">Opendoor, Software Engineer</p>
+                            </div>
+                            <p class="mb-2 text-sm">San Francisco, CA</p>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
+                                <li>Engineer #5 at Opendoor (NASDAQ: $OPEN)</li>
+                                <li>Built first A/B testing platform and automated offer pipeline</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="year-marker">14</div>
+                    <div class="timeline-item-content">
+                        <div class="font-bold text-lg text-primary mb-2">2014 - 2015</div>
+                        <div class="text-gray-700">
+                            <div class="company-header">
+                                <img src="/images/companies/quora.png" alt="Quora" class="company-logo">
+                                <p class="font-semibold">Quora, Software Engineer & Product Manager</p>
+                            </div>
+                            <p class="mb-2 text-sm">Mountain View, CA</p>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
+                                <li>Led growth team to launch signup wall revamp</li>
+                                <li>Drove 100x search traffic increase</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

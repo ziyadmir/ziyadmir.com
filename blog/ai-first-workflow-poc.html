@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proof of Concept: Coding an MCP Client with Claude | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+
+        .blog-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .blog-content p {
+            margin-bottom: 1.25rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <article class="blog-content">
+            <h1 class="text-3xl font-bold mb-4 pt-8">Proof of Concept: Coding an MCP Client with Claude</h1>
+            <p class="text-gray-500 text-sm mb-4">July 15, 2025</p>
+            <p>Yesterday I put Claude Code Opus 4 through its paces by asking it to build a small repository from scratch: <a href="https://github.com/ziyadmir/nba-player-stats-mcp" class="text-blue-600 hover:text-blue-800">nba-player-stats-mcp</a>. The goal was simple—answer questions like “How many rebounds did LeBron James get per game in 2023?” via a Model Context Protocol (MCP) client.</p>
+
+            <h2>An AI-Driven Workflow</h2>
+            <p>Every line of code in the repo came from Claude. My role was to steer with natural language prompts: choose libraries, debug when they failed, and provide context via documentation links. The entire session ran inside <strong>windsurf</strong> at the <em>max</em>+<em>opus&nbsp;4</em> setting, giving me a conversational workflow right in the terminal.</p>
+
+            <h2>Coding from the Terminal</h2>
+            <p>I’ve always favored a keyboard-driven environment—think <em>tmux</em> and <em>vim</em>. Windsurf lets me maintain that flow state while collaborating with AI. Claude handled boilerplate and API calls; I focused on clarifying intent. In about three hours of intermittent work, we had a fully functional client that fetches player stats.</p>
+
+            <h2>Connecting to the Agent Platform</h2>
+            <p>This lightweight project mirrors our larger vision with <a href="/blog/ai-for-work-part-4-agent-orchestration.html" class="text-blue-600 hover:text-blue-800">our agent orchestration platform</a>, our step-based agent platform. The same run-loop concept applies: keep all context in one place and let agents orchestrate the tasks. The repo proved that even a single-agent workflow can deliver results with minimal human involvement.</p>
+
+            <h2>Why It Matters</h2>
+            <p>The manual pieces—finding libraries, validating output—are all solvable within the MCP framework. Once integrated, an agent can pull code, docs, and data sources from across the internet. The terminal becomes a universal interface for AI-first development.</p>
+
+            <p>It’s a small proof of concept, but it hints at a larger shift. With AI assistants embedded in our tooling, we can iterate on ideas in real time and keep every decision in version control. The symmetries with our agent platform are clear: isolate steps, preserve context, and let machines handle the busy work.</p>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+
+    <script src="/components.js"></script>
+</body>
+</html>

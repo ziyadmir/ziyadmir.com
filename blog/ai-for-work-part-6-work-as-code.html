@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 6: Work-as-Code: The Micro-MCP Revolution | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+        
+        .blog-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.25rem;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-content ul li {
+            list-style-type: disc;
+        }
+        
+        .blog-content ol li {
+            list-style-type: decimal;
+        }
+        
+        .blog-content code {
+            background-color: #f3f4f6;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+        }
+        
+        .blog-content pre {
+            margin: 1.5rem 0;
+        }
+        
+        .blog-content pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        
+        .blog-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .series-nav {
+            background-color: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 2rem 0;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            body { font-size: 0.85rem; }
+            .blog-content h2 { font-size: 1.25rem; }
+            .blog-content h3 { font-size: 1.1rem; }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.initialize({ startOnLoad: true });
+        });
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <article class="blog-content">
+            <h1 class="text-3xl font-bold text-primary mb-3 pt-8">Part 6: Work-as-Code: The Micro-MCP Revolution</h1>
+            <p class="text-gray-500 text-sm mb-4">May 15, 2025 · AI-for-Work Series</p>
+            
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="blog-tag">AI</span>
+                <span class="blog-tag">MCP</span>
+                <span class="blog-tag">Automation</span>
+                <span class="blog-tag">Platform Engineering</span>
+                <span class="blog-tag">Developer Tools</span>
+            </div>
+
+            <h2>The Last Mile Problem of AI Automation</h2>
+
+<p>Your AI agents can write code, analyze logs, and even create pull requests. But can they check if a service is healthy? Toggle a feature flag? Look up this quarter's AWS spend? Probably not—because 90% of engineering work still happens through undocumented scripts, tribal knowledge, and point-and-click dashboards.</p>
+
+<p>This final post in our series presents the logical conclusion of enterprise AI enablement: making every single engineering task programmatically accessible through micro-MCPs (Model Context Protocol plugins).</p>
+
+<h2>The Hidden Barrier to AI Autonomy</h2>
+
+<p>We measured our AI agents' effectiveness and found a disturbing pattern:</p>
+
+<div class="mermaid">
+graph TD
+    A[AI Agent Starts Task] --> B{Can it be done via API?}
+    B -->|Yes 10%| C[Agent Completes Autonomously]
+    B -->|No 90%| D[Agent Asks Human]
+    D --> E[Human Runs Manual Steps]
+    E --> F[Human Reports Back]
+    F --> G[Agent Continues]
+    
+    style D fill:#ff6b6b
+    style E fill:#ff6b6b
+</div>
+
+<p><strong>The 90% Wall</strong>: Most engineering tasks require:
+<ul>
+<li>SSH into a specific box and run that one script</li>
+<li>Navigate to internal dashboard, click three buttons</li>
+<li>Run undocumented CLI tool with tribal knowledge flags</li>
+<li>Check Slack for that one pinned message with instructions</li>
+</ul>
+
+<p>Our AI agents hit this wall constantly. Time to tear it down.</p>
+
+<h2>From Coarse to Fine: The MCP Evolution</h2>
+
+<h3>Traditional MCP Approach (What We Had)</h3>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+// Coarse-grained MCP - trying to do too much
+class JiraMCPTool {
+  async execute(params: {
+    action: string,
+    // 50+ possible parameters depending on action
+    ...args: any
+  }) {
+    switch(params.action) {
+      case "search_issues":
+      case "create_issue":
+      case "update_issue":
+      case "add_comment":
+      case "change_status":
+      // ... 20 more cases
+    }
+  }
+}
+</code></pre>
+
+<p><strong>Problems</strong>:
+<ul>
+<li>Complex parameter validation</li>
+<li>Poor discoverability</li>
+<li>Difficult to test</li>
+<li>Brittle prompt engineering needed</li>
+</ul>
+
+<h3>Micro-MCP Approach (The Revolution)</h3>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+// Each task is its own MCP - do one thing well
+class CheckServiceHealthMCP {
+  async execute(params: {
+    serviceId: string,
+    environment: 'prod' | 'staging' | 'dev'
+  }): Promise<HealthStatus> {
+    // 20 lines of focused code
+    const endpoint = this.getHealthEndpoint(params.serviceId, params.environment);
+    const result = await this.httpClient.get(endpoint);
+    return this.parseHealthStatus(result);
+  }
+}
+
+class ToggleFeatureFlagMCP {
+  async execute(params: {
+    flagName: string,
+    environment: string,
+    enabled: boolean
+  }): Promise<void> {
+    // Another 20 lines of focused code
+    await this.flagService.updateFlag(params);
+    await this.auditLog.record('feature_flag_toggle', params);
+  }
+}
+</code></pre>
+
+<h2>The Micro-MCP Factory</h2>
+
+<p>To scale from dozens to thousands of MCPs, we built a factory system:</p>
+
+<p><strong>1. CLI Tool for MCP Creation</strong></p>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-bash">
+$ mcp create check-service-health
+
+? What does this MCP do? Check health status of a service
+? Input parameters? serviceId:string, environment:enum[prod,staging,dev]
+? Output type? HealthStatus object
+
+✓ Created MCP scaffold at ./mcps/check-service-health/
+✓ Ready to implement in index.ts
+</code></pre>
+
+<p><strong>2. Standardized Structure</strong></p>
+
+<p>Every micro-MCP follows the same pattern:</p>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code>
+check-service-health/
+├── index.ts           # Implementation (≤100 lines)
+├── schema.json        # Input/output contracts  
+├── test.ts            # Automated tests
+├── README.md          # Auto-generated docs
+└── metadata.json      # Registry information
+</code></pre>
+
+<p><strong>3. Central Registry</strong></p>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-json">
+{
+  "mcp_id": "check-service-health",
+  "description": "Check health status of a service",
+  "category": "observability",
+  "inputs": {
+    "serviceId": {"type": "string"},
+    "environment": {"type": "enum", "values": ["prod", "staging", "dev"]}
+  },
+  "output": {
+    "status": "healthy | degraded | down",
+    "latency_ms": "number"
+  },
+  "auth": ["service:read"]
+}
+</code></pre>
+
+<h2>Real-World Micro-MCPs in Action</h2>
+
+<p>After 6 months, we've built 1,000+ micro-MCPs. Here are the categories that emerged:</p>
+
+<h3>Observability MCPs</h3>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+// Before: SSH to box, grep logs, parse with awk
+get_error_rate(service, timeRange)
+
+// Before: Open Grafana, navigate to dashboard, screenshot
+fetch_p99_latency(service, metric, duration)
+
+// Before: Custom script on monitoring host
+list_firing_alerts(severity, team)
+</code></pre>
+
+<h3>Configuration MCPs</h3>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+// Before: Jenkins UI navigation  
+toggle_feature_flag(flag, env, state)
+
+// Before: K8s kubectl commands with complex selectors
+scale_deployment(service, replicas, env)
+
+// Before: AWS console clicking
+update_parameter_store(key, value, env)
+</code></pre>
+
+
+<h2>The Architecture Behind 1,000 MCPs</h2>
+
+<h3>Execution Platform</h3>
+
+<div class="mermaid">
+graph LR
+    A[AI Agent] --> B[MCP Gateway]
+    B --> C{Route to MCP}
+    C --> D[MCP Registry]
+    D --> E[Execute in Container]
+    E --> F[Return Result]
+    
+    subgraph "MCP Execution"
+        E --> G[Auth Check]
+        G --> H[Rate Limit]
+        H --> I[Execute Logic]
+        I --> J[Audit Log]
+    end
+</div>
+
+<h3>Discovery & Composition</h3>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
+class MCPDiscoveryService:
+    def find_mcps_for_task(self, task_description: str) -> List[MCP]:
+        # Semantic search across all MCPs
+        embeddings = self.embed_task(task_description)
+        
+        # Find relevant MCPs
+        candidates = self.vector_search(embeddings, top_k=10)
+        
+        # Rank by relevance and capability
+        return self.rank_candidates(candidates, task_description)
+    
+    def suggest_composition(self, goal: str) -> MCPWorkflow:
+        # AI suggests how to combine MCPs
+        mcps = self.find_mcps_for_task(goal)
+        
+        # Generate workflow
+        workflow = self.llm.create_workflow(
+            goal=goal,
+            available_mcps=mcps,
+            examples=self.get_similar_workflows(goal)
+        )
+        
+        return workflow
+</code></pre>
+
+<h3>Quality Enforcement</h3>
+
+<p>Every MCP must pass automated checks:</p>
+<ul>
+<li>Size limit: ≤100 lines of code</li>
+<li>Contract validation: Input/output schemas</li>
+<li>Test coverage: ≥80%</li>
+<li>Idempotency: Must be safe to retry</li>
+<li>Documentation: Complete README</li>
+<li>Security scan: No secrets or vulnerabilities</li>
+</ul>
+
+<h2>Measuring AI Autonomy</h2>
+
+<p>We track the <strong>AI Autonomy Index</strong>: percentage of tasks completed without human intervention.</p>
+
+<h3>Before Micro-MCPs</h3>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
+autonomy_metrics = {
+    "tasks_attempted": 10000,
+    "completed_autonomously": 3800,
+    "required_human_help": 6200,
+    "autonomy_index": 0.38  # 38%
+}
+
+# Common blockers:
+blockers = [
+    "Check if service is healthy",  # 15%
+    "Look up current config value",  # 12%
+    "Find cost of this service",  # 10%
+    "Check deployment status",  # 8%
+    # ... hundreds more
+]
+</code></pre>
+
+<h3>After Micro-MCPs</h3>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-python">
+autonomy_metrics = {
+    "tasks_attempted": 10000,
+    "completed_autonomously": 7200,
+    "required_human_help": 2800,
+    "autonomy_index": 0.72  # 72%
+}
+
+# Remaining blockers (harder problems):
+blockers = [
+    "Make architectural decision",  # 30%
+    "Debug complex production issue",  # 25%
+    "Review security implications",  # 20%
+    "Approve budget increase"  # 15%
+]
+</code></pre>
+
+<h2>The Compound Benefits</h2>
+
+<p><strong>1. Velocity Acceleration</strong></p>
+
+<p>Tasks that took 30 minutes of human coordination now complete in 30 seconds.</p>
+
+<p><strong>2. Tribal Knowledge Codification</strong></p>
+
+<p>Every micro-MCP captures institutional knowledge:</p>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+// The comment explains what took 3 years to learn
+class CheckCanaryDeploymentMCP {
+  async execute(params) {
+    // Always check payment-service canary first
+    // It's our most sensitive service and fails fast
+    if (params.service === 'payment-service') {
+      return this.checkPaymentCanary(params);
+    }
+    
+    // For other services, check in dependency order
+    // This prevents cascade failures from going unnoticed
+    const dependencyOrder = this.getDependencyOrder(params.service);
+    for (const dep of dependencyOrder) {
+      const canaryHealth = await this.checkCanary(dep);
+      if (!canaryHealth.healthy) {
+        return { safe: false, blocker: dep };
+      }
+    }
+  }
+}
+</code></pre>
+
+<p><strong>3. Democratized Capabilities</strong></p>
+
+<p>Junior engineers and AI agents have the same capabilities as senior engineers:</p>
+<ul>
+<li>No need to know which box to SSH into</li>
+<li>No need to remember complex command flags</li>
+<li>No need to have dashboard access</li>
+<li>Just call the right MCP</li>
+</ul>
+
+<p><strong>4. Observability & Compliance Built-In</strong></p>
+
+<p>Every MCP execution is automatically:</p>
+<ul>
+<li>Logged with full context</li>
+<li>Attributed to user/agent</li>
+<li>Rate limited and access controlled</li>
+<li>Monitored for SLA compliance</li>
+</ul>
+
+<h2>Getting Started with Micro-MCPs</h2>
+
+<h3>Week 1-2: Foundation</h3>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-bash">
+# Install MCP Factory
+npm install -g @company/mcp-factory
+
+# Create your first micro-MCP
+mcp create get-service-uptime
+
+# Implement, test, publish
+cd mcps/get-service-uptime
+npm test
+mcp publish
+</code></pre>
+
+<h3>Week 3-4: High-Value Targets</h3>
+Identify your top 20 "toil tasks" and convert them:
+<ol>
+<li>Health checks and status queries</li>
+<li>Configuration lookups</li>
+<li>Metric fetches</li>
+<li>Simple operational tasks</li>
+</ol>
+
+<h3>Month 2: Momentum Building</h3>
+<ul>
+<li>Run a "100 MCPs in 30 days" hackathon</li>
+<li>Set up MCP registry and discovery</li>
+<li>Integrate with your AI agent platform</li>
+<li>Start tracking autonomy metrics</li>
+</ul>
+
+<h3>Month 3+: Cultural Shift</h3>
+<ul>
+<li>Make MCP creation part of oncall duties</li>
+<li>Require MCP wrapper for any new operational script</li>
+<li>Celebrate automation wins publicly</li>
+<li>Share autonomy metrics in all-hands</li>
+</ul>
+
+<h2>Common Patterns and Anti-Patterns</h2>
+
+<h3>✅ Good Micro-MCP</h3>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+// Single purpose, clear contract
+class GetDatabaseConnectionCountMCP {
+  async execute(params: {
+    database: string,
+    environment: string
+  }): Promise<{
+    current_connections: number,
+    max_connections: number,
+    percentage_used: number
+  }> {
+    // 30 lines of focused code
+  }
+}
+</code></pre>
+
+<h3>❌ Bad Micro-MCP</h3>
+
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-typescript">
+// Trying to do too much
+class DatabaseManagementMCP {
+  async execute(params: {
+    action: 'get_connections' | 'kill_query' | 'backup' | 'restore',
+    // ... 20 more parameters
+  }) {
+    // 500 lines of spaghetti
+  }
+}
+</code></pre>
+
+<h2>The Network Effect</h2>
+
+<p>The magic happens when micro-MCPs start composing:</p>
+<pre class="bg-gray-100 p-4 rounded overflow-x-auto my-4"><code class="language-yaml">
+# AI agents can now build complex workflows
+name: investigate-latency-spike
+steps:
+  - mcp: get-service-p99-latency
+    params: 
+      service: api-gateway
+      duration: 1h
+  - mcp: get-dependent-services
+    params:
+      service: api-gateway
+  - parallel:
+    - mcp: check-database-connections
+      params: 
+        database: primary-db
+    - mcp: get-cache-hit-rate
+      params:
+        cache: redis-main
+    - mcp: list-recent-deployments
+      params:
+        services: ${dependent_services}
+  - mcp: correlate-metrics
+    params:
+      metrics: ${all_previous_outputs}
+  - mcp: generate-investigation-report
+    params:
+      findings: ${correlations}
+</code></pre>
+
+<h2>Conclusion: Infrastructure as Code → Work as Code</h2>
+
+<p>We've completed the journey from manual operations to full automation:
+<ol>
+<li><strong>AI IDEs</strong> gave developers superpowers</li>
+<li><strong>MCP Gateway</strong> connected AI to internal systems</li>
+<li><strong>Observability</strong> ensured security and insights</li>
+<li><strong>Agent Orchestration</strong> enabled complex workflows</li>
+<li><strong>Knowledge Preservation</strong> captured institutional memory</li>
+<li><strong>Micro-MCPs</strong> made everything programmable</li>
+</ol>
+
+<p>The result? An organization where AI agents are first-class citizens, capable of handling 70%+ of routine engineering work autonomously.</p>
+
+<p>The future isn't about replacing engineers—it's about amplifying them. When every task is code, every engineer becomes an architect. When AI handles the routine, humans focus on the creative.</p>
+
+<p>Welcome to the age of Work-as-Code.</p>
+
+<p>---</p>
+
+<p><strong>End of Series</strong></p>
+
+<p><em>Thank you for following this journey. If you're implementing these patterns at your organization, I'd love to hear about your experience. Find me on <a href="https://twitter.com/ziyadmir" class="text-blue-600 hover:text-blue-800">Twitter</a> or <a href="https://linkedin.com/in/ziyadmir" class="text-blue-600 hover:text-blue-800">LinkedIn</a>.</em></p>
+
+<p>*Special thanks to all the engineers who made these systems possible. The future of work is collaborative—between humans, between teams, and between humans and AI.*</p>
+            
+        
+            <div class="series-nav flex justify-between items-center">
+                <div><a href="/blog/ai-for-work-part-5-knowledge-preservation.html" class="text-blue-600 hover:text-blue-800">← Part 5</a></div>
+                <a href="/blog/ai-for-work-series-index.html" class="text-gray-600 hover:text-gray-800">Series Index</a>
+                <div><span class="text-gray-400">End of Series</span></div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

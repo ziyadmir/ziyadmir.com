@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber & Internationalization | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+        
+        .memoir-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .memoir-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .memoir-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        
+        .memoir-content p {
+            margin-bottom: 1.25rem;
+        }
+        
+        .memoir-content ul, .memoir-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .memoir-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .memoir-content ul li {
+            list-style-type: disc;
+        }
+        
+        .memoir-content ol li {
+            list-style-type: decimal;
+        }
+        
+        .memoir-period {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-box {
+            background-color: #f8fafc;
+            border-left: 4px solid var(--color-primary);
+            padding: 1.5rem 1.5rem 1.5rem 2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .highlight-box:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-primary), transparent);
+        }
+        
+        .highlight-box:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-primary), transparent);
+        }
+        
+        .highlight-box p {
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+        
+        @media (max-width: 640px) {
+            .memoir-content h2 {
+                font-size: 1.25rem;
+            }
+            
+            .memoir-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            body { font-size: 0.85rem; }
+            
+            .container {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-6 flex-grow">
+        <article class="memoir-content">
+            <div class="mb-6">
+                <a href="/memoir.html" class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to My Life
+                </a>
+            </div>
+            
+            <header class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">Uber & Internationalization</h1>
+                <div class="flex items-center text-gray-500 text-sm mb-4">
+                    <span>2016-2018</span>
+                    <span class="mx-2">·</span>
+                    <span>San Francisco, CA</span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="memoir-period">Career</span>
+                    <span class="memoir-period">Leadership</span>
+                    <span class="memoir-period">Global Scale</span>
+                </div>
+            </header>
+            
+            <div class="highlight-box mb-8">
+                <p>My time at Uber centered on leading the Rosetta internationalization service, which had the highest read throughput of all 2000+ microservices at Uber, processing over 1 million requests per second. This role helped me develop as both a technical leader and a cross-team collaborator working across Uber's global ecosystem.</p>
+            </div>
+            
+            <h2>Joining Uber in its Hypergrowth Phase</h2>
+            <p>
+                After my time at Opendoor, I joined Uber in 2016 during what many would consider its hypergrowth phase. The company was expanding globally at an unprecedented rate, and I was drawn to the challenge of helping scale a service that was critical to Uber's international presence. 
+            </p>
+            
+            <p>
+                Uber's rapid expansion into new countries created extraordinary internationalization challenges. The platform needed to support hundreds of millions of users across diverse languages and locales while maintaining a consistent, high-quality experience. This required not just translation of static content, but dynamic, context-aware translations that could handle the nuances of different languages and user types (riders, drivers, eaters, restaurants).
+            </p>
+            
+            <h2>Technical Lead for Rosetta</h2>
+            <p>
+                I was brought in as the Technical Lead for Rosetta, Uber's internationalization (i18n) service. Rosetta was responsible for translating all user-facing content across Uber's ecosystem, enabling the platform to operate seamlessly across more than 70 countries and 30+ languages. What made this role particularly challenging was the scale at which Rosetta operated - it had the highest read throughput of all 2000+ microservices at Uber, handling over 1 million translation requests per second during peak traffic.
+            </p>
+            
+            <p>
+                As Technical Lead, I was responsible for both the technical architecture and the team leadership aspects of Rosetta. My focus was on architecting a system that could deliver translations with sub-10ms response times while handling an ever-increasing volume of requests. This required innovative approaches to caching, distribution, and performance optimization.
+            </p>
+            
+            <h3>Building a High-Performance Translation System</h3>
+            <p>
+                The technical challenges we faced were significant. We needed to design a system that could:
+            </p>
+            
+            <ul>
+                <li>Handle 1M+ translation requests per second during peak traffic</li>
+                <li>Maintain sub-10ms response time for critical user flows</li>
+                <li>Support contextual translations for different user types</li>
+                <li>Manage a translation corpus that grew by thousands of strings weekly</li>
+                <li>Scale horizontally as Uber expanded to new regions</li>
+            </ul>
+            
+            <p>
+                To address these challenges, we designed Rosetta as a high-performance, distributed translation system with multiple components:
+            </p>
+            
+            <ul>
+                <li><strong>Core Service</strong> - A Go-based API with highly optimized lookup paths</li>
+                <li><strong>Translation Storage</strong> - Multi-tiered storage with hot path caching</li>
+                <li><strong>Admin Portal</strong> - A React application for translation management</li>
+                <li><strong>Client Libraries</strong> - SDKs for all Uber programming languages</li>
+                <li><strong>Integration Layer</strong> - Connectors for translation vendor APIs</li>
+            </ul>
+            
+            <h3>Performance Optimizations</h3>
+            <p>
+                One of my primary contributions was implementing a series of performance optimizations that allowed Rosetta to achieve its throughput and latency targets. These included:
+            </p>
+            
+            <ul>
+                <li>Multi-level caching strategy (in-process, Redis, distributed cache)</li>
+                <li>Client-side caching with efficient invalidation mechanisms</li>
+                <li>Sharded storage for horizontal scaling</li>
+                <li>Custom serialization format for minimal memory footprint</li>
+                <li>Traffic throttling and circuit breakers for system stability</li>
+            </ul>
+            
+            <p>
+                These optimizations allowed Rosetta to deliver translations with p99 latency under 10ms despite handling the highest request volume in Uber's ecosystem. This performance was critical for ensuring a seamless user experience across all of Uber's products and regions.
+            </p>
+            
+            <h2>Integrating Machine Learning into Rosetta</h2>
+            <p>
+                Beyond the performance aspects, one of my most significant innovations was integrating machine learning into the translation workflow. Working closely with Uber's Michelangelo team (their ML platform), we developed systems that could:
+            </p>
+            
+            <ul>
+                <li>Automatically suggest translations for new strings based on context</li>
+                <li>Predict the quality of translations for prioritizing human review</li>
+                <li>Rank translation alternatives based on context</li>
+                <li>Automatically detect and flag potential quality issues</li>
+            </ul>
+            
+            <p>
+                This ML integration reduced translation costs by 35% while improving quality and reducing time-to-market for new languages. It also allowed Uber to respond more quickly to changing business needs and expand to new markets more efficiently.
+            </p>
+            
+            <h2>Scaling Teams and Cross-Functional Leadership</h2>
+            <p>
+                Working at Uber's scale taught me invaluable lessons about technical leadership and cross-functional collaboration. As the technical lead for Rosetta, I was responsible for:
+            </p>
+            
+            <ul>
+                <li>Managing a diverse team of engineers spanning backend, frontend, and ML disciplines</li>
+                <li>Coordinating with stakeholders across all Uber product lines (Rides, Eats, Freight, etc.)</li>
+                <li>Aligning with business priorities from different regions and markets</li>
+                <li>Balancing immediate needs with long-term architectural vision</li>
+                <li>Advocating for resources and prioritization within the organization</li>
+            </ul>
+            
+            <p>
+                This experience helped me develop my leadership style, focusing on empowering team members, creating clear technical vision, and ensuring alignment with business objectives. I learned the importance of effective communication, particularly in a globally distributed organization with many competing priorities.
+            </p>
+            
+            <h2>The Communications Platform</h2>
+            <p>
+                Beyond Rosetta, I also led the integration of ML into Uber's Communications Platform. This platform was responsible for all customer communications across channels like push notifications, SMS, and email. My team developed ML-driven systems that could:
+            </p>
+            
+            <ul>
+                <li>Personalize message content and timing based on user behavior patterns</li>
+                <li>Optimize channel selection (push, SMS, email) using ML models</li>
+                <li>Predict engagement to minimize notification fatigue</li>
+                <li>A/B test message effectiveness at scale</li>
+            </ul>
+            
+            <p>
+                This work resulted in a 50% increase in communication engagement and significant cost savings by reducing low-value notifications. It also improved the effectiveness of driver incentives through personalized messaging.
+            </p>
+            
+            <h2>Technical Challenges and Growth</h2>
+            <p>
+                The technical challenges we faced at Uber forced me to develop new skills and approaches. Some of the most significant challenges included:
+            </p>
+            
+            <h3>Scale & Performance</h3>
+            <p>
+                Handling the highest throughput at Uber required innovative approaches that I hadn't encountered before. We developed custom benchmark suites, implemented adaptive rate limiting, created specialized instrumentation for sub-millisecond latency tracking, and designed gradual rollout strategies for high-risk changes.
+            </p>
+            
+            <h3>Global Deployment</h3>
+            <p>
+                Supporting global operations required addressing regional challenges like building multi-region deployment with data replication strategies, implementing region-specific fallback mechanisms, creating specialized handling for right-to-left languages, and developing support for complex pluralization rules across languages.
+            </p>
+            
+            <p>
+                These challenges pushed me to become a better engineer and leader, developing a deeper understanding of distributed systems, performance optimization, and global-scale services.
+            </p>
+            
+            <h2>Lessons Learned at Uber</h2>
+            <p>
+                My time at Uber taught me several valuable lessons that have shaped my approach to engineering leadership:
+            </p>
+            
+            <ul>
+                <li><strong>Performance at scale requires both systemic thinking and attention to detail</strong> - Understanding the end-to-end flow of data and optimizing critical paths is essential for high-scale systems.</li>
+                <li><strong>Cross-functional collaboration is critical for success</strong> - Technical solutions alone aren't enough; alignment with business goals and coordination across teams is essential.</li>
+                <li><strong>ML can transform traditional services</strong> - Integrating machine learning into core services can create step-function improvements in efficiency and effectiveness.</li>
+                <li><strong>Global services require a nuanced approach</strong> - Different regions have different needs, constraints, and expectations that must be addressed in system design.</li>
+                <li><strong>Building for resilience is as important as building for performance</strong> - Systems must be designed to degrade gracefully under stress and recover quickly from failures.</li>
+            </ul>
+            
+            <h2>The Impact of Uber on My Career</h2>
+            <p>
+                My time at Uber was transformative for my career. The experience of leading a high-scale, business-critical service taught me how to navigate complex technical and organizational challenges while delivering measurable business impact. The skills I developed in performance optimization, distributed systems, and technical leadership set the foundation for my later work at Google and YouTube.
+            </p>
+            
+            <p>
+                The most valuable lesson from Uber was understanding how to balance technical excellence with business impact - creating systems that not only performed exceptionally well but also directly contributed to the company's growth and success in measurable ways. This perspective has guided my approach to engineering leadership ever since.
+            </p>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

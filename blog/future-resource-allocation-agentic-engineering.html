@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Future of Engineering Resource Allocation: From Headcount to Compute Credits | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style>
+        /* Custom styles for blog content */
+        .blog-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .blog-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-secondary);
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .blog-content code {
+            background-color: #f3f4f6;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+        }
+        
+        .blog-content pre {
+            background-color: #1f2937;
+            color: #e5e7eb;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-content blockquote {
+            border-left: 4px solid var(--color-primary);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #4b5563;
+        }
+        
+        .blog-content a {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+        
+        .blog-content a:hover {
+            color: var(--color-secondary);
+        }
+        
+        /* Highlight box for important points */
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+        }
+        
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+        
+        /* Credit allocation diagram */
+        .credit-diagram {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .level-box {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .level-name {
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .credit-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <article class="blog-content">
+            <h1 class="text-4xl font-bold mb-2 text-primary pt-8">The Future of Engineering Resource Allocation: From Headcount to Compute Credits</h1>
+            <p class="text-gray-500 text-sm mb-4">January 3, 2025</p>
+            
+            <p>Imagine a world where instead of millions of microservices, we have flexible agentic workflows that scale on demand. Where engineers don't need to hire teams to execute their ideas—they just need credits to spin up AI agents. This isn't science fiction; it's the logical evolution of how we'll allocate resources in engineering organizations.</p>
+
+            <p>We're on the cusp of a fundamental shift in how engineering work gets done. Tools like Devin and other AI coding assistants are just the beginning. Soon, these will evolve into sophisticated agentic systems with smart models underneath, connected via MCP (Model Context Protocol) to your company's internal data sources. The UI might look like a graph or natural language input—but ultimately, you'll just describe the task you want done, and the system will execute it.</p>
+
+            <h2>The Adoption Curve and Resource Constraints</h2>
+            
+            <p>The adoption pattern for these agentic workflow systems will mirror what we've seen with early AI productivity tools. Initially, people are hesitant. Then they try it, realize it's productive, and suddenly can't imagine working without it. The most productive engineers will max out their usage, creating a positive feedback loop: more AI usage leads to higher productivity, better performance reviews, and ultimately, better compensation.</p>
+
+            <p>But here's the challenge: we won't have infinite bandwidth and capital to let everyone use these tools without limits. We need a way to manage, track, and allocate these resources fairly and efficiently.</p>
+
+            <h2>Learning from Google's GCU System</h2>
+
+            <p>For the past decade, Google has used an internal concept called GCU (Google Compute Unit). Initially, one GCU represented one hour of one server on one Borg machine—basically a unit of compute. Over time, it evolved into something more comprehensive, almost like an internal currency.</p>
+
+            <p>Everything became convertible to GCU:</p>
+            <ul>
+                <li>1 megabyte of RAM → X GCU</li>
+                <li>1 gigabyte of hard disk → Y GCU</li>
+                <li>1 gigabyte of SSD → Z GCU</li>
+                <li>Spanner quota, network bandwidth, even engineer hours → All convertible to GCU</li>
+            </ul>
+
+            <p>Think of GCU as the reserve currency, with all other resources acting as foreign currencies with exchange rates. This created an objective language for analyzing trade-offs and making investment decisions. You could calculate the GCU input required for any project and compare it to the expected dollar output, essentially computing ROI in standardized terms.</p>
+
+            <h2>The Problem with Traditional Scaling</h2>
+
+            <p>Traditionally, companies scale through headcount. Managers build empires by hiring more people—the more reports you have, the more impact you can theoretically create. This system encodes power: five reports means five people's worth of impact, a hundred reports means a hundred.</p>
+
+            <p>Individual contributors (ICs) have been left out of this equation. They're told they have "influence without authority," but this influence isn't encoded or measurable. As you become more senior, people are supposed to listen to your ideas—but there's no guarantee they will.</p>
+
+            <h2>A New Model: Credit-Based Resource Allocation</h2>
+
+            <p>Here's where these ideas converge. Imagine every employee receives a GCU allocation based on their level when they join the company:</p>
+
+            <div class="credit-diagram">
+                <h3 style="margin-top: 0; margin-bottom: 1rem;">Credit Allocation by Level</h3>
+                
+                <div class="level-box">
+                    <span class="level-name">Level 3 (Junior Engineer)</span>
+                    <span class="credit-amount">1 GCU</span>
+                </div>
+                
+                <div class="level-box">
+                    <span class="level-name">Level 4 (Mid-Level)</span>
+                    <span class="credit-amount">2 GCU</span>
+                </div>
+                
+                <div class="level-box">
+                    <span class="level-name">Level 5 (Senior)</span>
+                    <span class="credit-amount">4 GCU</span>
+                </div>
+                
+                <div class="level-box">
+                    <span class="level-name">Level 6 (Staff)</span>
+                    <span class="credit-amount">10 GCU</span>
+                </div>
+            </div>
+
+            <p>With the agentic platform, these credits become your currency for turning ideas into reality. You don't need to convince engineers to work on your project or navigate organizational politics—you just need to spend your credits wisely to build systems that create value.</p>
+
+            <h2>Performance-Based Credit Multipliers</h2>
+
+            <p>The system becomes self-regulating through performance reviews:</p>
+            <ul>
+                <li><strong>Strongly Exceeds Expectations:</strong> 1.5x credit multiplier</li>
+                <li><strong>Meets Expectations:</strong> 1.0x (no change)</li>
+                <li><strong>Below Expectations:</strong> 0.7x credit reduction</li>
+            </ul>
+
+            <p>As you build systems that demonstrate real impact, your performance rating improves, giving you more credits to work with. This creates a meritocracy where the most effective builders get more resources to build.</p>
+
+            <div class="highlight-box">
+                <h3>The Trading Desk Analogy</h3>
+                <p>This model mirrors how trading desks operate. As traders demonstrate they can make money, they're given more capital to trade with. Poor performers lose capital allocation. It's transparent, fair, and directly tied to measurable outcomes.</p>
+            </div>
+
+            <h2>Implementation Challenges</h2>
+
+            <p>Rolling out this system won't be trivial. Companies will need to:</p>
+
+            <ol>
+                <li><strong>Standardize resource measurements:</strong> Create conversion rates between different resources (compute, storage, API calls, model inference time)</li>
+                <li><strong>Build the credit tracking infrastructure:</strong> Real-time dashboards showing credit usage, remaining balance, and ROI metrics</li>
+                <li><strong>Define success metrics:</strong> Clear ways to measure the impact of agentic workflows</li>
+                <li><strong>Create governance structures:</strong> Policies for credit transfers, borrowing, and exceptional allocations</li>
+                <li><strong>Cultural change management:</strong> Help teams transition from headcount-based to credit-based thinking</li>
+            </ol>
+
+            <h2>The Future of Engineering Leadership</h2>
+
+            <p>In this new world, the best engineers aren't necessarily those who can manage the most people—they're the ones who can most efficiently convert credits into value. An IC who consistently delivers 10x returns on their credit investments might be more valuable than a director managing a large team.</p>
+
+            <p>This democratizes innovation. Junior engineers with great ideas can prove their worth without waiting years to climb the management ladder. Senior ICs can finally have encoded authority that matches their expertise.</p>
+
+            <h2>Getting Started</h2>
+
+            <p>While most companies aren't ready for full credit-based allocation today, you can start preparing:</p>
+
+            <ul>
+                <li>Begin tracking resource usage at a granular level</li>
+                <li>Experiment with internal pricing for compute resources</li>
+                <li>Pilot agentic workflows in controlled environments</li>
+                <li>Start measuring output value, not just input costs</li>
+                <li>Build dashboards that show resource usage alongside business impact</li>
+            </ul>
+
+            <p>The shift from headcount to compute credits isn't just a technical change—it's a fundamental rethinking of how we organize and incentivize engineering work. Companies that figure this out first will have a massive competitive advantage in the age of AI-driven development.</p>
+
+            <h2>The Portable Credits Revolution</h2>
+
+            <p>But here's where it gets really interesting. What if credits become portable? What if the future of hiring isn't just about evaluating someone's knowledge, but about what they bring with them—their optimized workflows, their custom tools, and most importantly, their earned credits?</p>
+
+            <p>Imagine a world where engineers accumulate credits in real-time, like traders building a track record. Instead of waiting for quarterly or annual performance reviews, you're continuously earning credits based on the value you create. And here's the radical part: what if engineers keep a portion of these credits when they move between companies?</p>
+
+            <h3>The 50/50 Credit Split Model</h3>
+
+            <p>Consider a profit-sharing model where:</p>
+            <ul>
+                <li>Engineers keep 50% of the credits they generate</li>
+                <li>The company retains 50% as their return on providing the platform</li>
+                <li>Engineers build portable wealth that demonstrates their capabilities</li>
+                <li>Companies can evaluate contractors based on proven credit generation</li>
+            </ul>
+
+            <p>This creates a true meritocracy. When someone says "I have millions of credits," it's not bragging—it's a verifiable track record of value creation. Companies can hire contractors with confidence, knowing exactly what kind of return to expect.</p>
+
+            <h2>Opening Doors for New Talent</h2>
+
+            <p>This model could revolutionize how we bring new talent into the industry. Right now, the tech industry is increasingly shutting out new graduates, claiming they don't need junior engineers in an AI-powered world. This is dangerously shortsighted.</p>
+
+            <p>What if every new graduate receives a starter allocation—say, 100 credits—when they join a company? This gives them just enough runway to prove themselves. The exceptional ones will turn that 100 into 1,000, then 10,000, then a million. The system naturally identifies and rewards talent, regardless of pedigree or years of experience.</p>
+
+            <div class="highlight-box">
+                <h3>The Great Equalizer</h3>
+                <p>A credit-based system doesn't care about your resume or where you went to school. It only cares about one thing: can you turn credits into value? This could be the most egalitarian hiring system we've ever created.</p>
+            </div>
+
+            <h2>The Pay-to-Win Problem</h2>
+
+            <p>Of course, there's a critical challenge: what if people can simply buy credits? This would destroy the meritocratic nature of the system, turning it into yet another way for the wealthy to buy advantages.</p>
+
+            <p>The solution requires careful design:</p>
+            <ul>
+                <li>Credits must be earned through verified value creation, not purchased</li>
+                <li>External validation systems to prevent gaming</li>
+                <li>Transparent audit trails showing how credits were generated</li>
+                <li>Industry-wide standards for credit portability and verification</li>
+            </ul>
+
+            <p>Think of it like academic credentials or professional certifications—the value comes from the institution and process that awarded them, not from the piece of paper itself.</p>
+
+            <h2>The Next Few Years</h2>
+
+            <p>We're at an inflection point. The tools for agentic development are arriving. The need for better resource allocation is clear. The question isn't whether this shift will happen, but how quickly and who will lead it.</p>
+
+            <p>Companies that embrace this model early will attract the best talent—not because they offer the biggest salaries, but because they offer the fairest system for converting talent into rewards. Engineers who adapt to this model will find themselves with portable proof of their capabilities, freed from the politics of traditional performance reviews.</p>
+
+            <p>The future of engineering isn't about managing people or hoarding credits. It's about creating systems where the best ideas win, talent is recognized immediately, and everyone has a fair shot at proving their worth.</p>
+
+            <p>Welcome to the credit economy. May the best builders win.</p>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>

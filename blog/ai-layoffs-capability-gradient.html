@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI, Layoffs, and the Capability Gradient | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+
+        .blog-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .blog-content p {
+            margin-bottom: 1.25rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <article class="blog-content">
+            <h1 class="text-3xl font-bold mb-4 pt-8">AI, Layoffs, and the Capability Gradient</h1>
+            <p class="text-gray-500 text-sm mb-4">July 8, 2025</p>
+            <p>Why do some companies cling to large engineering teams while others rapidly automate them away? The answer lies in a simple pattern: the firms with the weakest digital capabilities keep engineers the longest—right up until their tooling gap closes.</p>
+
+            <h2>The bottom-up layoff pattern</h2>
+            <ul>
+                <li>80k tech workers have been let go so far in 2025 across 159 companies.</li>
+                <li>New-graduate hiring at Big Tech is down more than 50% from pre-pandemic levels.</li>
+            </ul>
+            <p>If you look at who’s getting cut, the knife slices upward from the base: entry-level SWE, QA, and light-CRUD feature teams go first, while infra-heavy or AI-adjacent roles often grow. None of this is surprising when ChatGPT can scaffold a boilerplate service in under a minute.</p>
+
+            <h2>Enter the Capability–Adoption Loop</h2>
+            <table class="table-auto border-collapse w-full mb-4">
+                <thead>
+                    <tr>
+                        <th class="border px-2 py-1">Enterprise cohort</th>
+                        <th class="border px-2 py-1">AI rollout velocity</th>
+                        <th class="border px-2 py-1">Resulting talent posture</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-2 py-1">Digital Natives / FAANG</td>
+                        <td class="border px-2 py-1">Ship gen-AI to prod quarterly</td>
+                        <td class="border px-2 py-1">Smaller, senior-biased benches</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-2 py-1">Capability Followers</td>
+                        <td class="border px-2 py-1">Targeted pilots, patchy tooling</td>
+                        <td class="border px-2 py-1">Retain mid-level “AI translators”</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-2 py-1">Tech-Lagging Incumbents</td>
+                        <td class="border px-2 py-1">POCs + deckware; infra gaps</td>
+                        <td class="border px-2 py-1">Keep larger SWE pool for manual glue</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>The laggards keep engineers longer for a few reasons: they lack mature MLOps and telemetry, operate in regulated environments that value manual overrides, and find it cheaper to keep people on call than to re-architect legacy stacks. But once turnkey AI arrives for their stack, those seats vanish fast.</p>
+
+            <h2>Case study: Salesforce’s “pause and redeploy”</h2>
+            <p>Marc Benioff recently told the AI-for-Good Summit that AI is augmenting, not erasing, his workforce. Internally, Salesforce paused net SWE hiring but more than half of Q1 hires were internal transfers—lateral moves that let productivity gains from Agentforce settle in. That’s classic Loop behavior: a capability follower squeezes junior requisitions while repurposing mid-career staff who can thread old stacks into new agentic ones.</p>
+
+            <h2>What this means for engineers</h2>
+            <p>In the short term, legacy-heavy firms still need you to be the automation. But once SaaS AI and connectors mature, those seats disappear quickly. Hedge now by getting fluent in integration and domain context—skills that survive across all enterprise cohorts.</p>
+
+            <h2>Leadership playbook</h2>
+            <ol class="list-decimal list-inside">
+                <li>Audit your capability gradient—map CI/CD, data lineage, and observability maturity against peers.</li>
+                <li>Upskill on-staff first; it’s cheaper and politically easier than firing then rehiring.</li>
+                <li>Plan the cliff. When turnkey AI lands for your stack, be ready to resize teams or redeploy them to higher-order work.</li>
+            </ol>
+
+            <h2>Stat pack</h2>
+            <ul>
+                <li>80k tech layoffs so far in 2025.</li>
+                <li>New-grad hires at Big Tech down &gt;50% vs 2019.</li>
+                <li>78% of companies report using AI; only 1% say their deployment is mature.</li>
+                <li>UK online job postings down 31% vs 2022—AI-exposed roles hardest hit.</li>
+            </ul>
+
+            <h2>Tying it back to the Hourglass thesis</h2>
+            <p>AI doesn’t eliminate engineers uniformly; it resorts them along a capability gradient. The firms at the bottom of that gradient hoard headcount—until the night before the tooling gap closes. Expect the hourglass to pinch even tighter as low-code agent frameworks standardize on-prem connectors. When that happens, the Loop flips: laggards cut faster than the leaders because the savings per engineer are higher.</p>
+
+            <p><strong>Call to action</strong></p>
+            <p>Leaders: What’s your real AI maturity score—and how many engineers does that buy you? Engineers: Are you the automation, or the person who automates the automation? Pick soon.</p>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+
+    <script src="/components.js"></script>
+</body>
+</html>

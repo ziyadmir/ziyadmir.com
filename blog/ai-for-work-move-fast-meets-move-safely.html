@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When "Move Fast" Meets "Move Safely" – Reconciling the Startup Builder Mindset with Enterprise Reality | AI-for-Work | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+
+        .blog-content {
+            max-width: 42rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .blog-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+
+        .blog-content p {
+            margin-bottom: 1.25rem;
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-content ul li {
+            list-style-type: disc;
+        }
+
+        .blog-content ol li {
+            list-style-type: decimal;
+        }
+
+        .series-nav {
+            background-color: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <article class="blog-content">
+            <h1 class="text-3xl font-bold text-primary mb-3 pt-8">When "Move Fast" Meets "Move Safely" – Reconciling the Startup Builder Mindset with Enterprise Reality</h1>
+            <p class="text-gray-500 text-sm mb-4">August 15, 2025 · AI-for-Work | Philosophy &amp; Execution · 5 min read</p>
+
+            <h2>1. The Collision I Didn’t See Coming</h2>
+            <p>I came up through early-stage startups where the default answer to almost any constraint is “rip it out and ship.” Walls exist to be sprinted through. That bias—optimising exclusively for speed and product-market fit—served me well for a decade.</p>
+            <p>Then I joined a large enterprise.</p>
+            <p>Our security team had a strict, 30-day log-retention limit that was throttling an AI-driven observability project I was leading. My knee-jerk reaction: “Let’s just pseudonymise the logs with an LLM, extend retention, and deal with policy later.” Classic startup reflex.</p>
+            <p>Days turned into weeks of back-and-forth with the Chief Privacy Officer (CPO). From my vantage point he was slowing us down. From his vantage point he was shielding the company from an eight-figure compliance risk. Same meeting, two realities.</p>
+
+            <h2>2. The Enterprise Operating Model (EOM) in One Sentence</h2>
+            <p><strong>Protect downside first, then capture upside.</strong></p>
+            <p>Startups invert this: capture upside fast, accept downside later. Enterprises have multi-billion-dollar surfaces to protect—regulatory, reputational, and legal—so the decision tree is fundamentally different.</p>
+            <table class="min-w-full text-sm mb-4">
+                <thead>
+                    <tr>
+                        <th class="border px-2 py-1">Dimension</th>
+                        <th class="border px-2 py-1">Startup Bias</th>
+                        <th class="border px-2 py-1">Enterprise Bias</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-2 py-1">Goal</td>
+                        <td class="border px-2 py-1">Speed → Validation</td>
+                        <td class="border px-2 py-1">Safety → Continuity</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-2 py-1">Primary Risk</td>
+                        <td class="border px-2 py-1">Missing PM-fit</td>
+                        <td class="border px-2 py-1">Regulatory / Brand damage</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-2 py-1">Decision Style</td>
+                        <td class="border px-2 py-1">Founder fiat</td>
+                        <td class="border px-2 py-1">Multi-stakeholder consent</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-2 py-1">“Good Enough”</td>
+                        <td class="border px-2 py-1">Today’s best tech</td>
+                        <td class="border px-2 py-1">Proven, auditable tech</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-2 py-1">Time Horizon</td>
+                        <td class="border px-2 py-1">⬆ Weeks</td>
+                        <td class="border px-2 py-1">⬆ Quarters / Years</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>3. The Playbook I Eventually Learned</h2>
+            <ol>
+                <li><strong>Translate Vision into Risk-Adjusted Language</strong>
+                    <ul>
+                        <li>Map your proposal to data classification, control owners, and threat models.</li>
+                        <li>Replace “cool LLM trick” with “reduces likelihood of PII re-identification from 0.4 to 0.05.”</li>
+                    </ul>
+                </li>
+                <li><strong>Identify the Sequence of Gates, Not Just the Final Gate</strong>
+                    <ul>
+                        <li>Privacy Impact Assessment → Architecture Review → Security Review → Pilot Exception → Exec Sign-Off.</li>
+                        <li>Each gate has a minimum viable artifact. Deliver those artifacts early to keep momentum.</li>
+                    </ul>
+                </li>
+                <li><strong>Pre-Align Incentives</strong>
+                    <ul>
+                        <li>The CPO wasn’t blocking me; he was accountable for GDPR fines. Showing him how our approach lowered that exposure flipped him from skeptic to sponsor.</li>
+                    </ul>
+                </li>
+                <li><strong>Use “Compliance by Construction”</strong>
+                    <ul>
+                        <li>Baked controls (immutable audit logs, role-segregated pipelines) reduce ongoing scrutiny and make the inevitable re-reviews rubber stamps.</li>
+                    </ul>
+                </li>
+                <li><strong>Exploit Your Startup Reflex—Later</strong>
+                    <ul>
+                        <li>Once you’ve cleared the formal path, you’re now holding a rare permission slip. Your “run-through-walls” muscle gives you an execution edge most employees never cultivate.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h2>4. Why This Matters for Builders</h2>
+            <p>Enterprise bureaucracy feels like friction until you realise it’s also a moat. Most builders give up at the first sign of a policy doc. If you can internalise the EOM:</p>
+            <ul>
+                <li>You unlock projects others deem “impossible.”</li>
+                <li>You become the bridge between innovation and governance—a scarce leadership trait.</li>
+                <li>You compound influence; every approved project lowers resistance to the next one.</li>
+            </ul>
+
+            <h2>5. A Mental Model to Keep Both Modes Handy</h2>
+            <pre class="whitespace-pre-wrap">
+          Risk Appetite
+          ▲
+startup    |■■■■■■■■■
+enterprise |■■
+          └──────────────▶ Process Depth
+               (light)            (deep)
+            </pre>
+            <ul>
+                <li>Situational Awareness: Diagnose where your organisation sits on both axes before proposing.</li>
+                <li>Mode Switching: Default to startup mode for ideation; switch to enterprise mode for adoption.</li>
+            </ul>
+
+            <h2>6. Actionable Takeaways for Fellow Engineers</h2>
+            <ol>
+                <li>Learn the Policy Stack: Data, privacy, security, finance. Know the owners.</li>
+                <li>Speak Two Dialects: “Feature velocity” for product teams, “control coverage” for governance teams.</li>
+                <li>Document Traceability Early: Your design doc becomes evidence during audits—write it for that future reader.</li>
+                <li>Pilot Narrowly, Log Aggressively: Limited blast radius + perfect observability accelerates trust.</li>
+                <li>Celebrate Compliance Wins: Treat the CPO and security architects as co-authors of success, not gatekeepers you “got around.”</li>
+            </ol>
+
+            <h2>7. Closing Thought</h2>
+            <p>Entrepreneurial tenacity is still your superpower, but enterprises reward a measured sprint—one that protects the downside and captures the upside. Master both modes and you’ll ship innovations that look reckless to startups and impossible to incumbents.</p>
+
+            <p>If this resonated, follow the AI for Work series where we explore pragmatic patterns for shipping bleeding-edge tech inside organisations that don’t move fast—until you show them how.</p>
+
+            <div class="series-nav">
+                <h3>Continue Reading</h3>
+                <a href="/blog/ai-for-work-series-index.html">← Back to Series Index</a>
+            </div>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+
+    <script src="/components.js"></script>
+</body>
+</html>

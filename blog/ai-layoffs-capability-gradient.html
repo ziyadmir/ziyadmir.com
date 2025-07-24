@@ -27,6 +27,31 @@
         .blog-content p {
             margin-bottom: 1.25rem;
         }
+
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-content ul li {
+            list-style-type: disc;
+        }
+        
+        .blog-content ol li {
+            list-style-type: decimal;
+        }
+
+        .series-nav {
+            background-color: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 2rem 0;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
@@ -36,7 +61,14 @@
     <main class="container mx-auto px-4 py-8 flex-grow">
         <article class="blog-content">
             <h1 class="text-3xl font-bold mb-4 pt-8">AI, Layoffs, and the Capability Gradient</h1>
-            <p class="text-gray-500 text-sm mb-4">July 8, 2025</p>
+            <p class="text-gray-500 text-sm mb-4">July 8, 2025 · Part 1 of AI and Layoffs Series</p>
+            
+            <div class="series-nav flex justify-between items-center">
+                <div><a href="/blog/ai-and-layoffs-series-index.html" class="text-blue-600 hover:text-blue-800">← Series Overview</a></div>
+                <a href="/blog/ai-and-layoffs-series-index.html" class="text-gray-600 hover:text-gray-800">Series Index</a>
+                <div><a href="/blog/senior-ics-new-managers.html" class="text-blue-600 hover:text-blue-800">Part 2 →</a></div>
+            </div>
+            
             <p>Why do some companies cling to large engineering teams while others rapidly automate them away? The answer lies in a simple pattern: the firms with the weakest digital capabilities keep engineers the longest—right up until their tooling gap closes.</p>
 
             <h2>The bottom-up layoff pattern</h2>
@@ -100,7 +132,13 @@
             <p>AI doesn’t eliminate engineers uniformly; it resorts them along a capability gradient. The firms at the bottom of that gradient hoard headcount—until the night before the tooling gap closes. Expect the hourglass to pinch even tighter as low-code agent frameworks standardize on-prem connectors. When that happens, the Loop flips: laggards cut faster than the leaders because the savings per engineer are higher.</p>
 
             <p><strong>Call to action</strong></p>
-            <p>Leaders: What’s your real AI maturity score—and how many engineers does that buy you? Engineers: Are you the automation, or the person who automates the automation? Pick soon.</p>
+            <p>Leaders: What's your real AI maturity score—and how many engineers does that buy you? Engineers: Are you the automation, or the person who automates the automation? Pick soon.</p>
+            
+            <div class="series-nav flex justify-between items-center">
+                <div><a href="/blog/ai-and-layoffs-series-index.html" class="text-blue-600 hover:text-blue-800">← Series Overview</a></div>
+                <a href="/blog/ai-and-layoffs-series-index.html" class="text-gray-600 hover:text-gray-800">Series Index</a>
+                <div><a href="/blog/senior-ics-new-managers.html" class="text-blue-600 hover:text-blue-800">Part 2 →</a></div>
+            </div>
         </article>
     </main>
 

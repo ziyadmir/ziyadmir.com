@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Knowledge Boundary Illusion: Why Deltas Get Harder to See | Ziyad Mir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/shared-styles.css" rel="stylesheet">
+    <style type="text/css">
+        html { font-size: 15px; }
+        body { font-size: 0.95rem; }
+        .blog-content { max-width: 42rem; margin: 0 auto; line-height: 1.7; }
+        .blog-content h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: var(--color-primary); }
+        .blog-content h3 { font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--color-primary); }
+        .blog-content p { margin-bottom: 1.1rem; }
+        .blog-tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; background-color: #f3f4f6; color: #4b5563; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+        .caption { color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem; }
+        @media (max-width: 640px) {
+            body { font-size: 0.85rem; }
+            .blog-content h2 { font-size: 1.25rem; }
+            .blog-content h3 { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Shared header will be loaded here -->
+    <div id="shared-header"></div>
+
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <article class="blog-content">
+            <h1 class="text-3xl font-bold text-primary mb-3 pt-8">The Knowledge Boundary Illusion: Why Deltas Get Harder to See</h1>
+            <p class="text-gray-500 text-sm mb-4">August 7, 2025 · Strategy &amp; Philosophy</p>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="blog-tag">AI</span>
+                <span class="blog-tag">Evaluation</span>
+                <span class="blog-tag">Cognition</span>
+                <span class="blog-tag">Strategy</span>
+            </div>
+
+            <p><em>Basically, as a model approaches or surpasses you in the multidimensional knowledge space, it gets harder to pinpoint the deltas/differences.</em></p>
+
+            <figure class="my-6">
+                <img src="/images/blog/knowledge-boundaries.png" alt="Illustration showing two squiggly boundaries representing human and model knowledge before and after capability gains" class="w-full rounded shadow">
+                <figcaption class="caption">As capability grows, overlaps increase and the remaining gaps fragment. The difference is real, but it’s distributed and context dependent.</figcaption>
+            </figure>
+
+            <h2>The intuition</h2>
+            <p>When a system is far below your capability, the gap is obvious. You can name the missing skills, show clear failure cases, and point to large areas of ignorance. As the system approaches you, the remaining differences shrink and scatter across many dimensions. At parity or beyond, the model will alternate between dazzling competence and surprising blind spots. The net effect: you can tell it’s better, but it’s harder to explain exactly how.</p>
+
+            <h2>Why the deltas get harder to articulate</h2>
+            <ul class="list-disc pl-6">
+                <li><strong>Fragmentation:</strong> Gaps move from a few big regions to many small pockets across tasks, domains, and styles.</li>
+                <li><strong>Context‑dependence:</strong> Differences only appear under specific prompts, constraints, or time pressure.</li>
+                <li><strong>Interaction effects:</strong> Improvements in reasoning, search, and memory compound—making isolated benchmarks feel unrepresentative.</li>
+                <li><strong>Human ceiling effects:</strong> Once performance approaches expert level, your own ability to judge micro‑deltas becomes the limiter.</li>
+                <li><strong>Sampling variance:</strong> Stochastic systems blur distinctions—you might miss a reliable edge without enough trials.</li>
+            </ul>
+
+            <h2>Implications for evaluation</h2>
+            <p>Old habits—one‑off questions, vibe checks, and broad benchmarks—stop being sensitive. You need narrower probes with higher statistical power and clearer definitions of success. Evaluation becomes more like measuring athletes at the elite level than grading students.</p>
+
+            <h3>A practical measurement pattern</h3>
+            <ol class="list-decimal pl-6">
+                <li><strong>Define the surface:</strong> List the capability axes that matter for your work (e.g., recall, tool use, planning depth, factuality under pressure, calibration).</li>
+                <li><strong>Create micro‑scenarios:</strong> Short, realistic tasks that each isolate one axis while keeping real‑world constraints.</li>
+                <li><strong>Run multiple seeds:</strong> At least 10–20 samples per scenario; capture both best‑of and first‑shot performance.</li>
+                <li><strong>Score with rubrics:</strong> Binary where possible; otherwise use clear, bounded scales. Prefer measurable outcomes over vibes.</li>
+                <li><strong>Aggregate by use‑case:</strong> Roll micro‑scores up into the workflows you care about, not an overall “IQ.”</li>
+            </ol>
+
+            <h2>What to look for as models surpass you</h2>
+            <ul class="list-disc pl-6">
+                <li><strong>Speed‑accuracy tradeoffs:</strong> Equal quality at much lower latency is a real delta.</li>
+                <li><strong>Error profile shifts:</strong> Fewer unforced errors; remaining ones are weird edge cases—catalog them.</li>
+                <li><strong>Reliability under constraints:</strong> Maintains performance with smaller context, poorer tools, or noisy inputs.</li>
+                <li><strong>Compositionality:</strong> Handles multi‑step tasks with less oversight and fewer retries.</li>
+                <li><strong>Calibration:</strong> Better confidence estimates and fewer stubborn wrong answers.</li>
+            </ul>
+
+            <h2>Takeaway</h2>
+            <p>The closer a model gets to your own boundary, the less helpful intuitions and anecdotes become. Differences don’t disappear—they atomize. Treat capability like a multidimensional surface; instrument it with targeted probes; and let the measurements, not the vibes, tell you where the real advantages lie.</p>
+        </article>
+    </main>
+
+    <!-- Shared footer will be loaded here -->
+    <div id="shared-footer"></div>
+    
+    <script src="/components.js"></script>
+</body>
+</html>
+

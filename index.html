@@ -32,11 +32,14 @@
         
         .hero-image {
             flex: 0 0 300px;
+            width: 300px;
+            height: 300px;
         }
-        
+
         .hero-image img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             border-radius: 50%;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
@@ -55,6 +58,8 @@
             .hero-image {
                 flex: 0 0 200px;
                 order: -1;
+                width: 200px;
+                height: 200px;
             }
             
             .hero-buttons {

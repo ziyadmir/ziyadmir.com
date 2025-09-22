@@ -32,8 +32,6 @@ function includeHTML() {
                 
                 if (currentPage === '/' || currentPage === '/index.html') {
                     activePage = 'home';
-                } else if (currentPage.includes('about')) {
-                    activePage = 'about';
                 } else if (currentPage.includes('projects')) {
                     activePage = 'projects';
                 } else if (currentPage.includes('blog')) {

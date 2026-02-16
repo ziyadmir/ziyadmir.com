@@ -61,11 +61,20 @@ function includeHTML() {
             .then(response => response.text())
             .then(data => {
                 footerElement.innerHTML = data;
+                setCurrentYear(footerElement);
             })
             .catch(error => {
                 console.error('Error loading footer:', error);
-                footerElement.innerHTML = '<div class="site-footer-container"><p class="site-footer-text">&copy; 2025 Ziyad Mir</p></div>';
+                const currentYear = new Date().getFullYear();
+                footerElement.innerHTML = `<div class="site-footer-container"><p class="site-footer-text">&copy; ${currentYear} Ziyad Mir</p></div>`;
             });
+    }
+}
+
+function setCurrentYear(scope = document) {
+    const yearElement = scope.querySelector('#current-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
     }
 }
 

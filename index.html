@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ziyad Mir is an engineering leader building AI platforms, enterprise developer tooling, and high-scale distributed systems.">
     <title>Ziyad Mir | Software Engineer</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -153,6 +154,41 @@
             text-align: center;
             place-items: center;
         }
+
+        .focus-section {
+            padding: var(--space-3xl) 0;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .focus-panel {
+            max-width: 840px;
+            margin: 0 auto;
+            padding: var(--space-2xl);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-lg);
+            background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .focus-title {
+            font-size: var(--font-2xl);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .focus-copy {
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-lg);
+        }
+
+        .focus-list {
+            display: grid;
+            gap: var(--space-sm);
+            color: var(--color-text-primary);
+            padding-left: 1.1rem;
+        }
         
         .metric-item {
             padding: var(--space-xl);
@@ -231,6 +267,17 @@
         .fade-in-delay-3 {
             animation-delay: 0.6s;
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in,
+            .fade-in-delay-1,
+            .fade-in-delay-2,
+            .fade-in-delay-3 {
+                opacity: 1;
+                transform: none;
+                animation: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -245,10 +292,10 @@
                     <div class="hero-text">
                         <h1 class="hero-title">Ziyad Mir</h1>
                         <p class="hero-subtitle">
-                            Building AI platforms that generate $250M+ in enterprise value
+                            I build AI-powered engineering platforms that improve developer productivity, strengthen system reliability, and deliver measurable business outcomes.
                         </p>
                         <div class="hero-buttons">
-                            <a href="mailto:ziyadmir@gmail.com" class="btn btn-primary" target="_blank">Let's Talk AI Strategy →</a>
+                            <a href="mailto:ziyadmir@gmail.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Let's Talk AI Strategy →</a>
                             <a href="/projects.html" class="btn btn-secondary">View Projects</a>
                         </div>
                     </div>
@@ -263,19 +310,19 @@
                 <div class="metrics-grid fade-in fade-in-delay-1">
                     <div class="metric-item">
                         <div class="metric-value">15+</div>
-                        <div class="metric-label">Years Experience</div>
+                        <div class="metric-label">Years Leading Engineering Delivery</div>
                     </div>
                     <div class="metric-item">
                         <div class="metric-value">$100M+</div>
-                        <div class="metric-label">Incremental ARR Generated</div>
+                        <div class="metric-label">Incremental ARR Influenced</div>
                     </div>
                     <div class="metric-item">
                         <div class="metric-value">90%</div>
-                        <div class="metric-label">Adoption Across Engineering (2.5K developers)</div>
+                        <div class="metric-label">Engineering Adoption (2.5K+ Developers)</div>
                     </div>
                     <div class="metric-item">
                         <div class="metric-value">30%</div>
-                        <div class="metric-label">More PRs per Developer</div>
+                        <div class="metric-label">Productivity Lift in PR Throughput</div>
                     </div>
                 </div>
                 <div class="feature-grid fade-in fade-in-delay-2">
@@ -287,7 +334,7 @@
                         </div>
                         <h3 class="feature-title">Enterprise AI</h3>
                         <p class="feature-description">
-                            Leading enterprise-scale AI transformations with proven frameworks for deploying AI tools to thousands of engineers.
+                            Designing and operationalizing AI platforms with governance, observability, and adoption models that scale in real enterprise environments.
                         </p>
                     </div>
 
@@ -299,7 +346,7 @@
                         </div>
                         <h3 class="feature-title">Distributed Systems</h3>
                         <p class="feature-description">
-                            Building resilient, high-scale systems with expertise in load-shedding, rate limiting, and AI-driven SRE initiatives.
+                            Building resilient, high-scale systems with practical expertise in load shedding, rate limiting, and production incident reduction.
                         </p>
                     </div>
 
@@ -311,10 +358,24 @@
                         </div>
                         <h3 class="feature-title">Engineering Productivity</h3>
                         <p class="feature-description">
-                            Proven track record of 30%+ productivity gains through AI tool adoption and systematic process improvements.
+                            Helping teams ship faster through better tooling, human-centered workflows, and clear operating principles for AI-assisted development.
                         </p>
                     </div>
                 </div>
+
+                <section class="focus-section fade-in fade-in-delay-3" aria-labelledby="current-focus-heading">
+                    <div class="focus-panel">
+                        <h2 id="current-focus-heading" class="focus-title">Current Focus</h2>
+                        <p class="focus-copy">
+                            I am currently focused on practical, high-leverage AI initiatives: enabling engineers with better tooling, improving reliability for AI-enabled systems, and turning promising prototypes into production capability.
+                        </p>
+                        <ul class="focus-list">
+                            <li>Developer AI platforms and adoption playbooks</li>
+                            <li>Reliability patterns for agentic and LLM-backed workflows</li>
+                            <li>Organization-wide productivity systems with measurable outcomes</li>
+                        </ul>
+                    </div>
+                </section>
             </div>
         </section>
         

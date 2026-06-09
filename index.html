@@ -18,6 +18,27 @@
             background: linear-gradient(180deg, #fff 0%, #fafafa 100%);
         }
 
+        .hero-inner {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(180px, 300px);
+            gap: clamp(var(--space-xl), 7vw, var(--space-3xl));
+            align-items: center;
+        }
+
+        .hero-copy {
+            max-width: 760px;
+        }
+
+        .hero-portrait {
+            width: min(100%, 280px);
+            aspect-ratio: 1;
+            justify-self: end;
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-full);
+            object-fit: cover;
+            box-shadow: var(--shadow-md);
+        }
+
         .eyebrow {
             font-size: var(--font-xs);
             text-transform: uppercase;
@@ -171,6 +192,19 @@
             font-size: var(--font-sm);
             line-height: 1.7;
         }
+
+        @media (max-width: 768px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+
+            .hero-portrait {
+                order: -1;
+                width: 112px;
+                justify-self: start;
+            }
+        }
     </style>
 </head>
 <body>
@@ -179,12 +213,17 @@
     <main>
         <section class="hero">
             <div class="container">
-                <p class="eyebrow">Governed Agentic AI Systems</p>
-                <h1 class="hero-title">I build the control planes that let agentic AI ship.</h1>
-                <p class="hero-subtitle">I'm Ziyad Mir, a hands-on principal engineer working at the boundary between model capability and production consequence: evals, permissions, review loops, audit logs, runtime orchestration, and rollback paths. At Roblox Ads/Discovery, that means turning AI into governed workflows for ads moderation, content understanding, and brand-safe creation surfaces.</p>
-                <div class="hero-buttons">
-                    <a href="/blog/after-intelligence-gets-cheap-deployment-control.html" class="btn btn-primary">Read the thesis</a>
-                    <a href="/projects.html" class="btn btn-secondary">See the work</a>
+                <div class="hero-inner">
+                    <div class="hero-copy">
+                        <p class="eyebrow">Governed Agentic AI Systems</p>
+                        <h1 class="hero-title">I build the control planes that let agentic AI ship.</h1>
+                        <p class="hero-subtitle">I'm Ziyad Mir, a hands-on principal engineer working at the boundary between model capability and production consequence: evals, permissions, review loops, audit logs, runtime orchestration, and rollback paths. At Roblox Ads/Discovery, that means turning AI into governed workflows for ads moderation, content understanding, and brand-safe creation surfaces.</p>
+                        <div class="hero-buttons">
+                            <a href="/blog/after-intelligence-gets-cheap-deployment-control.html" class="btn btn-primary">Read the thesis</a>
+                            <a href="/projects.html" class="btn btn-secondary">See the work</a>
+                        </div>
+                    </div>
+                    <img src="/images/profile-linkedin.jpg" alt="Ziyad Mir" class="hero-portrait" width="280" height="280">
                 </div>
             </div>
         </section>

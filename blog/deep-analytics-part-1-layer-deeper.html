@@ -37,6 +37,20 @@
                 <li>Build dashboards that make slicing easy enough that deeper analysis becomes routine.</li>
             </ul>
 
+
+            <h2>The instrumentation trap</h2>
+            <p>Granular metrics are only useful when they preserve the causal structure of the system. More dashboards do not help if events are ambiguous, identifiers are unstable, or the metric cannot be tied back to a product decision. The goal is not detail for its own sake. The goal is to make hidden bottlenecks visible at the level where action is possible.</p>
+
+            <p>Good analytics design starts with the decision tree. If a metric moves, what would you do? Segment by user type, surface, geography, device, ranking slot, creative format, latency bucket, or policy category only when that segment maps to a plausible intervention.</p>
+
+            <h2>Data-contract requirements</h2>
+            <ul>
+                <li>Stable event names and versioned schemas.</li>
+                <li>Consistent identifiers across impression, click, conversion, review, and serving logs.</li>
+                <li>Sampling and backfill rules documented before launch.</li>
+                <li>Dashboards that separate leading indicators, lagging outcomes, and guardrail metrics.</li>
+            </ul>
+
             <h2>Bottom line</h2>
             <p>The first layer tells you something changed. The second layer tells you what to do.</p>
         </article>

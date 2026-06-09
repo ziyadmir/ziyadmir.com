@@ -37,6 +37,20 @@
                 <li>Respect privacy and retention constraints by curating high-value summaries instead of hoarding everything.</li>
             </ul>
 
+
+            <h2>The preservation contract</h2>
+            <p>Knowledge preservation should not mean saving everything forever. The useful unit is a decision record: context, options considered, tradeoffs, owner, artifact links, final decision, and follow-up signals. AI makes this cheaper because it can draft the record from code reviews, docs, tickets, chats, and incident timelines, but humans still need to approve the durable version.</p>
+
+            <p>The system should preserve the reasoning that future agents and future employees will need. That usually means architectural decisions, launch constraints, policy interpretations, incident lessons, customer-impacting tradeoffs, and non-obvious operational assumptions. Raw conversation is useful as source evidence; curated decision memory is useful as an interface.</p>
+
+            <h2>Technical requirements</h2>
+            <ul>
+                <li>Source-linked summaries so readers can inspect the underlying evidence.</li>
+                <li>Retention labels that distinguish durable decisions from transient discussion.</li>
+                <li>Access control inherited from the source systems, not flattened into one global index.</li>
+                <li>Staleness markers and review ownership so old decisions do not masquerade as current truth.</li>
+            </ul>
+
             <h2>Bottom line</h2>
             <p>Institutional memory is becoming AI infrastructure. If the context disappears, the agent starts from folklore.</p>
         </article>

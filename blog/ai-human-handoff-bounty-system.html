@@ -37,6 +37,20 @@
                 <li>Use each handoff to improve the underlying automation so the same blockage does not repeat forever.</li>
             </ul>
 
+
+            <h2>The market design problem</h2>
+            <p>A human handoff market only works if the agent can package the task well. The packet needs goal, current state, failed attempts, relevant context, available tools, constraints, deadline, risk level, and what counts as completion. Otherwise the human spends the bounty reconstructing the problem rather than solving it.</p>
+
+            <p>The interesting technical layer is routing. Some tasks need domain experts, some need local context, some need policy judgment, and some only need a quick sensory check. The system should classify the blocker, estimate value at stake, and route to the cheapest reliable human intervention.</p>
+
+            <h2>Useful primitives</h2>
+            <ul>
+                <li>Blocker taxonomy: missing context, ambiguous requirement, tool failure, policy decision, taste judgment, or external dependency.</li>
+                <li>Escalation budget: maximum human cost justified by the task value.</li>
+                <li>Completion proof: artifact, answer, approval, code diff, or external confirmation.</li>
+                <li>Learning loop: convert repeated human fixes into better tools, instructions, or eval cases.</li>
+            </ul>
+
             <h2>Bottom line</h2>
             <p>If AI absorbs the routine path, human value moves to the exception path: judgment, taste, context, and permission at the moment automation stalls.</p>
         </article>

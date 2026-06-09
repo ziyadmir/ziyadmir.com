@@ -37,6 +37,20 @@
                 <li>Keep ownership explicit so each micro-MCP has a team accountable for correctness and access control.</li>
             </ul>
 
+
+            <h2>The interface pattern</h2>
+            <p>Work-as-code means turning repeated human workflows into narrow, typed interfaces that agents can call. The right abstraction is not "let the agent use the UI." It is a small tool with a schema, validation, authorization, dry-run behavior, and an owner. That turns tribal operating knowledge into something testable.</p>
+
+            <p>Micro-MCP tools should be boring. They should wrap one workflow boundary: open a rollout ticket, fetch a service dependency graph, run a migration precheck, request a policy review, create a feature-flag cleanup plan, or stage a report. The agent supplies intent and context; the tool supplies guardrails and a consistent operational contract.</p>
+
+            <h2>Design constraints</h2>
+            <ul>
+                <li>Prefer many narrow tools over one broad admin tool with ambiguous authority.</li>
+                <li>Make side effects explicit: read, dry-run, stage, execute, notify, or delete.</li>
+                <li>Return structured results that can be composed by another agent or reviewed by a human.</li>
+                <li>Track owner, version, and deprecation path for every workflow interface.</li>
+            </ul>
+
             <h2>Bottom line</h2>
             <p>The future of enterprise automation is not one giant agent. It is a growing library of small, trustworthy work interfaces.</p>
         </article>

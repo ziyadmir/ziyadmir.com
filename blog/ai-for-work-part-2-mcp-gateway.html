@@ -37,6 +37,20 @@
                 <li>Treat tool schemas as product surfaces; agents perform better when the contract is explicit and stable.</li>
             </ul>
 
+
+            <h2>The gateway contract</h2>
+            <p>The gateway should expose tools as durable contracts rather than as raw internal APIs. A good tool definition includes input schema, output schema, auth scope, owner, rate limit, data classification, idempotency semantics, timeout behavior, and whether the call is read-only, staged, or mutating. That metadata is what lets a model-facing interface become governable.</p>
+
+            <p>The gateway also becomes the place where prompts stop carrying security responsibility. Instead of telling an agent not to access sensitive data, the gateway refuses calls outside the agent's capability profile and logs the refusal. This gives security teams something inspectable: who asked, which tool, which resource, under which task, with which result.</p>
+
+            <h2>Implementation notes</h2>
+            <ul>
+                <li>Put identity propagation and audit logging in the gateway before scaling tool count.</li>
+                <li>Separate read tools from write tools; write tools should support dry-run and staged execution wherever possible.</li>
+                <li>Version tool schemas like product APIs, because agents learn and cache behavioral contracts.</li>
+                <li>Attach ownership metadata so broken tools page the right team and stale tools can be retired.</li>
+            </ul>
+
             <h2>Bottom line</h2>
             <p>MCP is the interface. The enterprise gateway is the control plane that makes the interface safe enough to scale.</p>
         </article>

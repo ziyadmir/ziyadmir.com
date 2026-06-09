@@ -18,6 +18,7 @@ function activePageForPath(pathname) {
     if (pathname === "/" || pathname === "/index.html") return "home";
     if (pathname.includes("projects")) return "projects";
     if (pathname.includes("blog")) return "blog";
+    if (pathname.includes("memoir")) return "memoir";
     return "";
 }
 
@@ -26,7 +27,12 @@ function loadComponent(targetId, url, fallbackHtml) {
     if (!target) return Promise.resolve();
 
     return fetch(url)
-        .then((response) => response.text())
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);
+            }
+            return response.text();
+        })
         .then((html) => {
             target.innerHTML = html;
         })
@@ -36,12 +42,24 @@ function loadComponent(targetId, url, fallbackHtml) {
         });
 }
 
+function setCurrentYear(scope = document) {
+    const yearElement = scope.querySelector("#current-year");
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+}
+
 function insertCTA() {
     const footer = document.getElementById("shared-footer");
-    if (!footer || document.querySelector(".cta-section")) return;
+    if (!footer || document.querySelector(".site-cta, .cta-section")) return;
 
     fetch("/cta.html")
-        .then((response) => response.text())
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);
+            }
+            return response.text();
+        })
         .then((html) => {
             const wrapper = document.createElement("div");
             wrapper.innerHTML = html.trim();
@@ -70,8 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
     loadComponent(
         "shared-footer",
         "/footer.html",
-        '<footer class="site-footer"><div class="site-footer-container"><p class="site-footer-text">&copy; 2011-2026 Ziyad Mir</p></div></footer>'
-    );
+        '<footer class="site-footer"><div class="site-footer-container"><p class="site-footer-text">&copy; <span id="current-year"></span> Ziyad Mir</p></div></footer>'
+    ).then(() => {
+        const footer = document.getElementById("shared-footer");
+        setCurrentYear(footer || document);
+    });
 
     insertCTA();
     addGoogleAnalytics();

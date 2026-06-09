@@ -3,114 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ziyad Mir is a software engineer in San Francisco working on ads, AI systems, and platform infrastructure.">
-    <title>Ziyad Mir</title>
+    <meta name="description" content="Ziyad Mir is an engineering leader helping organizations turn AI experiments into reliable systems and measurable productivity gains.">
+    <title>Ziyad Mir | Enterprise AI & Engineering Leadership</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/shared-styles.css" rel="stylesheet">
+    <style>
+        .hero {
+            min-height: calc(78vh - 80px);
+            display: flex;
+            align-items: center;
+            padding: var(--space-3xl) 0;
+            border-bottom: 1px solid var(--color-border-light);
+            background: linear-gradient(180deg, #fff 0%, #fafafa 100%);
+        }
+
+        .eyebrow {
+            font-size: var(--font-xs);
+            text-transform: uppercase;
+            letter-spacing: 0;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-size: var(--font-5xl);
+            font-weight: 700;
+            letter-spacing: 0;
+            line-height: 1.1;
+            margin-bottom: var(--space-lg);
+            max-width: 16ch;
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-lg);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            max-width: 64ch;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .proof {
+            padding: var(--space-3xl) 0;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .proof-item {
+            background: #fff;
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+        }
+
+        .proof-value {
+            display: block;
+            font-size: var(--font-3xl);
+            line-height: 1;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .proof-label {
+            color: var(--color-text-secondary);
+            font-size: var(--font-sm);
+        }
+
+        .focus-card {
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            background: #fff;
+        }
+
+        .focus-list {
+            margin-top: var(--space-md);
+            padding-left: 1.2rem;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+        }
+
+        .home-section-title {
+            font-size: var(--font-3xl);
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+
+        .home-section-subtitle {
+            color: var(--color-text-secondary);
+            max-width: 66ch;
+        }
+
+        .offering-grid {
+            margin-top: var(--space-2xl);
+            display: grid;
+            gap: var(--space-lg);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+        .offering-card {
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            background: #fff;
+        }
+
+        .offering-title {
+            font-size: var(--font-xl);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+
+        .offering-copy {
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+
+        .pathways {
+            padding: var(--space-3xl) 0;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .pathway-grid {
+            margin-top: var(--space-2xl);
+            display: grid;
+            gap: var(--space-lg);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .pathway-card {
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border-light);
+            padding: var(--space-xl);
+            text-decoration: none;
+            color: inherit;
+            background: var(--color-surface);
+            transition: all var(--transition-base);
+        }
+
+        .pathway-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-border);
+        }
+
+        .pathway-title {
+            font-size: var(--font-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+
+        .pathway-copy {
+            color: var(--color-text-secondary);
+            font-size: var(--font-sm);
+            line-height: 1.7;
+        }
+    </style>
 </head>
 <body>
     <div id="shared-header"></div>
 
-    <main class="page">
-        <section>
-            <p class="eyebrow">Software engineer in San Francisco</p>
-            <h1 class="hero-title">Ziyad Mir</h1>
-            <p class="lead">
-                I work on ads and discovery systems at Roblox. Before that I worked across YouTube ads,
-                Coupang infrastructure, Opendoor, Quora, and internships at LinkedIn and Google.
-            </p>
-            <div class="link-row" aria-label="Primary links">
-                <a class="text-link" href="/projects.html">Work</a>
-                <a class="text-link" href="/blog.html">Writing</a>
-                <a class="text-link" href="mailto:ziyadmir@gmail.com">Email</a>
-                <a class="text-link" href="https://www.linkedin.com/in/ziyadmir/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="fact-grid" aria-label="Current facts">
-                <div class="fact">
-                    <p class="fact-label">Current</p>
-                    <p class="fact-value">Roblox Ads / Discovery</p>
-                </div>
-                <div class="fact">
-                    <p class="fact-label">Background</p>
-                    <p class="fact-value">Systems Design Engineering, Waterloo</p>
-                </div>
-                <div class="fact">
-                    <p class="fact-label">Thread</p>
-                    <p class="fact-value">Ads, AI tooling, platform systems</p>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <p class="eyebrow">Enterprise AI Operator</p>
+                <h1 class="hero-title">I help engineering organizations make AI useful, safe, and worth the investment.</h1>
+                <p class="hero-subtitle">I'm Ziyad Mir, an engineering leader focused on turning AI from scattered pilots into production capability: better developer workflows, stronger reliability, and measurable business impact.</p>
+                <div class="hero-buttons">
+                    <a href="mailto:ziyadmir@gmail.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Discuss a challenge</a>
+                    <a href="/projects.html" class="btn btn-secondary">See real projects</a>
                 </div>
             </div>
         </section>
 
-        <section class="section section-rule">
-            <h2 class="section-title">What I work on</h2>
-            <ul class="plain-list">
-                <li class="plain-item">
-                    <p class="item-title">Advertising systems</p>
-                    <p class="item-body">
-                        Brand ads, measurement, serving systems, marketplace mechanics, and the operational work
-                        needed to turn a product idea into something customers can actually buy and use.
-                    </p>
-                </li>
-                <li class="plain-item">
-                    <p class="item-title">AI inside real organizations</p>
-                    <p class="item-body">
-                        Agent runtimes, MCP-style tool access, observability, review loops, and the gap between
-                        a prototype that works once and infrastructure that can be trusted.
-                    </p>
-                </li>
-                <li class="plain-item">
-                    <p class="item-title">Reliability and platform infrastructure</p>
-                    <p class="item-body">
-                        Load shedding, rate limiting, circuit breaking, service boundaries, and other unglamorous
-                        systems work that keeps large products moving.
-                    </p>
-                </li>
-            </ul>
+        <section class="proof">
+            <div class="container">
+                <div class="proof-grid">
+                    <article class="proof-item">
+                        <span class="proof-value">15+ yrs</span>
+                        <p class="proof-label">Leading software delivery across large organizations.</p>
+                    </article>
+                    <article class="proof-item">
+                        <span class="proof-value">$100M+</span>
+                        <p class="proof-label">Incremental ARR influenced through platform and product execution.</p>
+                    </article>
+                    <article class="proof-item">
+                        <span class="proof-value">2.5K+</span>
+                        <p class="proof-label">Engineers enabled with productivity tooling and clear adoption playbooks.</p>
+                    </article>
+                    <article class="proof-item">
+                        <span class="proof-value">30%</span>
+                        <p class="proof-label">Observed productivity lift in PR throughput and review cycles.</p>
+                    </article>
+                </div>
+
+                <article class="focus-card">
+                    <h2 class="home-section-title">What I'm working on now</h2>
+                    <p class="home-section-subtitle">My current focus is helping teams operationalize AI in ways that are sustainable for both engineering leadership and the people doing the work.</p>
+                    <ul class="focus-list">
+                        <li>Enterprise AI platforms with governance, observability, and adoption built in from day one.</li>
+                        <li>Reliability patterns for LLM-backed and agentic workflows running in production.</li>
+                        <li>Organization-wide developer productivity systems tied to measurable outcomes.</li>
+                    </ul>
+                </article>
+            </div>
         </section>
 
-        <section class="section section-rule">
-            <h2 class="section-title">Selected work</h2>
-            <ul class="plain-list">
-                <li class="plain-item">
-                    <p class="item-kicker">Current</p>
-                    <h3 class="item-title">Roblox Ads / Discovery</h3>
-                    <p class="item-body">
-                        Current work is mostly not written up publicly. The public shape: ads systems, brand ads,
-                        content understanding, moderation, and AI-native tooling for Roblox workflows.
-                    </p>
-                </li>
-                <li class="plain-item">
-                    <p class="item-kicker">Google / YouTube</p>
-                    <h3 class="item-title"><a href="/projects/youtube-select-shorts.html">YouTube Select for Shorts</a></h3>
-                    <p class="item-body">
-                        Work on premium YouTube ads products and brand advertising surfaces.
-                    </p>
-                </li>
-                <li class="plain-item">
-                    <p class="item-kicker">Quora</p>
-                    <h3 class="item-title"><a href="/memoir/quora.html">Signup wall and search traffic</a></h3>
-                    <p class="item-body">
-                        Early startup work on whether removing the first-page signup wall would improve search traffic.
-                    </p>
-                </li>
-                <li class="plain-item">
-                    <p class="item-kicker">Earlier</p>
-                    <h3 class="item-title">Opendoor, Coupang, LinkedIn, Google internships</h3>
-                    <p class="item-body">
-                        Product engineering, infrastructure, and platform work across startups and larger companies.
-                    </p>
-                </li>
-            </ul>
-            <p class="quiet-note">
-                I am intentionally keeping this site sparse. It should read like a map of real work, not a personal brand deck.
-            </p>
+        <section class="section" aria-labelledby="offerings-title">
+            <div class="container">
+                <h2 id="offerings-title" class="home-section-title">How I can help</h2>
+                <p class="home-section-subtitle">If you're trying to make AI real in your organization, these are the three problems I solve most often.</p>
+                <div class="offering-grid">
+                    <article class="offering-card">
+                        <h3 class="offering-title">AI strategy that ships</h3>
+                        <p class="offering-copy">Translate executive goals into a practical roadmap: where to start, what to standardize, and how to avoid costly dead ends.</p>
+                    </article>
+                    <article class="offering-card">
+                        <h3 class="offering-title">Developer enablement</h3>
+                        <p class="offering-copy">Design workflows, tooling, and guardrails that help teams move faster with AI while maintaining code quality and trust.</p>
+                    </article>
+                    <article class="offering-card">
+                        <h3 class="offering-title">Reliability at scale</h3>
+                        <p class="offering-copy">Build operating models for AI systems with clear SLOs, observability, incident response, and continuous improvement loops.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="pathways" aria-labelledby="pathways-title">
+            <div class="container">
+                <h2 id="pathways-title" class="home-section-title">Explore the work</h2>
+                <p class="home-section-subtitle">Different ways to understand my approach and execution style.</p>
+                <div class="pathway-grid">
+                    <a class="pathway-card" href="/projects.html">
+                        <h3 class="pathway-title">Projects</h3>
+                        <p class="pathway-copy">Case studies and shipped systems across AI infrastructure, reliability, and developer productivity.</p>
+                    </a>
+                    <a class="pathway-card" href="/blog.html">
+                        <h3 class="pathway-title">Writing</h3>
+                        <p class="pathway-copy">Practical frameworks on enterprise AI adoption, platform design, and the future of engineering work.</p>
+                    </a>
+                    <a class="pathway-card" href="/career-overview.pdf" target="_blank" rel="noopener noreferrer">
+                        <h3 class="pathway-title">Career overview</h3>
+                        <p class="pathway-copy">A concise overview of leadership scope, impact, and cross-functional execution.</p>
+                    </a>
+                </div>
+            </div>
         </section>
     </main>
 
     <div id="shared-footer"></div>
+
     <script src="/components.js"></script>
 </body>
 </html>

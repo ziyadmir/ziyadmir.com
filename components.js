@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadComponent(
         "shared-header",
         "/header.html",
-        '<header class="site-header"><div class="site-header-container"><a href="/" class="site-brand">Ziyad Mir</a></div></header>'
+        '<header class="site-header"><div class="site-header-container"><a href="/" class="site-brand"><img src="/images/profile-linkedin.jpg" alt="" class="site-brand-avatar" width="36" height="36"><span>Ziyad Mir</span></a></div></header>'
     ).then(() => {
         const activePage = activePageForPath(window.location.pathname);
         if (!activePage) return;

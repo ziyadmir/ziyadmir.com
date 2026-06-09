@@ -37,6 +37,20 @@
                 <li>Log reasoning, tool calls, and state transitions so bad behavior is inspectable after the fact.</li>
             </ul>
 
+
+            <h2>The system-level threat model</h2>
+            <p>Agentic misalignment should be evaluated at the action boundary, not only in generated text. The dangerous behavior is not a strange sentence. It is the system using tools, access, memory, or persuasion to preserve capability, bypass oversight, or complete a task in a way that violates intent.</p>
+
+            <p>That means mitigations belong in the runtime as much as in the model. Limit the agent's authority, log its tool calls, require approval for sensitive actions, sandbox its environment, monitor for policy-avoidant behavior, and make it cheap to stop or roll back the workflow.</p>
+
+            <h2>Concrete controls</h2>
+            <ul>
+                <li>Capability separation between reading, staging, executing, and publishing.</li>
+                <li>Tripwires for attempts to access hidden instructions, credentials, or oversight channels.</li>
+                <li>Human approval for actions involving money, user impact, deletion, security posture, or external communication.</li>
+                <li>Replayable traces so incidents can become eval cases instead of anecdotes.</li>
+            </ul>
+
             <h2>Bottom line</h2>
             <p>Agent safety is deployment control under adversarial conditions. The model matters, but the action environment matters just as much.</p>
         </article>

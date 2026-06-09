@@ -37,6 +37,21 @@
                 <li>Pair enablement with clear security defaults, because ambiguity suppresses use.</li>
             </ul>
 
+
+            <h2>The technical shape</h2>
+            <p>An enterprise AI IDE rollout is a control-plane problem disguised as a tooling rollout. The important decisions are identity, source-code boundaries, secret handling, network policy, logging, extension allowlists, model/provider routing, and team-level adoption telemetry. The IDE is the user surface, but the platform work sits underneath it.</p>
+
+            <p>The clean architecture has three paths: local developer workflow, enterprise policy enforcement, and central observability. Developers should not have to think about every policy. The system should make the safe path the default: approved models, approved repositories, approved MCP tools, approved secret redaction, and clear escalation when a workflow needs more access.</p>
+
+            <h2>What has to be measured</h2>
+            <ul>
+                <li>Activation by team, language, repository type, and seniority band.</li>
+                <li>Accepted AI-generated diffs, review latency, revert rate, and test failure rate.</li>
+                <li>Prompt and tool-call categories at a privacy-preserving level.</li>
+                <li>Policy violations: secret exposure, disallowed repository access, unsafe command execution, and unmanaged model usage.</li>
+                <li>Support burden: where developers get stuck and which workflows need platform investment.</li>
+            </ul>
+
             <h2>Bottom line</h2>
             <p>The AI IDE is not the end state. It is the foundation: the place where engineers learn the new muscle memory before the organization asks them to work with larger agents.</p>
         </article>

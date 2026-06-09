@@ -37,6 +37,20 @@
                 <li>Use narrow tasks first; autonomy should expand only after the review loop proves reliable.</li>
             </ul>
 
+
+            <h2>The HITL interface</h2>
+            <p>Human-in-the-loop should be modeled as a protocol, not as a meeting. The agent should return a compact decision packet: current state, proposed action, evidence, uncertainty, expected side effect, rollback path, and alternatives. The human should approve, reject, edit, or ask for more evidence through a structured interface.</p>
+
+            <p>This is what makes autonomy composable. A downstream orchestrator can pause on the approval state. A reviewer can inspect the artifact. An audit log can show why the action was allowed. A future eval can replay the decision and ask whether the model should have escalated earlier.</p>
+
+            <h2>Implementation details</h2>
+            <ul>
+                <li>Use explicit states such as waiting_for_human, approved, rejected, expired, and superseded.</li>
+                <li>Attach approval to an exact proposed action, not to the whole task forever.</li>
+                <li>Persist the evidence bundle that was visible at approval time.</li>
+                <li>Let humans edit constrained parameters without rewriting the agent's whole plan.</li>
+            </ul>
+
             <h2>Bottom line</h2>
             <p>Autonomy becomes useful when it is paired with a control surface. HITL is not a weakness in the system; it is how the system earns permission to do more.</p>
         </article>

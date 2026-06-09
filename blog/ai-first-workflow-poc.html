@@ -37,6 +37,20 @@
                 <li>Expect the best results when tools expose clear contracts instead of forcing the model to infer the world from prose.</li>
             </ul>
 
+
+            <h2>What the POC really tested</h2>
+            <p>The MCP client was less interesting as code generation and more interesting as an integration test for agentic work. It forced the assistant to discover an API shape, implement a protocol, handle credentials or configuration, expose a stable tool contract, and produce something another system could call. Those are the same failure points that show up in larger agent platforms.</p>
+
+            <p>The lesson is that AI coding looks magical when the acceptance test is loose and brittle when the acceptance test is real. The human has to provide the target contract, the verification path, and the taste for what should be simplified. The model can move fast inside that frame.</p>
+
+            <h2>Better POC design</h2>
+            <ul>
+                <li>Define the external tool contract before asking the agent to implement internals.</li>
+                <li>Give the agent a small set of real tests, not only prose requirements.</li>
+                <li>Record every human correction as a reusable instruction or eval case.</li>
+                <li>Separate working demo from production readiness: auth, rate limits, logging, and error handling are separate gates.</li>
+            </ul>
+
             <h2>Bottom line</h2>
             <p>The lesson was simple: MCP is not magic, but it gives agents the handles they need to become useful builders instead of isolated chat interfaces.</p>
         </article>

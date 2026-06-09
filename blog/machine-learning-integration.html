@@ -37,6 +37,20 @@
                 <li>Measure product outcomes and model health together; either one alone can mislead.</li>
             </ul>
 
+
+            <h2>The integration boundary</h2>
+            <p>Production ML is a systems integration problem. The model is one component in a loop that includes data contracts, feature generation, online serving, fallbacks, monitoring, human overrides, experimentation, and retraining. Most failures happen at those boundaries rather than inside the model architecture.</p>
+
+            <p>The right question is not "how good is the model?" but "how does the product behave when the model is wrong, stale, slow, unavailable, biased, or out of distribution?" Answering that requires fallbacks, confidence thresholds, segment-level monitoring, and clear ownership between product, infra, data, and ML teams.</p>
+
+            <h2>Production requirements</h2>
+            <ul>
+                <li>Stable feature contracts and freshness monitoring.</li>
+                <li>Shadow mode and online experiments before broad rollout.</li>
+                <li>Fallback behavior when confidence is low or serving fails.</li>
+                <li>Drift dashboards tied to product outcomes, not only offline metrics.</li>
+            </ul>
+
             <h2>Bottom line</h2>
             <p>Good production ML is systems engineering with probabilistic components. The integration is where most of the value is either captured or lost.</p>
         </article>

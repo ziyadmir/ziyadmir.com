@@ -37,6 +37,20 @@
                 <li>Design observability with privacy boundaries, retention rules, and redaction from day one.</li>
             </ul>
 
+
+            <h2>The observability model</h2>
+            <p>AI observability has to join model behavior, tool behavior, and product outcome. A proxy log by itself is not enough. The useful trace links user identity, task intent, prompt class, model version, tool calls, latency, cost, generated artifacts, human edits, final action, and downstream outcome. Without that join, the organization can count usage but cannot reason about value or risk.</p>
+
+            <p>The technical design should look more like distributed tracing than survey analytics. Every agent run needs a trace id. Every tool call should be a span with inputs, outputs, redaction status, authorization decision, retry count, and error type. Every human approval or override should attach to the same trace. That is how AI work becomes debuggable.</p>
+
+            <h2>Operational questions</h2>
+            <ul>
+                <li>Which workflows create measurable output quality or cycle-time improvement?</li>
+                <li>Where do agents retry, hallucinate tool usage, or ask for permissions they should not need?</li>
+                <li>Which prompts or tools correlate with incidents, reverts, or human overrides?</li>
+                <li>Which teams are blocked by missing context, missing tools, or policy uncertainty?</li>
+            </ul>
+
             <h2>Bottom line</h2>
             <p>The proxy is not only a security checkpoint. It is the instrument panel for the enterprise AI transition.</p>
         </article>

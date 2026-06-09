@@ -37,6 +37,21 @@
                 <li>Build retries, timeouts, approvals, and kill switches as platform primitives.</li>
             </ul>
 
+
+            <h2>The orchestration layer</h2>
+            <p>Agent orchestration should be built like workflow infrastructure, not like a long-running chat session. The platform needs task ids, queues, leases, retries, idempotency keys, state transitions, artifact storage, tool scopes, approvals, and cancellation. Once agents can touch real systems, "let the model keep thinking" is not an operational model.</p>
+
+            <p>A production agent run should move through explicit states: created, context-loaded, planning, waiting-for-approval, executing, blocked, completed, failed, canceled, and rolled-back. Each transition should be logged with actor, model version, policy version, and evidence. That makes the system observable to operators and safe to resume after partial failure.</p>
+
+            <h2>Failure modes to design for</h2>
+            <ul>
+                <li>Duplicate execution after retry or worker crash.</li>
+                <li>Tool-call success with missing artifact persistence.</li>
+                <li>Partial completion that leaves external systems in an ambiguous state.</li>
+                <li>Approval granted for one action but reused for a broader action.</li>
+                <li>Runaway loops that burn model budget without progressing task state.</li>
+            </ul>
+
             <h2>Bottom line</h2>
             <p>The agent future depends less on one perfect agent and more on the runtime that makes many imperfect agents useful enough to trust.</p>
         </article>

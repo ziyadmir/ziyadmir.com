@@ -37,6 +37,20 @@
                 <li>Keep ownership boundaries as explicit as service boundaries.</li>
             </ul>
 
+
+            <h2>The control-plane split</h2>
+            <p>Ultra-high-scale systems usually fail when control-plane assumptions leak into the data plane. The data plane needs to keep serving under partial failure, stale config, regional degradation, and dependency slowness. The control plane can be slower and more consistent, but it must not become a hard dependency on the hot path unless the blast radius is understood.</p>
+
+            <p>The architectural discipline is to define which decisions are made synchronously, which are cached, which are eventually consistent, and which can degrade safely. Rate limits, load shedding, feature flags, experiment allocation, and routing policy all become dangerous when the service cannot answer "what happens if this control dependency is down?"</p>
+
+            <h2>Design checklist</h2>
+            <ul>
+                <li>Separate hot-path serving from config authoring and policy computation.</li>
+                <li>Define stale-read behavior and safe defaults for every control input.</li>
+                <li>Protect dependencies with timeouts, circuit breakers, bulkheads, and backpressure.</li>
+                <li>Test regional failure, brownout, and overload, not only clean failover.</li>
+            </ul>
+
             <h2>Bottom line</h2>
             <p>The real high-scale skill is not making a system big. It is making a big system understandable enough to operate.</p>
         </article>

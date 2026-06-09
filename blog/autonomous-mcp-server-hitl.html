@@ -3,57 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An AI assistant can build a production-style MCP server quickly, but human-in-the-loop guidance still determines whether the result is useful.">
     <title>Building an Autonomous MCP Server with HITL Guidance | Ziyad Mir</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
-    <style type="text/css">
-        html { font-size: 15px; }
-        body { font-size: 0.95rem; }
-
-        .blog-content {
-            max-width: 42rem;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        .blog-content h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: var(--color-primary);
-        }
-
-        .blog-content p {
-            margin-bottom: 1.25rem;
-        }
-    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+<body>
     <div id="shared-header"></div>
 
-    <main class="container mx-auto px-4 py-8 flex-grow">
-        <article class="blog-content">
-            <h1 class="text-3xl font-bold mb-4 pt-8">Building an Autonomous MCP Server with HITL Guidance</h1>
-            <p class="text-gray-500 text-sm mb-4">July 2, 2025</p>
-            <p>Recently I set out to see if a production-grade <a href="https://en.wikipedia.org/wiki/Model_context_protocol" class="text-blue-600 hover:text-blue-800">Model Context Protocol</a> (MCP) server could be written entirely by an AI assistant. The result is <a href="https://www.pulsemcp.com/servers/ziyadmir-nba-player-stats" class="text-blue-600 hover:text-blue-800">this working server</a> that answers basketball questions on demand.</p>
+    <main class="page">
+        <article class="post page-narrow">
+            <p class="eyebrow">Writing</p>
+            <h1 class="post-title">Building an Autonomous MCP Server with HITL Guidance</h1>
+            <p class="post-meta">July 2, 2025</p>
+            <div class="post-tags">
+                <span>AI</span>
+                <span>MCP</span>
+                <span>Human-in-the-Loop</span>
+            </div>
 
-            <h2>Autonomous Coding with Claude</h2>
-            <p>Every line of code came from Claude Code&nbsp;Opus&nbsp;4. I started with an empty repository and guided the model using natural language. Claude generated the server scaffolding, wrote the scraping logic for Basketball Reference, and even set up automated tests.</p>
+            <p>This experiment asked a practical question: how far can an AI assistant get if the target is not a toy prompt but a working MCP server with human-in-the-loop behavior? The answer was encouraging, with the usual caveat that the human still had to steer the shape of the solution.</p>
 
-            <h2>Human-in-the-Loop Steering</h2>
-            <p>I only intervened when the model hit an error or got stuck. My prompts were simple—tell it what to test, ask for evidence that the tests passed, and push it to debug failing cases. That HITL approach ensured quality while keeping the workflow fully AI-driven.</p>
+            <h2>The core idea</h2>
+            <p>The value of HITL is not just approval. It is a design pattern. Humans should intervene at points where the system lacks context, where the cost of a wrong action is high, or where taste and policy matter more than mechanical execution.</p>
 
-            <h2>Custom Basketball Stats</h2>
-            <p>The finished server can answer questions like “What was Steph Curry’s three-point percentage in 2022?” by fetching live data from Basketball&nbsp;Reference. It’s a tiny example, but it demonstrates how an AI-generated MCP server can serve real requests with minimal human effort.</p>
+            <h2>Why it matters</h2>
+            <p>The MCP server became a useful test because it forced the agent to build interfaces, define tool contracts, handle state, and expose a workflow that another system could call. Those are the real ingredients of agentic infrastructure.</p>
 
-            <h2>Why It Matters</h2>
-            <p>This project proved that an AI can autonomously build a functioning backend with human oversight. The same pattern scales to far more complex systems—agents do the busy work while humans guide the tests and architecture. It’s a glimpse of how software development will work in the AI-first era.</p>
+            <h2>How to use it</h2>
+            <ul>
+                <li>Make human checkpoints explicit in the tool protocol instead of burying them in prose instructions.</li>
+                <li>Return structured state so the human can decide quickly without reverse-engineering what the agent did.</li>
+                <li>Use narrow tasks first; autonomy should expand only after the review loop proves reliable.</li>
+            </ul>
+
+            <h2>Bottom line</h2>
+            <p>Autonomy becomes useful when it is paired with a control surface. HITL is not a weakness in the system; it is how the system earns permission to do more.</p>
         </article>
     </main>
 
     <div id="shared-footer"></div>
-
     <script src="/components.js"></script>
 </body>
 </html>

@@ -3,61 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Claude Code built an MCP client for NBA stats with human steering, exposing both the leverage and the brittleness of agentic coding.">
     <title>Proof of Concept: Coding an MCP Client with Claude | Ziyad Mir</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
-    <style type="text/css">
-        html { font-size: 15px; }
-        body { font-size: 0.95rem; }
-
-        .blog-content {
-            max-width: 42rem;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        .blog-content h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: var(--color-primary);
-        }
-
-        .blog-content p {
-            margin-bottom: 1.25rem;
-        }
-    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
-    <!-- Shared header will be loaded here -->
+<body>
     <div id="shared-header"></div>
 
-    <main class="container mx-auto px-4 py-8 flex-grow">
-        <article class="blog-content">
-            <h1 class="text-3xl font-bold mb-4 pt-8">Proof of Concept: Coding an MCP Client with Claude</h1>
-            <p class="text-gray-500 text-sm mb-4">July 2, 2025</p>
-            <p>Yesterday I put Claude Code Opus 4 through its paces by asking it to build a small repository from scratch: <a href="https://github.com/ziyadmir/nba-player-stats-mcp" class="text-blue-600 hover:text-blue-800">nba-player-stats-mcp</a>. The goal was simple—answer questions like “How many rebounds did LeBron James get per game in 2023?” via a Model Context Protocol (MCP) client.</p>
+    <main class="page">
+        <article class="post page-narrow">
+            <p class="eyebrow">Writing</p>
+            <h1 class="post-title">Proof of Concept: Coding an MCP Client with Claude</h1>
+            <p class="post-meta">July 2, 2025</p>
+            <div class="post-tags">
+                <span>AI</span>
+                <span>MCP</span>
+                <span>Prototype</span>
+            </div>
 
-            <h2>An AI-Driven Workflow</h2>
-            <p>Every line of code in the repo came from Claude. My role was to steer with natural language prompts: choose libraries, debug when they failed, and provide context via documentation links. The entire session ran inside <strong>windsurf</strong> at the <em>max</em>+<em>opus&nbsp;4</em> setting, giving me a conversational workflow right in the terminal.</p>
+            <p>This proof of concept was less about NBA data than about watching an AI coding agent work against a real integration boundary. The interesting part was not that Claude could write code. The interesting part was how much of the work became steering, scoping, verifying, and correcting the path when the system drifted.</p>
 
-            <h2>Coding from the Terminal</h2>
-            <p>I’ve always favored a keyboard-driven environment—think <em>tmux</em> and <em>vim</em>. Windsurf lets me maintain that flow state while collaborating with AI. Claude handled boilerplate and API calls; I focused on clarifying intent. In about three hours of intermittent work, we had a fully functional client that fetches player stats.</p>
+            <h2>The core idea</h2>
+            <p>MCP changes the shape of AI development because it gives assistants a clean way to reach tools and data. Once an agent can inspect an API, call a local server, and iterate on failures, it starts to feel less like autocomplete and more like a junior implementation loop with very high throughput.</p>
 
-            <h2>Connecting to the Agent Platform</h2>
-            <p>This lightweight project mirrors our larger vision with <a href="/blog/ai-for-work-part-4-agent-orchestration.html" class="text-blue-600 hover:text-blue-800">our agent orchestration platform</a>, our step-based agent platform. The same run-loop concept applies: keep all context in one place and let agents orchestrate the tasks. The repo proved that even a single-agent workflow can deliver results with minimal human involvement.</p>
+            <h2>Why it matters</h2>
+            <p>The POC also showed the limitation. The agent could move fast, but it still needed a human to define the right outcome, notice when the implementation was becoming overfit, and decide which errors mattered. The leverage came from the combination: AI for fast execution, human judgment for direction and acceptance.</p>
 
-            <h2>Why It Matters</h2>
-            <p>The manual pieces—finding libraries, validating output—are all solvable within the MCP framework. Once integrated, an agent can pull code, docs, and data sources from across the internet. The terminal becomes a universal interface for AI-first development.</p>
+            <h2>How to use it</h2>
+            <ul>
+                <li>Use concrete tasks with observable outputs when testing agentic coding workflows.</li>
+                <li>Keep the human loop focused on requirements, failure interpretation, and acceptance criteria.</li>
+                <li>Expect the best results when tools expose clear contracts instead of forcing the model to infer the world from prose.</li>
+            </ul>
 
-            <p>It’s a small proof of concept, but it hints at a larger shift. With AI assistants embedded in our tooling, we can iterate on ideas in real time and keep every decision in version control. The symmetries with our agent platform are clear: isolate steps, preserve context, and let machines handle the busy work.</p>
+            <h2>Bottom line</h2>
+            <p>The lesson was simple: MCP is not magic, but it gives agents the handles they need to become useful builders instead of isolated chat interfaces.</p>
         </article>
     </main>
 
-    <!-- Shared footer will be loaded here -->
     <div id="shared-footer"></div>
-
     <script src="/components.js"></script>
 </body>
 </html>

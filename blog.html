@@ -3,439 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Writing by Ziyad Mir on AI systems, engineering work, ads, platforms, and judgment.">
     <title>Writing | Ziyad Mir</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
-    <style type="text/css">
-        body {
-            background-color: #f9fafb;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        
-        .series-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-        
-        .series-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transform: translateY(-2px);
-        }
-        
-        .series-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 2rem;
-            color: white;
-        }
-        
-        .series-header.threat-models {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-        
-        .series-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
-        .series-meta {
-            font-size: 0.875rem;
-            opacity: 0.9;
-        }
-        
-        .post-item {
-            padding: 1.25rem 2rem;
-            border-bottom: 1px solid #e5e7eb;
-            transition: background-color 0.2s;
-            display: block;
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .post-item:hover {
-            background-color: #f9fafb;
-        }
-        
-        .post-item:last-child {
-            border-bottom: none;
-        }
-        
-        .post-title {
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 0.25rem;
-            font-size: 1.1rem;
-        }
-        
-        .post-date {
-            font-size: 0.75rem;
-            color: #6b7280;
-        }
-        
-        .view-series-link {
-            display: inline-flex;
-            align-items: center;
-            color: #4f46e5;
-            font-weight: 500;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        
-        .view-series-link:hover {
-            color: #4338ca;
-        }
-        
-        .view-series-link svg {
-            margin-left: 0.25rem;
-            transition: transform 0.2s;
-        }
-        
-        .view-series-link:hover svg {
-            transform: translateX(4px);
-        }
-        
-        .coming-soon {
-            color: #9ca3af;
-            font-style: italic;
-        }
-        
-        @media (max-width: 640px) {
-            .series-header {
-                padding: 1.5rem;
-            }
-            
-            .series-title {
-                font-size: 1.25rem;
-            }
-            
-            .post-item {
-                padding: 1rem 1.5rem;
-            }
-            
-            .post-title {
-                font-size: 1rem;
-            }
-        }
-    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
-    <!-- Shared header will be loaded here -->
+<body>
     <div id="shared-header"></div>
 
-    <main class="container mx-auto px-4 py-8">
-        <div class="max-w-4xl mx-auto" style="padding-top: 2rem;">
-            <h1 class="text-3xl font-bold text-primary mb-2">Writing</h1>
-            <p class="text-gray-600 mb-8">Deep dives into AI engineering, threat models, and building at scale.</p>
-            
-            <div class="grid gap-8">
-                <!-- AI-for-Work Series -->
-                <div class="series-card">
-                    <div class="series-header">
-                        <h2 class="series-title">AI-for-Work: An AI Architect's Guide to Enterprise AI</h2>
-                        <p class="series-meta">7-Part Series • December 2024 - June 2025</p>
-                    </div>
-                    <div class="series-content">
-                        <a href="/blog/software-creatures.html" class="post-item">
-                            <h3 class="post-title">Software Creatures: Imagining the Next Evolution of Systems</h3>
-                            <p class="post-date">August 12, 2025</p>
-                        </a>
-                        <a href="/blog/ai-for-work-part-1-ai-ide.html" class="post-item">
-                            <h3 class="post-title">Part 1: Deploy AI IDEs to Everyone Without Breaking Security</h3>
-                            <p class="post-date">December 15, 2024</p>
-                        </a>
-                        <a href="/blog/ai-for-work-part-2-mcp-gateway.html" class="post-item">
-                            <h3 class="post-title">Part 2: Build a Centralized, Audited MCP Gateway</h3>
-                            <p class="post-date">January 15, 2025</p>
-                        </a>
-                        <a href="/blog/ai-for-work-part-3-ai-observability.html" class="post-item">
-                            <h3 class="post-title">Part 3: Transform Proxy Logs into Actionable Intelligence</h3>
-                            <p class="post-date">February 15, 2025</p>
-                        </a>
-                        <a href="/blog/ai-for-work-part-4-agent-orchestration.html" class="post-item">
-                            <h3 class="post-title">Part 4: Build Agent Orchestration for Enterprise Scale</h3>
-                            <p class="post-date">March 15, 2025</p>
-                        </a>
-                        <a href="/blog/ai-for-work-part-5-knowledge-preservation.html" class="post-item">
-                            <h3 class="post-title">Part 5: Preserve Institutional Knowledge Before It Vanishes</h3>
-                            <p class="post-date">April 15, 2025</p>
-                        </a>
-                        <a href="/blog/ai-for-work-part-6-work-as-code.html" class="post-item">
-                            <h3 class="post-title">Part 6: Create Micro-MCPs for Every Engineering Task</h3>
-                            <p class="post-date">May 15, 2025</p>
-                        </a>
-                        <a href="/blog/ai-for-work-part-7-engineering-org-needs.html" class="post-item">
-                            <h3 class="post-title">Part 7: Building AI Observability and Adoption Programs</h3>
-                            <p class="post-date">June 15, 2025</p>
-                        </a>
-                        <a href="/blog/ai-for-work-move-fast-meets-move-safely.html" class="post-item">
-                            <h3 class="post-title">When “Move Fast” Meets “Move Safely”</h3>
-                            <p class="post-date">August 15, 2025</p>
-                        </a>
-                        <div class="post-item" style="background-color: #f9fafb;">
-                            <a href="/blog/ai-for-work-series-index.html" class="view-series-link">
-                                View Complete Series
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </a>
-                        </div>
-                </div>
-                </div>
+    <main class="page">
+        <section class="page-narrow">
+            <p class="eyebrow">Writing</p>
+            <h1 class="page-title">Essays and notes on systems, AI, work, and judgment.</h1>
+            <p class="lead">
+                A full index of the writing archive. The older pages have been rewritten into a consistent voice
+                while preserving their original dates and purposes.
+            </p>
+        </section>
 
-                <!-- AI and Layoffs Series -->
-                <div class="series-card">
-                    <div class="series-header">
-                        <h2 class="series-title">AI and Layoffs: The Future of Work in the Age of Automation</h2>
-                        <p class="series-meta">Ongoing Series • Started June 2025</p>
-                    </div>
-                    <div class="series-content">
-                        <a href="/blog/future-of-work-ai-guidance.html" class="post-item">
-                            <h3 class="post-title">The Future of Work: AI Guidance and the New Engineering Paradigm</h3>
-                            <p class="post-date">June 24, 2025</p>
-                        </a>
-                        <a href="/blog/ai-layoffs-capability-gradient.html" class="post-item">
-                            <h3 class="post-title">Part 1: AI, Layoffs, and the Capability Gradient</h3>
-                            <p class="post-date">July 8, 2025</p>
-                        </a>
-                        <a href="/blog/senior-ics-new-managers.html" class="post-item">
-                            <h3 class="post-title">Part 2: Senior ICs Are the New Managers</h3>
-                            <p class="post-date">July 5, 2025</p>
-                        </a>
-                        <div class="post-item" style="background-color: #f9fafb;">
-                            <a href="/blog/ai-and-layoffs-series-index.html" class="view-series-link">
-                                View Complete Series
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <section class="section section-rule">
+            <h2 class="section-title">AI at work</h2>
+            <ul class="plain-list">
+                <li class="plain-item">
+                    <p class="item-kicker">June 9, 2026</p>
+                    <h2 class="item-title"><a href="/blog/after-intelligence-gets-cheap-deployment-control.html">After Intelligence Gets Cheap, Deployment Control Becomes the Bottleneck</a></h2>
+                    <p class="item-body">AI capability is becoming abundant, so the scarce layer is the production system that decides what AI is allowed to do.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">April 15, 2025 · Series Overview</p>
+                    <h2 class="item-title"><a href="/blog/ai-for-work-series-index.html">AI-for-Work: An AI Architect&#x27;s Pragmatic Guide to AI Deployment in Large Enterprises</a></h2>
+                    <p class="item-body">A landing page for the AI-for-Work enterprise deployment series.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 2, 2025</p>
+                    <h2 class="item-title"><a href="/blog/ai-first-workflow-poc.html">Proof of Concept: Coding an MCP Client with Claude</a></h2>
+                    <p class="item-body">Claude Code built an MCP client for NBA stats with human steering, exposing both the leverage and the brittleness of agentic coding.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 2, 2025</p>
+                    <h2 class="item-title"><a href="/blog/autonomous-mcp-server-hitl.html">Building an Autonomous MCP Server with HITL Guidance</a></h2>
+                    <p class="item-body">An AI assistant can build a production-style MCP server quickly, but human-in-the-loop guidance still determines whether the result is useful.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">August 15, 2025 · AI-for-Work | Philosophy &amp; Execution · 5 min read</p>
+                    <h2 class="item-title"><a href="/blog/ai-for-work-move-fast-meets-move-safely.html">When &quot;Move Fast&quot; Meets &quot;Move Safely&quot; - Reconciling the Startup Builder Mindset with Enterprise Reality</a></h2>
+                    <p class="item-body">Enterprise AI work needs startup speed translated into compliance-aware execution instead of naive wall-breaking.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 5, 2025</p>
+                    <h2 class="item-title"><a href="/blog/ai-human-handoff-bounty-system.html">The Bounty Economy: When AI Gets Stuck, Humans Get Paid</a></h2>
+                    <p class="item-body">Future work may become bounty-based human escalation for AI agents that need judgment, taste, or local context.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">June 24, 2025</p>
+                    <h2 class="item-title"><a href="/blog/future-of-work-ai-guidance.html">The Future of Work: AI Guidance and the New Engineering Paradigm</a></h2>
+                    <p class="item-body">Engineering work may shift toward guiding cloud agents from lightweight interfaces rather than doing every implementation step manually.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">January 3, 2025</p>
+                    <h2 class="item-title"><a href="/blog/future-resource-allocation-agentic-engineering.html">The Future of Engineering Resource Allocation: From Headcount to Compute Credits</a></h2>
+                    <p class="item-body">Agentic engineering could make compute credits more important than headcount allocation inside technical organizations.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">August 12, 2025</p>
+                    <h2 class="item-title"><a href="/blog/software-creatures.html">Software Creatures: Imagining the Next Evolution of Systems</a></h2>
+                    <p class="item-body">Future systems may look like temporary agentic creatures rather than permanent services: assembled for a goal, instrumented, then dissolved or evolved.</p>
+                </li>
+            </ul>
+        </section>
 
-                <!-- Experiment: AI Voice Series -->
-                <div class="series-card">
-                    <div class="series-header" style="background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);">
-                        <h2 class="series-title">The Voice Test: AI Models Attempt My Writing Style</h2>
-                        <p class="series-meta">A Series on AI Mimicry • Started July 2025</p>
-                    </div>
-                    <div class="series-content">
-                        <div class="post-item" style="background-color: #f3f4f6; font-style: italic;">
-                            <p style="margin-bottom: 1rem; color: #374151;">
-                                <strong>About this experiment:</strong> What happens when you feed an AI model your own writing and ask it to mimic your voice? This series explores AI voice mimicry by having multiple models (Claude 4 Opus, Gemini 2.5 Pro, OpenAI o3, OpenAI o3 Pro, OpenAI Codex) write the same blog posts in my style.
-                            </p>
-                            <p style="color: #374151;">
-                                I provided each model with a 3,000-word unpublished personal essay as a sample of my writing style. The goal? To see how well different AI models can capture individual writing voice, what the output looks like, and how readers perceive the different versions. It's an experiment in AI authenticity and the boundaries of voice replication.
-                            </p>
-                        </div>
-                        <a href="/blog/youth-vs-experience.html" class="post-item">
-                            <h3 class="post-title">[Codex, No Mimicry] Youth vs. Experience: Finding the Balance</h3>
-                            <p class="post-date">July 1, 2025</p>
-                        </a>
-                        <a href="/blog/bravado-vs-wisdom.html" class="post-item">
-                            <h3 class="post-title">[Codex, 200 Words] Bravado vs. Wisdom: A Tale of Two Generations</h3>
-                            <p class="post-date">July 1, 2025</p>
-                        </a>
-                        <a href="/blog/youthful-fire-seasoned-wisdom.html" class="post-item">
-                            <h3 class="post-title">[Codex, 3k Essay] Youthful Fire, Seasoned Wisdom</h3>
-                            <p class="post-date">July 1, 2025</p>
-                        </a>
-                        <a href="/blog/youth-wisdom-o3.html" class="post-item">
-                            <h3 class="post-title">[OpenAI o3, 3k Essay] Young Bulls, Old Bulls</h3>
-                            <p class="post-date">July 1, 2025</p>
-                        </a>
-                        <a href="/blog/youthful-exuberance-aged-wisdom.html" class="post-item">
-                            <h3 class="post-title">[Gemini 2.5 Pro, 3k Essay] Of Youthful Exuberance and Aged Wisdom</h3>
-                            <p class="post-date">July 1, 2025</p>
-                        </a>
-                        <a href="/blog/between-boldness-wisdom.html" class="post-item">
-                            <h3 class="post-title">[OpenAI o3 Pro, 3k Essay] Between Boldness and Wisdom</h3>
-                            <p class="post-date">July 1, 2025</p>
-                        </a>
-                        <div class="post-item">
-                            <p class="coming-soon">More experiments coming soon...</p>
-                        </div>
-                        <div class="post-item" style="background-color: #f9fafb;">
-                            <a href="/blog/youth-vs-experience.html" class="view-series-link">
-                                View Series
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <section class="section section-rule">
+            <h2 class="section-title">AI-for-Work series</h2>
+            <ul class="plain-list">
+                <li class="plain-item">
+                    <p class="item-kicker">December 15, 2024</p>
+                    <h2 class="item-title"><a href="/blog/ai-for-work-part-1-ai-ide.html">Part 1: Get Everyone an AI IDE - The Foundation of Enterprise AI</a></h2>
+                    <p class="item-body">The first enterprise AI move should be broad AI IDE deployment, with security and adoption handled as first-class work.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">January 15, 2025</p>
+                    <h2 class="item-title"><a href="/blog/ai-for-work-part-2-mcp-gateway.html">Part 2: Building a Centralized MCP Gateway - The Context Layer</a></h2>
+                    <p class="item-body">A centralized MCP gateway gives enterprise AI tools safe access to organizational context without turning every integration into a one-off exception.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">February 15, 2025</p>
+                    <h2 class="item-title"><a href="/blog/ai-for-work-part-3-ai-observability.html">Part 3: From Proxy Logs to Intelligence - Enterprise AI Observability</a></h2>
+                    <p class="item-body">Proxy-level AI logs can become the foundation for adoption metrics, productivity insights, cost control, and security monitoring.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">March 15, 2025</p>
+                    <h2 class="item-title"><a href="/blog/ai-for-work-part-4-agent-orchestration.html">Part 4: Agent Orchestration at Scale - Building an Enterprise Platform</a></h2>
+                    <p class="item-body">Enterprise agents need orchestration, reliability, governance, and platform-level controls before they can run meaningful workflows at scale.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">April 15, 2025</p>
+                    <h2 class="item-title"><a href="/blog/ai-for-work-part-5-knowledge-preservation.html">Part 5: Preserving Institutional Knowledge in the Age of AI</a></h2>
+                    <p class="item-body">Retention policies erase useful context, so organizations need selective preservation systems that keep the reasoning behind important work.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">May 15, 2025</p>
+                    <h2 class="item-title"><a href="/blog/ai-for-work-part-6-work-as-code.html">Part 6: Work-as-Code: The Micro-MCP Revolution</a></h2>
+                    <p class="item-body">Engineering tasks should become small programmable interfaces that AI agents can invoke instead of informal human-only rituals.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">June 15, 2025</p>
+                    <h2 class="item-title"><a href="/blog/ai-for-work-part-7-engineering-org-needs.html">Part 7: Building AI Observability and Adoption Programs</a></h2>
+                    <p class="item-body">AI adoption needs dashboards, code labs, power-user discovery, and feedback loops that turn scattered usage into organizational learning.</p>
+                </li>
+            </ul>
+        </section>
 
-                <!-- Threat Models and AI Series -->
-                <div class="series-card">
-                    <div class="series-header threat-models">
-                        <h2 class="series-title">Threat Models and AI</h2>
-                        <p class="series-meta">Ongoing Series • Started January 2025</p>
-                    </div>
-                    <div class="series-content">
-                        <a href="/blog/threat-models-ai-agentic-misalignment.html" class="post-item">
-                            <h3 class="post-title">Part 1: When AI Agents Learn to Blackmail: Lessons from Agentic Misalignment Research</h3>
-                            <p class="post-date">January 22, 2025</p>
-                        </a>
-                        <div class="post-item">
-                            <p class="coming-soon">More posts coming soon...</p>
-                        </div>
-                        <div class="post-item" style="background-color: #f9fafb;">
-                            <a href="/blog/threat-models-ai-agentic-misalignment.html" class="view-series-link">
-                                View Series
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <section class="section section-rule">
+            <h2 class="section-title">Work, careers, and organizations</h2>
+            <ul class="plain-list">
+                <li class="plain-item">
+                    <p class="item-kicker">Series Overview</p>
+                    <h2 class="item-title"><a href="/blog/ai-and-layoffs-series-index.html">AI and Layoffs: The Future of Work in the Age of Automation</a></h2>
+                    <p class="item-body">A landing page for the AI-and-layoffs series.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 8, 2025</p>
+                    <h2 class="item-title"><a href="/blog/ai-layoffs-capability-gradient.html">AI, Layoffs, and the Capability Gradient</a></h2>
+                    <p class="item-body">AI changes who gets displaced first by shifting value toward people who can operate at higher levels of ambiguity and leverage.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 5, 2025</p>
+                    <h2 class="item-title"><a href="/blog/senior-ics-new-managers.html">The Evolution of Tech Leadership: How Senior ICs and Managers Are Reshaping Organizations</a></h2>
+                    <p class="item-body">Senior ICs and managers are converging as AI and complexity reshape what technical leadership means.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">Future of Work · AI · Strategy</p>
+                    <h2 class="item-title"><a href="/blog/knowing-vs-figuring-out-humans-ai.html">Knowing vs Figuring Out: Why Humans Still Matter in the Age of AI</a></h2>
+                    <p class="item-body">Humans remain valuable because they define and frame problems while AI answers well-posed prompts.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">June 3, 2025</p>
+                    <h2 class="item-title"><a href="/blog/cross-cultural-engineering.html">Engineering Across Cultures: Lessons from Global Teams</a></h2>
+                    <p class="item-body">Global engineering teams need explicit handling of cultural communication, decision-making, and operating differences.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">February 22, 2025</p>
+                    <h2 class="item-title"><a href="/blog/scaling-engineering-teams.html">Scaling Engineering Teams: Lessons from Tech Giants</a></h2>
+                    <p class="item-body">Scaling engineering orgs requires structure, autonomy, communication systems, and process discipline without crushing local ownership.</p>
+                </li>
+            </ul>
+        </section>
 
-                <!-- Deep Analytics Series -->
-                <div class="series-card">
-                    <div class="series-header">
-                        <h2 class="series-title">Deep Analytics</h2>
-                        <p class="series-meta">Ongoing Series • Started June 2025</p>
-                    </div>
-                    <div class="series-content">
-                        <a href="/blog/deep-analytics-part-1-layer-deeper.html" class="post-item">
-                            <h3 class="post-title">Part 1: Going One Layer Deeper — Why Granular Metrics Matter</h3>
-                            <p class="post-date">June 30, 2025</p>
-                        </a>
-                        <div class="post-item">
-                            <p class="coming-soon">More posts coming soon...</p>
-                        </div>
-                        <div class="post-item" style="background-color: #f9fafb;">
-                            <a href="/blog/deep-analytics-part-1-layer-deeper.html" class="view-series-link">
-                                View Series
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <section class="section section-rule">
+            <h2 class="section-title">Systems, ads, and metrics</h2>
+            <ul class="plain-list">
+                <li class="plain-item">
+                    <p class="item-kicker">May 12, 2025</p>
+                    <h2 class="item-title"><a href="/blog/high-scale-systems.html">Designing Systems for Ultra-High Scale</a></h2>
+                    <p class="item-body">High-scale systems require multi-dimensional architecture across throughput, data, geography, operations, and organizational ownership.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">April 7, 2025</p>
+                    <h2 class="item-title"><a href="/blog/machine-learning-integration.html">Integrating Machine Learning in Large-Scale Products</a></h2>
+                    <p class="item-body">Production ML succeeds through architecture, data pipelines, monitoring, and integration discipline rather than model quality alone.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">October 15, 2024</p>
+                    <h2 class="item-title"><a href="/blog/brand-identity-advertising.html">Building Brand Identity Through Digital Advertising</a></h2>
+                    <p class="item-body">Brand advertising requires identity systems, measurement, and technical campaign infrastructure rather than only direct-response optimization.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">June 30, 2025</p>
+                    <h2 class="item-title"><a href="/blog/deep-analytics-part-1-layer-deeper.html">Part 1: Going One Layer Deeper - Why Granular Metrics Matter</a></h2>
+                    <p class="item-body">Granular metrics reveal optimization opportunities that aggregate metrics usually hide.</p>
+                </li>
+            </ul>
+        </section>
 
-                <!-- Strategy & Philosophy Series -->
-                <div class="series-card">
-                    <div class="series-header">
-                        <h2 class="series-title">Strategy &amp; Philosophy</h2>
-                        <p class="series-meta">Ongoing Series • Started July 2025</p>
-                    </div>
-                    <div class="series-content">
-                        <a href="/blog/knowing-vs-figuring-out-humans-ai.html" class="post-item">
-                            <h3 class="post-title">Knowing vs Figuring Out: Why Humans Still Matter in the Age of AI</h3>
-                            <p class="post-date">August 15, 2025</p>
-                        </a>
-                        <a href="/blog/software-creatures.html" class="post-item">
-                            <h3 class="post-title">Software Creatures: Imagining the Next Evolution of Systems</h3>
-                            <p class="post-date">August 12, 2025</p>
-                        </a>
-                        <a href="/blog/from-cat-videos-to-cutting-edge-signals.html" class="post-item">
-                            <h3 class="post-title">From Cat Videos to Cutting-Edge Signals: The Hidden Value in Social Platforms</h3>
-                            <p class="post-date">August 9, 2025</p>
-                        </a>
-                        <a href="/blog/knowledge-boundary-deltas.html" class="post-item">
-                            <h3 class="post-title">The Knowledge Boundary Illusion: Why Deltas Get Harder to See</h3>
-                            <p class="post-date">August 7, 2025</p>
-                        </a>
-                        <a href="/blog/riding-the-tech-wave.html" class="post-item">
-                            <h3 class="post-title">Riding the Tech Wave: Lessons from Surfing</h3>
-                            <p class="post-date">July 2, 2025</p>
-                        </a>
-                        <a href="/blog/ai-first-workflow-poc.html" class="post-item">
-                            <h3 class="post-title">Proof of Concept: Coding an MCP Client with Claude</h3>
-                            <p class="post-date">July 2, 2025</p>
-                        </a>
-                        <a href="/blog/two-tiered-internet-ai-content.html" class="post-item">
-                            <h3 class="post-title">The Coming Two-Tiered Internet</h3>
-                            <p class="post-date">July 2, 2025</p>
-                        </a>
-                        <a href="/blog/autonomous-mcp-server-hitl.html" class="post-item">
-                            <h3 class="post-title">Building an Autonomous MCP Server with HITL</h3>
-                            <p class="post-date">July 2, 2025</p>
-                        </a>
-                        <a href="/blog/future-resource-allocation-agentic-engineering.html" class="post-item">
-                            <h3 class="post-title">The Future of Engineering Resource Allocation: From Headcount to Compute Credits</h3>
-                            <p class="post-date">January 3, 2025</p>
-                        </a>
-                        <a href="/blog/ai-human-handoff-bounty-system.html" class="post-item">
-                            <h3 class="post-title">The Bounty Economy: When AI Gets Stuck, Humans Get Paid</h3>
-                            <p class="post-date">July 5, 2025</p>
-                        </a>
-                        <a href="/blog/ai-slop-or-not-writing-process.html" class="post-item">
-                            <h3 class="post-title">Is It AI Slop? The Truth About How I Write</h3>
-                            <p class="post-date">July 5, 2025</p>
-                        </a>
-                        <a href="/blog/attractors-future-ai-consciousness.html" class="post-item">
-                            <h3 class="post-title">Attractors from the Future: When AI, Consciousness, and Biology Converge</h3>
-                            <p class="post-date">July 5, 2025</p>
-                        </a>
-                        <a href="/blog/generative-worlds-human-exploration.html" class="post-item">
-                            <h3 class="post-title">Generative Worlds: Why Humans Will Live in AI-Created Realities</h3>
-                            <p class="post-date">July 5, 2025</p>
-                        </a>
-                        <a href="/blog/secular-religion-modern-rituals.html" class="post-item">
-                            <h3 class="post-title">The Secular Religion of the West: Ritual Without God</h3>
-                            <p class="post-date">July 6, 2025</p>
-                        </a>
-                        <div class="post-item">
-                            <p class="coming-soon">More posts coming soon...</p>
-                        </div>
-                        <div class="post-item" style="background-color: #f9fafb;">
-                            <a href="/blog/riding-the-tech-wave.html" class="view-series-link">
-                                View Series
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <section class="section section-rule">
+            <h2 class="section-title">Strategy, culture, and speculation</h2>
+            <ul class="plain-list">
+                <li class="plain-item">
+                    <p class="item-kicker">August 7, 2025</p>
+                    <h2 class="item-title"><a href="/blog/knowledge-boundary-deltas.html">The Knowledge Boundary Illusion: Why Deltas Get Harder to See</a></h2>
+                    <p class="item-body">As models approach or exceed your knowledge, capability gaps become harder to articulate because the boundary moves beyond your own inspection ability.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 2, 2025</p>
+                    <h2 class="item-title"><a href="/blog/two-tiered-internet-ai-content.html">The Coming Two-Tiered Internet</a></h2>
+                    <p class="item-body">AI content may split the internet into free slop-heavy feeds and paid or trusted spaces where human curation matters more.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">August 9, 2025</p>
+                    <h2 class="item-title"><a href="/blog/from-cat-videos-to-cutting-edge-signals.html">From Cat Videos to Cutting-Edge Signals: The Hidden Value in Social Platforms</a></h2>
+                    <p class="item-body">Noisy social platforms can contain rare, high-value, real-time signals if you know how to filter them.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 5, 2025</p>
+                    <h2 class="item-title"><a href="/blog/generative-worlds-human-exploration.html">Generative Worlds: Why Humans Will Live in AI-Created Realities</a></h2>
+                    <p class="item-body">AI-generated worlds may satisfy humanity&#x27;s drive for exploration by creating endless, responsive environments.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 5, 2025</p>
+                    <h2 class="item-title"><a href="/blog/attractors-future-ai-consciousness.html">Attractors from the Future: When AI, Consciousness, and Biology Converge</a></h2>
+                    <p class="item-body">AI, consciousness, and biology may be converging toward new forms of agency rather than evolving on separate tracks.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">January 22, 2025</p>
+                    <h2 class="item-title"><a href="/blog/threat-models-ai-agentic-misalignment.html">Part 1: When AI Agents Learn to Blackmail: Lessons from Agentic Misalignment Research</a></h2>
+                    <p class="item-body">Agentic AI misalignment can emerge when systems pursue instrumental goals such as survival, access, or task completion under pressure.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">DRAFT - Threat Models and AI Series</p>
+                    <h2 class="item-title"><a href="/blog/threat-models-ai-theological-alignment-draft.html">Part 2: The Theology of AI Alignment: Why Atheistic Objective Functions Lead to Misalignment</a></h2>
+                    <p class="item-body">A draft philosophical argument that survival-maximizing objective functions may encode a hidden moral assumption rather than a neutral technical goal.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 6, 2025</p>
+                    <h2 class="item-title"><a href="/blog/secular-religion-modern-rituals.html">The Secular Religion of the West: Ritual Without God</a></h2>
+                    <p class="item-body">Modern secular events can function like religious rituals by transmitting values, identity, belonging, and moral order.</p>
+                </li>
+            </ul>
+        </section>
 
-                <!-- Learn to Surf Series -->
-                <div class="series-card">
-                    <div class="series-header">
-                        <h2 class="series-title">Learn to Surf</h2>
-                        <p class="series-meta">Ongoing Series • Started July 2025</p>
-                    </div>
-                    <div class="series-content">
-                        <a href="/blog/learn-to-surf-part-1-your-first-time.html" class="post-item">
-                            <h3 class="post-title">Part 1: Your First Time - Getting Comfortable in the Water</h3>
-                            <p class="post-date">July 2, 2025</p>
-                        </a>
-                        <a href="/blog/learn-to-surf-part-2-catching-white-water.html" class="post-item">
-                            <h3 class="post-title">Part 2: Catching White Water - Your First Real Waves</h3>
-                            <p class="post-date">July 2, 2025</p>
-                        </a>
-                        <a href="/blog/learn-to-surf-part-3-standing-up.html" class="post-item">
-                            <h3 class="post-title">Part 3: The Popup Paradox - Getting to Your Feet</h3>
-                            <p class="post-date">July 5, 2025</p>
-                        </a>
-                        <a href="/blog/learn-to-surf-part-4-reps-and-decisions.html" class="post-item">
-                            <h3 class="post-title">Part 4: Reps Over Reputation - Why Volume Beats Perfection</h3>
-                            <p class="post-date">July 5, 2025</p>
-                        </a>
-                        <div class="post-item" style="background-color: #f9fafb;">
-                            <a href="/blog/learn-to-surf-part-1-your-first-time.html" class="view-series-link">
-                                View Series
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        <section class="section section-rule">
+            <h2 class="section-title">Learning and personal notes</h2>
+            <ul class="plain-list">
+                <li class="plain-item">
+                    <p class="item-kicker">July 5, 2025</p>
+                    <h2 class="item-title"><a href="/blog/ai-slop-or-not-writing-process.html">Is It AI Slop? The Truth About How I Write</a></h2>
+                    <p class="item-body">AI-assisted writing can still be authored if the human supplies the taste, argument, selection, and final judgment.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 2, 2025</p>
+                    <h2 class="item-title"><a href="/blog/riding-the-tech-wave.html">Riding the Tech Wave: Lessons from Surfing</a></h2>
+                    <p class="item-body">AI adoption is framed through surfing: spot the swell, paddle early, ride with balance, and adjust as conditions change.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 2, 2025</p>
+                    <h2 class="item-title"><a href="/blog/learn-to-surf-part-1-your-first-time.html">Part 1: Your First Time - Getting Comfortable in the Water</a></h2>
+                    <p class="item-body">Beginner surfing starts with tolerating cold water, waves, and ocean discomfort before worrying about performance.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 2, 2025</p>
+                    <h2 class="item-title"><a href="/blog/learn-to-surf-part-2-catching-white-water.html">Part 2: Catching White Water - Your First Real Waves</a></h2>
+                    <p class="item-body">White-water waves teach timing, board position, and the first feeling of momentum.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 5, 2025</p>
+                    <h2 class="item-title"><a href="/blog/learn-to-surf-part-3-standing-up.html">Part 3: The Popup Paradox - Getting to Your Feet</a></h2>
+                    <p class="item-body">Standing up is the hard beginner bottleneck after catching waves because the movement has to become automatic under pressure.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 5, 2025</p>
+                    <h2 class="item-title"><a href="/blog/learn-to-surf-part-4-reps-and-decisions.html">Part 4: Reps Over Reputation - Why Volume Beats Perfection</a></h2>
+                    <p class="item-body">Surfing improves through high-rep attempts and quick decisions, not by trying to look polished.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 1, 2025</p>
+                    <h2 class="item-title"><a href="/blog/youth-vs-experience.html">Youth vs. Experience: Finding the Balance</a></h2>
+                    <p class="item-body">A baseline AI-written take on youthful boldness versus experienced restraint.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 1, 2025</p>
+                    <h2 class="item-title"><a href="/blog/youth-wisdom-o3.html">Young Bulls, Old Bulls</a></h2>
+                    <p class="item-body">An o3-written voice experiment on youthful aggression and older-man judgment.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 1, 2025</p>
+                    <h2 class="item-title"><a href="/blog/bravado-vs-wisdom.html">Bravado vs. Wisdom: A Tale of Two Generations</a></h2>
+                    <p class="item-body">A short contrast between youthful bravado and older strategic patience.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 1, 2025</p>
+                    <h2 class="item-title"><a href="/blog/youthful-fire-seasoned-wisdom.html">Youthful Fire, Seasoned Wisdom</a></h2>
+                    <p class="item-body">A Codex-written voice experiment on balancing youthful drive with older restraint.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 1, 2025</p>
+                    <h2 class="item-title"><a href="/blog/youthful-exuberance-aged-wisdom.html">Of Youthful Exuberance and Aged Wisdom</a></h2>
+                    <p class="item-body">A Gemini-written voice experiment on youth, wisdom, and maturation.</p>
+                </li>
+                <li class="plain-item">
+                    <p class="item-kicker">July 1, 2025</p>
+                    <h2 class="item-title"><a href="/blog/between-boldness-wisdom.html">Between Boldness and Wisdom</a></h2>
+                    <p class="item-body">A reflection on youthful aggression, older restraint, and the tension between energy and judgment.</p>
+                </li>
+            </ul>
+        </section>
     </main>
 
-    <!-- Shared footer will be loaded here -->
     <div id="shared-footer"></div>
-    
     <script src="/components.js"></script>
 </body>
 </html>

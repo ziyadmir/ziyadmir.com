@@ -3,73 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Future systems may look like temporary agentic creatures rather than permanent services: assembled for a goal, instrumented, then dissolved or evolved.">
     <title>Software Creatures: Imagining the Next Evolution of Systems | Ziyad Mir</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
-    <style type="text/css">
-        html { font-size: 15px; }
-        body { font-size: 0.95rem; }
-        .blog-content { max-width: 42rem; margin: 0 auto; line-height: 1.7; }
-        .blog-content h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: var(--color-primary); }
-        .blog-content h3 { font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--color-primary); }
-        .blog-content p { margin-bottom: 1.1rem; }
-        .blog-tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; background-color: #f3f4f6; color: #4b5563; margin-right: 0.5rem; margin-bottom: 0.5rem; }
-        @media (max-width: 640px) {
-            body { font-size: 0.85rem; }
-            .blog-content h2 { font-size: 1.25rem; }
-            .blog-content h3 { font-size: 1.1rem; }
-        }
-    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
-    <!-- Shared header will be loaded here -->
+<body>
     <div id="shared-header"></div>
 
-    <main class="container mx-auto px-4 py-8 flex-grow">
-        <article class="blog-content">
-            <h1 class="text-3xl font-bold text-primary mb-3 pt-8">Software Creatures: Imagining the Next Evolution of Systems</h1>
-            <p class="text-gray-500 text-sm mb-4">August 12, 2025 · Strategy &amp; Philosophy</p>
-
-            <div class="flex flex-wrap gap-2 mb-6">
-                <span class="blog-tag">Systems</span>
-                <span class="blog-tag">AI</span>
-                <span class="blog-tag">Metaphor</span>
+    <main class="page">
+        <article class="post page-narrow">
+            <p class="eyebrow">Writing</p>
+            <h1 class="post-title">Software Creatures: Imagining the Next Evolution of Systems</h1>
+            <p class="post-meta">August 12, 2025</p>
+            <div class="post-tags">
+                <span>AI</span>
+                <span>Systems</span>
+                <span>Speculation</span>
             </div>
 
-            <p>Modern system design feels sophisticated: we debate microservices, databases, queuing patterns and layers of caching. But these are still primitives. They are building blocks, not the living structures we imagine when we think of biological ecosystems.</p>
+            <p>Software has traditionally looked like infrastructure: services, jobs, databases, APIs, dashboards. Agentic systems may look stranger. They may form around a task, gather tools, act for a while, leave artifacts, and disappear or mutate into the next workflow.</p>
 
-            <p>What if software evolved past primitives into something more organism-like—temporary digital creatures that appear, perform a job and vanish? Today we deploy services that run forever. Tomorrow we might spawn swarms of short‑lived agents that wake only when conditions call for them.</p>
+            <h2>The core idea</h2>
+            <p>The creature metaphor captures software with more agency, memory, perception, and adaptation than a normal service. It is not alive, but it behaves less like a static machine and more like a bounded organism operating in an environment.</p>
 
-            <h2>From Primitives to Creatures</h2>
-            <p>Our current components—queues, caches, storage engines—are comparable to amino acids and simple cells. They are necessary but hardly expressive. A creature, in contrast, encapsulates behavior at a higher level of abstraction: intent, sensing, and adaptation.</p>
+            <h2>Why it matters</h2>
+            <p>This matters because our operational instincts are built around stable services. Agentic software may require different controls: lifetimes, permissions, supervision, behavior logs, resource budgets, and containment when it starts acting outside the intended shape.</p>
 
-            <p>Imagine a <em>fishing creature</em> that roams your infrastructure poking for misconfigurations or exposed credentials. It does not live in a single process. It swims across services, uses credentials judiciously and reports what it finds before dissolving.</p>
+            <h2>How to use it</h2>
+            <ul>
+                <li>Design agents with explicit boundaries, metabolism, and death conditions: what they can consume, do, and persist.</li>
+                <li>Keep artifacts and audit trails even when the agent itself is temporary.</li>
+                <li>Treat emergent behavior as an operations problem, not only a model-quality issue.</li>
+            </ul>
 
-            <h2>Ephemeral Lifespans</h2>
-            <p>Creatures would rarely be long‑lived. They surface in response to an event or a forecasted threat, consume the resources they need, then disappear. During a suspected attack window you might release a net of protective <em>shield creatures</em> that patrol logs and traffic. When the window closes, the net retracts and the cluster returns to normal load.</p>
-
-            <p>This reverses our expectation that infrastructure is always-on. Like immune cells in a body, software creatures surge only when necessary, allowing systems to stay lean yet responsive.</p>
-
-            <h2>An Ecology of Roles</h2>
-            <p>A mature ecosystem would host diverse species: searchers, guards, translators, traders. Each specializes, interacts with others and occupies niches. Some might even compete, forcing us to design the incentives and boundaries that keep the whole environment healthy.</p>
-
-            <p>Deploying such an ecology requires advancements in runtime isolation, resource pricing and autonomous coordination. We need platforms where code can spawn, communicate and terminate with minimal friction—more like a marketplace than a static cluster.</p>
-
-            <h2>Why We Aren’t There Yet</h2>
-            <p>The gap is not technical complexity; it is conceptual. Organizations still think in terms of machines, services and tickets. Tooling emphasizes uptime and cost over fluidity. Security models assume stable perimeters rather than migratory actors.</p>
-
-            <p>To reach the creature stage, we must treat software as populations rather than installations. Monitoring shifts from host metrics to behavioral signals. Provisioning becomes about allocating compute credit to emergent work, not standing up servers.</p>
-
-            <h2>Looking Ahead</h2>
-            <p>As AI makes code generation cheaper and coordination easier, these creatures stop being metaphorical. We may soon describe our infrastructure the way ecologists describe a reef—teeming with specialized life that appears when needed and fades when the job is done.</p>
-
-            <p>When that happens, today’s primitives will look like fossils. The exciting part is not the complexity but the newfound agency: software that acts less like machinery and more like organisms serving our goals.</p>
+            <h2>Bottom line</h2>
+            <p>If software becomes more creature-like, engineering has to become better at ecology: containment, observation, incentives, and controlled evolution.</p>
         </article>
     </main>
 
-    <!-- Shared footer will be loaded here -->
     <div id="shared-footer"></div>
-
     <script src="/components.js"></script>
 </body>
 </html>

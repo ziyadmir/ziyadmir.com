@@ -82,3 +82,11 @@ screenshots/
 navigation_test/
 recordings/
 record_navigation.sh
+
+# Local Codex/browser artifacts
+.codex-memory-submissions/
+output/
+mcp-settings-*.js
+scripts/remember_custom_instructions.py
+ziyad_mir_resume_google.pdf
+Ziyad Mir_ Project Deepdive -- Buying Brand Identity \[Youtube Ads, 2021-2024, 30-60m\].pdf

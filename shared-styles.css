@@ -500,6 +500,10 @@ main {
     line-height: 1.25;
 }
 
+.post h2.item-title {
+    margin: var(--space-xs) 0 var(--space-md);
+}
+
 .post h3 {
     margin: var(--space-xl) 0 var(--space-sm);
     font-size: var(--font-lg);

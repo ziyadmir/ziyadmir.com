@@ -19,6 +19,7 @@ function activePageForPath(pathname) {
     if (pathname.includes("projects")) return "projects";
     if (pathname.includes("blog")) return "blog";
     if (pathname.includes("memoir")) return "memoir";
+    if (pathname.includes("notes")) return "notes";
     return "";
 }
 

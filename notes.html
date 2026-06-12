@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Research notes by Ziyad Mir: experience understanding via in-sandbox agents, evaluating models that make judgment calls, and deployment control.">
+    <title>Notes | Ziyad Mir</title>
+        <meta property="og:title" content="Notes | Ziyad Mir">
+    <meta property="og:description" content="Research notes by Ziyad Mir: experience understanding via in-sandbox agents, evaluating models that make judgment calls, and deployment control.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ziyadmir.com/notes.html">
+    <meta property="og:image" content="https://ziyadmir.com/images/profile-linkedin.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Notes | Ziyad Mir">
+    <meta name="twitter:description" content="Research notes by Ziyad Mir: experience understanding via in-sandbox agents, evaluating models that make judgment calls, and deployment control.">
+    <link rel="alternate" type="application/rss+xml" title="Ziyad Mir — Writing" href="/feed.xml">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link href="/shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div id="shared-header"></div>
+
+    <main class="page">
+        <section class="page-narrow">
+            <p class="eyebrow">Notes</p>
+            <h1 class="page-title">Research notes, written before the answers exist.</h1>
+            <p class="lead">
+                The essays on this site argue positions. These notes are earlier than that: open problems I am
+                actively working on or circling, written down so the thinking has to survive contact with words.
+                They will be revised as the work moves. Disagreement is welcome —
+                <a href="mailto:ziyadmir@gmail.com">email me</a>.
+            </p>
+        </section>
+
+        <section class="section section-rule">
+            <article class="post page-narrow" id="experience-understanding">
+                <p class="item-kicker">2026 · Active — this is the problem I am taking on next</p>
+                <h2 class="item-title">Experience understanding: agents as sensors</h2>
+
+                <p>Every content-understanding system I have worked on read content that holds still. A video is the same file every time you analyze it. An ad creative is a fixed set of pixels, audio, and a destination. Interactive experiences — the unit of content on Roblox — do not hold still. An experience is a program. What it contains is not fully knowable from its assets, scripts, and metadata, because much of its content only exists when someone plays it: states that unlock, paths that open, behavior that emerges from interaction.</p>
+
+                <p>Static analysis therefore has a ceiling, and the decisions stacked on top of the read — ads suitability, age appropriateness, discovery, safety — inherit that ceiling. The direction I am pursuing: put the observer inside the content. Train and run agents in the same sandbox the experience runs in, let them explore — navigate, interact, trigger states, play — and collect artifacts as they go: screenshots, transcripts, event traces, interaction logs. Then distill those artifacts into what I think of as an <strong>experience understanding record</strong>: a structured, versioned description of what an experience actually contains and does, that downstream systems can consume the way they consume a video-understanding signal today.</p>
+
+                <p>The open problems are what make this research-shaped rather than just engineering:</p>
+                <ul>
+                    <li><strong>Coverage versus cost.</strong> How much play is enough? An exploration policy is a budget decision — random walks are cheap and shallow, goal-directed agents are expensive and biased toward what they were trained to find.</li>
+                    <li><strong>Evaluating the record itself.</strong> The record is a model output, which means it needs its own evals. What is ground truth for "what this experience contains" — human playthroughs? At what sample rate, and for which slices of the catalog?</li>
+                    <li><strong>Adversarial experiences.</strong> Content that wants to misbehave can try to detect automated observers and behave differently for them. The cat-and-mouse from ads moderation reappears one level up.</li>
+                    <li><strong>Staleness.</strong> Experiences update continuously. A record is a snapshot; the refresh policy is as much a part of the system as the agent.</li>
+                    <li><strong>The schema as a contract.</strong> Whatever the record contains becomes the interface every downstream team builds against. Getting it wrong is expensive in the way all platform-contract mistakes are expensive.</li>
+                </ul>
+
+                <p>The continuity matters to me: video moments, then adversarial ad creative, now content you have to inhabit to read. Each generation of content is harder to observe, and the observer has to become more agentic to keep up. This is the first one where the observer is an agent in the full sense.</p>
+            </article>
+        </section>
+
+        <section class="section section-rule">
+            <article class="post page-narrow" id="judgment-evals">
+                <p class="item-kicker">2026 · Active</p>
+                <h2 class="item-title">Evaluating models that make judgment calls</h2>
+
+                <p>Benchmark evals assume an answer key. Moderation does not have one — it has a policy, written by humans, interpreted by humans, applied to cases the policy authors never imagined. When a model makes those calls, "accuracy" quietly becomes "agreement with whichever human labeled the eval case," and the interesting questions start there.</p>
+
+                <p>The questions I keep returning to: how do you separate model error from policy ambiguity, when expert reviewers themselves disagree on a meaningful fraction of cases? What does calibration mean when the label is a judgment? How should disagreement rates — model versus human, human versus human — gate how much autonomy the system gets? My working position is that the eval set <em>is</em> the policy, more honestly expressed than the prose version: every hard case you adjudicate and freeze into the set is a precedent, and the corpus of precedents defines the line better than the policy document does.</p>
+
+                <p>If that is right, eval curation is governance, not QA — and the practice of widening a model's decision scope only where its disagreement and incident evidence supports it ("autonomy earns scope") is the closest thing this field has to due process. I want to make that rigorous rather than rhetorical.</p>
+            </article>
+        </section>
+
+        <section class="section section-rule">
+            <article class="post page-narrow" id="deployment-control">
+                <p class="item-kicker">2026 · Ongoing</p>
+                <h2 class="item-title">Deployment control as the bottleneck</h2>
+
+                <p>The standing thesis behind most of my work: as intelligence gets cheap, the constraint on what AI actually does in the world shifts from model capability to deployment control — the evals, permissions, evidence trails, human escalation paths, and rollback machinery between a model's output and a consequence. The full argument is in <a href="/blog/after-intelligence-gets-cheap-deployment-control.html">the essay</a>; this note exists because the essay keeps generating research questions: what is the minimal control plane that preserves most of the value of autonomy? Which controls actually reduce incident rates versus merely produce paperwork? Nobody has good public data on that second question, including me. Yet.</p>
+            </article>
+        </section>
+    </main>
+
+    <div id="shared-footer"></div>
+    <script src="/components.js"></script>
+</body>
+</html>

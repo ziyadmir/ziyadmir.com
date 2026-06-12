@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Ziyad Mir — Writing</title>
+    <link>https://ziyadmir.com/blog.html</link>
+    <description>Essays on content understanding, AI moderation and governance, deployment control, agent runtimes, and engineering judgment.</description>
+    <language>en-us</language>
+    <item>
+      <title>After Intelligence Gets Cheap, Deployment Control Becomes the Bottleneck</title>
+      <link>https://ziyadmir.com/blog/after-intelligence-gets-cheap-deployment-control.html</link>
+      <guid>https://ziyadmir.com/blog/after-intelligence-gets-cheap-deployment-control.html</guid>
+      <description>A technical thesis on the control plane between model capability and production action: policy evidence, eval gates, permission matrices, agent runtimes, moderation workflows, and operating metrics.</description>
+    </item>
+    <item>
+      <title>AI-for-Work: A Systems Guide to Governed AI Deployment</title>
+      <link>https://ziyadmir.com/blog/ai-for-work-series-index.html</link>
+      <guid>https://ziyadmir.com/blog/ai-for-work-series-index.html</guid>
+      <description>A systems view of enterprise AI deployment: IDEs, MCP gateways, observability, orchestration, knowledge preservation, and work-as-code.</description>
+    </item>
+    <item>
+      <title>Proof of Concept: Coding an MCP Client with Claude</title>
+      <link>https://ziyadmir.com/blog/ai-first-workflow-poc.html</link>
+      <guid>https://ziyadmir.com/blog/ai-first-workflow-poc.html</guid>
+      <description>Claude Code built an MCP client for NBA stats with human steering, exposing both the leverage and the brittleness of agentic coding.</description>
+    </item>
+    <item>
+      <title>Building an Autonomous MCP Server with HITL Guidance</title>
+      <link>https://ziyadmir.com/blog/autonomous-mcp-server-hitl.html</link>
+      <guid>https://ziyadmir.com/blog/autonomous-mcp-server-hitl.html</guid>
+      <description>An AI assistant can build a production-style MCP server quickly, but human-in-the-loop guidance still determines whether the result is useful.</description>
+    </item>
+    <item>
+      <title>When &quot;Move Fast&quot; Meets &quot;Move Safely&quot; - Reconciling the Startup Builder Mindset with Enterprise Reality</title>
+      <link>https://ziyadmir.com/blog/ai-for-work-move-fast-meets-move-safely.html</link>
+      <guid>https://ziyadmir.com/blog/ai-for-work-move-fast-meets-move-safely.html</guid>
+      <description>Enterprise AI work needs startup speed translated into compliance-aware execution instead of naive wall-breaking.</description>
+    </item>
+    <item>
+      <title>The Bounty Economy: When AI Gets Stuck, Humans Get Paid</title>
+      <link>https://ziyadmir.com/blog/ai-human-handoff-bounty-system.html</link>
+      <guid>https://ziyadmir.com/blog/ai-human-handoff-bounty-system.html</guid>
+      <description>Future work may become bounty-based human escalation for AI agents that need judgment, taste, or local context.</description>
+    </item>
+    <item>
+      <title>The Future of Work: AI Guidance and the New Engineering Paradigm</title>
+      <link>https://ziyadmir.com/blog/future-of-work-ai-guidance.html</link>
+      <guid>https://ziyadmir.com/blog/future-of-work-ai-guidance.html</guid>
+      <description>Engineering work may shift toward guiding cloud agents from lightweight interfaces rather than doing every implementation step manually.</description>
+    </item>
+    <item>
+      <title>The Future of Engineering Resource Allocation: From Headcount to Compute Credits</title>
+      <link>https://ziyadmir.com/blog/future-resource-allocation-agentic-engineering.html</link>
+      <guid>https://ziyadmir.com/blog/future-resource-allocation-agentic-engineering.html</guid>
+      <description>Agentic engineering could make compute credits more important than headcount allocation inside technical organizations.</description>
+    </item>
+    <item>
+      <title>Software Creatures: Imagining the Next Evolution of Systems</title>
+      <link>https://ziyadmir.com/blog/software-creatures.html</link>
+      <guid>https://ziyadmir.com/blog/software-creatures.html</guid>
+      <description>Future systems may look like temporary agentic creatures rather than permanent services: assembled for a goal, instrumented, then dissolved or evolved.</description>
+    </item>
+    <item>
+      <title>Part 1: Get Everyone an AI IDE - The Foundation of Enterprise AI</title>
+      <link>https://ziyadmir.com/blog/ai-for-work-part-1-ai-ide.html</link>
+      <guid>https://ziyadmir.com/blog/ai-for-work-part-1-ai-ide.html</guid>
+      <description>The first enterprise AI move should be broad AI IDE deployment, with security and adoption handled as first-class work.</description>
+    </item>
+    <item>
+      <title>Part 2: Building a Centralized MCP Gateway - The Context Layer</title>
+      <link>https://ziyadmir.com/blog/ai-for-work-part-2-mcp-gateway.html</link>
+      <guid>https://ziyadmir.com/blog/ai-for-work-part-2-mcp-gateway.html</guid>
+      <description>A centralized MCP gateway gives enterprise AI tools safe access to organizational context without turning every integration into a one-off exception.</description>
+    </item>
+    <item>
+      <title>Part 3: From Proxy Logs to Intelligence - Enterprise AI Observability</title>
+      <link>https://ziyadmir.com/blog/ai-for-work-part-3-ai-observability.html</link>
+      <guid>https://ziyadmir.com/blog/ai-for-work-part-3-ai-observability.html</guid>
+      <description>Proxy-level AI logs can become the foundation for adoption metrics, productivity insights, cost control, and security monitoring.</description>
+    </item>
+    <item>
+      <title>Part 4: Agent Orchestration at Scale - Building an Enterprise Platform</title>
+      <link>https://ziyadmir.com/blog/ai-for-work-part-4-agent-orchestration.html</link>
+      <guid>https://ziyadmir.com/blog/ai-for-work-part-4-agent-orchestration.html</guid>
+      <description>Enterprise agents need orchestration, reliability, governance, and platform-level controls before they can run meaningful workflows at scale.</description>
+    </item>
+    <item>
+      <title>Part 5: Preserving Institutional Knowledge in the Age of AI</title>
+      <link>https://ziyadmir.com/blog/ai-for-work-part-5-knowledge-preservation.html</link>
+      <guid>https://ziyadmir.com/blog/ai-for-work-part-5-knowledge-preservation.html</guid>
+      <description>Retention policies erase useful context, so organizations need selective preservation systems that keep the reasoning behind important work.</description>
+    </item>
+    <item>
+      <title>Part 6: Work-as-Code: The Micro-MCP Revolution</title>
+      <link>https://ziyadmir.com/blog/ai-for-work-part-6-work-as-code.html</link>
+      <guid>https://ziyadmir.com/blog/ai-for-work-part-6-work-as-code.html</guid>
+      <description>Engineering tasks should become small programmable interfaces that AI agents can invoke instead of informal human-only rituals.</description>
+    </item>
+    <item>
+      <title>Part 7: Building AI Observability and Adoption Programs</title>
+      <link>https://ziyadmir.com/blog/ai-for-work-part-7-engineering-org-needs.html</link>
+      <guid>https://ziyadmir.com/blog/ai-for-work-part-7-engineering-org-needs.html</guid>
+      <description>AI adoption needs dashboards, code labs, power-user discovery, and feedback loops that turn scattered usage into organizational learning.</description>
+    </item>
+    <item>
+      <title>AI and Layoffs: The Future of Work in the Age of Automation</title>
+      <link>https://ziyadmir.com/blog/ai-and-layoffs-series-index.html</link>
+      <guid>https://ziyadmir.com/blog/ai-and-layoffs-series-index.html</guid>
+      <description>A landing page for the AI-and-layoffs series.</description>
+    </item>
+    <item>
+      <title>AI, Layoffs, and the Capability Gradient</title>
+      <link>https://ziyadmir.com/blog/ai-layoffs-capability-gradient.html</link>
+      <guid>https://ziyadmir.com/blog/ai-layoffs-capability-gradient.html</guid>
+      <description>AI changes who gets displaced first by shifting value toward people who can operate at higher levels of ambiguity and leverage.</description>
+    </item>
+    <item>
+      <title>The Evolution of Tech Leadership: How Senior ICs and Managers Are Reshaping Organizations</title>
+      <link>https://ziyadmir.com/blog/senior-ics-new-managers.html</link>
+      <guid>https://ziyadmir.com/blog/senior-ics-new-managers.html</guid>
+      <description>Senior ICs and managers are converging as AI and complexity reshape what technical leadership means.</description>
+    </item>
+    <item>
+      <title>Knowing vs Figuring Out: Why Humans Still Matter in the Age of AI</title>
+      <link>https://ziyadmir.com/blog/knowing-vs-figuring-out-humans-ai.html</link>
+      <guid>https://ziyadmir.com/blog/knowing-vs-figuring-out-humans-ai.html</guid>
+      <description>Humans remain valuable because they define and frame problems while AI answers well-posed prompts.</description>
+    </item>
+    <item>
+      <title>Engineering Across Cultures: Lessons from Global Teams</title>
+      <link>https://ziyadmir.com/blog/cross-cultural-engineering.html</link>
+      <guid>https://ziyadmir.com/blog/cross-cultural-engineering.html</guid>
+      <description>Global engineering teams need explicit handling of cultural communication, decision-making, and operating differences.</description>
+    </item>
+    <item>
+      <title>Scaling Engineering Teams: Lessons from Tech Giants</title>
+      <link>https://ziyadmir.com/blog/scaling-engineering-teams.html</link>
+      <guid>https://ziyadmir.com/blog/scaling-engineering-teams.html</guid>
+      <description>Scaling engineering orgs requires structure, autonomy, communication systems, and process discipline without crushing local ownership.</description>
+    </item>
+    <item>
+      <title>Designing Systems for Ultra-High Scale</title>
+      <link>https://ziyadmir.com/blog/high-scale-systems.html</link>
+      <guid>https://ziyadmir.com/blog/high-scale-systems.html</guid>
+      <description>High-scale systems require multi-dimensional architecture across throughput, data, geography, operations, and organizational ownership.</description>
+    </item>
+    <item>
+      <title>Integrating Machine Learning in Large-Scale Products</title>
+      <link>https://ziyadmir.com/blog/machine-learning-integration.html</link>
+      <guid>https://ziyadmir.com/blog/machine-learning-integration.html</guid>
+      <description>Production ML succeeds through architecture, data pipelines, monitoring, and integration discipline rather than model quality alone.</description>
+    </item>
+    <item>
+      <title>Building Brand Identity Through Digital Advertising</title>
+      <link>https://ziyadmir.com/blog/brand-identity-advertising.html</link>
+      <guid>https://ziyadmir.com/blog/brand-identity-advertising.html</guid>
+      <description>Brand advertising requires identity systems, measurement, and technical campaign infrastructure rather than only direct-response optimization.</description>
+    </item>
+    <item>
+      <title>Part 1: Going One Layer Deeper - Why Granular Metrics Matter</title>
+      <link>https://ziyadmir.com/blog/deep-analytics-part-1-layer-deeper.html</link>
+      <guid>https://ziyadmir.com/blog/deep-analytics-part-1-layer-deeper.html</guid>
+      <description>Granular metrics reveal optimization opportunities that aggregate metrics usually hide.</description>
+    </item>
+    <item>
+      <title>The Knowledge Boundary Illusion: Why Deltas Get Harder to See</title>
+      <link>https://ziyadmir.com/blog/knowledge-boundary-deltas.html</link>
+      <guid>https://ziyadmir.com/blog/knowledge-boundary-deltas.html</guid>
+      <description>As models approach or exceed your knowledge, capability gaps become harder to articulate because the boundary moves beyond your own inspection ability.</description>
+    </item>
+    <item>
+      <title>The Coming Two-Tiered Internet</title>
+      <link>https://ziyadmir.com/blog/two-tiered-internet-ai-content.html</link>
+      <guid>https://ziyadmir.com/blog/two-tiered-internet-ai-content.html</guid>
+      <description>AI content may split the internet into free slop-heavy feeds and paid or trusted spaces where human curation matters more.</description>
+    </item>
+    <item>
+      <title>From Cat Videos to Cutting-Edge Signals: The Hidden Value in Social Platforms</title>
+      <link>https://ziyadmir.com/blog/from-cat-videos-to-cutting-edge-signals.html</link>
+      <guid>https://ziyadmir.com/blog/from-cat-videos-to-cutting-edge-signals.html</guid>
+      <description>Noisy social platforms can contain rare, high-value, real-time signals if you know how to filter them.</description>
+    </item>
+    <item>
+      <title>Generative Worlds: Why Humans Will Live in AI-Created Realities</title>
+      <link>https://ziyadmir.com/blog/generative-worlds-human-exploration.html</link>
+      <guid>https://ziyadmir.com/blog/generative-worlds-human-exploration.html</guid>
+      <description>AI-generated worlds may satisfy humanity&#x27;s drive for exploration by creating endless, responsive environments.</description>
+    </item>
+    <item>
+      <title>Attractors from the Future: When AI, Consciousness, and Biology Converge</title>
+      <link>https://ziyadmir.com/blog/attractors-future-ai-consciousness.html</link>
+      <guid>https://ziyadmir.com/blog/attractors-future-ai-consciousness.html</guid>
+      <description>AI, consciousness, and biology may be converging toward new forms of agency rather than evolving on separate tracks.</description>
+    </item>
+    <item>
+      <title>Part 1: When AI Agents Learn to Blackmail: Lessons from Agentic Misalignment Research</title>
+      <link>https://ziyadmir.com/blog/threat-models-ai-agentic-misalignment.html</link>
+      <guid>https://ziyadmir.com/blog/threat-models-ai-agentic-misalignment.html</guid>
+      <description>Agentic AI misalignment can emerge when systems pursue instrumental goals such as survival, access, or task completion under pressure.</description>
+    </item>
+    <item>
+      <title>Part 2: The Theology of AI Alignment: Why Atheistic Objective Functions Lead to Misalignment</title>
+      <link>https://ziyadmir.com/blog/threat-models-ai-theological-alignment-draft.html</link>
+      <guid>https://ziyadmir.com/blog/threat-models-ai-theological-alignment-draft.html</guid>
+      <description>A draft philosophical argument that survival-maximizing objective functions may encode a hidden moral assumption rather than a neutral technical goal.</description>
+    </item>
+    <item>
+      <title>The Secular Religion of the West: Ritual Without God</title>
+      <link>https://ziyadmir.com/blog/secular-religion-modern-rituals.html</link>
+      <guid>https://ziyadmir.com/blog/secular-religion-modern-rituals.html</guid>
+      <description>Modern secular events can function like religious rituals by transmitting values, identity, belonging, and moral order.</description>
+    </item>
+    <item>
+      <title>Is It AI Slop? The Truth About How I Write</title>
+      <link>https://ziyadmir.com/blog/ai-slop-or-not-writing-process.html</link>
+      <guid>https://ziyadmir.com/blog/ai-slop-or-not-writing-process.html</guid>
+      <description>AI-assisted writing can still be authored if the human supplies the taste, argument, selection, and final judgment.</description>
+    </item>
+    <item>
+      <title>Riding the Tech Wave: Lessons from Surfing</title>
+      <link>https://ziyadmir.com/blog/riding-the-tech-wave.html</link>
+      <guid>https://ziyadmir.com/blog/riding-the-tech-wave.html</guid>
+      <description>AI adoption is framed through surfing: spot the swell, paddle early, ride with balance, and adjust as conditions change.</description>
+    </item>
+    <item>
+      <title>Part 1: Your First Time - Getting Comfortable in the Water</title>
+      <link>https://ziyadmir.com/blog/learn-to-surf-part-1-your-first-time.html</link>
+      <guid>https://ziyadmir.com/blog/learn-to-surf-part-1-your-first-time.html</guid>
+      <description>Beginner surfing starts with tolerating cold water, waves, and ocean discomfort before worrying about performance.</description>
+    </item>
+    <item>
+      <title>Part 2: Catching White Water - Your First Real Waves</title>
+      <link>https://ziyadmir.com/blog/learn-to-surf-part-2-catching-white-water.html</link>
+      <guid>https://ziyadmir.com/blog/learn-to-surf-part-2-catching-white-water.html</guid>
+      <description>White-water waves teach timing, board position, and the first feeling of momentum.</description>
+    </item>
+    <item>
+      <title>Part 3: The Popup Paradox - Getting to Your Feet</title>
+      <link>https://ziyadmir.com/blog/learn-to-surf-part-3-standing-up.html</link>
+      <guid>https://ziyadmir.com/blog/learn-to-surf-part-3-standing-up.html</guid>
+      <description>Standing up is the hard beginner bottleneck after catching waves because the movement has to become automatic under pressure.</description>
+    </item>
+    <item>
+      <title>Part 4: Reps Over Reputation - Why Volume Beats Perfection</title>
+      <link>https://ziyadmir.com/blog/learn-to-surf-part-4-reps-and-decisions.html</link>
+      <guid>https://ziyadmir.com/blog/learn-to-surf-part-4-reps-and-decisions.html</guid>
+      <description>Surfing improves through high-rep attempts and quick decisions, not by trying to look polished.</description>
+    </item>
+    <item>
+      <title>Youth and Wisdom: A Voice Experiment Across Models</title>
+      <link>https://ziyadmir.com/blog/youth-and-wisdom-voice-experiments.html</link>
+      <guid>https://ziyadmir.com/blog/youth-and-wisdom-voice-experiments.html</guid>
+      <description>I gave several models the same youth-versus-wisdom prompt and kept the results. The argument barely changes; the voice does — and that gap is the finding.</description>
+    </item>
+  </channel>
+</rss>

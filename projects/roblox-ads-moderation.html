@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI moderation for ads systems at Roblox: content understanding for adversarial creative and interactive experiences, policy decisioning, evals, human escalation, and auditability.">
+    <title>AI Moderation for Ads Systems at Roblox | Ziyad Mir</title>
+        <meta property="og:title" content="AI Moderation for Ads Systems at Roblox | Ziyad Mir">
+    <meta property="og:description" content="AI moderation for ads systems at Roblox: content understanding for adversarial creative and interactive experiences, policy decisioning, evals, human escalation, and auditability.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ziyadmir.com/projects/roblox-ads-moderation.html">
+    <meta property="og:image" content="https://ziyadmir.com/images/profile-linkedin.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="AI Moderation for Ads Systems at Roblox | Ziyad Mir">
+    <meta name="twitter:description" content="AI moderation for ads systems at Roblox: content understanding for adversarial creative and interactive experiences, policy decisioning, evals, human escalation, and auditability.">
+    <link rel="alternate" type="application/rss+xml" title="Ziyad Mir — Writing" href="/feed.xml">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link href="/shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div id="shared-header"></div>
+
+    <main class="page">
+        <article class="post page-narrow">
+            <a href="/projects.html" class="back-link">&larr; All work</a>
+            <p class="eyebrow">Work · Roblox</p>
+            <h1 class="post-title">AI Moderation for Ads Systems</h1>
+            <p class="post-meta">2025–Present · Moderation and governance</p>
+            <div class="post-tags">
+                <span>Content Understanding</span>
+                <span>AI Moderation</span>
+                <span>Policy Decisioning</span>
+                <span>Evals</span>
+            </div>
+
+            <div class="post-summary">
+                <p>I work on the AI systems that decide whether an ad is allowed to run on Roblox: multimodal models that read adversarial creative and interactive experiences, wired into the policy decisioning, evals, human escalation, and audit trails that make those decisions defensible. This page describes the publicly safe shape of the work, not internal systems or numbers.</p>
+            </div>
+
+            <h2>Why this is the hard version of the problem</h2>
+            <p>Roblox is an ad-supported platform with a famously young audience, which means ads moderation sits at the intersection of two non-negotiable constraints at once: brand safety, which advertisers price, and child safety, which regulators enforce. There is no margin where one can be traded against the other. Moderation here is not a cost center bolted onto the ads business — it is the thing that makes the inventory trustworthy enough to sell at all.</p>
+
+            <p>The content makes it harder still. At YouTube I built systems that read video — content that cooperates, in the sense that it is the same file every time you look at it. Ad creative on Roblox is adversarial: it is produced by parties who sometimes want to be misread, and it can include or lead into interactive experiences whose behavior is not fully visible from their static assets. The read is harder, and the consequences of a wrong read are higher.</p>
+
+            <h2>The shape of the system</h2>
+            <p>Stripped of internal detail, the pipeline turns evidence into decisions. Models read the creative across modalities — visuals, audio, text, the destination it leads to — against policy. The outputs do not act directly; they flow into policy decisioning that produces an explicit, recorded outcome: approve, reject, restrict, or escalate to a human reviewer. Every decision carries its evidence with it, because a moderation decision a platform cannot reconstruct later is a liability, both to advertisers asking why and to regulators asking how.</p>
+
+            <p>The parts I care most about are the governance layers, because they are what let the models be used at all:</p>
+            <ul>
+                <li><strong>Evals as the gate.</strong> A model earns decision scope by demonstrating agreement with human judgment on curated case sets — and keeps that scope only while its disagreement and incident evidence stays inside bounds. I think of this as autonomy earning scope, and it is the operating principle of the whole system.</li>
+                <li><strong>Human escalation as a designed path,</strong> not an exception handler. The interesting design question is which cases route to people, with what evidence attached, and how reviewer decisions flow back into the eval sets as precedent.</li>
+                <li><strong>Auditability as a first-class output.</strong> The decision record is a product surface — for internal review, advertiser communication, and the transparency obligations that come with regimes like the EU's Digital Services Act.</li>
+            </ul>
+
+            <h2>What's next: experience understanding</h2>
+            <p>The frontier I am taking on now is the content you cannot read from outside: the interactive experiences themselves. An experience is a program; much of what it contains only exists when someone plays it. The direction is to put the observer inside the content — train and run agents in the same sandbox the experience runs in, let them explore, and collect artifacts along the way: screenshots, transcripts, event traces, interaction logs. Those artifacts get distilled into an <strong>experience understanding record</strong> — a structured, versioned description of what an experience actually contains and does — that ads suitability, age appropriateness, discovery, and safety systems can all consume.</p>
+
+            <p>It is the same discipline as moment-level video understanding, one generation harder: content you have to inhabit to read, observed by agents instead of encoders. The open research problems — exploration coverage versus cost, evaluating the records themselves, experiences that behave differently when observed — are written up in my <a href="/notes.html#experience-understanding">research notes</a>.</p>
+
+            <h2>The lineage</h2>
+            <p>This work is the third step in one line: <a href="/projects/youtube-flash.html">moment-level video understanding at YouTube</a> (the line of work that later launched publicly as Peak Points), then adversarial ad creative, now interactive experiences. Each generation of content is harder to read, and the decisions riding on the read are more autonomous. Understanding decides what the platform can see; governance decides what the AI is allowed to do about it. The job is building both.</p>
+
+            <nav class="pager">
+                <a href="/projects/youtube-flash.html">&larr; YouTube Flash: where this line started</a>
+                <a href="/notes.html#experience-understanding">The research notes &rarr;</a>
+            </nav>
+        </article>
+    </main>
+
+    <div id="shared-footer"></div>
+    <script src="/components.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Enterprise agents need orchestration, reliability, governance, and platform-level controls before they can run meaningful workflows at scale.">
+    <meta name="description" content="Once an agent can call tools, the problem is distributed systems, not prompt design. Agents need a runtime: state, scopes, approvals, recovery, and a kill switch.">
     <title>Part 4: Agent Orchestration at Scale - Building an Enterprise Platform | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,38 +22,28 @@
                 <span>Platform</span>
             </div>
 
-            <p>The moment an agent can call tools, the problem stops being just prompt design. It becomes distributed systems work. Enterprises need to schedule tasks, isolate execution, manage credentials, stream state, recover from failure, and explain what happened afterward.</p>
+            <p>The moment an agent can call tools, the problem stops being prompt design and becomes distributed systems. You now need to schedule tasks, isolate execution, manage credentials, stream state, recover from failure, and explain afterward what happened. None of this is new computer science. What's new is that the worker in the middle of the workflow is probabilistic and occasionally very confident about the wrong thing.</p>
 
-            <h2>The core idea</h2>
-            <p>Agent orchestration is the runtime layer for AI work. It decides which agent runs, what context it receives, which tools it can call, how long it can execute, where artifacts go, and when a human must intervene.</p>
+            <h2>A runtime, not a long chat</h2>
+            <p>The biggest mental shift is to stop modeling agent work as a conversation and start modeling it as workflow infrastructure. "Let the model keep thinking" is not an operational model once the model can touch real systems. The platform needs the unglamorous machinery: task ids, queues, leases, retries, idempotency keys, artifact storage, tool scopes, approvals, and cancellation that actually cancels.</p>
 
-            <h2>Why it matters</h2>
-            <p>Without orchestration, agents remain demos. They can impress in a narrow screen recording, but they cannot become dependable company infrastructure. The platform has to make agent work observable, resumable, auditable, and constrained.</p>
+            <p>Concretely, a production agent run should move through explicit states — created, context-loaded, planning, waiting-for-approval, executing, blocked, completed, failed, canceled, rolled-back — and every transition should be logged with the actor, the model version, the policy version, and the evidence behind it. That sounds like bureaucracy until the first time you have to resume a half-finished run, or explain to a security review why an agent did what it did. Then it sounds like the whole point.</p>
 
-            <h2>How to use it</h2>
+            <h2>Design for the failure modes</h2>
+            <p>Most of the runtime's value is in the failures it makes survivable. The ones I'd design for first:</p>
             <ul>
-                <li>Separate task intent from execution environment so workflows can run safely in sandboxes or devspaces.</li>
-                <li>Stream intermediate state and artifacts, not just final answers, so humans can supervise long-running work.</li>
-                <li>Build retries, timeouts, approvals, and kill switches as platform primitives.</li>
+                <li>Duplicate execution after a retry or worker crash — this is why idempotency keys are not optional.</li>
+                <li>A tool call that succeeds while the artifact it produced never gets persisted.</li>
+                <li>Partial completion that leaves an external system in an ambiguous state with no record of how far the agent got.</li>
+                <li>An approval granted for one narrow action, quietly reused for a broader one.</li>
+                <li>Runaway loops that burn model budget without ever advancing the task state.</li>
             </ul>
 
+            <p>That last category of failure — approvals stretching beyond what was approved — is the one that connects back to the gateway from Part 2. Permissions need to live in the runtime and the gateway, scoped per task, not granted to "the agent" as a standing identity. An agent doesn't need the access its busiest day requires; it needs the access this task requires.</p>
 
-            <h2>The orchestration layer</h2>
-            <p>Agent orchestration should be built like workflow infrastructure, not like a long-running chat session. The platform needs task ids, queues, leases, retries, idempotency keys, state transitions, artifact storage, tool scopes, approvals, and cancellation. Once agents can touch real systems, "let the model keep thinking" is not an operational model.</p>
+            <p>I don't think the agent future depends on one perfect agent. It depends on the runtime that makes many imperfect agents useful enough to trust — observable, resumable, auditable, and constrained. Build the boring machinery and the demos turn into infrastructure. Skip it and the demos stay demos.</p>
 
-            <p>A production agent run should move through explicit states: created, context-loaded, planning, waiting-for-approval, executing, blocked, completed, failed, canceled, and rolled-back. Each transition should be logged with actor, model version, policy version, and evidence. That makes the system observable to operators and safe to resume after partial failure.</p>
-
-            <h2>Failure modes to design for</h2>
-            <ul>
-                <li>Duplicate execution after retry or worker crash.</li>
-                <li>Tool-call success with missing artifact persistence.</li>
-                <li>Partial completion that leaves external systems in an ambiguous state.</li>
-                <li>Approval granted for one action but reused for a broader action.</li>
-                <li>Runaway loops that burn model budget without progressing task state.</li>
-            </ul>
-
-            <h2>Bottom line</h2>
-            <p>The agent future depends less on one perfect agent and more on the runtime that makes many imperfect agents useful enough to trust.</p>
+            <p>This is Part 4 of the <a href="/blog/ai-for-work-series-index.html">AI-for-Work series</a>. Next: <a href="/blog/ai-for-work-part-5-knowledge-preservation.html">Part 5: Preserving Institutional Knowledge</a>.</p>
         </article>
     </main>
 

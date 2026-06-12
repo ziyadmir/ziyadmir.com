@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Future work may become bounty-based human escalation for AI agents that need judgment, taste, or local context.">
+    <meta name="description" content="A speculation: when agents get stuck, they post small high-context tasks to humans. The future job might be resolving ambiguity at the moment automation stalls.">
     <title>The Bounty Economy: When AI Gets Stuck, Humans Get Paid | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,37 +22,19 @@
                 <span>Speculation</span>
             </div>
 
-            <p>As agents take on more work, they will not fail in clean ways. They will get stuck on ambiguous requirements, missing credentials, weird edge cases, social judgment, and tasks where a human can resolve the blockage in five minutes. That creates a new labor surface: human escalation as a market.</p>
+            <p>This one is speculation — the tag says so — but it is a speculation I keep coming back to. As agents take on more work, they will not fail in clean ways. They will get stuck on ambiguous requirements, missing credentials, weird edge cases, and judgment calls a human could resolve in five minutes. Multiply that by every automated workflow in the economy and you get a new labor surface: human escalation as a market.</p>
 
-            <h2>The core idea</h2>
-            <p>The bounty economy is a model where AI systems post small, high-context tasks to humans when automation hits uncertainty. The human does not own the whole workflow. They provide the missing judgment, permission, correction, or data point that lets the agent continue.</p>
+            <h2>The inversion</h2>
+            <p>The bounty economy is my name for the model where AI systems post small, high-context tasks to humans when automation hits uncertainty. The human does not own the workflow. They supply the missing piece — a judgment, a permission, a correction, a data point — and the agent continues. This quietly inverts the usual picture of knowledge work. Instead of humans delegating to AI, AI delegates exception handling back to humans. The valuable worker becomes the person who can resolve ambiguity quickly and leave the agent with a better path next time.</p>
 
-            <h2>Why it matters</h2>
-            <p>This could invert parts of knowledge work. Instead of humans delegating to AI, AI systems may delegate exception handling back to humans. The valuable worker becomes the person who can resolve ambiguity quickly and leave the agent with a better path next time.</p>
+            <h2>Why it is a market design problem</h2>
+            <p>A handoff market only works if the agent can package the task well. The packet needs the goal, the current state, what has been tried, the relevant context, the constraints, the risk level, and what counts as done. Get that wrong and the human spends the entire bounty reconstructing the problem instead of solving it — which is just outsourcing with extra steps.</p>
 
-            <h2>How to use it</h2>
-            <ul>
-                <li>Design handoff packets with enough context that a human can answer without reconstructing the whole task.</li>
-                <li>Pay for resolved uncertainty, not time spent looking busy.</li>
-                <li>Use each handoff to improve the underlying automation so the same blockage does not repeat forever.</li>
-            </ul>
+            <p>Routing is the interesting technical layer. Some blockers need a domain expert, some need local context, some need a policy call, and some only need a quick sensory check a human can do in seconds. The system should classify the blocker, estimate the value at stake, and route to the cheapest reliable human intervention. And it should pay for resolved uncertainty, not for time spent looking busy.</p>
 
+            <p>The piece that keeps the whole thing from becoming a treadmill is the learning loop. Every handoff is evidence about where the automation is weak. If the same blockage produces the same bounty forever, that is not a market, that is a leak. Repeated human fixes should turn into better tools, better instructions, or eval cases, so the escalations keep moving to the frontier of what the agents cannot yet do.</p>
 
-            <h2>The market design problem</h2>
-            <p>A human handoff market only works if the agent can package the task well. The packet needs goal, current state, failed attempts, relevant context, available tools, constraints, deadline, risk level, and what counts as completion. Otherwise the human spends the bounty reconstructing the problem rather than solving it.</p>
-
-            <p>The interesting technical layer is routing. Some tasks need domain experts, some need local context, some need policy judgment, and some only need a quick sensory check. The system should classify the blocker, estimate value at stake, and route to the cheapest reliable human intervention.</p>
-
-            <h2>Useful primitives</h2>
-            <ul>
-                <li>Blocker taxonomy: missing context, ambiguous requirement, tool failure, policy decision, taste judgment, or external dependency.</li>
-                <li>Escalation budget: maximum human cost justified by the task value.</li>
-                <li>Completion proof: artifact, answer, approval, code diff, or external confirmation.</li>
-                <li>Learning loop: convert repeated human fixes into better tools, instructions, or eval cases.</li>
-            </ul>
-
-            <h2>Bottom line</h2>
-            <p>If AI absorbs the routine path, human value moves to the exception path: judgment, taste, context, and permission at the moment automation stalls.</p>
+            <p>If AI absorbs the routine path, human value concentrates on the exception path: judgment, taste, context, and permission, supplied at exactly the moment automation stalls. I do not know if the bounty mechanics are right. I am fairly confident the exception path is.</p>
         </article>
     </main>
 

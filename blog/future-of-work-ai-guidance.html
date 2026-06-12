@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Engineering work may shift toward guiding cloud agents from lightweight interfaces rather than doing every implementation step manually.">
+    <meta name="description" content="Engineering may shift from typing every line to directing agents that run elsewhere — and the scarce skill becomes judgment over attempts.">
     <title>The Future of Work: AI Guidance and the New Engineering Paradigm | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,37 +22,19 @@
                 <span>Future of Work</span>
             </div>
 
-            <p>The next engineering interface may not look like a heavier IDE. It may look like a command surface for directing agents that run elsewhere: in devspaces, sandboxes, CI systems, browsers, and internal tool environments.</p>
+            <p>I do not think the next engineering interface is a heavier IDE. I think it looks more like a command surface: a lightweight place to direct agents that run somewhere else — in devspaces, sandboxes, CI systems, browsers, internal tools — while the artifacts stream back to you.</p>
 
-            <h2>The core idea</h2>
-            <p>In that world, the engineer becomes less of a keystroke producer and more of a guide. The work is to define intent, constrain the execution, inspect artifacts, redirect failures, and decide when the output is good enough to merge or ship.</p>
+            <h2>From keystrokes to guidance</h2>
+            <p>In that world the engineer produces fewer keystrokes and more direction. The work becomes defining intent, constraining execution, inspecting artifacts, redirecting failures, and deciding when output is good enough to merge. None of that removes engineering skill. It moves the skill — up to the target architecture, the acceptable tradeoffs, the verification strategy, the rollout path, the failure budget.</p>
 
-            <h2>Why it matters</h2>
-            <p>This changes the bottleneck. If agents can generate many implementation attempts, the scarce skill becomes judgment over attempts: choosing the right direction, maintaining system coherence, and preventing a flood of locally plausible changes from degrading the whole codebase.</p>
+            <p>It also changes the bottleneck. If agents can generate many plausible implementation attempts, the scarce thing is judgment over attempts: choosing direction, keeping the system coherent, and stopping a flood of locally reasonable changes from quietly degrading the codebase. Volume of output stops being impressive. Discrimination between outputs becomes the job.</p>
 
-            <h2>How to use it</h2>
-            <ul>
-                <li>Practice writing task specs with clear acceptance criteria and boundaries.</li>
-                <li>Build review workflows that can handle more generated output without lowering standards.</li>
-                <li>Invest in environments where agents can safely run, test, inspect, and produce artifacts.</li>
-            </ul>
+            <p>The day-to-day starts to look like operating a portfolio of bounded tasks. Each task has its context, tools, permissions, status, and artifacts. Your leverage comes from sequencing, from judgment, and — this part is underrated — from knowing when a task should stay manual because verifying the agent's work would cost more than doing it yourself.</p>
 
+            <h2>What compounds</h2>
+            <p>If I had to bet on which skills compound in this regime: writing precise contracts for what good output means, designing verification loops fast enough that review does not become the new bottleneck, choosing which boundaries to automate and which to keep human, and turning every correction into a reusable instruction, test, or tool improvement so the same mistake is never bought twice.</p>
 
-            <h2>The guidance layer</h2>
-            <p>If agents do more execution, the human interface moves toward goal setting, constraint setting, review, and correction. That does not remove engineering skill. It changes where the skill is applied. The human has to define the target architecture, acceptable tradeoffs, verification strategy, rollout path, and failure budget.</p>
-
-            <p>The future workflow looks less like typing every line and more like operating a portfolio of bounded tasks. Each task has context, tools, permissions, status, artifacts, and an owner. The human's leverage comes from sequencing, judgment, and knowing when a task should remain manual because the verification cost is too high.</p>
-
-            <h2>Engineering skills that compound</h2>
-            <ul>
-                <li>Writing precise contracts for what good output means.</li>
-                <li>Designing fast verification loops for code, data, and product behavior.</li>
-                <li>Choosing which system boundaries should be automated and which should stay human-controlled.</li>
-                <li>Turning corrections into reusable instructions, tests, and tool improvements.</li>
-            </ul>
-
-            <h2>Bottom line</h2>
-            <p>Engineering does not disappear. It moves upward into guidance, verification, architecture, and control over increasingly capable execution systems.</p>
+            <p>Engineering does not disappear in this picture. It moves upward — into guidance, verification, architecture, and control over execution systems that keep getting more capable. The people who treat that as a demotion will have a rough decade. It is a promotion, if you take it.</p>
         </article>
     </main>
 

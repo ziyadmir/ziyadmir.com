@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Scaling engineering orgs requires structure, autonomy, communication systems, and process discipline without crushing local ownership.">
+    <meta name="description" content="Scaling an engineering org means adding an operating system, not bureaucracy. Standardize the interfaces, not the implementations.">
     <title>Scaling Engineering Teams: Lessons from Tech Giants | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,37 +22,21 @@
                 <span>Leadership</span>
             </div>
 
-            <p>Engineering scale creates a paradox. Teams need more structure to coordinate, but too much structure kills the judgment that made the early team effective. The work is to add operating system, not bureaucracy for its own sake.</p>
+            <p>I've now seen engineering organizations at most of the sizes that matter — startups of a few hundred people, Uber during hypergrowth, Google at full scale, and a few stops in between. The same paradox shows up everywhere. Teams need more structure to coordinate as they grow, but structure is exactly what kills the judgment and speed that made the early team good. No company gets to skip this tradeoff. You only get to manage it well or badly.</p>
 
-            <h2>The core idea</h2>
-            <p>The scalable organization defines boundaries clearly: ownership, interfaces, review paths, incident response, planning cadence, and decision rights. People should know where they can move independently and where coordination is required.</p>
+            <h2>An operating system, not rules</h2>
+            <p>The framing that has held up best for me: as you scale, you're adding an operating system, not adding rules. An operating system tells a process where it can run freely and where it has to go through a syscall. The organizational equivalent is everyone knowing where their team can move independently and where coordination is mandatory. Bureaucracy is what you get when nobody made that distinction, so everything requires a meeting.</p>
 
-            <h2>Why it matters</h2>
-            <p>Without those boundaries, growth turns into meeting load, duplicated work, unclear accountability, and slow decisions. With them, teams can operate with autonomy because the system tells them how their choices connect to everyone else.</p>
+            <p>The mechanism, concretely, is local autonomy paired with shared contracts. The contracts are the boring stuff: ownership maps, service interfaces, SLOs, review standards, incident process, planning cadence. Every one of them sounds like overhead until you've watched a 2 a.m. incident where nobody can name the owning team. Without the contracts, autonomy becomes fragmentation. With too many of them, coordination becomes the job itself.</p>
 
-            <h2>How to use it</h2>
-            <ul>
-                <li>Create team APIs: what each team owns, what it promises, and how others engage it.</li>
-                <li>Use process to protect focus and quality, not to create performance theater.</li>
-                <li>Keep senior technical leaders close to the architecture as the org grows.</li>
-            </ul>
+            <h2>Standardize the interfaces</h2>
+            <p>The discipline that keeps the balance is standardizing the interfaces, not the implementations. Teams should be free to make local design choices wherever the blast radius is local. What the organization actually needs to be consistent is behavior at the boundaries: what a service promises, who is on call for it, what a launch has to pass, who owns the data, how things get deprecated. Most scaling failures I've watched got this backwards — heavy standardization of implementation details that didn't matter, and total ambiguity at the boundaries that did.</p>
 
+            <p>A few questions I use to check whether an org's operating system is actually working. Can every production service name its owning team and escalation path without anyone opening a spreadsheet? Do cross-team dependencies surface before planning commitments are made, or after? Do architecture reviews remove ambiguity, or just add ceremony? Are platform teams measured by whether anyone adopts what they build, or only by whether they shipped it?</p>
 
-            <h2>The scaling mechanism</h2>
-            <p>Engineering teams scale when local autonomy is paired with shared contracts. The contracts are APIs, ownership maps, SLOs, review standards, incident process, planning cadence, and architectural boundaries. Without them, autonomy becomes fragmentation. With too many of them, coordination becomes bureaucracy.</p>
+            <p>One more thing that quietly goes wrong as orgs grow: the senior technical people drift out of the architecture and into pure coordination, until the people setting direction can no longer evaluate it. The org's operating system needs maintainers the same way its software does, and the maintainers have to still be able to read the code.</p>
 
-            <p>The key is to standardize the interfaces, not every implementation detail. Teams should be free to choose local designs where the blast radius is local, but the organization needs consistent behavior at cross-team boundaries: service contracts, on-call expectations, launch gates, data ownership, and deprecation paths.</p>
-
-            <h2>Org design checks</h2>
-            <ul>
-                <li>Can every production service name its owning team and escalation path?</li>
-                <li>Are cross-team dependencies visible before planning commitments are made?</li>
-                <li>Do architecture reviews remove ambiguity or only add ceremony?</li>
-                <li>Are platform teams measured by adoption and reliability, not by shipped abstractions alone?</li>
-            </ul>
-
-            <h2>Bottom line</h2>
-            <p>The best scaling systems make coordination predictable while leaving room for real engineering judgment.</p>
+            <p>The point of all this structure is mundane: make coordination predictable so engineering judgment has room to operate. When process starts existing for its own sake — when the review is theater and the doc exists for the doc's sake — that isn't scaling. That's scar tissue.</p>
         </article>
     </main>
 

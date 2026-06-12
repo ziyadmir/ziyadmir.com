@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="As AI capability becomes abundant, the scarce layer is the governed production system that decides when agents are allowed to act.">
+    <meta name="description" content="Models can already do the work. The scarce layer is the production system that decides when they are allowed to act: evals, permissions, evidence, and recovery.">
     <title>After Intelligence Gets Cheap, Deployment Control Becomes the Bottleneck | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,17 +22,17 @@
                 <span>Content Understanding</span>
             </div>
 
-            <p>The important AI question is shifting. The hard part is no longer only whether a model can produce a useful answer. The hard part is whether an organization can let that answer touch users, money, production systems, recommendations, ads, code, or safety-critical workflows.</p>
+            <p>The important question about AI is shifting under our feet. For years it was a capability question: can the model produce a useful answer? That question keeps resolving to yes. The harder question — the one I spend my working days on — is whether an organization can let that answer touch anything real: users, money, production systems, ads, code, safety-critical workflows.</p>
 
-            <p>That distinction matters because model capability and deployment permission are different things. A model can understand a video ad, write code, summarize a customer ticket, or operate a tool. That does not mean it should be allowed to publish the ad, merge the code, refund the customer, modify production data, or spend budget. The scarce layer is the production system that decides when intelligence is trusted enough to act.</p>
+            <p>I work on AI moderation for ads systems at Roblox, which puts me at this boundary daily. A model can understand a video ad, write code, summarize a customer ticket, operate a tool. None of that means it should be allowed to publish the ad, merge the code, refund the customer, or spend the budget. Capability and permission are different things, and almost everything interesting now lives in the gap between them. The scarce layer is the production system that decides when intelligence is trusted enough to act.</p>
 
             <h2>Capability is not deployment</h2>
-            <p>The first phase of AI adoption was capability discovery: can the model classify this, draft that, query this system, or plan this workflow? The next phase is deployment control: what action rights should the system receive, under what evidence, under which policy version, with what confidence threshold, and with what recovery path if it is wrong?</p>
+            <p>The first phase of AI adoption was capability discovery: can the model classify this, draft that, plan this workflow? The next phase is deployment control, and it asks uglier questions. What action rights does this system get? Under what evidence? Against which policy version, above what confidence threshold, and with what recovery path when it is wrong? "When," not "if" — at production volume, wrong is a schedule, not a possibility.</p>
 
-            <p>Once agents can use tools, deployment control becomes more important than prompt quality. Prompt instructions are soft control. Production systems need hard control: identity, authorization, schemas, queues, policy engines, rate limits, audit logs, operator workflows, eval gates, and kill switches. The model can propose an action. The system decides whether that action is allowed to affect reality.</p>
+            <p>Once agents can use tools, deployment control matters more than prompt quality. Prompt instructions are soft control: the model is asked nicely. Production systems need hard control: identity, authorization, schemas, queues, policy engines, rate limits, audit logs, operator workflows, eval gates, kill switches. The model proposes an action. The system decides whether that action gets to affect reality.</p>
 
             <h2>The deployment-control stack</h2>
-            <p>A useful deployment-control system usually has seven layers.</p>
+            <p>The systems I have seen work share roughly seven layers.</p>
 
             <ol>
                 <li><strong>Understanding:</strong> extract structured facts from messy inputs: text, images, video frames, audio, tool traces, code diffs, runtime state, user reports, or business metadata.</li>
@@ -44,12 +44,12 @@
                 <li><strong>Monitoring:</strong> track drift, disagreement, false allows, false blocks, latency, cost, queue health, incidents, and rollback triggers by model version and policy version.</li>
             </ol>
 
-            <p>This is executable governance. A policy document says "do not allow harmful content." A deployment-control system says "this asset triggered these policy tags, with this confidence, based on this evidence, under this model and policy version; auto-block above this threshold, route uncertain cases to review, log the decision, and monitor downstream incidents."</p>
+            <p>I think of this as executable governance, and the distinction is worth naming. A policy document says "do not allow harmful content." A deployment-control system says: this asset triggered these policy tags, at this confidence, based on this evidence, under this model version and this policy version — auto-block above this threshold, route uncertain cases to review, log the decision, watch the downstream incidents. The first is a wish. The second is software.</p>
 
             <h2>A concrete shape: ads moderation</h2>
-            <p>Ads moderation is a clean example because the workflow touches money, brand risk, user trust, policy interpretation, and operational throughput. At Roblox-scale or any large UGC platform, the question is not just whether an AI model can look at a creative and say "safe" or "unsafe." The system has to decide whether a paid campaign is allowed to launch.</p>
+            <p>Ads moderation is a clean example because the workflow touches money, brand risk, user trust, policy interpretation, and operational throughput all at once. At the scale of a large UGC platform, the question is not whether a model can look at a creative and say "safe" or "unsafe." The question is whether a paid campaign is allowed to launch.</p>
 
-            <p>A production moderation pipeline should treat every decision as a structured object, not a chat transcript. The input is not only the uploaded creative. It can include keyframes, OCR text, audio transcript, landing destination, advertiser metadata, campaign objective, audience constraints, policy version, prior enforcement history, and live incident feedback. The output should be a policy-grounded decision with evidence, uncertainty, and next action.</p>
+            <p>A production pipeline treats every decision as a structured object, not a chat transcript. The input is not only the uploaded creative — it includes keyframes, OCR text, audio transcript, landing destination, advertiser metadata, campaign objective, policy version, and prior enforcement history. The output is a policy-grounded decision with evidence, uncertainty, and a next action.</p>
 
             <p>The workflow looks roughly like this:</p>
 
@@ -63,7 +63,7 @@
             </ol>
 
             <h2>The data contract</h2>
-            <p>The most important artifact is often the decision contract. It should be boring, typed, reviewable, and durable enough that downstream systems can trust it.</p>
+            <p>The most important artifact is usually the decision contract. It should be typed, reviewable, and durable enough that downstream systems can trust it. It should also be boring — nobody wants a creative audit log.</p>
 
             <pre><code>{
   "review_id": "creative_review_123",
@@ -93,12 +93,12 @@
   }
 }</code></pre>
 
-            <p>This kind of object is what lets AI integrate into real operations. It carries evidence, versioning, action rights, and auditability. It also creates a clean boundary between "the model thinks" and "the production system did."</p>
+            <p>An object like this is what lets AI integrate into real operations. It carries evidence, versioning, action rights, and auditability. More importantly, it draws a clean line between "the model thinks" and "the production system did." When something goes wrong — and something will — that line is the difference between an incident review and an archaeology project.</p>
 
             <h2>Why agents raise the stakes</h2>
-            <p>Agentic systems are not only classifiers. They can call tools, launch jobs, inspect logs, modify files, create assets, open tickets, post comments, change configurations, and trigger workflows. That makes the runtime itself part of the product surface.</p>
+            <p>Classifiers make decisions. Agents take actions: call tools, launch jobs, inspect logs, modify files, create assets, open tickets, change configurations, trigger workflows. The runtime itself becomes part of the product surface.</p>
 
-            <p>In a Roblox-like environment, an agent runtime could create a devspace, use MCP tools, inspect an experience, run a Studio workflow, generate artifacts, and stream task status back to a client. That is powerful. It also creates a much larger permission problem than a normal service call. The system needs to know which tools the agent can access, which accounts it can use, which artifacts it can publish, which actions require approval, and how to stop it when behavior goes outside the intended shape.</p>
+            <p>Picture an agent runtime in a Roblox-like environment: it could create a devspace, use MCP tools, inspect an experience, run a Studio workflow, generate artifacts, and stream task status back to a client. That is powerful. It is also a much larger permission problem than a normal service call. The system has to know which tools the agent can access, which accounts it can use, which artifacts it can publish, which actions require approval, and how to stop it when behavior goes outside the intended shape.</p>
 
             <p>The runtime should therefore expose control primitives as first-class concepts:</p>
 
@@ -112,7 +112,7 @@
             </ul>
 
             <h2>Evals are release gates</h2>
-            <p>For governed AI, evals are not a research appendix. They are the release gate. You need enough instrumentation to answer operational questions before widening autonomy.</p>
+            <p>For governed AI, evals are not a research appendix. They are the release gate. Before widening autonomy, you need instrumentation good enough to answer questions like these:</p>
 
             <ul>
                 <li>What is the false-allow rate on the highest-risk policy categories?</li>
@@ -123,26 +123,15 @@
                 <li>What are the latency and cost envelopes at expected production volume?</li>
             </ul>
 
-            <p>The practical pattern is controlled validation. Start with shadow mode. Compare model decisions against human decisions. Move low-risk cases into assisted review. Then allow narrow automatic decisions where evals, disagreement data, and incident monitoring support it. Autonomy should expand by evidence, not by ambition.</p>
+            <p>The practical pattern is controlled validation. Start in shadow mode and compare model decisions against human decisions. Move low-risk cases into assisted review. Then allow narrow automatic decisions where the evals, the disagreement data, and the incident monitoring all support it. Autonomy should expand by evidence, not by ambition.</p>
 
             <h2>Permissions are a product surface</h2>
-            <p>A strong agent system needs a capability matrix. The same model may be allowed to classify content but not block it, draft code but not merge it, create an experience but not publish it, recommend spend but not allocate budget, or summarize an incident but not page an executive.</p>
+            <p>A strong agent system needs a capability matrix. The same model may be allowed to classify content but not block it, draft code but not merge it, create an experience but not publish it, recommend spend but not allocate budget. Observe, analyze, stage, execute, publish, and recover are different permissions, and conflating them is how systems get into trouble.</p>
 
-            <p>This is where many AI systems stay too fuzzy. They talk about "human in the loop" as a slogan. The real design question is more specific: which action requires which actor, evidence bundle, threshold, approval, and rollback path?</p>
-
-            <p>A simple capability matrix is often enough to expose the architecture:</p>
-
-            <ul>
-                <li><strong>Observe:</strong> read content, logs, configs, tickets, docs, or campaign metadata.</li>
-                <li><strong>Analyze:</strong> produce risk scores, summaries, diffs, classifications, or recommendations.</li>
-                <li><strong>Stage:</strong> create a draft, pull request, pending moderation decision, or sandboxed artifact.</li>
-                <li><strong>Execute:</strong> call a production API, apply a config, submit a decision, or launch a workflow.</li>
-                <li><strong>Publish:</strong> expose a result to users, advertisers, creators, or external systems.</li>
-                <li><strong>Recover:</strong> revert, disable, notify, quarantine, or escalate after an incident.</li>
-            </ul>
+            <p>This is where many AI systems stay fuzzy. "Human in the loop" gets used as a slogan, as if saying it makes a system safe. The real design question is specific and unglamorous: which action requires which actor, which evidence bundle, which threshold, which approval, and which rollback path?</p>
 
             <h2>Operating metrics</h2>
-            <p>The metrics for deployment control are different from normal model-quality metrics. Accuracy still matters, but production trust depends on the whole operating loop.</p>
+            <p>The metrics for deployment control are different from normal model-quality metrics. Accuracy still matters, but production trust depends on the whole operating loop:</p>
 
             <ul>
                 <li><strong>Coverage:</strong> percentage of workflow volume the AI can handle in shadow, assisted, and automatic modes.</li>
@@ -154,15 +143,12 @@
                 <li><strong>Cost and latency:</strong> per-decision cost, p95 decision time, retry rate, and tool-call failure rate.</li>
             </ul>
 
-            <h2>The builder opportunity</h2>
-            <p>The valuable identity is not "AI governance person" in the weak sense of committees, principles, and PDFs. The valuable identity is: I make powerful AI systems shippable.</p>
+            <h2>The work worth doing</h2>
+            <p>There is a weak version of this job — the "AI governance person" who produces committees, principles, and PDFs. I am not interested in that one. The version worth being is the person who makes powerful AI systems shippable.</p>
 
-            <p>That means being able to translate fuzzy risk into concrete systems. It requires enough product judgment to know what action matters, enough policy understanding to encode the boundary, enough ML taste to build useful evals, enough backend skill to make the workflow reliable, and enough operational judgment to give humans control where it matters.</p>
+            <p>That takes an odd mix: enough product judgment to know which actions matter, enough policy understanding to encode the boundary, enough ML taste to build evals that mean something, enough backend skill to make the workflow reliable, and enough operational sense to put humans exactly where they are needed. It is high-leverage work because the leverage is in the boundary. You are not implementing a model call. You are defining the production contract between model capability, business outcome, user trust, and organizational risk. Get that boundary right and many teams can build safely on top of it. Get it wrong and every downstream AI workflow becomes a bespoke exception.</p>
 
-            <p>This is high-leverage engineering work because the leverage is in the boundary. You are not merely implementing a model call. You are defining the production contract between model capability, business outcome, user trust, and organizational risk. If you get that boundary right, many teams can safely build on top of it. If you get it wrong, every downstream AI workflow becomes a bespoke exception.</p>
-
-            <h2>Bottom line</h2>
-            <p>As intelligence gets cheaper, permission to deploy it becomes expensive. The winners will not simply have access to better models. They will own the systems that decide which AI actions are trusted enough to affect reality: eval gates, permissions, evidence, runtime controls, human escalation, monitoring, and recovery.</p>
+            <p>So that is the thesis. As intelligence gets cheap, permission gets expensive. The winners will not simply have better models — everyone will have good models. They will own the systems that decide which AI actions are trusted enough to affect reality: the eval gates, the permissions, the evidence, the runtime controls, the escalation paths, the recovery. That is the layer I am betting my work on.</p>
         </article>
     </main>
 

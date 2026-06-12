@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI adoption needs dashboards, code labs, power-user discovery, and feedback loops that turn scattered usage into organizational learning.">
+    <meta name="description" content="Buying AI tools is easy. Changing how an engineering org works is the hard part — adoption has to be run as a product, learning from its own best users.">
     <title>Part 7: Building AI Observability and Adoption Programs | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,37 +22,23 @@
                 <span>Leadership</span>
             </div>
 
-            <p>Buying AI tools is easy compared with changing how an engineering organization works. Adoption has to be managed as a product: instrumented, supported, taught, iterated, and connected to actual outcomes.</p>
+            <p>Buying AI tools is easy. Changing how an engineering organization works is the part that actually takes effort, and it doesn't happen because someone sends an enthusiastic all-hands email. Adoption has to be run like a product: instrumented, supported, taught, iterated, and connected to outcomes someone can point at.</p>
 
-            <h2>The core idea</h2>
-            <p>A serious AI adoption program combines usage analytics, targeted training, internal examples, office hours, workflow libraries, and a path for power users to influence the platform. It turns isolated experiments into a shared operating model.</p>
+            <h2>See the gradient</h2>
+            <p>The first thing the data shows you — this picks up directly from the traces in Part 3 — is how wide the gap is between shallow and deep usage. Some engineers use AI as a slightly better search box. Others have quietly redesigned entire workflows around it. License dashboards make these two groups look identical. The adoption program exists to see the difference, and then to help more teams climb the gradient instead of hoping they figure it out independently.</p>
 
-            <h2>Why it matters</h2>
-            <p>The gap between shallow and deep AI usage is large. Some engineers use AI as a better search box. Others redesign entire workflows around it. Leadership needs a way to see that gradient and help more teams climb it.</p>
+            <p>The deep users are the most valuable resource in the whole program, and most organizations waste them. They've already discovered, through trial and error on company time, which patterns actually work inside this company — with these codebases, these policies, these tools. The program's job is to find them and turn their local hacks into supported platform capabilities, instead of leaving the same discoveries to be made independently by forty teams.</p>
 
-            <h2>How to use it</h2>
-            <ul>
-                <li>Build dashboards that distinguish casual chat from workflow-changing usage.</li>
-                <li>Use code labs and internal demos to teach patterns that already worked inside the company.</li>
-                <li>Create feedback loops where adoption data directly informs platform investments.</li>
-            </ul>
+            <h2>Run it like reliability work</h2>
+            <p>The operating cadence that works looks a lot like reliability engineering. Review the traces. Find the bottlenecks — missing tools, missing context, permission blockers, policy nobody has clarified. Fix the platform. Publish the pattern. Repeat. Code labs and internal demos work much better when they teach workflows that already succeeded down the hall, rather than vendor demos that succeeded in a video.</p>
 
+            <p>What to measure follows from that cadence. For each workflow, where it sits on the spectrum from manual to assisted to staged-agent to automatic. Whether quality moved: reverts, defects, review burden, incident rate. Whether cycle time moved: time to first draft, to review, to merge, to launch. And what's blocking the next step. Notice the absence of "total tokens consumed" — token counts measure enthusiasm, not value, and they're embarrassingly easy to inflate.</p>
 
-            <h2>The adoption system</h2>
-            <p>AI adoption becomes real when the org can see which workflows improved, which teams are blocked, and which controls are missing. That requires more than a dashboard of token usage. It needs workflow-level instrumentation, power-user discovery, reusable examples, code labs, tool-quality feedback, and a path for turning local hacks into supported platform capabilities.</p>
+            <p>One caution from watching this go wrong: the goal is not to force everyone to use AI, and mandate-flavored programs tend to generate exactly the shallow usage their dashboards then proudly report. The goal is to find where AI genuinely changes the production function and make that change repeatable. Some workflows won't benefit yet. Saying so out loud buys credibility for the ones that do.</p>
 
-            <p>The right operating cadence is similar to reliability work. Review the traces, find the bottlenecks, fix the platform, and publish the pattern. The goal is not to force everyone to use AI. The goal is to identify where AI changes the production function and then make that change repeatable.</p>
+            <p>AI adoption isn't a launch announcement. It's an operating program, and it compounds for the organizations willing to learn from their own best users.</p>
 
-            <h2>Program metrics</h2>
-            <ul>
-                <li>Workflow conversion: manual, assisted, staged-agent, and automatic-agent modes.</li>
-                <li>Quality delta: reverts, defects, review comments, incident rate, and customer-impacting errors.</li>
-                <li>Cycle-time delta: time to first draft, time to review, time to merge, and time to launch.</li>
-                <li>Platform gaps: missing tools, missing context, permission blockers, and unclear policy boundaries.</li>
-            </ul>
-
-            <h2>Bottom line</h2>
-            <p>AI adoption is not a launch announcement. It is an operating program that compounds when the organization learns from its own best users.</p>
+            <p>This is Part 7, the final part of the <a href="/blog/ai-for-work-series-index.html">AI-for-Work series</a>. There's also a companion essay on the mindset underneath it all: <a href="/blog/ai-for-work-move-fast-meets-move-safely.html">When "Move Fast" Meets "Move Safely"</a>.</p>
         </article>
     </main>
 

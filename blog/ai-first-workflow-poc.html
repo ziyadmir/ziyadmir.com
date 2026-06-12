@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Claude Code built an MCP client for NBA stats with human steering, exposing both the leverage and the brittleness of agentic coding.">
+    <meta name="description" content="I had Claude build an MCP client for NBA stats. The code was the easy part — the interesting work was the steering.">
     <title>Proof of Concept: Coding an MCP Client with Claude | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,37 +22,19 @@
                 <span>Prototype</span>
             </div>
 
-            <p>This proof of concept was less about NBA data than about watching an AI coding agent work against a real integration boundary. The interesting part was not that Claude could write code. The interesting part was how much of the work became steering, scoping, verifying, and correcting the path when the system drifted.</p>
+            <p>I gave Claude a small, concrete target: build an MCP client that could pull NBA stats. Not because I needed the stats. I wanted to watch an AI coding agent work against a real integration boundary and see where it broke. The headline finding was not that Claude could write the code — it obviously could. The finding was how much of my time went into steering: scoping the task, verifying outputs, and pulling the implementation back on course when it drifted.</p>
 
-            <h2>The core idea</h2>
-            <p>MCP changes the shape of AI development because it gives assistants a clean way to reach tools and data. Once an agent can inspect an API, call a local server, and iterate on failures, it starts to feel less like autocomplete and more like a junior implementation loop with very high throughput.</p>
+            <h2>What MCP actually changes</h2>
+            <p>MCP gives an assistant a clean way to reach tools and data. Once the agent can inspect an API, call a local server, and iterate on its own failures, the experience stops feeling like autocomplete. It feels closer to a junior engineer with absurd throughput — fast, tireless, and occasionally confidently wrong.</p>
 
-            <h2>Why it matters</h2>
-            <p>The POC also showed the limitation. The agent could move fast, but it still needed a human to define the right outcome, notice when the implementation was becoming overfit, and decide which errors mattered. The leverage came from the combination: AI for fast execution, human judgment for direction and acceptance.</p>
+            <p>The POC forced the agent through the same gauntlet a real integration faces: discover the API shape, implement the protocol, handle configuration, expose a stable tool contract, and produce something another system can actually call. Those are exactly the failure points that show up in larger agent platforms, just in miniature.</p>
 
-            <h2>How to use it</h2>
-            <ul>
-                <li>Use concrete tasks with observable outputs when testing agentic coding workflows.</li>
-                <li>Keep the human loop focused on requirements, failure interpretation, and acceptance criteria.</li>
-                <li>Expect the best results when tools expose clear contracts instead of forcing the model to infer the world from prose.</li>
-            </ul>
+            <h2>Where the human still mattered</h2>
+            <p>The agent moved fast, but it had no opinion about what "done" meant. I had to define the outcome, notice when the implementation was overfitting to the happy path, and decide which errors were worth fixing and which were noise. AI coding looks magical when the acceptance test is loose. It gets brittle the moment the acceptance test is real. The model is great inside a frame; the human still has to build the frame.</p>
 
+            <p>A few things I would do differently next time. Define the external tool contract before letting the agent touch internals. Give it a small set of real tests instead of prose requirements — prose is a suggestion, a failing test is a fact. And keep "working demo" and "production ready" as separate gates: auth, rate limits, logging, and error handling do not come free just because the demo runs.</p>
 
-            <h2>What the POC really tested</h2>
-            <p>The MCP client was less interesting as code generation and more interesting as an integration test for agentic work. It forced the assistant to discover an API shape, implement a protocol, handle credentials or configuration, expose a stable tool contract, and produce something another system could call. Those are the same failure points that show up in larger agent platforms.</p>
-
-            <p>The lesson is that AI coding looks magical when the acceptance test is loose and brittle when the acceptance test is real. The human has to provide the target contract, the verification path, and the taste for what should be simplified. The model can move fast inside that frame.</p>
-
-            <h2>Better POC design</h2>
-            <ul>
-                <li>Define the external tool contract before asking the agent to implement internals.</li>
-                <li>Give the agent a small set of real tests, not only prose requirements.</li>
-                <li>Record every human correction as a reusable instruction or eval case.</li>
-                <li>Separate working demo from production readiness: auth, rate limits, logging, and error handling are separate gates.</li>
-            </ul>
-
-            <h2>Bottom line</h2>
-            <p>The lesson was simple: MCP is not magic, but it gives agents the handles they need to become useful builders instead of isolated chat interfaces.</p>
+            <p>So MCP is not magic. But it gives agents the handles they need to be builders instead of chat windows, and that turns out to be most of what was missing.</p>
         </article>
     </main>
 

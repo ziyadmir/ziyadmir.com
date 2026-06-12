@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A systems guide to governed AI deployment in large engineering organizations.">
+    <meta name="description" content="A series on making AI actually useful inside large engineering organizations: IDEs, MCP gateways, observability, orchestration, and the control systems underneath.">
     <title>AI-for-Work: A Systems Guide to Governed AI Deployment | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,44 +22,48 @@
                 <span>Engineering Systems</span>
             </div>
 
-            <p>Enterprise AI adoption is not mainly a model-selection problem. It is an operating-system problem: tools, gateways, observability, orchestration, knowledge preservation, and adoption loops that let thousands of people work differently without losing control.</p>
+            <p>I've spent the last several years inside large companies trying to make AI useful under real constraints: security review, privacy law, production systems that cannot be casually broken, and thousands of engineers with different appetites for change. This series is what I think I've learned.</p>
 
-            <p>The through-line is deployment control. Strong models are becoming available to everyone. The durable advantage is the system that decides which agents can access which context, call which tools, produce which artifacts, and affect which production surfaces.</p>
+            <p>The short version: enterprise AI adoption is not mainly a model-selection problem. The models are good and getting better, and everyone has access to roughly the same ones. The hard part is the operating system around them — the tools, gateways, observability, orchestration, and adoption loops that let a large organization work differently without losing control of what its AI is allowed to do.</p>
+
+            <p>That last clause is the through-line. The durable advantage isn't the model. It's the system that decides which agents can see which context, call which tools, produce which artifacts, and touch which production surfaces. I think of it as deployment control, and every post in the series is a layer of it.</p>
 
             <h2>Posts in this series</h2>
             <div class="post-card-list">
                 <article class="post-card">
                     <h3><a href="/blog/ai-for-work-part-1-ai-ide.html">Part 1: Get Everyone an AI IDE</a></h3>
-                    <p>Start with the daily developer surface before reaching for elaborate agent platforms.</p>
+                    <p>The unglamorous first move: put AI at the point of work before building anything fancier.</p>
                 </article>
                 <article class="post-card">
                     <h3><a href="/blog/ai-for-work-part-2-mcp-gateway.html">Part 2: Build a Centralized MCP Gateway</a></h3>
-                    <p>Connect AI tools to internal context through one audited and permissioned layer.</p>
+                    <p>Give agents access to internal context through one audited, permissioned layer instead of a hundred local hacks.</p>
                 </article>
                 <article class="post-card">
                     <h3><a href="/blog/ai-for-work-part-3-ai-observability.html">Part 3: From Proxy Logs to Intelligence</a></h3>
-                    <p>Use request streams to understand adoption, risk, productivity, and cost.</p>
+                    <p>The request stream already tells you who's using AI well, where it fails, and what it costs. Read it.</p>
                 </article>
                 <article class="post-card">
                     <h3><a href="/blog/ai-for-work-part-4-agent-orchestration.html">Part 4: Agent Orchestration at Scale</a></h3>
-                    <p>Turn agents from demos into a managed runtime with state, permissions, and recovery.</p>
+                    <p>Agents that touch real systems need a runtime: state, permissions, recovery, and a kill switch.</p>
                 </article>
                 <article class="post-card">
                     <h3><a href="/blog/ai-for-work-part-5-knowledge-preservation.html">Part 5: Preserve Institutional Knowledge</a></h3>
-                    <p>Keep the reasoning and decisions that future humans and agents will need.</p>
+                    <p>Keep the reasoning behind decisions, because agents without context start from folklore.</p>
                 </article>
                 <article class="post-card">
                     <h3><a href="/blog/ai-for-work-part-6-work-as-code.html">Part 6: Work-as-Code</a></h3>
-                    <p>Expose repeated engineering tasks as small callable interfaces.</p>
+                    <p>Turn repeated engineering chores into small, typed, owned interfaces that agents can call.</p>
                 </article>
                 <article class="post-card">
                     <h3><a href="/blog/ai-for-work-part-7-engineering-org-needs.html">Part 7: Observability and Adoption Programs</a></h3>
-                    <p>Turn scattered AI usage into measurable organizational learning.</p>
+                    <p>Adoption is a product, not an announcement. Find your best users and learn from them.</p>
                 </article>
             </div>
 
             <h2>How to read it</h2>
-            <p>The series is a practical map for making AI useful inside institutions that have real security, privacy, reliability, and adoption constraints. Read it as a stack: IDE surface, MCP gateway, observability, orchestration, knowledge memory, workflow APIs, and adoption loops.</p>
+            <p>The posts are written in order and the order matters: each layer assumes the one before it. IDE surface, then the gateway that connects it to context, then observability over what's flowing, then the runtime for agents, then memory, then workflow interfaces, then the program that ties adoption together. You can dip into any single part, but the argument is the stack.</p>
+
+            <p>There's also a companion essay, <a href="/blog/ai-for-work-move-fast-meets-move-safely.html">When "Move Fast" Meets "Move Safely"</a>, on the mindset shift underneath all of this — how to keep startup speed inside an institution that has real downside to protect.</p>
         </article>
     </main>
 

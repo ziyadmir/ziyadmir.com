@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Engineering tasks should become small programmable interfaces that AI agents can invoke instead of informal human-only rituals.">
+    <meta name="description" content="A surprising amount of engineering work is trapped in human procedure. Work-as-code turns those rituals into small, typed, owned interfaces agents can call.">
     <title>Part 6: Work-as-Code: The Micro-MCP Revolution | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,37 +22,28 @@
                 <span>Workflow</span>
             </div>
 
-            <p>A lot of engineering work is trapped in human procedure: check this dashboard, update that config, file this ticket, run this script, paste the result somewhere. Work-as-code means turning those repeated procedures into explicit callable interfaces.</p>
+            <p>A surprising amount of engineering work is trapped in human procedure: check this dashboard, update that config, file the ticket, run the script, paste the result into the right channel. Nobody designed these rituals. They accreted, and now they live in the heads of whoever has been on the team longest. Work-as-code is the practice of turning them into explicit, callable interfaces. ("Revolution" is a big word for what I'm about to describe, which is mostly writing small wrappers with schemas. But the cumulative effect earns it.)</p>
 
-            <h2>The core idea</h2>
-            <p>Micro-MCPs are small task surfaces for agents. They do not need to be grand platforms. A good micro-MCP exposes one useful workflow with clear inputs, outputs, permissions, and failure modes. That is enough to turn an ambiguous chore into an automatable unit of work.</p>
+            <p>The underlying observation is simple: agents are only as useful as the actions available to them. If the work stays hidden in tribal knowledge and browser clicking, agents stall at the edge of every workflow. If the work is exposed as code, agents can compose it. The bottleneck isn't model intelligence. It's the interface surface of your company.</p>
 
-            <h2>Why it matters</h2>
-            <p>This matters because AI agents are only as useful as the actions available to them. If the company leaves work hidden in tribal knowledge and browser clicking, agents stall. If the company exposes work as code, agents can compose it.</p>
+            <h2>Micro-MCPs should be boring</h2>
+            <p>I call these interfaces micro-MCPs, and the prefix is doing real work. They don't need to be platforms. A good one wraps exactly one workflow boundary — open a rollout ticket, fetch a service dependency graph, run a migration precheck, stage a report — with a schema, validation, authorization, dry-run behavior, and an owner. The agent supplies intent and context; the tool supplies guardrails and a consistent contract. The division of labor matters: the probabilistic part proposes, the deterministic part constrains.</p>
 
-            <h2>How to use it</h2>
+            <p>The tempting wrong answer is "just let the agent use the UI." It demos well and it inherits none of your controls — no schema, no authorization boundary, no dry-run, no owner, and it breaks the day someone moves a button. A narrow typed tool is less impressive and more durable, which is a trade I'll take every time.</p>
+
+            <h2>Design constraints that have held up</h2>
             <ul>
-                <li>Start with repetitive engineering tasks that already have clear human playbooks.</li>
-                <li>Make every tool return structured results and actionable error messages.</li>
-                <li>Keep ownership explicit so each micro-MCP has a team accountable for correctness and access control.</li>
+                <li>Many narrow tools beat one broad admin tool with ambiguous authority. Ambiguous authority is exactly what you don't want to hand a model.</li>
+                <li>Side effects should be explicit in the contract: read, dry-run, stage, execute, notify, delete. (This is the same read/stage/mutate discipline from the gateway in Part 2, pushed down to each tool.)</li>
+                <li>Results should be structured enough that another agent can compose them and a human can review them.</li>
+                <li>Every tool needs an owner, a version, and a deprecation path — otherwise you're building a new kind of legacy system, just faster.</li>
             </ul>
 
+            <p>Where to start is less mysterious than it sounds: take the repetitive tasks that already have a clear human playbook. If you can write the runbook, you can write the tool. The playbook was always code; it was just compiled into a person.</p>
 
-            <h2>The interface pattern</h2>
-            <p>Work-as-code means turning repeated human workflows into narrow, typed interfaces that agents can call. The right abstraction is not "let the agent use the UI." It is a small tool with a schema, validation, authorization, dry-run behavior, and an owner. That turns tribal operating knowledge into something testable.</p>
+            <p>I don't think enterprise automation converges on one giant agent that does everything. It converges on a growing library of small, trustworthy work interfaces — and on the unglamorous question of who maintains them, which is a real question, because this library becomes infrastructure the moment anything depends on it.</p>
 
-            <p>Micro-MCP tools should be boring. They should wrap one workflow boundary: open a rollout ticket, fetch a service dependency graph, run a migration precheck, request a policy review, create a feature-flag cleanup plan, or stage a report. The agent supplies intent and context; the tool supplies guardrails and a consistent operational contract.</p>
-
-            <h2>Design constraints</h2>
-            <ul>
-                <li>Prefer many narrow tools over one broad admin tool with ambiguous authority.</li>
-                <li>Make side effects explicit: read, dry-run, stage, execute, notify, or delete.</li>
-                <li>Return structured results that can be composed by another agent or reviewed by a human.</li>
-                <li>Track owner, version, and deprecation path for every workflow interface.</li>
-            </ul>
-
-            <h2>Bottom line</h2>
-            <p>The future of enterprise automation is not one giant agent. It is a growing library of small, trustworthy work interfaces.</p>
+            <p>This is Part 6 of the <a href="/blog/ai-for-work-series-index.html">AI-for-Work series</a>. Next: <a href="/blog/ai-for-work-part-7-engineering-org-needs.html">Part 7: Building AI Observability and Adoption Programs</a>.</p>
         </article>
     </main>
 

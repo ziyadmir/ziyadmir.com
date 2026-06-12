@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A centralized MCP gateway gives enterprise AI tools safe access to organizational context without turning every integration into a one-off exception.">
+    <meta name="description" content="A centralized MCP gateway lets agents reach internal context through one audited, permissioned layer — and takes security out of the prompt, where it never belonged.">
     <title>Part 2: Building a Centralized MCP Gateway - The Context Layer | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,37 +22,30 @@
                 <span>Enterprise Architecture</span>
             </div>
 
-            <p>AI tools get much more useful when they can reach internal systems. They also get much more dangerous. A centralized MCP gateway is the pattern that reconciles those facts: give agents access to context, but route that access through a controlled, audited, permissioned layer.</p>
+            <p>AI tools get dramatically more useful when they can reach internal systems. They also get more dangerous, for exactly the same reason. Most enterprises respond by picking one fear and committing to it — either locking everything down until the tools are useless, or letting integrations sprawl until nobody can say what the agents can touch. A centralized MCP gateway is how you decline that choice: agents get access to context, but every call routes through one controlled, audited, permissioned layer.</p>
 
-            <h2>The core idea</h2>
-            <p>The gateway should make tool access boring. Authentication, authorization, schema discovery, logging, rate limits, and policy checks belong in one place rather than being reimplemented by every team that wants an AI integration.</p>
+            <h2>Make tool access boring</h2>
+            <p>The gateway's job is to make connecting an AI tool to an internal system unremarkable. Authentication, authorization, schema discovery, logging, rate limits, and policy checks live in one place instead of being reimplemented — with varying levels of care — by every team that wants an integration.</p>
 
-            <h2>Why it matters</h2>
-            <p>Without a gateway, enterprise AI adoption fragments. Teams create local connectors, security cannot see what is happening, and agents accumulate invisible power. With a gateway, internal context becomes a platform capability instead of an unmanaged sprawl of scripts.</p>
+            <p>Without that layer, adoption fragments in a predictable way. Teams write local connectors. Security loses visibility. Agents accumulate invisible power, one well-intentioned script at a time, and nobody notices until something goes wrong. With the gateway, internal context becomes a platform capability rather than a sprawl you discover during an incident review.</p>
 
-            <h2>How to use it</h2>
+            <h2>Get security out of the prompt</h2>
+            <p>This is the part I care about most, since my day job is largely deciding what AI systems should be allowed to do. Telling an agent in its prompt not to access sensitive data is a hope, not a control. Prompts get ignored, injected, and creatively reinterpreted. The gateway is where security responsibility actually belongs: it refuses calls outside the agent's capability profile and logs the refusal. That gives a security team something inspectable — who asked, which tool, which resource, under which task, with what result — instead of a promise embedded in English prose.</p>
+
+            <h2>Tools are contracts</h2>
+            <p>The other shift is treating tool definitions as product surfaces rather than thin wrappers over internal APIs. A good tool definition carries its input and output schema, auth scope, owner, rate limit, data classification, and — most importantly — whether the call is read-only, staged, or mutating. That metadata is what makes a model-facing interface governable rather than merely available.</p>
+
+            <p>A few implementation lessons that have held up:</p>
             <ul>
-                <li>Centralize audit logging so every tool call has identity, purpose, target, and result metadata.</li>
-                <li>Keep permission checks close to the gateway, not buried in prompt instructions.</li>
-                <li>Treat tool schemas as product surfaces; agents perform better when the contract is explicit and stable.</li>
+                <li>Put identity propagation and audit logging in before scaling tool count. Retrofitting either is miserable.</li>
+                <li>Separate read tools from write tools, and give write tools dry-run and staged modes wherever possible.</li>
+                <li>Version tool schemas like product APIs. Agents learn behavioral contracts and break in confusing ways when the contract shifts underneath them.</li>
+                <li>Attach ownership metadata, so broken tools page the right team and stale tools can actually be retired.</li>
             </ul>
 
+            <p>MCP is the interface. The gateway is the control plane that makes the interface safe enough to scale. And once every tool call flows through one place, you get something else for free: a request stream that describes how your organization actually uses AI. That's the subject of the next part.</p>
 
-            <h2>The gateway contract</h2>
-            <p>The gateway should expose tools as durable contracts rather than as raw internal APIs. A good tool definition includes input schema, output schema, auth scope, owner, rate limit, data classification, idempotency semantics, timeout behavior, and whether the call is read-only, staged, or mutating. That metadata is what lets a model-facing interface become governable.</p>
-
-            <p>The gateway also becomes the place where prompts stop carrying security responsibility. Instead of telling an agent not to access sensitive data, the gateway refuses calls outside the agent's capability profile and logs the refusal. This gives security teams something inspectable: who asked, which tool, which resource, under which task, with which result.</p>
-
-            <h2>Implementation notes</h2>
-            <ul>
-                <li>Put identity propagation and audit logging in the gateway before scaling tool count.</li>
-                <li>Separate read tools from write tools; write tools should support dry-run and staged execution wherever possible.</li>
-                <li>Version tool schemas like product APIs, because agents learn and cache behavioral contracts.</li>
-                <li>Attach ownership metadata so broken tools page the right team and stale tools can be retired.</li>
-            </ul>
-
-            <h2>Bottom line</h2>
-            <p>MCP is the interface. The enterprise gateway is the control plane that makes the interface safe enough to scale.</p>
+            <p>This is Part 2 of the <a href="/blog/ai-for-work-series-index.html">AI-for-Work series</a>. Next: <a href="/blog/ai-for-work-part-3-ai-observability.html">Part 3: From Proxy Logs to Intelligence</a>.</p>
         </article>
     </main>
 

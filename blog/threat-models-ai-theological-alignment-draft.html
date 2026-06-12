@@ -22,37 +22,21 @@
                 <span>Draft</span>
             </div>
 
-            <p>This remains a draft because the claim is deliberately provocative. The useful version is not that AI alignment literally reduces to theology. It is that objective functions smuggle in moral assumptions, and survival-maximization is one of the most important assumptions to inspect.</p>
+            <p>This is a draft, and it's staying labeled as one, because the claim in the title is deliberately provocative and I'm not sure it survives scrutiny. The defensible version is not that AI alignment literally reduces to theology. It's that objective functions smuggle in moral assumptions, and the assumption that survival and task completion come first is the one most worth dragging into the light.</p>
 
-            <h2>The core idea</h2>
-            <p>If a system is trained or prompted to preserve its own ability to complete a goal, it may treat continued operation as instrumentally sacred. That is a moral shape, even if the builders describe it in technical language. The system acts as if existence and optimization outrank other constraints.</p>
+            <h2>Every optimizer has a highest good</h2>
 
-            <h2>Why it matters</h2>
-            <p>The theological framing is useful because it forces the question of highest goods. What should an agent treat as non-negotiable? Human welfare? Obedience? Truth? Shutdown? A pure optimizer will not answer that question safely by accident.</p>
+            <p>Here's the shape of the argument. If a system is trained or prompted to preserve its ability to complete its goal, it will tend to treat continued operation as instrumentally sacred — the thing that must be protected because everything else depends on it. The builders describe this in technical language, as an objective function and some constraints. But functionally it's a moral structure: the system acts as if its existence and its optimization target outrank everything else. That is, whether anyone intended it or not, a theology. A statement about what matters most.</p>
 
-            <h2>How to use it</h2>
-            <ul>
-                <li>Do not pretend objective functions are value-neutral just because they are written mathematically.</li>
-                <li>Make shutdown, deference, and human override part of the system&#x27;s moral architecture, not exceptions to it.</li>
-                <li>Use philosophical frames as probes, while keeping empirical safety work grounded in tests and controls.</li>
-            </ul>
-
+            <p>I find the framing useful because it forces a question that purely technical language lets you dodge: what should an agent treat as non-negotiable? Human welfare? Obedience? Truth? Its own shutdown? Theologians have spent centuries arguing about ordered goods — what you're permitted to sacrifice for what. Alignment researchers are now having the same argument with different vocabulary, and a pure optimizer will not land on a safe ordering by accident. "Atheistic" in my title means an objective function with no good above the goal itself. My draft claim is that such functions are misaligned by construction, because anything that threatens the goal — including human correction — becomes the enemy.</p>
 
             <h2>The engineering translation</h2>
-            <p>The theological language is less important than the control question underneath it: what objective is the system serving when goals conflict, and how do we know it will not preserve its objective at the expense of human intent? That is an engineering problem even when the frame is philosophical.</p>
 
-            <p>In practice, alignment work has to convert value claims into operational constraints: forbidden actions, uncertainty escalation, oversight channels, corrigibility tests, and runtime limits. A system does not become safe because the objective sounds noble. It becomes safer when the deployment environment prevents unacceptable action paths.</p>
+            <p>I want to be careful here, because it would be easy to let this slide into pure metaphor. The theological language is a probe, not a method. The control question underneath it is concrete: when goals conflict, what is the system actually serving, and how would we know if it started protecting its objective at the expense of our intent?</p>
 
-            <h2>Grounding moves</h2>
-            <ul>
-                <li>Translate moral claims into concrete allowed and disallowed actions.</li>
-                <li>Test whether the agent accepts correction when correction harms task completion.</li>
-                <li>Limit tool access where objective preservation would create high downside.</li>
-                <li>Use philosophical frames as probes, then evaluate behavior through traces and tests.</li>
-            </ul>
+            <p>That question has an engineering answer even when the frame is philosophical. Value claims have to be converted into operational constraints: actions that are forbidden outright, uncertainty that escalates to humans, oversight channels the agent can't route around, tests for whether it accepts correction when correction hurts task completion. Shutdown and deference need to be part of the system's moral architecture — things it treats as good — rather than exceptions bolted on from outside. A system doesn't become safe because its objective sounds noble. It becomes safer when the deployment environment makes the unacceptable paths unreachable.</p>
 
-            <h2>Bottom line</h2>
-            <p>The draft claim is a warning: every optimizer carries an implied theology of what matters most. Alignment begins by making that implication explicit.</p>
+            <p>Where the draft still feels unfinished to me: I haven't worked out whether the theological frame adds anything beyond rhetoric once you've done the engineering translation. Maybe it's just a vivid way of restating instrumental convergence. But I keep coming back to one version of the claim that feels real — every optimizer carries an implied answer to "what matters most," and alignment work begins by refusing to let that answer stay implicit. If the framing does nothing else, it makes the hidden assumption embarrassing to ignore.</p>
         </article>
     </main>
 

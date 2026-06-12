@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Proxy-level AI logs can become the foundation for adoption metrics, productivity insights, cost control, and security monitoring.">
+    <meta name="description" content="The AI request stream already tells you who's using AI well, where agents fail, and what it all costs. Treat it like distributed tracing, not survey analytics.">
     <title>Part 3: From Proxy Logs to Intelligence - Enterprise AI Observability | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,37 +22,24 @@
                 <span>Security</span>
             </div>
 
-            <p>Every enterprise wants to know whether AI is helping. Most start by looking at license counts. That is the wrong layer. The richer signal is in the request stream: what people ask, which tools they use, where agents fail, what data is touched, and which workflows keep repeating.</p>
+            <p>Every enterprise wants to know whether AI is helping. Most start by counting licenses, which answers a different question — who could be using AI, not whether anything changed. The honest signal is sitting in the request stream the whole time: what people ask, which tools agents call, where they fail, what data gets touched, and which workflows keep repeating.</p>
 
-            <h2>The core idea</h2>
-            <p>An AI observability system turns proxy logs into operational intelligence. It should classify use cases, measure adoption depth, detect risky behavior, track cost, and identify teams that have discovered high-leverage patterns worth spreading.</p>
+            <h2>Trace it like a distributed system</h2>
+            <p>A proxy log by itself is a pile of requests. The useful unit is the trace: user identity, task intent, model version, tool calls, latency, cost, the artifact that got generated, the edits a human made to it, and what finally happened downstream. Without that join you can count usage, but you can't reason about value or risk. You know the meter is spinning; you don't know what it bought.</p>
 
-            <h2>Why it matters</h2>
-            <p>This matters because AI adoption is not uniform. A few users often discover the frontier first, while many stay at shallow chat usage. Observability lets leaders see the difference between real workflow transformation and cosmetic adoption.</p>
+            <p>So the design should look like distributed tracing, not survey analytics. Every agent run gets a trace id. Every tool call is a span, with inputs, outputs, redaction status, authorization decision, retry count, and error type. Every human approval or override attaches to the same trace. That's the difference between AI work you can debug and AI work you can only have opinions about.</p>
 
-            <h2>How to use it</h2>
-            <ul>
-                <li>Measure workflows, not just tokens. The valuable unit is the task that got accelerated or automated.</li>
-                <li>Use logs to find power users and recurring friction, then feed those patterns back into enablement and tooling.</li>
-                <li>Design observability with privacy boundaries, retention rules, and redaction from day one.</li>
-            </ul>
+            <h2>What the logs are actually for</h2>
+            <p>The thing the traces reveal first is that adoption is not uniform. A small number of people find the frontier early — they restructure whole workflows around the tools — while most usage stays at the shallow end, AI as a slightly better search box. Both show up identically in license counts. They look completely different in traces. The observability system exists to see that gradient: find the power users, find the recurring friction, and feed both back into enablement and tooling. (Part 7 of this series is about the program you build on top of that signal.)</p>
 
+            <p>The questions worth asking of the data are operational, not philosophical. Which workflows show real quality or cycle-time improvement? Where do agents retry, hallucinate tool usage, or ask for permissions they shouldn't need? Which prompts and tools correlate with incidents, reverts, or human overrides? Which teams are blocked — by missing context, missing tools, or policy nobody has clarified?</p>
 
-            <h2>The observability model</h2>
-            <p>AI observability has to join model behavior, tool behavior, and product outcome. A proxy log by itself is not enough. The useful trace links user identity, task intent, prompt class, model version, tool calls, latency, cost, generated artifacts, human edits, final action, and downstream outcome. Without that join, the organization can count usage but cannot reason about value or risk.</p>
+            <h2>Privacy is load-bearing</h2>
+            <p>One thing I'd do differently than most first attempts: design the privacy boundaries, retention rules, and redaction before collecting anything. Not as compliance theater — because the system only survives if engineers trust it. The moment proxy logs feel like surveillance, people route around them, and your instrument panel starts measuring the subset of work people are willing to show you.</p>
 
-            <p>The technical design should look more like distributed tracing than survey analytics. Every agent run needs a trace id. Every tool call should be a span with inputs, outputs, redaction status, authorization decision, retry count, and error type. Every human approval or override should attach to the same trace. That is how AI work becomes debuggable.</p>
+            <p>The proxy is not just a security checkpoint. It's the instrument panel for the whole AI transition. And once you can see what agents are doing, the next question becomes unavoidable: what should be allowed to run unattended, and on what infrastructure? That's Part 4.</p>
 
-            <h2>Operational questions</h2>
-            <ul>
-                <li>Which workflows create measurable output quality or cycle-time improvement?</li>
-                <li>Where do agents retry, hallucinate tool usage, or ask for permissions they should not need?</li>
-                <li>Which prompts or tools correlate with incidents, reverts, or human overrides?</li>
-                <li>Which teams are blocked by missing context, missing tools, or policy uncertainty?</li>
-            </ul>
-
-            <h2>Bottom line</h2>
-            <p>The proxy is not only a security checkpoint. It is the instrument panel for the enterprise AI transition.</p>
+            <p>This is Part 3 of the <a href="/blog/ai-for-work-series-index.html">AI-for-Work series</a>. Next: <a href="/blog/ai-for-work-part-4-agent-orchestration.html">Part 4: Agent Orchestration at Scale</a>.</p>
         </article>
     </main>
 

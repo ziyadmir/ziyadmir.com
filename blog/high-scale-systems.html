@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="High-scale systems require multi-dimensional architecture across throughput, data, geography, operations, and organizational ownership.">
+    <meta name="description" content="Notes on operating ultra-high-scale systems: predictable degradation, control-plane discipline, and why ownership is part of the architecture.">
     <title>Designing Systems for Ultra-High Scale | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,37 +22,27 @@
                 <span>Scale</span>
             </div>
 
-            <p>Scale is not one number. A system can be hard because it has too many requests, too much data, too many regions, too many dependencies, too many operators, or too many ways to fail. Ultra-high scale is usually several of those problems at once.</p>
+            <p>Scale is not one number. A system can be hard because it gets too many requests, holds too much data, spans too many regions, leans on too many dependencies, or has too many people operating it. The systems that actually hurt are several of these at once, and the fix for one usually makes another worse.</p>
 
-            <h2>The core idea</h2>
-            <p>The architecture has to separate concerns that small systems can blur together: read and write paths, control plane and data plane, hot and cold data, synchronous and asynchronous work, local failure and global recovery.</p>
+            <p>At Uber I worked on Rosetta, the internationalization service, which at peak served over a million requests per second. Nothing in it was clever. What made it work was a pile of boring decisions about what was allowed to fail and how. That part of high-scale work doesn't show up in architecture diagrams, so it's the part I want to write down.</p>
 
-            <h2>Why it matters</h2>
-            <p>At high scale, small inefficiencies become bills, rare bugs become regular incidents, and unclear ownership becomes operational risk. The system has to be designed for predictable degradation, not just happy-path throughput.</p>
+            <h2>Rare becomes routine</h2>
+            <p>Small systems forgive you for blurring things together: read paths and write paths, control plane and data plane, hot data and cold data, synchronous and asynchronous work. Big systems don't. Small inefficiencies become real money. A bug that fires once in ten million requests fires every few seconds. "Rare" stops being a defense and becomes a schedule.</p>
 
-            <h2>How to use it</h2>
-            <ul>
-                <li>Define the scaling dimension before choosing the architecture; throughput, latency, and consistency push toward different designs.</li>
-                <li>Build observability and load-shedding before the system needs them desperately.</li>
-                <li>Keep ownership boundaries as explicit as service boundaries.</li>
-            </ul>
+            <p>That shifts the design question. It's no longer "how fast is this on the happy path?" It's "what does degradation look like, and is it predictable?" A system that gets gradually worse under load is operable. A system that's great until it falls off a cliff is an incident review that hasn't picked its date yet.</p>
 
+            <h2>The question I ask every dependency</h2>
+            <p>If I had to compress the discipline into one question, it's this: what happens to the hot path when this thing is down? Not slow — down. Config service, feature flags, experiment allocation, rate limits, routing policy. Each of these is harmless until someone makes it a synchronous call in the serving path, at which point a control-plane hiccup becomes a global outage.</p>
 
-            <h2>The control-plane split</h2>
-            <p>Ultra-high-scale systems usually fail when control-plane assumptions leak into the data plane. The data plane needs to keep serving under partial failure, stale config, regional degradation, and dependency slowness. The control plane can be slower and more consistent, but it must not become a hard dependency on the hot path unless the blast radius is understood.</p>
+            <p>The control plane is allowed to be slow and consistent. The data plane has to keep serving through stale config, partial failure, and dependency slowness. So you decide, explicitly, which decisions are made synchronously, which are cached, which are eventually consistent, and what the safe default is when the answer isn't available. If nobody on the team can say what the service does with a stale read, the real answer is usually "something surprising, at 3am."</p>
 
-            <p>The architectural discipline is to define which decisions are made synchronously, which are cached, which are eventually consistent, and which can degrade safely. Rate limits, load shedding, feature flags, experiment allocation, and routing policy all become dangerous when the service cannot answer "what happens if this control dependency is down?"</p>
+            <h2>Ownership is part of the architecture</h2>
+            <p>The lesson that took me longest: unclear ownership fails the same way an unclear interface does. At sufficient scale, the org chart is a runtime dependency. When a metric degrades and three teams each plausibly own the fix, the fix happens slowly, and slow fixes at scale compound into risk. Ownership boundaries deserve the same explicitness as service boundaries, and they should usually be the same boundaries.</p>
 
-            <h2>Design checklist</h2>
-            <ul>
-                <li>Separate hot-path serving from config authoring and policy computation.</li>
-                <li>Define stale-read behavior and safe defaults for every control input.</li>
-                <li>Protect dependencies with timeouts, circuit breakers, bulkheads, and backpressure.</li>
-                <li>Test regional failure, brownout, and overload, not only clean failover.</li>
-            </ul>
+            <h2>Where I'd start</h2>
+            <p>Observability and load shedding, before you need them desperately. By the time you need them, nobody is calm enough to build them well. Then test the failures you'll actually get — brownouts, regional degradation, one dependency at ten times its normal latency — not just the clean failover your runbook describes. Real failures are partial, and partial failures are where untested assumptions live.</p>
 
-            <h2>Bottom line</h2>
-            <p>The real high-scale skill is not making a system big. It is making a big system understandable enough to operate.</p>
+            <p>The skill is not making a system big. Plenty of big systems exist. The skill is making a big system simple enough to reason about on a bad day, because every system eventually has one.</p>
         </article>
     </main>
 

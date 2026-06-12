@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Production ML succeeds through architecture, data pipelines, monitoring, and integration discipline rather than model quality alone.">
+    <meta name="description" content="Production ML is mostly the system around the model: boundaries, fallbacks, rollout discipline, and pipelines you can trust.">
     <title>Integrating Machine Learning in Large-Scale Products | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,37 +22,24 @@
                 <span>Product</span>
             </div>
 
-            <p>The model is rarely the whole product. In large-scale systems, ML value comes from the pipeline around the model: data quality, serving latency, feedback loops, monitoring, fallbacks, and the product surfaces that make predictions useful.</p>
+            <p>The model is rarely the product. I've shipped ML in a few different settings now — video understanding for ads at YouTube, AI moderation for ads systems at Roblox — and the same pattern keeps showing up: the model is one component in a much larger loop, and most of the value gets captured or lost in the parts around it.</p>
 
-            <h2>The core idea</h2>
-            <p>ML integration means designing the boundary between statistical behavior and deterministic systems. The product has to know what to do with uncertainty, stale features, missing data, distribution shift, and model versions that improve one metric while hurting another.</p>
+            <p>The loop includes data contracts, feature generation, online serving, fallbacks, monitoring, human review, experimentation, and retraining. When something breaks in production, it's almost never inside the model architecture. It's at one of those boundaries — a feature went stale, a contract drifted, an upstream team renamed an event.</p>
 
-            <h2>Why it matters</h2>
-            <p>This matters because impressive offline performance can collapse in production. Real users create weird inputs. Traffic shifts. Latency budgets bite. Teams need observability and rollout discipline so model changes can be trusted at product scale.</p>
+            <h2>The boundary is the design problem</h2>
+            <p>The mental model I use: ML integration is designing the boundary between statistical behavior and deterministic systems. Everything downstream of the model is deterministic and wants guarantees. The model can't give any. So the product has to know, explicitly, what it does when the model is wrong, stale, slow, unavailable, or staring at an input unlike anything it trained on.</p>
 
-            <h2>How to use it</h2>
-            <ul>
-                <li>Treat data pipelines as first-class infrastructure, not plumbing beneath the model team.</li>
-                <li>Ship models behind staged rollout, monitoring, and rollback paths.</li>
-                <li>Measure product outcomes and model health together; either one alone can mislead.</li>
-            </ul>
+            <p>That reframes the central question. Not "how good is the model?" but "how does the product behave when the model fails?" The first question has a leaderboard answer. The second one is the actual work: fallback behavior, confidence thresholds, segment-level monitoring, and clear ownership across the product, infra, data, and ML teams — because a failure at a boundary is, almost by definition, a failure between teams.</p>
 
+            <h2>Offline numbers are an audition, not a verdict</h2>
+            <p>Impressive offline performance collapses in production often enough that I've stopped being surprised by it. Real users produce inputs no eval set anticipated. Traffic mix shifts. Latency budgets bite, and the big accurate model loses to the small fast one. In moderation work this is especially stark: the inputs you most need to catch are the adversarial ones, designed specifically not to look like your training data.</p>
 
-            <h2>The integration boundary</h2>
-            <p>Production ML is a systems integration problem. The model is one component in a loop that includes data contracts, feature generation, online serving, fallbacks, monitoring, human overrides, experimentation, and retraining. Most failures happen at those boundaries rather than inside the model architecture.</p>
+            <p>So the rollout discipline matters more than the training run. Shadow mode first, then staged experiments with a rollback path you've actually exercised. And two views you read together: product outcomes and model health. Either one alone will mislead you — model metrics can look fine while the product quietly degrades, and product metrics can move for reasons that have nothing to do with the model.</p>
 
-            <p>The right question is not "how good is the model?" but "how does the product behave when the model is wrong, stale, slow, unavailable, biased, or out of distribution?" Answering that requires fallbacks, confidence thresholds, segment-level monitoring, and clear ownership between product, infra, data, and ML teams.</p>
+            <h2>Treat the pipeline as the product</h2>
+            <p>Data pipelines are first-class infrastructure, not plumbing under the model team. Stable feature contracts, freshness monitoring, drift dashboards tied to product outcomes — none of it is glamorous, and all of it is where the reliability comes from. A mediocre model on a trustworthy pipeline beats a great model on a flaky one, because you can improve the first system and you can't even diagnose the second.</p>
 
-            <h2>Production requirements</h2>
-            <ul>
-                <li>Stable feature contracts and freshness monitoring.</li>
-                <li>Shadow mode and online experiments before broad rollout.</li>
-                <li>Fallback behavior when confidence is low or serving fails.</li>
-                <li>Drift dashboards tied to product outcomes, not only offline metrics.</li>
-            </ul>
-
-            <h2>Bottom line</h2>
-            <p>Good production ML is systems engineering with probabilistic components. The integration is where most of the value is either captured or lost.</p>
+            <p>Good production ML is systems engineering with probabilistic components. If that sounds deflating, it shouldn't. The integration is where the engineering judgment lives, and it's the part that compounds.</p>
         </article>
     </main>
 

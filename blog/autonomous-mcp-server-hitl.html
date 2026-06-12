@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="An AI assistant can build a production-style MCP server quickly, but human-in-the-loop guidance still determines whether the result is useful.">
+    <meta name="description" content="An AI assistant can build a working MCP server fast. The part worth designing is the human checkpoint — as a protocol, not a meeting.">
     <title>Building an Autonomous MCP Server with HITL Guidance | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,37 +22,19 @@
                 <span>Human-in-the-Loop</span>
             </div>
 
-            <p>This experiment asked a practical question: how far can an AI assistant get if the target is not a toy prompt but a working MCP server with human-in-the-loop behavior? The answer was encouraging, with the usual caveat that the human still had to steer the shape of the solution.</p>
+            <p>This experiment had a simple setup: ask an AI assistant to build not a toy script but a working MCP server with human-in-the-loop behavior baked in. It got further than I expected. The caveat — there is always a caveat — is that I still had to steer the shape of the solution the whole way. The build also turned out to be a decent test of agentic infrastructure in general, because it forced the agent to define tool contracts, handle state, and expose a workflow another system could call.</p>
 
-            <h2>The core idea</h2>
-            <p>The value of HITL is not just approval. It is a design pattern. Humans should intervene at points where the system lacks context, where the cost of a wrong action is high, or where taste and policy matter more than mechanical execution.</p>
+            <h2>HITL is a protocol, not a meeting</h2>
+            <p>The phrase "human in the loop" usually means something vague: a person will look at it at some point. That is not a design. The version that works is a protocol. The agent returns a compact decision packet — current state, proposed action, evidence, uncertainty, expected side effect, rollback path — and the human approves, rejects, edits, or asks for more, through a structured interface rather than a wall of chat.</p>
 
-            <h2>Why it matters</h2>
-            <p>The MCP server became a useful test because it forced the agent to build interfaces, define tool contracts, handle state, and expose a workflow that another system could call. Those are the real ingredients of agentic infrastructure.</p>
+            <p>This is what makes autonomy composable. An orchestrator can pause on the approval state. A reviewer can inspect the artifact. An audit log can show why the action was allowed. A future eval can replay the decision and ask whether the agent should have escalated sooner.</p>
 
-            <h2>How to use it</h2>
-            <ul>
-                <li>Make human checkpoints explicit in the tool protocol instead of burying them in prose instructions.</li>
-                <li>Return structured state so the human can decide quickly without reverse-engineering what the agent did.</li>
-                <li>Use narrow tasks first; autonomy should expand only after the review loop proves reliable.</li>
-            </ul>
+            <p>The implementation details matter more than they look. Approval states should be explicit — waiting_for_human, approved, rejected, expired, superseded — and an approval should attach to one exact proposed action, not to the whole task forever. Persist the evidence the human saw at approval time, because "what did we know when we said yes" is the first question asked after anything goes wrong. And let humans edit constrained parameters without rewriting the agent's whole plan; the alternative is a veto-only interface, and veto-only interfaces get rubber-stamped.</p>
 
+            <h2>Where humans belong in the loop</h2>
+            <p>The deeper lesson is that HITL is a placement decision, not just an approval step. Humans should sit at the points where the system lacks context, where a wrong action is expensive, or where taste and policy matter more than mechanical execution. Everywhere else, a checkpoint is just latency.</p>
 
-            <h2>The HITL interface</h2>
-            <p>Human-in-the-loop should be modeled as a protocol, not as a meeting. The agent should return a compact decision packet: current state, proposed action, evidence, uncertainty, expected side effect, rollback path, and alternatives. The human should approve, reject, edit, or ask for more evidence through a structured interface.</p>
-
-            <p>This is what makes autonomy composable. A downstream orchestrator can pause on the approval state. A reviewer can inspect the artifact. An audit log can show why the action was allowed. A future eval can replay the decision and ask whether the model should have escalated earlier.</p>
-
-            <h2>Implementation details</h2>
-            <ul>
-                <li>Use explicit states such as waiting_for_human, approved, rejected, expired, and superseded.</li>
-                <li>Attach approval to an exact proposed action, not to the whole task forever.</li>
-                <li>Persist the evidence bundle that was visible at approval time.</li>
-                <li>Let humans edit constrained parameters without rewriting the agent's whole plan.</li>
-            </ul>
-
-            <h2>Bottom line</h2>
-            <p>Autonomy becomes useful when it is paired with a control surface. HITL is not a weakness in the system; it is how the system earns permission to do more.</p>
+            <p>I would start narrow: small tasks, tight review, and autonomy that expands only after the review loop proves it works. Autonomy paired with a control surface is useful. Autonomy without one is a liability with good manners. HITL is not a weakness in the system; it is how the system earns permission to do more.</p>
         </article>
     </main>
 

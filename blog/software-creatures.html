@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Future systems may look like temporary agentic creatures rather than permanent services: assembled for a goal, instrumented, then dissolved or evolved.">
+    <meta name="description" content="A speculation: agentic systems as temporary creatures — commissioned, supervised, dissolved — and what that does to how we operate software.">
     <title>Software Creatures: Imagining the Next Evolution of Systems | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,37 +22,17 @@
                 <span>Speculation</span>
             </div>
 
-            <p>Software has traditionally looked like infrastructure: services, jobs, databases, APIs, dashboards. Agentic systems may look stranger. They may form around a task, gather tools, act for a while, leave artifacts, and disappear or mutate into the next workflow.</p>
+            <p>Software has always looked like infrastructure: services, jobs, databases, APIs, dashboards. Things you deploy and keep alive. Agentic systems may end up looking stranger than that. They form around a task, gather tools, act for a while, leave artifacts behind, and then disappear — or mutate into the next workflow.</p>
 
-            <h2>The core idea</h2>
-            <p>The creature metaphor captures software with more agency, memory, perception, and adaptation than a normal service. It is not alive, but it behaves less like a static machine and more like a bounded organism operating in an environment.</p>
+            <h2>Why "creature" is the right word</h2>
+            <p>I keep reaching for the creature metaphor because nothing in the infrastructure vocabulary fits. A creature-like system has goals, memory, perception, a budget it metabolizes, and behavior that adapts to its environment. It is not alive, obviously. But it behaves less like a static machine and more like a bounded organism, and our operational instincts — built over decades of keeping stable services healthy — do not transfer cleanly.</p>
 
-            <h2>Why it matters</h2>
-            <p>This matters because our operational instincts are built around stable services. Agentic software may require different controls: lifetimes, permissions, supervision, behavior logs, resource budgets, and containment when it starts acting outside the intended shape.</p>
+            <p>Traditional services are deployed and monitored. Creatures are commissioned, supervised, and eventually dissolved. The operational contract changes shape: lifespan, resource budget, tool scope, success criteria, drift checks, and a way to snapshot what the creature learned before it goes away. The runtime has to manage behavior, not just uptime. Emergent behavior becomes an operations problem, not only a model-quality issue.</p>
 
-            <h2>How to use it</h2>
-            <ul>
-                <li>Design agents with explicit boundaries, metabolism, and death conditions: what they can consume, do, and persist.</li>
-                <li>Keep artifacts and audit trails even when the agent itself is temporary.</li>
-                <li>Treat emergent behavior as an operations problem, not only a model-quality issue.</li>
-            </ul>
+            <h2>The control primitives</h2>
+            <p>If you squint, a small set of primitives covers most of it. Lifespan: one-shot, scheduled, long-running, or event-triggered. Memory: none, task-local, project-local, or durable. Tooling: read-only, staged writes, approved writes, or — carefully — autonomous writes. Containment: sandbox, rate limit, budget, policy gate, kill switch. Every creature gets explicit boundaries, a metabolism, and death conditions: what it may consume, what it may do, and what it may leave behind. The artifacts and audit trails persist even when the creature does not.</p>
 
-
-            <h2>The runtime implication</h2>
-            <p>If software becomes more creature-like, the runtime has to manage behavior rather than only uptime. A creature-like system has goals, memory, tools, budget, environment, feedback, and adaptation. That means the platform needs containment, observation, intervention, and retirement mechanisms.</p>
-
-            <p>Traditional services are deployed and monitored. Agentic creatures are commissioned, supervised, and sometimes dissolved. The operational contract should include lifespan, resource budget, tool scope, success criteria, drift checks, and a way to snapshot what the creature learned before it disappears.</p>
-
-            <h2>Control primitives</h2>
-            <ul>
-                <li>Lifespan: one-shot, scheduled, long-running, or event-triggered.</li>
-                <li>Memory: none, task-local, project-local, or durable organizational memory.</li>
-                <li>Tooling: read-only, staged writes, approved writes, or autonomous writes.</li>
-                <li>Containment: sandbox, rate limit, budget, policy gate, and kill switch.</li>
-            </ul>
-
-            <h2>Bottom line</h2>
-            <p>If software becomes more creature-like, engineering has to become better at ecology: containment, observation, incentives, and controlled evolution.</p>
+            <p>This is speculation, and the metaphor will break somewhere. But if software does become more creature-like, engineering has to get better at something closer to ecology than administration: containment, observation, incentives, and controlled evolution. We spent decades learning to keep services alive. The next skill might be deciding what gets to live, for how long, and what it is allowed to eat.</p>
         </article>
     </main>
 

@@ -22,37 +22,21 @@
                 <span>Speculation</span>
             </div>
 
-            <p>Humans keep looking for new frontiers. When the physical frontier feels mapped, we build fictional ones, game worlds, social worlds, and imagined futures. Generative AI makes those frontiers dynamic instead of fixed.</p>
+            <p>Humans keep looking for frontiers. When the physical ones feel mapped, we build fictional ones: novels, game worlds, social worlds, imagined futures. Generative AI changes something basic about those constructed frontiers — it makes them dynamic instead of fixed. Fair warning before I go further: I work at Roblox, so discount my enthusiasm accordingly.</p>
 
-            <h2>The core idea</h2>
-            <p>The promise of generative worlds is not only better graphics. It is responsiveness. A world that can adapt to the player, remember choices, generate new places, and bend around a group&#x27;s imagination becomes a different kind of medium.</p>
+            <h2>Responsiveness, not graphics</h2>
 
-            <h2>Why it matters</h2>
-            <p>This matters because exploration is emotional, not just geographic. People want novelty, mastery, social meaning, and the feeling of being somewhere with possibilities. AI-created realities can supply that at a scale handcrafted content cannot match.</p>
+            <p>The promise of generative worlds is usually pitched as visual: infinite content, photoreal everything. I think that misses the point. The interesting property is responsiveness. A world that adapts to you, remembers your choices, generates new places when you walk toward the edge of the map, and bends around a group's shared imagination is a different kind of medium than a world someone built and shipped. Handcrafted worlds are finite by construction. The frontier closes the moment you've seen all of it.</p>
 
-            <h2>How to use it</h2>
-            <ul>
-                <li>Expect the best worlds to combine generated content with human taste and strong constraints.</li>
-                <li>Design for social meaning, not just infinite terrain.</li>
-                <li>Treat safety, identity, and moderation as core world infrastructure, not afterthoughts.</li>
-            </ul>
+            <p>And exploration is emotional, not geographic. What people actually want from a frontier is novelty, mastery, social meaning, the feeling of being somewhere with possibilities. Handcrafted content can deliver that, but only at handcrafted scale. Generation removes the scale ceiling — which is exactly why I expect people to spend real portions of their lives in these places, the way they already do in games, just more so.</p>
 
+            <h2>The unglamorous part is the substrate</h2>
 
-            <h2>The systems constraint</h2>
-            <p>Generative worlds are not just a media problem. A world has state, rules, identity, memory, economy, moderation, multiplayer consistency, and creator rights. Image or video generation can make a place look rich, but persistent worlds need a substrate that decides what is true after the generation step ends.</p>
+            <p>Here's where my day job makes me more cautious than the demos. Generating a beautiful place is becoming easy. Running a world is not, because a world is mostly things the generator doesn't produce: state, rules, identity, memory, an economy, multiplayer consistency, creator rights, moderation. A video model can make a place look rich. A persistent world needs a substrate that decides what is true after the generation step ends.</p>
 
-            <p>The most important technical boundary is between visual richness and canonical state. AI can propose terrain, objects, quests, dialogue, and effects. The engine still needs to own physics, permissions, persistence, social safety, transactions, and measurement. Otherwise the world is beautiful but not governable.</p>
+            <p>The boundary I'd watch is between visual richness and canonical state. AI can propose terrain, quests, dialogue, objects, effects. Something else still has to own physics, permissions, persistence, transactions, and safety — otherwise you get a world that is beautiful but not governable. And in a world where content appears faster than any human team can review it, moderation stops being a feature you bolt on and becomes part of the world's physics. I spend my working hours on that problem, and I can report it does not get easier when the content generates itself.</p>
 
-            <h2>Product architecture</h2>
-            <ul>
-                <li>Generate assets and scenes into a structured world model, not only pixels.</li>
-                <li>Keep multiplayer state authoritative and replayable.</li>
-                <li>Run moderation and brand-safety checks before generated content reaches users.</li>
-                <li>Measure engagement, safety, and creator value at the world-state level.</li>
-            </ul>
-
-            <h2>Bottom line</h2>
-            <p>The future of generated worlds will be won by systems that create not just content, but places people actually want to return to.</p>
+            <p>My honest guess about how this plays out: the best worlds won't be the most generated ones. They'll combine generation with human taste and strong constraints, because infinite terrain is worthless without social meaning — other people, shared history, a reason to come back. The winners will be the systems that produce not just content, but places people return to. That part of the problem is old, and generative AI doesn't solve it. It just raises the stakes.</p>
         </article>
     </main>
 

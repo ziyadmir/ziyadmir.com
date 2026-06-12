@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Retention policies erase useful context, so organizations need selective preservation systems that keep the reasoning behind important work.">
+    <meta name="description" content="Companies lose the reasoning behind decisions quietly, and agents without that context start from folklore. Preserve decisions, not transcripts.">
     <title>Part 5: Preserving Institutional Knowledge in the Age of AI | Ziyad Mir</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -22,37 +22,30 @@
                 <span>Enterprise</span>
             </div>
 
-            <p>Enterprises lose knowledge quietly. A design debate disappears in chat retention. A launch rationale lives in one doc no one can find. A team learns something expensive, then reorganizes. AI raises the cost of this loss because agents need context to be useful.</p>
+            <p>Companies lose knowledge quietly. A design debate evaporates when chat retention runs out. A launch rationale lives in one doc that nobody can find two reorgs later. A team learns something expensive, then disbands, and the lesson walks out the door in pieces. None of this announces itself; you only notice when someone proposes the thing you tried in 2022, and nobody left can explain why it failed.</p>
 
-            <h2>The core idea</h2>
-            <p>Knowledge preservation should focus on decisions, constraints, tradeoffs, incidents, and operating lessons. The goal is not to store every message forever. The goal is to preserve the pieces future humans and agents need to understand why the system is the way it is.</p>
+            <p>AI raises the price of this loss. Agents are only as good as the context they can reach, and long-context models make raw history genuinely useful — but only if the history still exists and has enough structure to find. A company that preserves its reasoning will have meaningfully better internal AI than one that preserves nothing, for the simple reason that its models get to reason over what actually happened instead of what people half-remember.</p>
 
-            <h2>Why it matters</h2>
-            <p>Long-context models make raw history more useful, but only if the history still exists and has enough structure to route. The companies that preserve high-signal context will have better internal AI because their models can reason over the real institutional substrate.</p>
+            <h2>Preserve decisions, not transcripts</h2>
+            <p>The instinct to fight here is hoarding. The goal is not to store every message forever — privacy and retention constraints make that impossible anyway, and most of it is noise. The useful unit is the decision record: the context, the options considered, the tradeoffs, the owner, the links to the underlying artifacts, the final call, and what we said we'd watch afterward.</p>
 
-            <h2>How to use it</h2>
+            <p>This used to be expensive enough that almost nobody did it consistently. AI changes the economics: a model can draft the decision record from code reviews, docs, tickets, chats, and incident timelines. A human still has to approve the durable version — that approval is what turns a summary into a record — but the activation energy drops from an hour to a few minutes, which is roughly the difference between a practice that exists and one that doesn't.</p>
+
+            <h2>What's worth keeping</h2>
+            <p>Mostly the things future people will need to understand why the system is the way it is: architectural decisions, launch constraints, policy interpretations, incident lessons, customer-impacting tradeoffs, and the non-obvious operational assumptions that everyone currently treats as ambient knowledge. Raw conversation stays useful as source evidence. Curated decision memory is the interface — for the new hire, and increasingly for the agent.</p>
+
+            <p>A few requirements that matter more than they look:</p>
             <ul>
-                <li>Capture the why behind decisions, not only the final decision text.</li>
-                <li>Route preserved knowledge by project, owner, and system boundary so future agents can find it.</li>
-                <li>Respect privacy and retention constraints by curating high-value summaries instead of hoarding everything.</li>
+                <li>Summaries must link to their sources, so a skeptical reader can inspect the evidence.</li>
+                <li>Access control has to be inherited from the source systems, not flattened into one global index that quietly leaks.</li>
+                <li>Records need staleness markers and a review owner, so a 2023 decision doesn't masquerade as current truth to an agent that can't tell the difference.</li>
             </ul>
 
+            <p>That last point is the one I'd underline. Humans bring skepticism to an old document; models mostly don't, unless you give them the metadata to be skeptical with.</p>
 
-            <h2>The preservation contract</h2>
-            <p>Knowledge preservation should not mean saving everything forever. The useful unit is a decision record: context, options considered, tradeoffs, owner, artifact links, final decision, and follow-up signals. AI makes this cheaper because it can draft the record from code reviews, docs, tickets, chats, and incident timelines, but humans still need to approve the durable version.</p>
+            <p>Institutional memory is becoming AI infrastructure. If the context disappears, the agent starts from folklore — and folklore, delivered fluently and with confidence, is worse than admitting you don't know.</p>
 
-            <p>The system should preserve the reasoning that future agents and future employees will need. That usually means architectural decisions, launch constraints, policy interpretations, incident lessons, customer-impacting tradeoffs, and non-obvious operational assumptions. Raw conversation is useful as source evidence; curated decision memory is useful as an interface.</p>
-
-            <h2>Technical requirements</h2>
-            <ul>
-                <li>Source-linked summaries so readers can inspect the underlying evidence.</li>
-                <li>Retention labels that distinguish durable decisions from transient discussion.</li>
-                <li>Access control inherited from the source systems, not flattened into one global index.</li>
-                <li>Staleness markers and review ownership so old decisions do not masquerade as current truth.</li>
-            </ul>
-
-            <h2>Bottom line</h2>
-            <p>Institutional memory is becoming AI infrastructure. If the context disappears, the agent starts from folklore.</p>
+            <p>This is Part 5 of the <a href="/blog/ai-for-work-series-index.html">AI-for-Work series</a>. Next: <a href="/blog/ai-for-work-part-6-work-as-code.html">Part 6: Work-as-Code</a>.</p>
         </article>
     </main>
 

@@ -22,37 +22,27 @@
                 <span>Judgment</span>
             </div>
 
-            <p>It is easy to notice when a model is worse than you at something you understand. The gap is visible. It is much harder to notice when the model is near your boundary or beyond it, because the evidence starts to look like nuance you may not be qualified to judge.</p>
+            <p>When a model is worse than me at something I know well, I can see it instantly. The mistake jumps out, I correct it, and I walk away feeling like I have a good read on what these systems can and can't do.</p>
 
-            <h2>The core idea</h2>
-            <p>The knowledge boundary illusion is the feeling that you can still evaluate the model because you can understand its words. Fluency tricks you into thinking the delta is visible. But the real delta may live in facts, tradeoffs, or failure modes outside your own map.</p>
+            <p>The trouble starts when the model gets close to the edge of what I know. Past that line, its errors stop looking like errors. They look like nuance. Sometimes they look like expertise I don't have. I can't tell the difference between "this answer is subtly wrong" and "this answer is more sophisticated than my understanding," because telling those apart requires exactly the knowledge I'm missing.</p>
 
-            <h2>Why it matters</h2>
-            <p>This matters for both trust and humility. As models improve, human evaluators need better tests, stronger references, and more domain-grounded review. Personal intuition becomes less reliable at exactly the point where outputs become more persuasive.</p>
+            <h2>Fluency is not evidence</h2>
 
-            <h2>How to use it</h2>
-            <ul>
-                <li>Use external benchmarks, primary sources, and expert review when the domain is near your edge.</li>
-                <li>Separate confidence in the prose from confidence in the underlying claim.</li>
-                <li>Notice when your critique becomes vague; that may mean the model has moved past your easy evaluation range.</li>
-            </ul>
+            <p>I think of this as the knowledge boundary illusion: the feeling that I can still grade the model because I can understand its words. Reading comprehension and evaluation ability feel like the same skill, but they aren't. The prose is equally fluent everywhere, including the places where the claims are wrong. So my confidence in the output stays roughly constant while my actual ability to check it falls off a cliff.</p>
 
+            <p>There's a perverse shape to this. The better models get, the more of their output sits beyond my boundary, which means the deltas I most need to see are precisely the ones I'm least equipped to see. My intuition becomes least reliable at exactly the point where the answers become most persuasive.</p>
 
-            <h2>The evaluation problem</h2>
-            <p>As AI approaches your own knowledge boundary, evaluation becomes harder because the errors are no longer obvious. The model may be wrong in ways that require domain expertise, source inspection, or causal testing to detect. This creates a false sense of fluency: the answer sounds complete exactly where your ability to grade it is weakest.</p>
+            <p>I run into this at work, where part of my job is deciding how much to trust model judgments at scale. When a model classifies something I understand deeply, I can audit it directly. When it operates somewhere I'm shallow — a language I don't speak, a community's slang I've never encountered — I have to admit that my spot-checks are closer to vibes than verification.</p>
 
-            <p>The practical response is to shift from answer evaluation to process evaluation. Ask what sources were used, which assumptions were made, what would falsify the conclusion, and which claims require expert verification. The model can help generate the map, but the human must decide where the map is trustworthy enough to act.</p>
+            <h2>Grade the process, not the answer</h2>
 
-            <h2>Useful safeguards</h2>
-            <ul>
-                <li>Separate claims into known facts, inferred claims, and speculative frames.</li>
-                <li>Require source-backed evidence for decisions with money, safety, legal, or production impact.</li>
-                <li>Use adversarial review when the model is operating beyond your direct expertise.</li>
-                <li>Turn repeated uncertainty into eval cases or checklists rather than relying on vibes.</li>
-            </ul>
+            <p>The practical move I've landed on is to shift from evaluating answers to evaluating process. Near my boundary I can't reliably judge whether a conclusion is right, but I can still ask: what is this based on? What assumptions were made? What would falsify it? Which claims would an actual expert need to check? The model can help generate that map. I still have to decide where the map is trustworthy enough to act on.</p>
 
-            <h2>Bottom line</h2>
-            <p>The hardest AI gap to measure is the one just beyond your own knowledge boundary.</p>
+            <p>One tell I've learned to watch for: when my critique of an output gets vague — "something feels off" rather than "this specific claim is wrong" — that often means the model has moved past my easy evaluation range, not that the output is bad. Vague unease near the boundary is information about me, not about the model.</p>
+
+            <p>For anything with real consequences — money, safety, legal exposure, production systems — I treat my own judgment as one weak signal and go find stronger ones: primary sources, domain experts, actual tests. That sounds obvious written down. The illusion is that it rarely feels necessary in the moment, because the answer reads so well.</p>
+
+            <p>The hardest gap to measure is the one sitting just past your own knowledge boundary. Which is inconvenient, because as models improve, that's where more and more of the interesting gaps will live.</p>
         </article>
     </main>
 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A year at Coupang: traffic control, globalization specs, the agentic AI turn with Emux, and building the rails a big company needs before agents can act.">
+    <title>Coupang and the Enterprise AI Turn | My Life | Ziyad Mir</title>
+        <meta property="og:title" content="Coupang and the Enterprise AI Turn | My Life | Ziyad Mir">
+    <meta property="og:description" content="A year at Coupang: traffic control, globalization specs, the agentic AI turn with Emux, and building the rails a big company needs before agents can act.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ziyadmir.com/memoir/coupang.html">
+    <meta property="og:image" content="https://ziyadmir.com/images/profile-linkedin.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Coupang and the Enterprise AI Turn | My Life | Ziyad Mir">
+    <meta name="twitter:description" content="A year at Coupang: traffic control, globalization specs, the agentic AI turn with Emux, and building the rails a big company needs before agents can act.">
+    <link rel="alternate" type="application/rss+xml" title="Ziyad Mir — Writing" href="/feed.xml">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link href="/shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div id="shared-header"></div>
+
+    <main class="page">
+        <article class="post page-narrow">
+            <a href="/memoir.html" class="back-link">&larr; All chapters</a>
+            <p class="eyebrow">Life</p>
+            <h1 class="post-title">Coupang and the Enterprise AI Turn</h1>
+            <p class="post-meta">2024–2025 · Fortune 150 e-commerce</p>
+            <div class="post-tags">
+                <span>Career</span>
+                <span>Infrastructure</span>
+                <span>Agentic AI</span>
+            </div>
+
+            <p>When I left Google in 2024, I joined Coupang. On paper it was a year and change. In practice it was the most compressed stretch of my career — I started four or five distinct things, made them real, and handed most of them off. Looking back, that was the actual job, even though nobody wrote it down that way.</p>
+
+            <h2>Traffic</h2>
+            <p>I started in infrastructure, on a problem that sounds narrow and isn't: what should a system do when it is overloaded? The naive answer is "fall over," and at e-commerce scale the naive answer is expensive. I worked on adaptive load shedding — dropping the right requests instead of all of them — and the moment you take that seriously, it stops being a feature and becomes a worldview. Load shedding grew into rate limiting. Rate limiting grew into a broader traffic control program: who gets capacity, under what policy, decided where in the stack.</p>
+
+            <p>Then I gave it away. Once the program had a shape, a roadmap, and momentum, I handed it to another L7 IC and moved on. At earlier points in my career that would have felt like losing something. By this point I had made peace with a pattern I seem to repeat: I am most useful in the zero-to-one stretch where a problem doesn't have an owner, a name, or a budget yet — and the right move at the end of that stretch is to put it in the hands of someone who will run it for years.</p>
+
+            <h2>Globalization, again</h2>
+            <p>Next came globalization — g11n platform specs for the company. This was a strange homecoming. I had spent 2016 to 2018 building Rosetta at Uber, and here I was nearly a decade later writing down how a different global company should structure translations, locales, and the platform underneath them. The difference was that this time I had already made the mistakes once. Specs are an underrated artifact: the code gets rewritten, but a good spec shapes how a company thinks about a problem long after you leave.</p>
+
+            <h2>The agentic turn</h2>
+            <p>Then the center of gravity of my work shifted, the way it was shifting everywhere in 2024: toward AI. I ended up leading the enterprise AI effort — equal parts infrastructure, workflow design, and culture.</p>
+
+            <p>The concrete pieces, roughly in order: we got Codeium (later Windsurf) into engineers' hands, which sounds like procurement but is really a security, legal, and adoption project wearing a procurement costume. We built a centralized MCP gateway so AI tools could reach internal systems through one governed door instead of a hundred ungoverned ones, with audit logs on everything — if you cannot answer "what did the AI touch and when," you do not have an AI platform, you have a liability. And we built Emux, our agentic execution platform: the substrate for actually running agents against real company systems rather than letting them loose ad hoc.</p>
+
+            <p>The project that taught me the most was using agents to rewrite employee data to take risk out of the company — de-identification is the term, I think; the compliance people had a more precise one that never stuck in my head. The interesting part wasn't the redaction itself. It was the inversion: we were using agents to make the company safer <em>from</em> data risk, at the same time everyone was asking whether agents themselves were a data risk. Both things were true. The answer to both was the same machinery — gateways, permissions, audit trails, evidence.</p>
+
+            <h2>What the year was actually about</h2>
+            <p>I wrote a whole essay series out of this period, but the honest summary is shorter: a big company cannot adopt agentic AI by buying licenses. Somebody has to build the rails — the access layer, the audit trail, the execution substrate, the observability — before agents can be allowed to act on anything that matters. That somebody usually has no job description, because the job didn't exist the year before.</p>
+
+            <p>Doing that work is where my deployment-control thesis stopped being an opinion and became lived experience. It is also what made the next move obvious: if the rails were the interesting part, the most interesting place to build them is where the AI's decisions carry the most consequence. That meant moderation. That meant Roblox.</p>
+
+            <nav class="pager">
+                <a href="/memoir/google.html">&larr; Previous: My Google Journey</a>
+                <a href="/memoir/roblox.html">Next: Roblox &rarr;</a>
+            </nav>
+        </article>
+    </main>
+
+    <div id="shared-footer"></div>
+    <script src="/components.js"></script>
+</body>
+</html>

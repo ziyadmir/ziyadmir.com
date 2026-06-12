@@ -5,15 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ziyad Mir works on content understanding and AI governance: multimodal models that read video, ads, and interactive experiences, and the moderation systems, evals, and agent runtimes that decide what AI is allowed to do.">
     <title>Ziyad Mir | Content Understanding &amp; AI Governance</title>
+        <meta property="og:title" content="Ziyad Mir | Content Understanding &amp; AI Governance">
+    <meta property="og:description" content="Ziyad Mir works on content understanding and AI governance: multimodal models that read video, ads, and interactive experiences, and the moderation systems, evals, and agent runtimes that decide what AI is allowed to do.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ziyadmir.com/">
+    <meta property="og:image" content="https://ziyadmir.com/images/profile-linkedin.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Ziyad Mir | Content Understanding &amp; AI Governance">
+    <meta name="twitter:description" content="Ziyad Mir works on content understanding and AI governance: multimodal models that read video, ads, and interactive experiences, and the moderation systems, evals, and agent runtimes that decide what AI is allowed to do.">
+    <link rel="alternate" type="application/rss+xml" title="Ziyad Mir — Writing" href="/feed.xml">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/shared-styles.css" rel="stylesheet">
     <style>
         .hero {
             min-height: auto;
             display: flex;
             align-items: center;
-            padding: clamp(4rem, 9vh, 6rem) 0;
+            padding: clamp(2.5rem, 6vh, 4rem) 0;
             border-bottom: 1px solid var(--color-border-light);
             background: linear-gradient(180deg, #fff 0%, #fafafa 100%);
         }
@@ -31,6 +39,7 @@
 
         .hero-portrait {
             width: min(100%, 280px);
+            height: auto;
             aspect-ratio: 1;
             justify-self: end;
             border: 1px solid var(--color-border-light);
@@ -54,7 +63,7 @@
             letter-spacing: 0;
             line-height: 1.1;
             margin-bottom: var(--space-lg);
-            max-width: 17ch;
+            max-width: 24ch;
         }
 
         .hero-subtitle {
@@ -218,7 +227,7 @@
                         <p class="eyebrow">Content Understanding · AI Moderation · Agent Governance</p>
                         <h1 class="hero-title">I build AI that understands content — and the systems that govern what it does.</h1>
                         <p class="hero-subtitle">I'm Ziyad Mir. I work on moderation and governance systems at Roblox, where AI moderation for ads systems is the production proving ground: multimodal models that read adversarial ad creative and interactive experiences, wired into the policy decisioning, eval gates, human escalation, and audit trails that turn model output into decisions a platform can defend.</p>
-                        <p class="hero-subtitle">The through-line of my career is teaching platforms to understand content well enough to act on it. At YouTube I built <a href="/projects/youtube-flash.html">moment-level video understanding</a> for brand advertising — the line of work that later launched publicly as Peak Points (<a href="https://blog.youtube/news-and-events/brandcast-2025/" target="_blank" rel="noopener noreferrer">Brandcast 2025</a>, <a href="https://www.cnbc.com/2025/05/14/youtube-gemini-ai-feature-will-target-ads-when-viewers-most-engaged.html" target="_blank" rel="noopener noreferrer">CNBC</a>, <a href="https://techcrunch.com/2025/05/14/youtube-viewers-will-start-seeing-ads-after-peak-moments-in-videos/" target="_blank" rel="noopener noreferrer">TechCrunch</a>). Each generation of content is harder to read, and the decisions riding on the read are more autonomous. That is why my work keeps moving toward applied AI research: evaluation, content understanding, and the governance agents need before they can act.</p>
+                        <p class="hero-subtitle">The through-line is teaching platforms to understand content well enough to act on it. At YouTube I built <a href="/projects/youtube-flash.html">moment-level video understanding</a> — the line of work that later launched publicly as Peak Points (<a href="https://www.cnbc.com/2025/05/14/youtube-gemini-ai-feature-will-target-ads-when-viewers-most-engaged.html" target="_blank" rel="noopener noreferrer">CNBC</a>, <a href="https://techcrunch.com/2025/05/14/youtube-viewers-will-start-seeing-ads-after-peak-moments-in-videos/" target="_blank" rel="noopener noreferrer">TechCrunch</a>). Now the content is harder, the decisions are more autonomous, and the work keeps moving toward applied AI research: evaluation, content understanding, and the governance agents need before they can act.</p>
                         <div class="hero-buttons">
                             <a href="/blog/after-intelligence-gets-cheap-deployment-control.html" class="btn btn-primary">Read the thesis</a>
                             <a href="/projects.html" class="btn btn-secondary">See the work</a>
@@ -257,7 +266,7 @@
                         <li>AI moderation for ads systems: pipelines that convert creative, audio, destination, and policy evidence into auditable, enforceable decisions.</li>
                         <li>Content understanding for paid and organic surfaces: brand suitability, age appropriateness, discovery quality, and measurement.</li>
                         <li>Runtime substrates for agents: sandboxed execution, tool access, artifact streams, task state, and rollback hooks.</li>
-                        <li>The research questions underneath all three: how to evaluate models whose judgment calls carry policy and safety consequences.</li>
+                        <li>The <a href="/notes.html">research questions</a> underneath all three: how to evaluate models whose judgment calls carry policy and safety consequences, and how agents can read content from the inside.</li>
                     </ul>
                 </article>
             </div>
@@ -296,6 +305,10 @@
                     <a class="pathway-card" href="/blog.html">
                         <h3 class="pathway-title">Writing</h3>
                         <p class="pathway-copy">Technical essays on deployment control, agent runtimes, evaluation, content understanding, and how AI changes engineering work.</p>
+                    </a>
+                    <a class="pathway-card" href="/notes.html">
+                        <h3 class="pathway-title">Notes</h3>
+                        <p class="pathway-copy">Research notes on open problems: experience understanding via in-sandbox agents, evaluating judgment-call models, deployment control.</p>
                     </a>
                     <a class="pathway-card" href="/memoir.html">
                         <h3 class="pathway-title">Life</h3>

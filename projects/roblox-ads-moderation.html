@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI moderation for ads systems at Roblox: content understanding for adversarial creative and interactive experiences, policy decisioning, evals, human escalation, and auditability.">
-    <title>AI Moderation for Ads Systems at Roblox | Ziyad Mir</title>
-        <meta property="og:title" content="AI Moderation for Ads Systems at Roblox | Ziyad Mir">
-    <meta property="og:description" content="AI moderation for ads systems at Roblox: content understanding for adversarial creative and interactive experiences, policy decisioning, evals, human escalation, and auditability.">
+    <meta name="description" content="Content understanding and AI moderation at Roblox: models that read ad creative and interactive experiences, feeding signals across moderation, discovery, ranking, and creator surfaces.">
+    <title>Content Understanding &amp; AI Moderation at Roblox | Ziyad Mir</title>
+        <meta property="og:title" content="Content Understanding &amp; AI Moderation at Roblox | Ziyad Mir">
+    <meta property="og:description" content="Content understanding and AI moderation at Roblox: models that read ad creative and interactive experiences, feeding signals across moderation, discovery, ranking, and creator surfaces.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://ziyadmir.com/projects/roblox-ads-moderation.html">
     <meta property="og:image" content="https://ziyadmir.com/images/profile-linkedin.jpg">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="AI Moderation for Ads Systems at Roblox | Ziyad Mir">
-    <meta name="twitter:description" content="AI moderation for ads systems at Roblox: content understanding for adversarial creative and interactive experiences, policy decisioning, evals, human escalation, and auditability.">
+    <meta name="twitter:title" content="Content Understanding &amp; AI Moderation at Roblox | Ziyad Mir">
+    <meta name="twitter:description" content="Content understanding and AI moderation at Roblox: models that read ad creative and interactive experiences, feeding signals across moderation, discovery, ranking, and creator surfaces.">
     <link rel="alternate" type="application/rss+xml" title="Ziyad Mir — Writing" href="/feed.xml">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -24,8 +24,8 @@
         <article class="post page-narrow">
             <a href="/projects.html" class="back-link">&larr; All work</a>
             <p class="eyebrow">Work · Roblox</p>
-            <h1 class="post-title">AI Moderation for Ads Systems</h1>
-            <p class="post-meta">2025–Present · Moderation and governance</p>
+            <h1 class="post-title">Content Understanding &amp; AI Moderation</h1>
+            <p class="post-meta">2025–Present · Platform signals, moderation, governance</p>
             <div class="post-tags">
                 <span>Content Understanding</span>
                 <span>AI Moderation</span>
@@ -34,10 +34,13 @@
             </div>
 
             <div class="post-summary">
-                <p>I work on the AI systems that decide whether an ad is allowed to run on Roblox: multimodal models that read adversarial creative and interactive experiences, wired into the policy decisioning, evals, human escalation, and audit trails that make those decisions defensible. This page describes the publicly safe shape of the work, not internal systems or numbers.</p>
+                <p>I build the AI that reads content on Roblox — ad creative and interactive experiences — and the moderation systems that act on what it finds. The same understanding signals feed surfaces well beyond moderation: brand suitability, discovery, ranking, creator and user experiences. This page describes the publicly safe shape of the work, not internal systems or numbers.</p>
             </div>
 
-            <h2>Why this is the hard version of the problem</h2>
+            <h2>One model layer, many consumers</h2>
+            <p>It helps to separate the two halves of the job. Content understanding is the model layer: multimodal systems that work out what a piece of creative or an experience actually contains. Moderation is the sharpest consumer of that layer — the decisions with enforcement behind them — but it is not the only one. Once a platform can genuinely read its own content, everything downstream wants the signal: discovery and ranking want quality and relevance, advertisers want brand suitability, creator tools want categorization, user surfaces want age appropriateness. Build the read once, and it compounds everywhere.</p>
+
+            <h2>Why moderation is the hard version</h2>
             <p>Roblox is an ad-supported platform with a famously young audience, which means ads moderation sits at the intersection of two non-negotiable constraints at once: brand safety, which advertisers price, and child safety, which regulators enforce. There is no margin where one can be traded against the other. Moderation here is not a cost center bolted onto the ads business — it is the thing that makes the inventory trustworthy enough to sell at all.</p>
 
             <p>The content makes it harder still. At YouTube I built systems that read video — content that cooperates, in the sense that it is the same file every time you look at it. Ad creative on Roblox is adversarial: it is produced by parties who sometimes want to be misread, and it can include or lead into interactive experiences whose behavior is not fully visible from their static assets. The read is harder, and the consequences of a wrong read are higher.</p>
@@ -58,7 +61,7 @@
             <p>It is the same discipline as moment-level video understanding, one generation harder: content you have to inhabit to read, observed by agents instead of encoders. The open research problems — exploration coverage versus cost, evaluating the records themselves, experiences that behave differently when observed — are written up in my <a href="/notes.html#experience-understanding">research notes</a>.</p>
 
             <h2>The lineage</h2>
-            <p>This work is the third step in one line: <a href="/projects/youtube-flash.html">moment-level video understanding at YouTube</a> (the line of work that later launched publicly as Peak Points), then adversarial ad creative, now interactive experiences. Each generation of content is harder to read, and the decisions riding on the read are more autonomous. Understanding decides what the platform can see; governance decides what the AI is allowed to do about it. The job is building both.</p>
+            <p>I have watched this "build the read once, it compounds everywhere" pattern play out before. At YouTube I built <a href="/projects/youtube-flash.html">moment-level video understanding</a> for brand ads; it launched publicly as Peak Points, and the underlying signals then diffused into YouTube's contextual platform — powering contextual sponsorship matching between brands and creators, among other surfaces. The Roblox work is the same play on harder content, and experience understanding is the part of the read that does not exist yet.</p>
 
             <nav class="pager">
                 <a href="/projects/youtube-flash.html">&larr; YouTube Flash: where this line started</a>

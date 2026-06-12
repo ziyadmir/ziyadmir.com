@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ziyad Mir builds governed systems for agentic AI: eval gates, runtime controls, content understanding, auditability, and production execution.">
-    <title>Ziyad Mir | Governed Agentic AI Systems</title>
+    <meta name="description" content="Ziyad Mir works on content understanding and AI governance: multimodal models that read video, ads, and interactive experiences, and the moderation systems, evals, and agent runtimes that decide what AI is allowed to do.">
+    <title>Ziyad Mir | Content Understanding &amp; AI Governance</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="/shared-styles.css" rel="stylesheet">
@@ -215,10 +215,10 @@
             <div class="container">
                 <div class="hero-inner">
                     <div class="hero-copy">
-                        <p class="eyebrow">Governed Agentic AI Systems</p>
-                        <h1 class="hero-title">I build the control planes that let agentic AI ship.</h1>
-                        <p class="hero-subtitle">I'm Ziyad Mir, a hands-on principal engineer working at the boundary between model capability and production consequence: evals, permissions, review loops, audit logs, runtime orchestration, and rollback paths. At Roblox Ads/Discovery, that means turning AI into governed workflows for ads moderation, content understanding, and brand-safe creation surfaces.</p>
-                        <p class="hero-subtitle">Underneath the control plane is the layer it governs: content understanding. I built moment-level video understanding at YouTube — the line of work that later launched publicly as Peak Points — and now the harder versions at Roblox: adversarial ad creative and interactive experiences. Understanding decides what a system can see. Governance decides what it is allowed to do. I build both.</p>
+                        <p class="eyebrow">Content Understanding · AI Moderation · Agent Governance</p>
+                        <h1 class="hero-title">I build AI that understands content — and the systems that govern what it does.</h1>
+                        <p class="hero-subtitle">I'm Ziyad Mir. I work on moderation and governance systems at Roblox, where AI moderation for ads systems is the production proving ground: multimodal models that read adversarial ad creative and interactive experiences, wired into the policy decisioning, eval gates, human escalation, and audit trails that turn model output into decisions a platform can defend.</p>
+                        <p class="hero-subtitle">The through-line of my career is teaching platforms to understand content well enough to act on it. At YouTube I built moment-level video understanding for brand advertising — the line of work that later launched publicly as Peak Points. Each generation of content is harder to read, and the decisions riding on the read are more autonomous. That is why my work keeps moving toward applied AI research: evaluation, content understanding, and the governance agents need before they can act.</p>
                         <div class="hero-buttons">
                             <a href="/blog/after-intelligence-gets-cheap-deployment-control.html" class="btn btn-primary">Read the thesis</a>
                             <a href="/projects.html" class="btn btn-secondary">See the work</a>
@@ -233,30 +233,31 @@
             <div class="container">
                 <div class="proof-grid">
                     <article class="proof-item">
-                        <span class="proof-value">Systems</span>
-                        <p class="proof-label">Hands-on ownership across technical direction, architecture, and cross-functional execution.</p>
+                        <span class="proof-value">Understanding</span>
+                        <p class="proof-label">Multimodal models that read video moments, adversarial ad creative, and interactive experiences.</p>
                     </article>
                     <article class="proof-item">
-                        <span class="proof-value">AI</span>
-                        <p class="proof-label">Production workflows for agents, moderation, content understanding, and developer tooling.</p>
+                        <span class="proof-value">Governance</span>
+                        <p class="proof-label">Moderation and policy decisioning: evals, permissions, human escalation, auditability, enforcement.</p>
                     </article>
                     <article class="proof-item">
-                        <span class="proof-value">Control</span>
-                        <p class="proof-label">Evals, policy gates, permissions, auditability, human escalation, and kill switches.</p>
+                        <span class="proof-value">Agents</span>
+                        <p class="proof-label">Runtime substrates and deployment control for AI that acts: sandboxes, tool access, rollback paths.</p>
                     </article>
                     <article class="proof-item">
                         <span class="proof-value">Scale</span>
-                        <p class="proof-label">Experience across ads, discovery, high-scale infrastructure, reliability, and platform systems.</p>
+                        <p class="proof-label">Production evidence across ads, discovery, moderation, and high-throughput platform infrastructure.</p>
                     </article>
                 </div>
 
                 <article class="focus-card">
                     <h2 class="home-section-title">What I'm working on now</h2>
-                    <p class="home-section-subtitle">My current focus is the execution layer for AI systems that affect real users: the runtime, decisioning, evidence, and operations needed before agents can safely act.</p>
+                    <p class="home-section-subtitle">My current focus is the layer where AI meets real users on a platform with a young audience: the models, decisioning, evidence, and operations a system needs before its judgments can be trusted.</p>
                     <ul class="focus-list">
-                        <li>Ads moderation pipelines that convert creative, audio, destination, and policy evidence into auditable decisions.</li>
+                        <li>AI moderation for ads systems: pipelines that convert creative, audio, destination, and policy evidence into auditable, enforceable decisions.</li>
+                        <li>Content understanding for paid and organic surfaces: brand suitability, age appropriateness, discovery quality, and measurement.</li>
                         <li>Runtime substrates for agents: sandboxed execution, tool access, artifact streams, task state, and rollback hooks.</li>
-                        <li>Reusable content-understanding systems for paid and organic surfaces: brand suitability, age appropriateness, discovery quality, and measurement.</li>
+                        <li>The research questions underneath all three: how to evaluate models whose judgment calls carry policy and safety consequences.</li>
                     </ul>
                 </article>
             </div>
@@ -264,20 +265,20 @@
 
         <section class="section" aria-labelledby="offerings-title">
             <div class="container">
-                <h2 id="offerings-title" class="home-section-title">How I work</h2>
-                <p class="home-section-subtitle">The useful work is not writing strategy decks about AI. It is making the hard boundary explicit, then building enough of the system that other teams can safely depend on it.</p>
+                <h2 id="offerings-title" class="home-section-title">How I think about the problem</h2>
+                <p class="home-section-subtitle">Three claims run through everything I build. They are also the research agenda: each one is easy to state and hard to make true in production.</p>
                 <div class="offering-grid">
                     <article class="offering-card">
-                        <h3 class="offering-title">Own the decision boundary</h3>
-                        <p class="offering-copy">Define what the AI is allowed to know, decide, and do. Turn policy, safety, product quality, and business risk into explicit system contracts.</p>
+                        <h3 class="offering-title">Understanding decides what a system can see</h3>
+                        <p class="offering-copy">Video moments, adversarial creative, interactive worlds — every platform decision is bounded by how well the models read the content underneath it.</p>
                     </article>
                     <article class="offering-card">
-                        <h3 class="offering-title">Build the reference path</h3>
-                        <p class="offering-copy">Ship the first production workflow with APIs, queues, schemas, eval suites, operator tooling, observability, and human override loops.</p>
+                        <h3 class="offering-title">Governance decides what it is allowed to do</h3>
+                        <p class="offering-copy">Policy, safety, and business risk become system contracts: eval gates, permission matrices, human escalation, audit trails, and rollback paths.</p>
                     </article>
                     <article class="offering-card">
-                        <h3 class="offering-title">Make autonomy earn scope</h3>
-                        <p class="offering-copy">Start with controlled validation, measure disagreement and incident rates, then widen permissions only where evidence supports it.</p>
+                        <h3 class="offering-title">Autonomy has to earn scope</h3>
+                        <p class="offering-copy">Start with controlled validation, measure disagreement and incident rates, then widen what the AI may decide only where evidence supports it.</p>
                     </article>
                 </div>
             </div>
@@ -290,11 +291,11 @@
                 <div class="pathway-grid">
                     <a class="pathway-card" href="/projects.html">
                         <h3 class="pathway-title">Projects</h3>
-                        <p class="pathway-copy">Case studies across AI infrastructure, advertising systems, reliability, and developer productivity.</p>
+                        <p class="pathway-copy">Case studies across content understanding, AI moderation, advertising systems, and platform infrastructure — including the YouTube Flash → Peak Points arc.</p>
                     </a>
                     <a class="pathway-card" href="/blog.html">
                         <h3 class="pathway-title">Writing</h3>
-                        <p class="pathway-copy">Technical essays on deployment control, agent runtimes, MCP, observability, content understanding, and engineering leverage.</p>
+                        <p class="pathway-copy">Technical essays on deployment control, agent runtimes, evaluation, content understanding, and how AI changes engineering work.</p>
                     </a>
                     <a class="pathway-card" href="/career-overview.pdf" target="_blank" rel="noopener noreferrer">
                         <h3 class="pathway-title">Career overview</h3>
